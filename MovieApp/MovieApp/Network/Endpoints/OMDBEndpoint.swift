@@ -22,7 +22,6 @@ enum OMDBEndpoint {
     guard let url = URL(string: fullPath) else {
       preconditionFailure("The url used in \(String(describing: self)) is not valid")
     }
-    print(url)
     return url
   }
 }

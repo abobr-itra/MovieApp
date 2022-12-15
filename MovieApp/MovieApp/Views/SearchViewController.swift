@@ -13,28 +13,36 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.fetchMovies(by: "pulp")
+    setUpTableView()
+    viewModel.delegate = self
+    fetchMovies(by: "Pulp")
   }
   
   // MARK: Public
   
   // MARK: Private
   
+  private func fetchMovies(by title: String) {
+    viewModel.fetchMovies(by: title)
+  }
+  
   private func setUpTableView() {
     view.addSubview(tableView)
     tableView.delegate = self
     tableView.dataSource = self
   }
-  
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    movies.count
+    print("Movies count :", movies.count)
+    return movies.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    print("Start reloading table 🤡")
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
+      print("Opps 🤡")
       return UITableViewCell()
     }
     let movie = movies[indexPath.row]
@@ -45,7 +53,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: ViewDelegate {
   func reloadTableView(with movies: [Movie]) {
-    self.movies = movies
-    tableView.reloadData()
+    print("Start reloading table", self)
+    DispatchQueue.main.async {
+      self.movies = movies
+      print(self.movies)
+      self.tableView.reloadData()
+    }
   }
 }
