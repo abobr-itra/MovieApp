@@ -5,8 +5,8 @@ class SearchViewController: UIViewController {
   // MARK: Properties
   
   private var viewModel: MovieViewModelProtocol = MovieViewModel(movieService: MovieService(networkService: NetworkService(parser: NetworkParser())))
- // private var tableView = UITableView()
-
+  // private var tableView = UITableView()
+  
   @IBOutlet weak var tableView: UITableView!
   
   private var movies: [Movie] = []
@@ -39,7 +39,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     print("Movies count :", movies.count)
     return movies.count
   }
-
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
       return UITableViewCell()
@@ -48,6 +48,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     print("Cell movie 🤡", movie)
     cell.setUp(from: movie)
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let movie = movies[indexPath.row]
+    let viewController = MoviePageViewController()
+    viewController.movie = movie
+    navigationController?.pushViewController(viewController, animated: true)
   }
 }
 
