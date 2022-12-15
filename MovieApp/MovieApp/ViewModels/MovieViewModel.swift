@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ViewDelegate {
+protocol ViewDelegate: AnyObject {
   func reloadTableView(with movies: [Movie])
 }
 
@@ -12,7 +12,7 @@ protocol MovieViewModelProtocol {
 class MovieViewModel: MovieViewModelProtocol {
   // MARK: Properties
   
-  var delegate: ViewDelegate?
+  weak var delegate: ViewDelegate?
   private let movieService: MovieServiceProtocol
   
   init(movieService: MovieServiceProtocol) {

@@ -5,8 +5,7 @@ class SearchViewController: UIViewController {
   // MARK: Properties
   
   private var viewModel: MovieViewModelProtocol = MovieViewModel(movieService: MovieService(networkService: NetworkService(parser: NetworkParser())))
-  // private var tableView = UITableView()
-  
+  private let searchController = UISearchController()
   @IBOutlet weak var tableView: UITableView!
   
   private var movies: [Movie] = []
@@ -30,7 +29,14 @@ class SearchViewController: UIViewController {
     view.addSubview(tableView)
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil), forCellReuseIdentifier: MovieCell.identifier)
+    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
+                       forCellReuseIdentifier: MovieCell.identifier)
+  }
+  
+  private func configureSearchBar() {
+    navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = true
+    searchController.searchBar.delegate = self
   }
 }
 
@@ -41,7 +47,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    print("Start setting table cells")
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
+      print("Oops 🤡")
       return UITableViewCell()
     }
     let movie = movies[indexPath.row]
@@ -60,11 +68,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: ViewDelegate {
   func reloadTableView(with movies: [Movie]) {
-    print("Start reloading table", self)
     DispatchQueue.main.async {
+      print("Start reloading table", self)
       self.movies = movies
-      print(self.movies)
       self.tableView.reloadData()
     }
+  }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    fetchMovies(by: searchBar.text ?? "")
   }
 }
