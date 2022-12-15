@@ -45,18 +45,14 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("Movies count :", movies.count)
     return movies.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    print("Start setting table cells")
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
-      print("Oops 🤡")
       return UITableViewCell()
     }
     let movie = movies[indexPath.row]
-    print("Cell movie 🤡", movie)
     cell.setUp(from: movie)
     return cell
   }
@@ -72,7 +68,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: ViewDelegate {
   func reloadTableView(with movies: [Movie]) {
     DispatchQueue.main.async {
-      print("Start reloading table", self)
       self.movies = movies
       self.tableView.reloadData()
     }
