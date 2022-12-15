@@ -8,8 +8,7 @@ class SearchViewController: UIViewController {
   private let searchController = UISearchController(searchResultsController: nil)
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var searchBar: UISearchBar!
-  
+ 
   private var movies: [Movie] = []
   
   override func viewDidLoad() {
@@ -18,6 +17,7 @@ class SearchViewController: UIViewController {
     viewModel.delegate = self
     fetchMovies(by: "Pulp")
     configureSearchBar()
+    navigationController?.title = "Search Movies"
   }
   
   // MARK: Public
