@@ -5,8 +5,10 @@ class SearchViewController: UIViewController {
   // MARK: Properties
   
   private var viewModel: MovieViewModelProtocol = MovieViewModel(movieService: MovieService(networkService: NetworkService(parser: NetworkParser())))
-  private let searchController = UISearchController()
+  private let searchController = UISearchController(searchResultsController: nil)
+  
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   private var movies: [Movie] = []
   
@@ -15,6 +17,7 @@ class SearchViewController: UIViewController {
     setUpTableView()
     viewModel.delegate = self
     fetchMovies(by: "Pulp")
+    configureSearchBar()
   }
   
   // MARK: Public
@@ -33,7 +36,7 @@ class SearchViewController: UIViewController {
                        forCellReuseIdentifier: MovieCell.identifier)
   }
   
-  private func configureSearchBar() {
+  func configureSearchBar() {
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = true
     searchController.searchBar.delegate = self

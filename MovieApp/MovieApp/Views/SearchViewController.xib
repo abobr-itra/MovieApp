@@ -20,10 +20,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="B95-uN-Xod">
-                    <rect key="frame" x="16" y="47" width="343" height="731"/>
+                    <rect key="frame" x="16" y="120" width="343" height="658"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="731" id="WoX-wJ-9Hn"/>
                         <constraint firstAttribute="width" constant="343" id="prN-dG-34m"/>
                     </constraints>
                 </tableView>
@@ -31,7 +30,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="B95-uN-Xod" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="FiA-MU-lED"/>
+                <constraint firstItem="B95-uN-Xod" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="73" id="KyP-AC-kH7"/>
                 <constraint firstItem="B95-uN-Xod" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="SHx-sZ-M2W"/>
                 <constraint firstItem="B95-uN-Xod" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="hcx-q7-Lv4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="B95-uN-Xod" secondAttribute="trailing" constant="16" id="wIK-T3-upG"/>
