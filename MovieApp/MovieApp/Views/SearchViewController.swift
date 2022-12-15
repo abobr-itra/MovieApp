@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
     view.addSubview(tableView)
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil), forCellReuseIdentifier: MovieCell.identifier)
   }
 }
 
@@ -38,14 +39,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     print("Movies count :", movies.count)
     return movies.count
   }
-  
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    print("Start reloading table 🤡")
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
-      print("Opps 🤡")
       return UITableViewCell()
     }
     let movie = movies[indexPath.row]
+    print("Cell movie 🤡", movie)
     cell.setUp(from: movie)
     return cell
   }
