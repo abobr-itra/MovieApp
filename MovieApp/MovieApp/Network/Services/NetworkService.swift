@@ -1,7 +1,7 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-  
+  func getData<T: Decodable>(from url: URL, resultHandler: @escaping (Result<T, RequestError>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -23,7 +23,7 @@ class NetworkService: NetworkServiceProtocol {
         return
       }
       
-      guard let response = response as? HTTPURLResponse else {
+      guard response is HTTPURLResponse else {
         resultHandler(.failure(.serverError))
         return
       }
