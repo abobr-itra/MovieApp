@@ -17,12 +17,16 @@ class SearchViewController: UIViewController {
     viewModel.delegate = self
     fetchMovies(by: "Pulp")
     configureSearchBar()
-    navigationController?.title = "Search Movies"
+    configureNavBar()
   }
   
   // MARK: Public
   
   // MARK: Private
+  
+  private func configureNavBar() {
+    navigationItem.title = "Search Movies"
+  }
   
   private func fetchMovies(by title: String) {
     viewModel.fetchMovies(by: title)
@@ -30,6 +34,7 @@ class SearchViewController: UIViewController {
   
   private func setUpTableView() {
     view.addSubview(tableView)
+    tableView.rowHeight = 80
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
