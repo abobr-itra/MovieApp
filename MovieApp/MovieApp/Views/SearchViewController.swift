@@ -7,15 +7,15 @@ class SearchViewController: UIViewController {
   private var viewModel: MovieViewModelProtocol = MovieViewModel(movieService: MovieService(networkService: NetworkService(parser: NetworkParser())))
   private let searchController = UISearchController(searchResultsController: nil)
   
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet private weak var tableView: UITableView!
  
   private var movies: [Movie] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpTableView()
-    viewModel.delegate = self
-    fetchMovies(by: "Pulp")
+    viewModel.searchDelegate = self
+    fetchMovies(by: "Pulp Fiction")
     configureSearchBar()
     configureNavBar()
   }
@@ -65,12 +65,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let movie = movies[indexPath.row]
     let viewController = MoviePageViewController()
-    viewController.movie = movie
+    viewController.movieID = movie.imdbID
     navigationController?.pushViewController(viewController, animated: true)
   }
 }
 
-extension SearchViewController: ViewDelegate {
+extension SearchViewController: SearchDelegate {
   func reloadTableView(with movies: [Movie]) {
     DispatchQueue.main.async {
       self.movies = movies

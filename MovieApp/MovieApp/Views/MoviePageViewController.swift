@@ -4,28 +4,38 @@ class MoviePageViewController: UIViewController {
   
   // MARK: Properties
   
-  var movie: Movie?
+  // TODO: Create fabric for VM
+  private var viewModel: MovieViewModelProtocol = MovieViewModel(movieService: MovieService(networkService: NetworkService(parser: NetworkParser())))
   
-  @IBOutlet weak var moviePoster: UIImageView!
-  @IBOutlet weak var movieTitle: UILabel!
-  @IBOutlet weak var movieDescription: UILabel!
+  var movieDetails: MovieDetails?
+  var movieID: String?
+  
+  @IBOutlet private weak var moviePoster: UIImageView!
+  @IBOutlet private weak var movieTitle: UILabel!
+  @IBOutlet private weak var movieDescription: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
-    print(movie)
-    setUpMoviePage()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
   }
   
   // MARK: Public
   
   // MARK: Private
-  private func setUpMoviePage() {
-    DispatchQueue.main.async { [weak self] in
-      self?.moviePoster.load(from: self?.movie?.poster)
-      self?.movieTitle.text = self?.movie?.title ?? ""
-      self?.movieDescription.text = self?.movie?.year ?? ""
+  
+}
+
+extension MoviePageViewController: DetailsDelegate {
+  func updateView(with data: MovieDetails) {
+    DispatchQueue.main.async {
+      self.moviePoster.load(from: data.poster)
+      self.movieTitle.text = data.title
+      self.movieDescription.text = data.plot
     }
   }
-  
 }

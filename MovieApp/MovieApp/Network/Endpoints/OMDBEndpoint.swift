@@ -13,9 +13,9 @@ enum OMDBEndpoint {
     switch self {
     case .byID(let id):
       endpoint += "&i=\(id)"
-    case .byTitle(var title):
+    case .byTitle(let title):
       endpoint += "&t=\(title.prepareForUrl())"
-    case .bySearch(var request):
+    case .bySearch(let request):
       endpoint += "&s=\(request.prepareForUrl())"
     }
     return baseURL + endpoint
