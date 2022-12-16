@@ -13,10 +13,10 @@ enum OMDBEndpoint {
     switch self {
     case .byID(let id):
       endpoint += "&i=\(id)"
-    case .byTitle(let title):
-      endpoint += "&t=\(title)"
-    case .bySearch(let request):
-      endpoint += "&s=\(request)"
+    case .byTitle(var title):
+      endpoint += "&t=\(title.prepareForUrl())"
+    case .bySearch(var request):
+      endpoint += "&s=\(request.prepareForUrl())"
     }
     return baseURL + endpoint
   }
@@ -27,8 +27,4 @@ enum OMDBEndpoint {
     }
     return url
   }
-}
-
-enum Plot: String {
-  case short, full
 }
