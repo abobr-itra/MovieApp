@@ -1,7 +1,8 @@
 import UIKit
 
 extension UIImageView {
-  func load(from url: URL) {
+  func load(from url: URL?) {
+    guard let url = url else { return }
     DispatchQueue.global().async { [weak self] in // Download on background
       if let data = try? Data(contentsOf: url) {
         if let image = UIImage(data: data) {

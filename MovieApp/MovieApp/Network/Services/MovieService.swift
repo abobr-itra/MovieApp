@@ -2,6 +2,7 @@ import Foundation
 
 protocol MovieServiceProtocol {
   func fetchMovies(by title: String, completion: @escaping (Result<MovieSearch, RequestError>) -> Void)
+  func fetchMovieDetails(by title: String, completion: @escaping (Result<MovieDetails, RequestError>) -> Void)
 }
 
 class MovieService: MovieServiceProtocol {
@@ -16,6 +17,11 @@ class MovieService: MovieServiceProtocol {
   // MARK: Public
   
   func fetchMovies(by title: String, completion: @escaping (Result<MovieSearch, RequestError>) -> Void) {
+    let url = OMDBEndpoint.bySearch(title).url
+    networkService.getData(from: url, resultHandler: completion)
+  }
+  
+  func fetchMovieDetails(by title: String, completion: @escaping (Result<MovieDetails, RequestError>) -> Void) {
     let url = OMDBEndpoint.byTitle(title).url
     networkService.getData(from: url, resultHandler: completion)
   }

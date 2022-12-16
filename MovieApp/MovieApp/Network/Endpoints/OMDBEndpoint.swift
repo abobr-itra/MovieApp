@@ -6,6 +6,7 @@ enum OMDBEndpoint {
   
   case byID(String)
   case byTitle(String)
+  case bySearch(String)
   
   private var fullPath: String {
     var endpoint = "/?apiKey=\(apiKey)"
@@ -13,7 +14,9 @@ enum OMDBEndpoint {
     case .byID(let id):
       endpoint += "&i=\(id)"
     case .byTitle(let title):
-      endpoint += "&s=\(title)"
+      endpoint += "&t=\(title)"
+    case .bySearch(let request):
+      endpoint += "&s=\(request)"
     }
     return baseURL + endpoint
   }
