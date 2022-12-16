@@ -33,5 +33,16 @@ class MovieViewModel: MovieViewModelProtocol {
     }
   }
   
+  func fetchMovieDetails(by title: String) {
+    movieService.fetchMovieDetails(by: title) { result in
+      switch result {
+      case .success(let data):
+        print(data)
+      case .failure(let error):
+        print("Some error occured :", error)
+      }
+    }
+  }
+  
   // MARK: Private
 }
