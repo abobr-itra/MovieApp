@@ -6,6 +6,7 @@ protocol MovieServiceProtocol {
 }
 
 class MovieService: MovieServiceProtocol {
+  
   // MARK: Properties
   
   private let networkService: NetworkServiceProtocol

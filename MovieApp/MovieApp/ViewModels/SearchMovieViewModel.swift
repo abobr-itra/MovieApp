@@ -1,6 +1,6 @@
 import Foundation
 
-protocol SearchDelegate: AnyObject { // 'weak' must not be applied to non-class-bound 'any SearchDelegate'; consider adding a protocol conformance that has a class bound
+protocol SearchDelegate: AnyObject {
   func reloadTableView(with movies: [Movie])
 }
 
@@ -8,14 +8,16 @@ protocol DetailsDelegate: AnyObject {
   func updateView(with data: MovieDetails)
 }
 
-protocol MovieViewModelProtocol {
+protocol SearchMovieViewModelProtocol {
   var searchDelegate: SearchDelegate? { get set }
   var detailsDelegate: DetailsDelegate? { get set }
+
   func fetchMovies(by title: String)
   func fetchMovieDetails(by id: String)
 }
 
-class MovieViewModel: MovieViewModelProtocol {
+class SearchMovieViewModel: SearchMovieViewModelProtocol {
+
   // MARK: Properties
   
   weak var searchDelegate: SearchDelegate?
@@ -44,7 +46,6 @@ class MovieViewModel: MovieViewModelProtocol {
     movieService.fetchMovieDetails(by: id) { result in
       switch result {
       case .success(let data):
-        print(data)
         self.detailsDelegate?.updateView(with: data)
       case .failure(let error):
         print("Some error occured :", error)
