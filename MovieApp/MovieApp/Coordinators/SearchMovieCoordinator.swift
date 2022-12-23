@@ -7,16 +7,26 @@ protocol SearchMovieFlow {
 
 class SearchMovieCoordinator: Coordinator, SearchMovieFlow {
 
-  let navigationController: UINavigationController
+  // MARK: Properties
+  
+  private var navigationController: UINavigationController
+  private var viewModel: SearchMovieViewModelProtocol?
   
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
   }
-  
+
+  // MARK: Public
+
   func start() {
-    let searchMovieViewController = SearchMovieViewController()
+    
+    let viewModelFabric = SearchMovieViewModelCreator()
+    let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
+    
+    let searchMovieViewController = SearchMovieViewController(viewModel: viewModel)
+
     searchMovieViewController.coordinator = self
-    navigationController.pushViewController(searchMovieViewController, animated: true)
+    navigationController.pushViewController(searchMovieViewController, animated: false)
   }
   
   func coordinateToMoviePage(by movieID: String) {

@@ -11,20 +11,21 @@ extension Coordinator {
   }
 }
 
-class MainCoordinatior: Coordinator {
+class AppCoordinatior: Coordinator {
 
-  let window: UIWindow
+  private let window: UIWindow
   
   init(window: UIWindow) {
     self.window = window
   }
   
   func start() {
+    print("Hello")
     let navigationController = UINavigationController()
     window.rootViewController = navigationController
     window.makeKeyAndVisible()
     
-    // Navigate to first coordiantor
+    // Navigate to next coordiantor
     let searchMovieCoordinator = SearchMovieCoordinator(navigationController: navigationController)
     coordinate(to: searchMovieCoordinator)
   }

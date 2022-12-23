@@ -3,8 +3,7 @@ import UIKit
 class MoviePageViewController: UIViewController {
   
   // MARK: Properties
-  
-  // TODO: Create fabric for VM
+
   private var viewModel: SearchMovieViewModelProtocol = SearchMovieViewModel(movieService: MovieService(networkService: NetworkService(parser: NetworkParser())))
   
   var coordinator: MoviePageFlow?

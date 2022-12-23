@@ -17,7 +17,8 @@ class MovieCell: UITableViewCell {
 
   // MARK: Public
   
-  func setUp(from movie: Movie) {
+  func setUp(from movie: Movie?) {
+    guard let movie = movie else { return }
     movieTitle.text = movie.title
     moviePoster.load(from: movie.poster)
     movieYear.text = movie.year

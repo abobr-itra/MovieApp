@@ -4,19 +4,21 @@ class SearchMovieViewController: UIViewController {
 
   // TODO: Use events, create coordinator
   
-  
   // MARK: IBOutlets
   
   @IBOutlet weak var tableView: UITableView!
   
   // MARK: Properties
-  // FIXME: Create viewmodel in coordinatior (convinience init)
-  private var viewModel: SearchMovieViewModelProtocol = SearchMovieViewModel(movieService: MovieService(networkService: NetworkService(parser: NetworkParser())))
+  // FIXME: Create viewmodel in coordinatior (convinience init) ?? Done
+  private var viewModel: SearchMovieViewModelProtocol?
   
   var coordinator: SearchMovieFlow?
- // private let searchController = UISearchController(searchResultsController: nil)
-  // FIXME: Remove movies from VC, it should not contain this data at all
-  private var movies: [Movie] = []
+  private let searchController = UISearchController(searchResultsController: nil)
+  
+  convenience init(viewModel: SearchMovieViewModelProtocol) {
+    self.init(nibName: nil, bundle: nil)
+    self.viewModel = viewModel
+  }
   
   // MARK: Lifecycle
   
@@ -24,14 +26,12 @@ class SearchMovieViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .white
     setUpTableView()
-    viewModel.searchDelegate = self
+    viewModel?.searchDelegate = self
     fetchMovies(by: "Pulp Fiction")
-   // configureSearchBar()
+    configureSearchBar()
    // configureNavBar()
   }
-  
-  // MARK: Public
-  
+
   // MARK: Private
   
   private func configureNavBar() {
@@ -39,7 +39,7 @@ class SearchMovieViewController: UIViewController {
   }
   
   private func fetchMovies(by title: String) {
-    viewModel.fetchMovies(by: title)
+    viewModel?.fetchMovies(by: title)
   }
   
   private func setUpTableView() {
@@ -52,44 +52,43 @@ class SearchMovieViewController: UIViewController {
                        forCellReuseIdentifier: MovieCell.identifier)
   }
   
-//  private func configureSearchBar() {
-//    navigationItem.searchController = searchController
-//    navigationItem.hidesSearchBarWhenScrolling = true
-//    searchController.searchBar.delegate = self
-//  }
+  private func configureSearchBar() {
+    navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = true
+    searchController.searchBar.delegate = self
+  }
 }
 
 extension SearchMovieViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return movies.count
+    return viewModel?.moviesCount() ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
       return UITableViewCell()
     }
-    let movie = movies[indexPath.row]
+    let movie = viewModel?.movie(at: indexPath.row)
     cell.setUp(from: movie)
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let movie = movies[indexPath.row]
-    coordinator?.coordinateToMoviePage(by: movie.imdbID)
+    let movie = viewModel?.movie(at: indexPath.row)
+    coordinator?.coordinateToMoviePage(by: movie?.imdbID ?? "")
   }
 }
 
 extension SearchMovieViewController: SearchDelegate {
-  func reloadTableView(with movies: [Movie]) {
+  func reloadTableView() {
     DispatchQueue.main.async {
-      self.movies = movies
       self.tableView.reloadData()
     }
   }
 }
 
-//extension SearchMovieViewController: UISearchBarDelegate {
-//  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//    fetchMovies(by: searchBar.text ?? "")
-//  }
-//}
+extension SearchMovieViewController: UISearchBarDelegate {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    fetchMovies(by: searchBar.text ?? "")
+  }
+}
