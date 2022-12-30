@@ -29,7 +29,7 @@ class SearchMovieViewController: UIViewController {
     viewModel?.searchDelegate = self
     fetchMovies(by: "Pulp Fiction")
     configureSearchBar()
-   // configureNavBar()
+    configureNavBar()
   }
 
   // MARK: Private
@@ -42,6 +42,7 @@ class SearchMovieViewController: UIViewController {
     viewModel?.fetchMovies(by: title)
   }
   
+  // Стоит ли выносить в отдельное view
   private func setUpTableView() {
     view.addSubview(tableView)
     tableView.backgroundColor = .clear
