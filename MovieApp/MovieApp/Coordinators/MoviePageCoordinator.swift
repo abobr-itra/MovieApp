@@ -16,7 +16,10 @@ class MoviePageCoordinator: Coordinator, MoviePageFlow {
   }
   
   func start() {
-    let moviePageViewController = MoviePageViewController()
+    let viewModelFabric = MoviePageViewModelCreator()
+    let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
+    
+    let moviePageViewController = MoviePageViewController(viewModel: viewModel)
     moviePageViewController.movieID = movieID
     moviePageViewController.coordinator = self
     navigationController.pushViewController(moviePageViewController, animated: true)

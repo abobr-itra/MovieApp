@@ -13,3 +13,12 @@ class SearchMovieViewModelCreator: ViewModelCreator {
     return SearchMovieViewModel(movieService: movieService)
   }
 }
+
+class MoviePageViewModelCreator: ViewModelCreator {
+  typealias ViewModel = MoviePageViewModel
+  func factoryMethod(parser: NetworkPaserProtocol) -> MoviePageViewModel {
+    let networkService = NetworkService(parser: parser)
+    let movieService = MovieService(networkService: networkService)
+    return MoviePageViewModel(movieService: movieService)
+  }
+}
