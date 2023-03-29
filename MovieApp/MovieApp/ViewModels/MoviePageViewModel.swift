@@ -9,6 +9,9 @@ protocol MoviePageViewModelProtocol {
   
   func getMovieDetails() -> MovieDetails?
   func fetchMovieDetails(by id: String)
+
+  func saveCurrentMovie()
+  func deleteCurrentMovie()
 }
 
 class MoviePageViewModel: MoviePageViewModelProtocol {
@@ -17,9 +20,11 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
   weak var detailsDelegate: DetailsDelegate?
   private var movieDetails: MovieDetails?
   private let movieService: MovieServiceProtocol
+  private let dataService: RealmServiceProtocol
   
-  init(movieService: MovieServiceProtocol) {
+  init(movieService: MovieServiceProtocol, dataService: RealmServiceProtocol) {
     self.movieService = movieService
+    self.dataService = dataService
   }
   
   // MARK: Public
@@ -27,7 +32,7 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
   func getMovieDetails() -> MovieDetails? {
     return movieDetails
   }
-
+  
   func fetchMovieDetails(by id: String) {
     movieService.fetchMovieDetails(by: id) { result in
       switch result {
@@ -38,5 +43,17 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
         print("Some error occured :", error)
       }
     }
+  }
+  
+  func saveCurrentMovie() {
+    guard let movieDetails else { return }
+    let realmMovie = RealmMovie(from: movieDetails)
+    dataService.saveObject(realmMovie)
+  }
+  
+  func deleteCurrentMovie() {
+    guard let movieDetails else { return }
+    let movieId = movieDetails.imdbID
+    dataService.deleteMovie(by: movieId)
   }
 }

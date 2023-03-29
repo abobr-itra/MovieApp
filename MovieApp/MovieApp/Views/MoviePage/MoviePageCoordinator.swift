@@ -1,11 +1,7 @@
 import Foundation
 import UIKit
 
-protocol MoviePageFlow {
-  
-}
-
-class MoviePageCoordinator: Coordinator, MoviePageFlow {
+class MoviePageCoordinator: Coordinator {
   
   let navigationController: UINavigationController
   let movieID: String
@@ -21,7 +17,6 @@ class MoviePageCoordinator: Coordinator, MoviePageFlow {
     
     let moviePageViewController = MoviePageViewController(viewModel: viewModel)
     moviePageViewController.movieID = movieID
-    moviePageViewController.coordinator = self
     navigationController.pushViewController(moviePageViewController, animated: true)
   }
 }

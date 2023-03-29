@@ -19,9 +19,10 @@ class MovieCell: UITableViewCell {
   
   func setUp(from movie: Movie?) {
     guard let movie = movie else { return }
-    movieTitle.text = movie.title
+    
+    movieTitle.text = "\(movie.title) (\(movie.year))"
     moviePoster.load(from: movie.poster)
-    movieYear.text = movie.year
+    movieYear.text = movie.type
   }
   
   // MARK: Private

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviePageViewController" customModule="MovieApp" customModuleProvider="target">
+            <connections>
+                <outlet property="deleteButton" destination="T4O-GI-VSl" id="B5r-Kc-74B"/>
+                <outlet property="movieDescription" destination="Wcr-tW-rKI" id="DKa-HS-1Ew"/>
+                <outlet property="moviePoster" destination="Snp-PI-sJB" id="wJa-a8-WRd"/>
+                <outlet property="movieTitle" destination="pnq-fT-p8p" id="v8P-TJ-13C"/>
+                <outlet property="saveButton" destination="JSy-Ay-q1T" id="mGU-iY-0i4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Snp-PI-sJB">
+                    <rect key="frame" x="76" y="75" width="240" height="350.66666666666669"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnq-fT-p8p">
+                    <rect key="frame" x="16" y="464.66666666666669" width="361" height="20.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcr-tW-rKI">
+                    <rect key="frame" x="16" y="516" width="361" height="167"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="167" id="OUj-L3-7KB"/>
+                        <constraint firstAttribute="width" constant="361" id="kUP-tf-Nuu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSy-Ay-q1T">
+                    <rect key="frame" x="83" y="753" width="61" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4O-GI-VSl">
+                    <rect key="frame" x="242" y="753" width="74" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Delete"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Wcr-tW-rKI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="2jt-bc-dkA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wcr-tW-rKI" secondAttribute="trailing" constant="16" id="62i-bC-6uq"/>
+                <constraint firstItem="Snp-PI-sJB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="76" id="8G8-EV-uB6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Snp-PI-sJB" secondAttribute="trailing" constant="77" id="8qp-Zp-UmZ"/>
+                <constraint firstItem="JSy-Ay-q1T" firstAttribute="top" secondItem="Wcr-tW-rKI" secondAttribute="bottom" constant="70" id="FBF-b0-x1Y"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pnq-fT-p8p" secondAttribute="trailing" constant="16" id="Ixo-eI-9Nt"/>
+                <constraint firstItem="pnq-fT-p8p" firstAttribute="top" secondItem="Snp-PI-sJB" secondAttribute="bottom" constant="39" id="Nh7-t7-QOm"/>
+                <constraint firstItem="T4O-GI-VSl" firstAttribute="leading" secondItem="JSy-Ay-q1T" secondAttribute="trailing" constant="98" id="RHf-cY-Mw3"/>
+                <constraint firstItem="Snp-PI-sJB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="YIA-Ba-G77"/>
+                <constraint firstItem="Wcr-tW-rKI" firstAttribute="top" secondItem="pnq-fT-p8p" secondAttribute="bottom" constant="31" id="cgA-QX-qwW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T4O-GI-VSl" secondAttribute="trailing" constant="77" id="k6S-y7-RhG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JSy-Ay-q1T" secondAttribute="bottom" constant="30" id="keo-30-ZM1"/>
+                <constraint firstItem="pnq-fT-p8p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="oFw-ow-g1f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T4O-GI-VSl" secondAttribute="bottom" constant="30" id="qJb-29-KRg"/>
+                <constraint firstItem="Wcr-tW-rKI" firstAttribute="top" secondItem="pnq-fT-p8p" secondAttribute="bottom" constant="31" id="toE-gx-Lwl"/>
+                <constraint firstItem="JSy-Ay-q1T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="83" id="wDt-0C-BAf"/>
+            </constraints>
+            <point key="canvasLocation" x="113.74045801526717" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -24,7 +24,6 @@ class AppCoordinatior: Coordinator {
     window.rootViewController = navigationController
     window.makeKeyAndVisible()
     
-    // Navigate to next coordiantor
     let searchMovieCoordinator = SearchMovieCoordinator(navigationController: navigationController)
     coordinate(to: searchMovieCoordinator)
   }

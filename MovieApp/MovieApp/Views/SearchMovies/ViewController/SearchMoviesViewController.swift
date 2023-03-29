@@ -1,22 +1,34 @@
 import UIKit
 
-class SearchMovieViewController: UIViewController {
-
-  // TODO: Use events, create coordinator
+class SearchMoviesViewController: UIViewController {
   
   // MARK: IBOutlets
   
-  @IBOutlet weak var tableView: UITableView!
+ // @IBOutlet weak var tableView: UITableView? // TODO: Move IBOutlet and all UI to separate view, create config file for view
+  
+  
+  @IBOutlet private weak var tableView: UITableView?
   
   // MARK: Properties
-  // FIXME: Create viewmodel in coordinatior (convinience init) ?? Done
+
   private var viewModel: SearchMovieViewModelProtocol?
+  private let searchController = UISearchController(searchResultsController: nil) // TODO: Move to separate view
   
-  var coordinator: SearchMovieFlow?
-  private let searchController = UISearchController(searchResultsController: nil)
+  struct Data {
+//    var moviesCount: () -> Int
+//    var movieAtIndex: (_ index: Int) -> Movie
+  }
+  
+  struct Actions {
+    var openMovie: (_ movieID: String) -> Void
+  }
+  
+  var data: Data?
+  var actions: Actions?
   
   convenience init(viewModel: SearchMovieViewModelProtocol) {
     self.init(nibName: nil, bundle: nil)
+    print("♦️SearchMovieViewController init viewModel:", viewModel)
     self.viewModel = viewModel
   }
   
@@ -24,12 +36,14 @@ class SearchMovieViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
     view.backgroundColor = .white
-    setUpTableView()
-    viewModel?.searchDelegate = self
-    fetchMovies(by: "Pulp Fiction")
+    self.viewModel?.searchDelegate = self
     configureSearchBar()
     configureNavBar()
+    setUpTableView()
+    print("♦️SearchMovieViewController viewDidLoad viewModel:", viewModel)
+    fetchMovies(by: "Pulp Fiction")
   }
 
   // MARK: Private
@@ -41,12 +55,13 @@ class SearchMovieViewController: UIViewController {
   private func fetchMovies(by title: String) {
     viewModel?.fetchMovies(by: title)
   }
-  
-  // Стоит ли выносить в отдельное view
+
   private func setUpTableView() {
+    guard let tableView = tableView else { return }
     view.addSubview(tableView)
-    tableView.backgroundColor = .clear
-    tableView.rowHeight = 80
+    tableView.backgroundColor = Constants.Colors.clear
+    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
+    
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
@@ -60,8 +75,11 @@ class SearchMovieViewController: UIViewController {
   }
 }
 
-extension SearchMovieViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: Extensions
+
+extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    print("♦️SearchMovieViewController tableView count viewModel:", viewModel)
     return viewModel?.moviesCount() ?? 0
   }
   
@@ -70,25 +88,26 @@ extension SearchMovieViewController: UITableViewDelegate, UITableViewDataSource 
       return UITableViewCell()
     }
     let movie = viewModel?.movie(at: indexPath.row)
+    print("🤡", movie)
     cell.setUp(from: movie)
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let movie = viewModel?.movie(at: indexPath.row)
-    coordinator?.coordinateToMoviePage(by: movie?.imdbID ?? "")
+    self.actions?.openMovie(movie?.imdbID ?? "")
   }
 }
 
-extension SearchMovieViewController: SearchDelegate {
+extension SearchMoviesViewController: SearchDelegate {
   func reloadTableView() {
     DispatchQueue.main.async {
-      self.tableView.reloadData()
+      self.tableView?.reloadData()
     }
   }
 }
 
-extension SearchMovieViewController: UISearchBarDelegate {
+extension SearchMoviesViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     fetchMovies(by: searchBar.text ?? "")
   }

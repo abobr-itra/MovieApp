@@ -41,6 +41,7 @@ class SearchMovieViewModel: SearchMovieViewModelProtocol {
     movieService.fetchMovies(by: title) { result in
       switch result {
       case .success(let data):
+        print(data)
         self.movies = data.search
         self.searchDelegate?.reloadTableView()
       case .failure(let error):
