@@ -23,3 +23,12 @@ class MoviePageViewModelCreator: ViewModelCreator {
     return MoviePageViewModel(movieService: movieService, dataService: dataService)
   }
 }
+
+class WishlistViewModelCreator: ViewModelCreator {
+  typealias ViewModel = WishlistViewModel
+  func factoryMethod(parser: NetworkPaserProtocol) -> WishlistViewModel {
+    let networkService = NetworkService(parser: parser)
+    let dataService = RealmService()
+    return WishlistViewModel(dataService: dataService)
+  }
+}

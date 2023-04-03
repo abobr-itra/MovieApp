@@ -41,6 +41,7 @@
 		D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D5E2FD29D498F2005BB3AF /* SearchMoviesViewController.xib */; };
 		D2D5E30229D49A47005BB3AF /* MoviePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E30029D49A47005BB3AF /* MoviePageViewController.swift */; };
 		D2D5E30329D49A47005BB3AF /* MoviePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D5E30129D49A47005BB3AF /* MoviePageViewController.xib */; };
+		D2D5E30529D49D86005BB3AF /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E30429D49D86005BB3AF /* WishlistViewModel.swift */; };
 		D2E5E93C29AE0B330024BDE2 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D2E5E93B29AE0B330024BDE2 /* Realm */; };
 		D2E5E93E29AE0B330024BDE2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2E5E93D29AE0B330024BDE2 /* RealmSwift */; };
 		D2E5E94129AE0BA30024BDE2 /* RealmMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5E94029AE0BA30024BDE2 /* RealmMovie.swift */; };
@@ -87,6 +88,7 @@
 		D2D5E2FD29D498F2005BB3AF /* SearchMoviesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMoviesViewController.xib; sourceTree = "<group>"; };
 		D2D5E30029D49A47005BB3AF /* MoviePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewController.swift; sourceTree = "<group>"; };
 		D2D5E30129D49A47005BB3AF /* MoviePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviePageViewController.xib; sourceTree = "<group>"; };
+		D2D5E30429D49D86005BB3AF /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
 		D2E5E94029AE0BA30024BDE2 /* RealmMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMovie.swift; sourceTree = "<group>"; };
 		D2E5E94229AE0D540024BDE2 /* RealmMovieSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMovieSearch.swift; sourceTree = "<group>"; };
 		D2E5E94429AE10ED0024BDE2 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				D2AF048329489C7B0001C92A /* SearchMovieViewModel.swift */,
 				D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */,
 				D2570BD4295070FB00E857FD /* ViewModelFabric.swift */,
+				D2D5E30429D49D86005BB3AF /* WishlistViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */,
 				D2D5E30229D49A47005BB3AF /* MoviePageViewController.swift in Sources */,
 				D2AF047F29488D280001C92A /* NetworkParser.swift in Sources */,
+				D2D5E30529D49D86005BB3AF /* WishlistViewModel.swift in Sources */,
 				D2570BE42951D47D00E857FD /* MoviePageCoordinator.swift in Sources */,
 				D2570BD1294C736D00E857FD /* Plot.swift in Sources */,
 				D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */,

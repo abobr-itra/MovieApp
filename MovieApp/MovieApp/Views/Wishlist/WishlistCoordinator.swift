@@ -1,10 +1,16 @@
 import Foundation
+import UIKit
 
-protocol WishlistFlow {
+class WishlistCoordinator: Coordinator {
   
-}
-
-class WishlistCoordinator: Coordinator, WishlistFlow {
+  // MARK: Properties
+  
+  private var navigationController: UINavigationController
+  
+  init(navigationController: UINavigationController) {
+    self.navigationController = navigationController
+  }
+  
   func start() {
     
   }
