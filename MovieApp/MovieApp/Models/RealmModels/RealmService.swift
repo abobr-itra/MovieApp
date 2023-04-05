@@ -17,11 +17,11 @@ class RealmService: RealmServiceProtocol {
   
   // TODO: Add error handling
   
-//  private var realm: Realm
-//
-//  init() {
-//    realm = try? Realm() // ?? Better solution
-//  }
+  //  private var realm: Realm
+  //
+  //  init() {
+  //    realm = try? Realm() // ?? Better solution
+  //  }
   
   // MARK: Public
   
@@ -47,7 +47,20 @@ class RealmService: RealmServiceProtocol {
       }
     }
   }
+  
+  func getAllMovies(completion: @escaping ((Result<[RealmMovie], DataError>) -> Void)) {
+      DispatchQueue.global().async {
+          guard let realm = try? Realm() else { return }
+          let movies = realm.objects(RealmMovie.self)
+          if !movies.isEmpty {
+              completion(.success(Array(movies)))
+          } else {
+              completion(.failure(.notFound))
+          }
+      }
+  }
 
+  
   func deleteMovie(by id: String) {
     DispatchQueue.global().async {
       print("🌎 Start deleting \(id)")
@@ -63,6 +76,20 @@ class RealmService: RealmServiceProtocol {
   }
   
   // TODO: Create func that checks if data need to be updated (by hash)
+  
+  func needsUpdate(object: Object, hashValue: Int) -> Bool {
+    
+    guard let realm = try? Realm() else { return false }
+    
+    let currentHashValue = object.hashValue
+    if currentHashValue != hashValue {
+      let isObjectInRealm = realm.isInWriteTransaction && realm.object(ofType: type(of: object),
+                                                                       forPrimaryKey: Object.primaryKey) != nil
+      return isObjectInRealm
+    } else {
+      return false
+    }
+  }
   
   // MARK: Private
   
