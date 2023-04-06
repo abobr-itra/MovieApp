@@ -5,6 +5,13 @@ class WishListViewController: UIViewController {
   // MARK: IBOutlets
   
   @IBOutlet private weak var tableView: UITableView!
+  private var viewModel: WishlistViewModelProtocol?
+  
+  convenience init(viewModel: WishlistViewModelProtocol) {
+    self.init(nibName: nil, bundle: nil)
+    print("♦️WishlistViewModelProtocol init viewModel:", viewModel)
+    self.viewModel = viewModel
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -13,9 +20,9 @@ class WishListViewController: UIViewController {
   
 }
 
-extension WishlistCoordinator: UITableViewDelegate, UITableViewDataSource {
+extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    return viewModel?.getMovies().count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
