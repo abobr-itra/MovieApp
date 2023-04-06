@@ -1,6 +1,7 @@
 import Foundation
 
 protocol WishlistViewModelProtocol {
+  func movie(at index: Int) -> RealmMovie
   func getMovies() -> [RealmMovie]
   func loadWishlist()
   func deleteMovie(by id: String)
@@ -11,7 +12,7 @@ class WishlistViewModel: WishlistViewModelProtocol {
   // MARK: - Properties
   
   private var dataService: RealmServiceProtocol
-  var moviesDB: [RealmMovie] = []
+  private var moviesDB: [RealmMovie] = []
   
   init(dataService: RealmServiceProtocol) {
     self.dataService = dataService
@@ -37,5 +38,9 @@ class WishlistViewModel: WishlistViewModelProtocol {
   
   func deleteMovie(by id: String) {
     dataService.deleteMovie(by: id)
+  }
+  
+  func movie(at index: Int) -> RealmMovie {
+    return moviesDB[index]
   }
 }

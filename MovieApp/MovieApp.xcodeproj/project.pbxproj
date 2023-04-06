@@ -23,8 +23,6 @@
 		D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BDC295090F400E857FD /* AppCoordinatior.swift */; };
 		D2570BE22951CF9B00E857FD /* SearchMovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BE12951CF9B00E857FD /* SearchMovieCoordinator.swift */; };
 		D2570BE42951D47D00E857FD /* MoviePageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BE32951D47D00E857FD /* MoviePageCoordinator.swift */; };
-		D29A91352A0F93EC00C0EC4C /* WishlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A91332A0F93EC00C0EC4C /* WishlistCell.swift */; };
-		D29A91362A0F93EC00C0EC4C /* WishlistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29A91342A0F93EC00C0EC4C /* WishlistCell.xib */; };
 		D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047529487ACE0001C92A /* NetworkService.swift */; };
 		D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */; };
 		D2AF047B294889F20001C92A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047A294889F20001C92A /* Rating.swift */; };
@@ -70,8 +68,6 @@
 		D2570BDC295090F400E857FD /* AppCoordinatior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatior.swift; sourceTree = "<group>"; };
 		D2570BE12951CF9B00E857FD /* SearchMovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCoordinator.swift; sourceTree = "<group>"; };
 		D2570BE32951D47D00E857FD /* MoviePageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageCoordinator.swift; sourceTree = "<group>"; };
-		D29A91332A0F93EC00C0EC4C /* WishlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCell.swift; sourceTree = "<group>"; };
-		D29A91342A0F93EC00C0EC4C /* WishlistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistCell.xib; sourceTree = "<group>"; };
 		D2AF047529487ACE0001C92A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBEndpoint.swift; sourceTree = "<group>"; };
 		D2AF047A294889F20001C92A /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
@@ -174,7 +170,6 @@
 		D227301D29C1E33D003787E7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D29A91322A0F93CB00C0EC4C /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,15 +215,6 @@
 				D2D5E2F629D473C5005BB3AF /* Constants.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		D29A91322A0F93CB00C0EC4C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				D29A91332A0F93EC00C0EC4C /* WishlistCell.swift */,
-				D29A91342A0F93EC00C0EC4C /* WishlistCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		D2AF047029487A6E0001C92A /* Models */ = {
@@ -412,7 +398,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D29A91362A0F93EC00C0EC4C /* WishlistCell.xib in Resources */,
 				D2B0D0352947640E0025B7E7 /* LaunchScreen.storyboard in Resources */,
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
@@ -449,7 +434,6 @@
 				D2E5E94529AE10ED0024BDE2 /* RealmService.swift in Sources */,
 				D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */,
 				D2B0D0292947640B0025B7E7 /* AppDelegate.swift in Sources */,
-				D29A91352A0F93EC00C0EC4C /* WishlistCell.swift in Sources */,
 				D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */,
 				D2D5E30229D49A47005BB3AF /* MoviePageViewController.swift in Sources */,
 				D2AF047F29488D280001C92A /* NetworkParser.swift in Sources */,

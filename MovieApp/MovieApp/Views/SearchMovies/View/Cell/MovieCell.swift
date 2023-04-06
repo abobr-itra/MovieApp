@@ -25,6 +25,15 @@ class MovieCell: UITableViewCell {
     movieYear.text = movie.type
   }
   
+  func setUp(from movie: RealmMovie?) {
+    guard let movie = movie,
+          let poster = URL(string: movie.posterUrl) else { return }
+    
+    movieTitle.text = "\(movie.title) (\(movie.year))"
+    moviePoster.load(from: poster)
+    movieYear.text = movie.type
+  }
+  
   // MARK: Private
   
 }

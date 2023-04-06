@@ -16,7 +16,7 @@ class WishlistCoordinator: Coordinator {
     let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
     print("♦️WishlistViewModel start() viewModel:", viewModel)
     
-//    let viewController = WishListViewController(viewModel: viewModel)
+    let viewController = WishListViewController(viewModel: viewModel)
 //    viewController.data = .init()
 //    viewController.actions = .init(openMovie: openMovie)
     

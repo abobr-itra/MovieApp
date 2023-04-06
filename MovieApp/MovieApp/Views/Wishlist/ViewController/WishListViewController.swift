@@ -15,9 +15,26 @@ class WishListViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    setUpTableView()
+    loadWishlist()
   }
   
+  private func loadWishlist() {
+    viewModel?.loadWishlist()
+  }
   
+  private func setUpTableView() {
+    guard let tableView = tableView else { return }
+    view.addSubview(tableView)
+    tableView.backgroundColor = Constants.Colors.clear
+    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
+    
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
+                       forCellReuseIdentifier: MovieCell.identifier)
+  }
 }
 
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -26,17 +43,18 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//    guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
-//      return UITableViewCell()
-//    }
-//    let movie = viewModel?.movie(at: indexPath.row)
-//    print("🤡", movie)
-//    cell.setUp(from: movie)
-//    return cell
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
+      return UITableViewCell()
+    }
+    let movie = viewModel?.movie(at: indexPath.row)
+    
+    print("🤡", movie)
+    cell.setUp(from: movie)
+    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    let movie = viewModel?.movie(at: indexPath.row)
-//    self.actions?.openMovie(movie?.imdbID ?? "")
+    let movie = viewModel?.movie(at: indexPath.row)
+ //   self.actions?.openMovie(movie?.imdbID ?? "")
   }
 }

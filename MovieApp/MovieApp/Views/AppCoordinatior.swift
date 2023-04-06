@@ -25,6 +25,7 @@ class AppCoordinatior: Coordinator {
     window.makeKeyAndVisible()
     
     let searchMovieCoordinator = SearchMovieCoordinator(navigationController: navigationController)
-    coordinate(to: searchMovieCoordinator)
+    let wishlistCoordinator = WishlistCoordinator(navigationController: navigationController)
+    coordinate(to: wishlistCoordinator)
   }
 }
