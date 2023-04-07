@@ -16,12 +16,13 @@ class WishListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    self.viewModel?.searchDelegate = self
     setUpTableView()
     loadWishlist()
   }
   
   private func loadWishlist() {
-    viewModel?.loadWishlist()
+    self.viewModel?.loadWishlist()
   }
   
   private func setUpTableView() {
@@ -48,13 +49,21 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     let movie = viewModel?.movie(at: indexPath.row)
     
-    print("🤡", movie)
+  //  print("🤡", movie)
     cell.setUp(from: movie)
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let movie = viewModel?.movie(at: indexPath.row)
+ //   let movie = viewModel?.movie(at: indexPath.row)
  //   self.actions?.openMovie(movie?.imdbID ?? "")
+  }
+}
+
+extension WishListViewController: SearchDelegate {
+  func reloadTableView() {
+    DispatchQueue.main.async { [weak self] in
+      self?.tableView?.reloadData()
+    }
   }
 }

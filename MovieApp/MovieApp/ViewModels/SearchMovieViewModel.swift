@@ -21,7 +21,7 @@ class SearchMovieViewModel: SearchMovieViewModelProtocol {
   private let movieService: MovieServiceProtocol
   
   // TODO: Make it private(set)
-  private var movies: [Movie] = []
+  private(set) var movies: [Movie] = []
     
   init(movieService: MovieServiceProtocol) {
     self.movieService = movieService
@@ -30,22 +30,22 @@ class SearchMovieViewModel: SearchMovieViewModelProtocol {
   // MARK: Public
 
   func movie(at index: Int) -> Movie {
-    return movies[index]
+    movies[index]
   }
   
   func moviesCount() -> Int {
-    return movies.count
+    movies.count
   }
   
   func fetchMovies(by title: String) {
-    movieService.fetchMovies(by: title) { result in
+    movieService.fetchMovies(by: title) { [weak self] result in
       switch result {
       case .success(let data):
         print(data)
-        self.movies = data.search
-        self.searchDelegate?.reloadTableView()
+        self?.movies = data.search
+        self?.searchDelegate?.reloadTableView()
       case .failure(let error):
-        print("Some error occured :", error)
+        print("Some error occured : \(error)")
       }
     }
   }

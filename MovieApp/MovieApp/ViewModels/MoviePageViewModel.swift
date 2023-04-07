@@ -30,17 +30,17 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
   // MARK: Public
   
   func getMovieDetails() -> MovieDetails? {
-    return movieDetails
+    movieDetails
   }
   
   func fetchMovieDetails(by id: String) {
-    movieService.fetchMovieDetails(by: id) { result in
+    movieService.fetchMovieDetails(by: id) { [weak self] result in
       switch result {
       case .success(let data):
-        self.movieDetails = data
-        self.detailsDelegate?.updateView()
+        self?.movieDetails = data
+        self?.detailsDelegate?.updateView()
       case .failure(let error):
-        print("Some error occured :", error)
+        print("Some error occured : \(error)")
       }
     }
   }

@@ -101,8 +101,8 @@ extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource
 
 extension SearchMoviesViewController: SearchDelegate {
   func reloadTableView() {
-    DispatchQueue.main.async {
-      self.tableView?.reloadData()
+    DispatchQueue.main.async { [weak self] in
+      self?.tableView?.reloadData()
     }
   }
 }
