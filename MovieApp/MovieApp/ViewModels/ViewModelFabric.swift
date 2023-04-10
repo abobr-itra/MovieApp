@@ -27,7 +27,6 @@ class MoviePageViewModelCreator: ViewModelCreator {
 class WishlistViewModelCreator: ViewModelCreator {
   typealias ViewModel = WishlistViewModel
   func factoryMethod(parser: NetworkPaserProtocol) -> WishlistViewModel {
-    let networkService = NetworkService(parser: parser)
     let dataService = RealmService()
     return WishlistViewModel(dataService: dataService)
   }

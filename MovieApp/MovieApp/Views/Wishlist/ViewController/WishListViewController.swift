@@ -16,13 +16,17 @@ class WishListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.viewModel?.searchDelegate = self
     setUpTableView()
     loadWishlist()
   }
   
   private func loadWishlist() {
-    self.viewModel?.loadWishlist()
+    viewModel?.onDataLoaded = { [weak self] in
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
+    }
+    viewModel?.loadWishlist()
   }
   
   private func setUpTableView() {
@@ -40,16 +44,14 @@ class WishListViewController: UIViewController {
 
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel?.getMovies().count ?? 0
+    viewModel?.getMovies().count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
       return UITableViewCell()
     }
-    let movie = viewModel?.movie(at: indexPath.row)
-    
-  //  print("🤡", movie)
+    let movie = self.viewModel?.movie(at: indexPath.row)
     cell.setUp(from: movie)
     return cell
   }
@@ -57,13 +59,5 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
  //   let movie = viewModel?.movie(at: indexPath.row)
  //   self.actions?.openMovie(movie?.imdbID ?? "")
-  }
-}
-
-extension WishListViewController: SearchDelegate {
-  func reloadTableView() {
-    DispatchQueue.main.async { [weak self] in
-      self?.tableView?.reloadData()
-    }
   }
 }

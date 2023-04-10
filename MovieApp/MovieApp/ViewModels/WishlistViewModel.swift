@@ -1,7 +1,7 @@
 import Foundation
 
 protocol WishlistViewModelProtocol {
-  var searchDelegate: SearchDelegate? { get set }
+  var onDataLoaded: (() -> Void)? { get set }
   func movie(at index: Int) -> RealmMovie
   func getMovies() -> [RealmMovie]
   func loadWishlist()
@@ -12,9 +12,10 @@ class WishlistViewModel: WishlistViewModelProtocol {
   
   // MARK: - Properties
   
-  weak var searchDelegate: SearchDelegate?
+  var onDataLoaded: (() -> Void)?
+  
   private var dataService: RealmServiceProtocol
-  private var moviesDB: [RealmMovie] = []
+  private(set) var moviesDB: [RealmMovie] = []
   
   init(dataService: RealmServiceProtocol) {
     self.dataService = dataService
@@ -23,18 +24,21 @@ class WishlistViewModel: WishlistViewModelProtocol {
   // MARK: - Public
   
   func getMovies() -> [RealmMovie] {
-    return moviesDB
+    moviesDB
   }
   
   func loadWishlist() {
-    dataService.getAllMovies { result in
-      switch result {
-      case .success(let data):
-        print("Movies loaded from db: \(data)")
-        self.moviesDB = data
-        self.searchDelegate?.reloadTableView()
-      case .failure(let error):
-        print("Something went wrong: \(error)")
+    DispatchQueue.global().async {
+      self.dataService.getAllMovies { result in
+        switch result {
+        case .success(let data):
+          print("Movies loaded from db: \(data)")
+          self.moviesDB = data
+        //  self.searchDelegate?.reloadTableView()
+          self.onDataLoaded?()
+        case .failure(let error):
+          print("Something went wrong: \(error)")
+        }
       }
     }
   }

@@ -27,7 +27,7 @@ class RealmService: RealmServiceProtocol {
   // MARK: Public
   
   func saveObject(_ object: Object) {
-    DispatchQueue.global().async {
+    DispatchQueue.main.async {
       guard let realm = try? Realm() else { return }
       print("🌎 Start saving \(object)")
       try? realm.write {
@@ -38,7 +38,7 @@ class RealmService: RealmServiceProtocol {
   }
   
   func getMovie(by id: String, _ completion: @escaping ((Result<RealmMovie, DataError>) -> Void)) {
-    DispatchQueue.global().async {
+    DispatchQueue.main.async {
       guard let realm = try? Realm() else { return }
       let movie = realm.object(ofType: RealmMovie.self, forPrimaryKey: id)
       if let movie = movie {
@@ -50,7 +50,7 @@ class RealmService: RealmServiceProtocol {
   }
   
   func getAllMovies(completion: @escaping ((Result<[RealmMovie], DataError>) -> Void)) {
-      DispatchQueue.global().async {
+      DispatchQueue.main.async {
           guard let realm = try? Realm() else { return }
           let movies = realm.objects(RealmMovie.self)
           if !movies.isEmpty {
@@ -63,7 +63,7 @@ class RealmService: RealmServiceProtocol {
 
   
   func deleteMovie(by id: String) {
-    DispatchQueue.global().async {
+    DispatchQueue.main.async {
       print("🌎 Start deleting \(id)")
       guard let realm = try? Realm() else { return }
       try? realm.write {
