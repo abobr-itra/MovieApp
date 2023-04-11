@@ -5,7 +5,7 @@ class SearchMovieCoordinator: Coordinator {
 
   // MARK: Properties
   
-  private var navigationController: UINavigationController
+  var navigationController: UINavigationController
   
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController

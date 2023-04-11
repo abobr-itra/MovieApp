@@ -3,7 +3,7 @@ import UIKit
 
 class MoviePageCoordinator: Coordinator {
   
-  let navigationController: UINavigationController
+  var navigationController: UINavigationController
   let movieID: String
   
   init(navigationController: UINavigationController, movieID: String) {
