@@ -46,11 +46,17 @@
                     <rect key="frame" x="83" y="753" width="61" height="35"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                    <connections>
+                        <action selector="saveMovie:" destination="-1" eventType="touchUpInside" id="V2k-GZ-mgQ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4O-GI-VSl">
                     <rect key="frame" x="242" y="753" width="74" height="35"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Delete"/>
+                    <connections>
+                        <action selector="deleteMovie:" destination="-1" eventType="touchUpInside" id="opQ-jd-hVe"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

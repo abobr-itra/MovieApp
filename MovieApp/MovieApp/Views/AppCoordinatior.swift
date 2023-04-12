@@ -14,13 +14,20 @@ extension Coordinator {
 
 class AppCoordinatior: Coordinator {
   
+  // MARK: - Private Propertis
+  
   private let window: UIWindow
-  var navigationController: UINavigationController = UINavigationController()
   private var tag = 0
+  
+  // MARK: - Public Properties
+  
+  var navigationController: UINavigationController = UINavigationController()
   
   init(window: UIWindow) {
     self.window = window
   }
+  
+  // MARK: - Public
   
   func start() {
     let tabBarController = UITabBarController()
@@ -42,7 +49,10 @@ class AppCoordinatior: Coordinator {
     tabBarController.viewControllers = viewControllers
     
     coordinate(to: searchMovieCoordinator)
+    coordinate(to: wishlistCoordinator)
   }
+  
+  // MARK: - Private
   
   private func generateTag() -> Int {
     tag += 1

@@ -1,10 +1,12 @@
 import Foundation
 
 protocol DetailsDelegate: AnyObject {
+
   func updateView()
 }
 
 protocol MoviePageViewModelProtocol {
+
   var detailsDelegate: DetailsDelegate? { get set }
   
   func getMovieDetails() -> MovieDetails?
@@ -15,6 +17,7 @@ protocol MoviePageViewModelProtocol {
 }
 
 class MoviePageViewModel: MoviePageViewModelProtocol {
+
   // MARK: Properties
   
   weak var detailsDelegate: DetailsDelegate?
@@ -46,6 +49,7 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
   }
   
   func saveCurrentMovie() {
+    print("Trying to save movie \(movieDetails)")
     guard let movieDetails else { return }
     let realmMovie = RealmMovie(from: movieDetails)
     dataService.saveObject(realmMovie)

@@ -17,8 +17,6 @@ class WishlistCoordinator: Coordinator {
     print("♦️WishlistViewModel start() viewModel:", viewModel)
     
     let viewController = WishListViewController(viewModel: viewModel)
-//    viewController.data = .init()
-//    viewController.actions = .init(openMovie: openMovie)
     
     navigationController.pushViewController(viewController, animated: false)
   }

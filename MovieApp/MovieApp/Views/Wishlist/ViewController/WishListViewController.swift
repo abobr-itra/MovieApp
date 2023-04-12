@@ -15,7 +15,7 @@ class WishListViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    self.tabBarController?.delegate = self
     setUpTableView()
     loadWishlist()
   }
@@ -59,5 +59,14 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
  //   let movie = viewModel?.movie(at: indexPath.row)
  //   self.actions?.openMovie(movie?.imdbID ?? "")
+  }
+}
+
+extension WishListViewController: UITabBarControllerDelegate {
+  
+  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    DispatchQueue.main.async {
+      self.loadWishlist()
+    }
   }
 }

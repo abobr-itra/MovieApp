@@ -42,7 +42,7 @@ class SearchMoviesViewController: UIViewController {
     configureSearchBar()
     configureNavBar()
     setUpTableView()
-    print("♦️SearchMovieViewController viewDidLoad viewModel:", viewModel)
+    print("♦️SearchMovieViewController viewDidLoad viewModel: \(viewModel)")
     fetchMovies(by: "Pulp Fiction")
   }
 
@@ -79,7 +79,7 @@ class SearchMoviesViewController: UIViewController {
 
 extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("♦️SearchMovieViewController tableView count viewModel:", viewModel)
+    print("♦️SearchMovieViewController tableView count viewModel: \(viewModel)")
     return viewModel?.moviesCount() ?? 0
   }
   
@@ -88,7 +88,7 @@ extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource
       return UITableViewCell()
     }
     let movie = viewModel?.movie(at: indexPath.row)
-    print("🤡", movie)
+    print("🤡 \(movie)")
     cell.setUp(from: movie)
     return cell
   }

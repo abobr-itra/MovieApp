@@ -1,10 +1,12 @@
 import Foundation
 
 protocol SearchDelegate: AnyObject {
+
   func reloadTableView()
 }
 
 protocol SearchMovieViewModelProtocol {
+
   var searchDelegate: SearchDelegate? { get set }
 
   func movie(at index: Int) -> Movie

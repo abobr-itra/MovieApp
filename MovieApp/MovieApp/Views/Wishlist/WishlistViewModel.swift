@@ -1,6 +1,7 @@
 import Foundation
 
 protocol WishlistViewModelProtocol {
+
   var onDataLoaded: (() -> Void)? { get set }
   func movie(at index: Int) -> RealmMovie
   func getMovies() -> [RealmMovie]
