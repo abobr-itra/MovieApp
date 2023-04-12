@@ -110,9 +110,9 @@
 		D227301729C1E25F003787E7 /* SearchMovies */ = {
 			isa = PBXGroup;
 			children = (
-				D2AF048329489C7B0001C92A /* SearchMovieViewModel.swift */,
-				D227301929C1E28A003787E7 /* ViewController */,
 				D227301829C1E282003787E7 /* View */,
+				D227301929C1E28A003787E7 /* ViewController */,
+				D2AF048329489C7B0001C92A /* SearchMovieViewModel.swift */,
 				D2570BE12951CF9B00E857FD /* SearchMovieCoordinator.swift */,
 			);
 			path = SearchMovies;
@@ -148,9 +148,9 @@
 		D227301B29C1E30F003787E7 /* Wishlist */ = {
 			isa = PBXGroup;
 			children = (
-				D2D5E30429D49D86005BB3AF /* WishlistViewModel.swift */,
-				D227301E29C1E344003787E7 /* ViewController */,
 				D227301D29C1E33D003787E7 /* View */,
+				D227301E29C1E344003787E7 /* ViewController */,
+				D2D5E30429D49D86005BB3AF /* WishlistViewModel.swift */,
 				D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */,
 			);
 			path = Wishlist;
@@ -159,9 +159,9 @@
 		D227301C29C1E325003787E7 /* MoviePage */ = {
 			isa = PBXGroup;
 			children = (
-				D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */,
-				D227302029C1E350003787E7 /* ViewController */,
 				D227301F29C1E34C003787E7 /* View */,
+				D227302029C1E350003787E7 /* ViewController */,
+				D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */,
 				D2570BE32951D47D00E857FD /* MoviePageCoordinator.swift */,
 			);
 			path = MoviePage;

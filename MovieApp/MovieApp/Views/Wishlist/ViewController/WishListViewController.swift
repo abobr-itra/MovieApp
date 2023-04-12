@@ -7,6 +7,12 @@ class WishListViewController: UIViewController {
   @IBOutlet private weak var tableView: UITableView!
   private var viewModel: WishlistViewModelProtocol?
   
+  struct Actions {
+    var openMovie: (_ movieID: String) -> Void
+  }
+  
+  var actions: Actions?
+  
   convenience init(viewModel: WishlistViewModelProtocol) {
     self.init(nibName: nil, bundle: nil)
     print("♦️WishlistViewModelProtocol init viewModel:", viewModel)
@@ -19,6 +25,8 @@ class WishListViewController: UIViewController {
     setUpTableView()
     loadWishlist()
   }
+  
+  // MARK: - Private
   
   private func loadWishlist() {
     viewModel?.onDataLoaded = { [weak self] in
@@ -43,6 +51,7 @@ class WishListViewController: UIViewController {
 }
 
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     viewModel?.getMovies().count ?? 0
   }
@@ -57,8 +66,8 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
- //   let movie = viewModel?.movie(at: indexPath.row)
- //   self.actions?.openMovie(movie?.imdbID ?? "")
+    let movie = viewModel?.movie(at: indexPath.row)
+    self.actions?.openMovie(movie?.imdbID ?? "")
   }
 }
 

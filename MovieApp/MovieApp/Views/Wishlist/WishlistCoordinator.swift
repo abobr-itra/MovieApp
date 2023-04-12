@@ -17,7 +17,15 @@ class WishlistCoordinator: Coordinator {
     print("♦️WishlistViewModel start() viewModel:", viewModel)
     
     let viewController = WishListViewController(viewModel: viewModel)
+    viewController.actions = .init(openMovie: openMovie)
     
     navigationController.pushViewController(viewController, animated: false)
+  }
+  
+  // MARK: Private
+  
+  private func openMovie(_ movieID: String) {
+    let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController, movieID: movieID)
+    moviePageCoordinator.start()
   }
 }

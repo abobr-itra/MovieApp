@@ -78,6 +78,7 @@ class SearchMoviesViewController: UIViewController {
 // MARK: Extensions
 
 extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource {
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     print("♦️SearchMovieViewController tableView count viewModel: \(viewModel)")
     return viewModel?.moviesCount() ?? 0
@@ -100,6 +101,7 @@ extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension SearchMoviesViewController: SearchDelegate {
+
   func reloadTableView() {
     DispatchQueue.main.async { [weak self] in
       self?.tableView?.reloadData()
@@ -108,6 +110,7 @@ extension SearchMoviesViewController: SearchDelegate {
 }
 
 extension SearchMoviesViewController: UISearchBarDelegate {
+
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     fetchMovies(by: searchBar.text ?? "")
   }
