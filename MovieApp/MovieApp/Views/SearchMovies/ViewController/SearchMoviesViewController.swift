@@ -13,6 +13,7 @@ class SearchMoviesViewController: UIViewController {
 
   private var viewModel: SearchMovieViewModelProtocol?
   private let searchController = UISearchController(searchResultsController: nil) // TODO: Move to separate view
+  private let spinner = SpinnerViewController()
   
   struct Data {
 //    var moviesCount: () -> Int
@@ -46,13 +47,27 @@ class SearchMoviesViewController: UIViewController {
     fetchMovies(by: "Pulp Fiction")
   }
 
-  // MARK: Private
+  // MARK: - Private
+  
+  private func showSpinner() {
+    addChild(spinner)
+    spinner.view.frame = view.frame
+    view.addSubview(spinner.view)
+    spinner.didMove(toParent: self)
+  }
+  
+  private func hideSpinner() {
+    spinner.willMove(toParent: nil)
+    spinner.view.removeFromSuperview()
+    spinner.removeFromParent()
+  }
   
   private func configureNavBar() {
     navigationItem.title = "Search Movies"
   }
   
   private func fetchMovies(by title: String) {
+    showSpinner()
     viewModel?.fetchMovies(by: title)
   }
 
@@ -104,6 +119,7 @@ extension SearchMoviesViewController: SearchDelegate {
 
   func reloadTableView() {
     DispatchQueue.main.async { [weak self] in
+      self?.hideSpinner()
       self?.tableView?.reloadData()
     }
   }
