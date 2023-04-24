@@ -41,6 +41,7 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
   // MARK: Public
   
   func loadData() {
+    showSpinner()
     viewModel?.fetchMovieDetails(by: self.movieID ?? "")
   }
 }
@@ -50,7 +51,6 @@ extension MoviePageViewController: DetailsDelegate {
   func updateView() {
     
     DispatchQueue.main.async {
-      self.showSpinner()
       guard let data = self.viewModel?.getMovieDetails() else {
         return
       }

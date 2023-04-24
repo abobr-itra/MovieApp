@@ -65,7 +65,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
     configureSearchBar()
     configureNavBar()
     setUpTableView()
-    print("♦️SearchMovieViewController viewDidLoad viewModel: \(viewModel)")
+    print("♦️SearchMovieViewController viewDidLoad viewModel: \(String(describing: viewModel))")
     fetchMovies(by: "Pulp Fiction")
   }
 
@@ -104,7 +104,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
 extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("♦️SearchMovieViewController tableView count viewModel: \(viewModel)")
+    print("♦️SearchMovieViewController tableView count viewModel: \(String(describing: viewModel))")
     return viewModel?.moviesCount() ?? 0
   }
   
@@ -113,7 +113,7 @@ extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource
       return UITableViewCell()
     }
     let movie = viewModel?.movie(at: indexPath.row)
-    print("🤡 \(movie)")
+    print("🤡 \(String(describing: movie))")
     cell.setUp(from: movie)
     return cell
   }

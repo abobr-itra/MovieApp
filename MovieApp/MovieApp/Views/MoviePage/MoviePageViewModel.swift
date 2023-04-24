@@ -49,7 +49,7 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
   }
   
   func saveCurrentMovie() {
-    print("Trying to save movie \(movieDetails)")
+    print("Trying to save movie \(String(describing: movieDetails))")
     guard let movieDetails else { return }
     let realmMovie = RealmMovie(from: movieDetails)
     dataService.saveObject(realmMovie)
