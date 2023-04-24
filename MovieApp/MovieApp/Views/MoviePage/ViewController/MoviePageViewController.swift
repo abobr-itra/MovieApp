@@ -1,11 +1,11 @@
 import UIKit
 
-class MoviePageViewController: UIViewController {
-  
+class MoviePageViewController: UIViewController, RefreshableViewController {
+
   // MARK: Properties
   
   private var viewModel: MoviePageViewModelProtocol?
-  
+  var spinner: SpinnerViewController = SpinnerViewController()
   var movieID: String?
   
   @IBOutlet private weak var moviePoster: UIImageView?
@@ -46,8 +46,11 @@ class MoviePageViewController: UIViewController {
 }
 
 extension MoviePageViewController: DetailsDelegate {
+
   func updateView() {
+    
     DispatchQueue.main.async {
+      self.showSpinner()
       guard let data = self.viewModel?.getMovieDetails() else {
         return
       }
@@ -57,6 +60,7 @@ extension MoviePageViewController: DetailsDelegate {
       self.movieDescription?.text = data.plot
       
       self.view.layoutIfNeeded()
+      self.hideSpinner()
     }
   }
 }

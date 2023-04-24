@@ -1,12 +1,12 @@
 import UIKit
 
-class WishListViewController: UIViewController {
+class WishListViewController: UIViewController, RefreshableViewController {
   
   // MARK: IBOutlets
   
   @IBOutlet private weak var tableView: UITableView!
   private var viewModel: WishlistViewModelProtocol?
-  private let spinner = SpinnerViewController()
+  var spinner: SpinnerViewController = SpinnerViewController()
   
   struct Actions {
     var openMovie: (_ movieID: String) -> Void
@@ -28,20 +28,7 @@ class WishListViewController: UIViewController {
   }
   
   // MARK: - Private
-  
-  private func showSpinner() {
-    addChild(spinner)
-    spinner.view.frame = view.frame
-    view.addSubview(spinner.view)
-    spinner.didMove(toParent: self)
-  }
-  
-  private func hideSpinner() {
-    spinner.willMove(toParent: nil)
-    spinner.view.removeFromSuperview()
-    spinner.removeFromParent()
-  }
-  
+
   private func loadWishlist() {
     showSpinner()
     viewModel?.onDataLoaded = { [weak self] in

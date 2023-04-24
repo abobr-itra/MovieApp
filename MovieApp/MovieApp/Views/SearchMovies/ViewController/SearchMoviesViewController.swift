@@ -1,11 +1,33 @@
 import UIKit
 
-class SearchMoviesViewController: UIViewController {
+protocol RefreshableViewController: UIViewController  {
   
+  var spinner: SpinnerViewController { get set }
+  func showSpinner()
+  func hideSpinner()
+}
+
+extension RefreshableViewController {
+  
+  func showSpinner() {
+    addChild(spinner)
+    spinner.view.frame = view.frame
+    view.addSubview(spinner.view)
+    spinner.didMove(toParent: self)
+  }
+  
+  func hideSpinner() {
+    spinner.willMove(toParent: nil)
+    spinner.view.removeFromSuperview()
+    spinner.removeFromParent()
+  }
+}
+
+class SearchMoviesViewController: UIViewController, RefreshableViewController {
+
   // MARK: IBOutlets
   
  // @IBOutlet weak var tableView: UITableView? // TODO: Move IBOutlet and all UI to separate view, create config file for view
-  
   
   @IBOutlet private weak var tableView: UITableView?
   
@@ -13,7 +35,7 @@ class SearchMoviesViewController: UIViewController {
 
   private var viewModel: SearchMovieViewModelProtocol?
   private let searchController = UISearchController(searchResultsController: nil) // TODO: Move to separate view
-  private let spinner = SpinnerViewController()
+  var spinner: SpinnerViewController = SpinnerViewController()
   
   struct Data {
 //    var moviesCount: () -> Int
@@ -48,20 +70,7 @@ class SearchMoviesViewController: UIViewController {
   }
 
   // MARK: - Private
-  
-  private func showSpinner() {
-    addChild(spinner)
-    spinner.view.frame = view.frame
-    view.addSubview(spinner.view)
-    spinner.didMove(toParent: self)
-  }
-  
-  private func hideSpinner() {
-    spinner.willMove(toParent: nil)
-    spinner.view.removeFromSuperview()
-    spinner.removeFromParent()
-  }
-  
+
   private func configureNavBar() {
     navigationItem.title = "Search Movies"
   }
