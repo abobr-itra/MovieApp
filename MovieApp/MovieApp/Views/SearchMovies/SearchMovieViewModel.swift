@@ -5,17 +5,18 @@ protocol SearchDelegate: AnyObject {
   func reloadTableView()
 }
 
-protocol SearchMovieViewModelProtocol {
+protocol SearchMovieViewModelProtocol: MovieViewModelProtocol {
 
   var searchDelegate: SearchDelegate? { get set }
-
-  func movie(at index: Int) -> Movie
-  func moviesCount() -> Int
-
   func fetchMovies(by title: String)
 }
 
-class SearchMovieViewModel: SearchMovieViewModelProtocol {
+protocol MovieViewModelProtocol {
+  func movie(at index: Int) -> MovieModelProtocol
+  func moviesCount() -> Int
+}
+
+class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol {
 
   // MARK: Properties
   
@@ -31,7 +32,7 @@ class SearchMovieViewModel: SearchMovieViewModelProtocol {
   
   // MARK: Public
 
-  func movie(at index: Int) -> Movie {
+  func movie(at index: Int) -> MovieModelProtocol {
     movies[index]
   }
   

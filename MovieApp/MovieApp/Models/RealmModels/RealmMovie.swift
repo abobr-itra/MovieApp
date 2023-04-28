@@ -1,13 +1,22 @@
 import Foundation
 import RealmSwift
 
-class RealmMovie: Object, ObjectKeyIdentifiable {
+protocol MovieModelProtocol {
+  
+  var title: String { get set }
+  var year: String { get set }
+  var imdbID: String { get set }
+  var type: String { get set }
+  var posterUrl: String { get set }
+}
+
+class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
 
   @Persisted var title: String = ""
   @Persisted var year: String  = ""
-  @Persisted(primaryKey: true) var imdbID: String = "" // ??
+  @Persisted(primaryKey: true) var imdbID: String = ""
   @Persisted var type: String = ""
-  @Persisted var posterUrl: String = ""
+  @Persisted var posterUrl: String
   @Persisted var plot: String?
   
   convenience init(from movie: Movie) {
@@ -17,7 +26,7 @@ class RealmMovie: Object, ObjectKeyIdentifiable {
     self.title = movie.title
     self.year = movie.year
     self.type = movie.type
-    self.posterUrl = movie.poster.absoluteString
+    self.posterUrl = movie.posterUrl
     self.imdbID = movie.imdbID
   }
   

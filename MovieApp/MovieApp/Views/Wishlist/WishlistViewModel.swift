@@ -1,15 +1,13 @@
 import Foundation
 
-protocol WishlistViewModelProtocol {
+protocol WishlistViewModelProtocol: MovieViewModelProtocol {
 
   var onDataLoaded: (() -> Void)? { get set }
-  func movie(at index: Int) -> RealmMovie
-  func getMovies() -> [RealmMovie]
   func loadWishlist()
   func deleteMovie(by id: String)
 }
 
-class WishlistViewModel: WishlistViewModelProtocol {
+class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
   
   // MARK: - Properties
   
@@ -24,10 +22,6 @@ class WishlistViewModel: WishlistViewModelProtocol {
   
   // MARK: - Public
   
-  func getMovies() -> [RealmMovie] {
-    moviesDB
-  }
-  
   func loadWishlist() {
     DispatchQueue.global().async {
       self.dataService.getAllMovies { result in
@@ -35,7 +29,6 @@ class WishlistViewModel: WishlistViewModelProtocol {
         case .success(let data):
           print("Movies loaded from db: \(data)")
           self.moviesDB = data
-        //  self.searchDelegate?.reloadTableView()
           self.onDataLoaded?()
         case .failure(let error):
           print("Something went wrong: \(error)")
@@ -48,7 +41,11 @@ class WishlistViewModel: WishlistViewModelProtocol {
     dataService.deleteMovie(by: id)
   }
   
-  func movie(at index: Int) -> RealmMovie {
+  func movie(at index: Int) -> MovieModelProtocol {
     moviesDB[index]
+  }
+  
+  func moviesCount() -> Int {
+    moviesDB.count
   }
 }

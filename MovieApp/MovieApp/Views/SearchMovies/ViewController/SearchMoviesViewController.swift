@@ -24,52 +24,50 @@ extension RefreshableViewController {
 }
 
 class SearchMoviesViewController: UIViewController, RefreshableViewController {
-
-  // MARK: IBOutlets
-  
- // @IBOutlet weak var tableView: UITableView? // TODO: Move IBOutlet and all UI to separate view, create config file for view
-  
-  @IBOutlet private weak var tableView: UITableView?
   
   // MARK: Properties
-
-  private var viewModel: SearchMovieViewModelProtocol?
-  private let searchController = UISearchController(searchResultsController: nil) // TODO: Move to separate view
-  var spinner: SpinnerViewController = SpinnerViewController()
   
-  struct Data {
-//    var moviesCount: () -> Int
-//    var movieAtIndex: (_ index: Int) -> Movie
-  }
+  
+  @IBOutlet weak var tableView: UITableView!
+  
+  private var viewModel: SearchMovieViewModelProtocol?
+  private var tableViewController: MovieTableViewController?
+  private let searchController = UISearchController(searchResultsController: nil)
+  var spinner: SpinnerViewController = SpinnerViewController()
   
   struct Actions {
     var openMovie: (_ movieID: String) -> Void
   }
-  
-  var data: Data?
+
   var actions: Actions?
-  
+
   convenience init(viewModel: SearchMovieViewModelProtocol) {
     self.init(nibName: nil, bundle: nil)
     print("♦️SearchMovieViewController init viewModel:", viewModel)
     self.viewModel = viewModel
   }
   
-  // MARK: Lifecycle
-  
+  // MARK: - Lifecycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    tableViewController = MovieTableViewController(viewModel: viewModel, tableView: tableView)
+    tableViewController?.tableView.reloadData()
+    if let openMovie = actions?.openMovie {
+      tableViewController?.actions = .init(openMovie: openMovie)
+    }
 
     view.backgroundColor = .white
     self.viewModel?.searchDelegate = self
     configureSearchBar()
     configureNavBar()
-    setUpTableView()
     print("♦️SearchMovieViewController viewDidLoad viewModel: \(String(describing: viewModel))")
     fetchMovies(by: "Pulp Fiction")
   }
 
   // MARK: - Private
+
 
   private func configureNavBar() {
     navigationItem.title = "Search Movies"
@@ -80,18 +78,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
     viewModel?.fetchMovies(by: title)
   }
 
-  private func setUpTableView() {
-    guard let tableView = tableView else { return }
-    view.addSubview(tableView)
-    tableView.backgroundColor = Constants.Colors.clear
-    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
-    
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
-                       forCellReuseIdentifier: MovieCell.identifier)
-  }
-  
   private func configureSearchBar() {
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = true
@@ -99,37 +85,14 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
   }
 }
 
-// MARK: Extensions
-
-extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource {
-
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("♦️SearchMovieViewController tableView count viewModel: \(String(describing: viewModel))")
-    return viewModel?.moviesCount() ?? 0
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
-      return UITableViewCell()
-    }
-    let movie = viewModel?.movie(at: indexPath.row)
-    print("🤡 \(String(describing: movie))")
-    cell.setUp(from: movie)
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let movie = viewModel?.movie(at: indexPath.row)
-    self.actions?.openMovie(movie?.imdbID ?? "")
-  }
-}
+// MARK: - Extensions
 
 extension SearchMoviesViewController: SearchDelegate {
 
   func reloadTableView() {
     DispatchQueue.main.async { [weak self] in
       self?.hideSpinner()
-      self?.tableView?.reloadData()
+      self?.tableViewController?.tableView.reloadData()
     }
   }
 }

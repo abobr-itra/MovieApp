@@ -16,16 +16,8 @@ class MovieCell: UITableViewCell {
   }
 
   // MARK: Public
-  
-  func setUp(from movie: Movie?) {
-    guard let movie = movie else { return }
-    
-    movieTitle.text = "\(movie.title) (\(movie.year))"
-    moviePoster.load(from: movie.poster)
-    movieYear.text = movie.type
-  }
-  
-  func setUp(from movie: RealmMovie?) {
+
+  func setUp(from movie: MovieModelProtocol?) {
     guard let movie = movie,
           let poster = URL(string: movie.posterUrl) else { return }
     
@@ -33,7 +25,4 @@ class MovieCell: UITableViewCell {
     moviePoster.load(from: poster)
     movieYear.text = movie.type
   }
-  
-  // MARK: Private
-  
 }

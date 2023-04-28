@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WishListViewController" customModule="MovieApp" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="EeY-PE-ekW" id="z7N-1P-dsz"/>
+                <outlet property="tableView" destination="EeY-PE-ekW" id="k2q-K4-ojL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

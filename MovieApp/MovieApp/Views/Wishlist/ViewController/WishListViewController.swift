@@ -2,11 +2,12 @@ import UIKit
 
 class WishListViewController: UIViewController, RefreshableViewController {
   
-  // MARK: IBOutlets
+  // MARK: - Properties
   
-  @IBOutlet private weak var tableView: UITableView!
+  @IBOutlet weak var tableView: UITableView!
   private var viewModel: WishlistViewModelProtocol?
   var spinner: SpinnerViewController = SpinnerViewController()
+  private var tableViewController: MovieTableViewController?
   
   struct Actions {
     var openMovie: (_ movieID: String) -> Void
@@ -18,12 +19,17 @@ class WishListViewController: UIViewController, RefreshableViewController {
     self.init(nibName: nil, bundle: nil)
     print("♦️WishlistViewModelProtocol init viewModel:", viewModel)
     self.viewModel = viewModel
+    
+    tableViewController = MovieTableViewController(viewModel: viewModel, tableView: tableView)
+    if let openMovie = actions?.openMovie {
+      tableViewController?.actions = .init(openMovie: openMovie)
+    }
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     self.tabBarController?.delegate = self
-    setUpTableView()
     loadWishlist()
   }
   
@@ -33,44 +39,11 @@ class WishListViewController: UIViewController, RefreshableViewController {
     showSpinner()
     viewModel?.onDataLoaded = { [weak self] in
       DispatchQueue.main.async {
-        self?.tableView.reloadData()
+        self?.tableViewController?.tableView.reloadData()
         self?.hideSpinner()
       }
     }
     viewModel?.loadWishlist()
-  }
-  
-  private func setUpTableView() {
-    guard let tableView = tableView else { return }
-    view.addSubview(tableView)
-    tableView.backgroundColor = Constants.Colors.clear
-    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
-    
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
-                       forCellReuseIdentifier: MovieCell.identifier)
-  }
-}
-
-extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
-
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel?.getMovies().count ?? 0
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
-      return UITableViewCell()
-    }
-    let movie = self.viewModel?.movie(at: indexPath.row)
-    cell.setUp(from: movie)
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let movie = viewModel?.movie(at: indexPath.row)
-    self.actions?.openMovie(movie?.imdbID ?? "")
   }
 }
 

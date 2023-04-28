@@ -19,7 +19,6 @@ class SearchMovieCoordinator: Coordinator {
     print("♦️SearchMovieCoordinator start() viewModel:", viewModel)
     
     let viewController = SearchMoviesViewController(viewModel: viewModel)
-    viewController.data = .init()
     viewController.actions = .init(openMovie: openMovie)
     
     navigationController.pushViewController(viewController, animated: false)
