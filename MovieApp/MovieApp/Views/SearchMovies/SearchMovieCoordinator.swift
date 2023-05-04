@@ -27,6 +27,7 @@ class SearchMovieCoordinator: Coordinator {
   // MARK: Private
   
   private func openMovie(_ movieID: String) {
+    print("MovieID \(movieID)")
     let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController, movieID: movieID)
     moviePageCoordinator.start()
   }

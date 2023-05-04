@@ -26,12 +26,12 @@ extension RefreshableViewController {
 class SearchMoviesViewController: UIViewController, RefreshableViewController {
   
   // MARK: Properties
-  
-  
+
   @IBOutlet weak var tableView: UITableView!
-  
+  private var dataSource: MoiveListDatsSource?
+  private var delegate: MovieListDelegate?
+
   private var viewModel: SearchMovieViewModelProtocol?
-  private var tableViewController: MovieTableViewController?
   private let searchController = UISearchController(searchResultsController: nil)
   var spinner: SpinnerViewController = SpinnerViewController()
   
@@ -45,29 +45,37 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
     self.init(nibName: nil, bundle: nil)
     print("♦️SearchMovieViewController init viewModel:", viewModel)
     self.viewModel = viewModel
+    dataSource = MoiveListDatsSource(viewModel: viewModel)
+    delegate = MovieListDelegate(viewModel: viewModel)
+    if let openMovie = actions?.openMovie {
+      delegate?.actions = .init(openMovie: openMovie)
+    }
   }
   
   // MARK: - Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    tableViewController = MovieTableViewController(viewModel: viewModel, tableView: tableView)
-    tableViewController?.tableView.reloadData()
-    if let openMovie = actions?.openMovie {
-      tableViewController?.actions = .init(openMovie: openMovie)
-    }
 
     view.backgroundColor = .white
-    self.viewModel?.searchDelegate = self
+    viewModel?.searchDelegate = self
     configureSearchBar()
     configureNavBar()
+    setupTableView()
     print("♦️SearchMovieViewController viewDidLoad viewModel: \(String(describing: viewModel))")
     fetchMovies(by: "Pulp Fiction")
   }
 
   // MARK: - Private
 
+  private func setupTableView() {
+    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
+                       forCellReuseIdentifier: MovieCell.identifier)
+    tableView.dataSource = dataSource
+    tableView.delegate = delegate
+    tableView.backgroundColor = Constants.Colors.clear
+    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
+  }
 
   private func configureNavBar() {
     navigationItem.title = "Search Movies"
@@ -92,7 +100,7 @@ extension SearchMoviesViewController: SearchDelegate {
   func reloadTableView() {
     DispatchQueue.main.async { [weak self] in
       self?.hideSpinner()
-      self?.tableViewController?.tableView.reloadData()
+      self?.tableView.reloadData()
     }
   }
 }
