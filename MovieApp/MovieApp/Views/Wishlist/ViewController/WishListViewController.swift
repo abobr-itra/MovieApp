@@ -5,11 +5,14 @@ class WishListViewController: UIViewController, RefreshableViewController {
   // MARK: - Properties
   
   @IBOutlet weak var tableView: UITableView!
+  private var dataSource: MoiveListDatsSource?
+  private var delegate: MovieListDelegate?
+  
   private var viewModel: WishlistViewModelProtocol?
   var spinner: SpinnerViewController = SpinnerViewController()
-  private var tableViewController: MovieTableViewController?
   
   struct Actions {
+
     var openMovie: (_ movieID: String) -> Void
   }
   
@@ -17,29 +20,40 @@ class WishListViewController: UIViewController, RefreshableViewController {
   
   convenience init(viewModel: WishlistViewModelProtocol) {
     self.init(nibName: nil, bundle: nil)
-    print("♦️WishlistViewModelProtocol init viewModel:", viewModel)
+
     self.viewModel = viewModel
-    
-    tableViewController = MovieTableViewController(viewModel: viewModel, tableView: tableView)
-    if let openMovie = actions?.openMovie {
-      tableViewController?.actions = .init(openMovie: openMovie)
-    }
+    dataSource = MoiveListDatsSource(viewModel: viewModel)
+    delegate = MovieListDelegate(viewModel: viewModel)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.tabBarController?.delegate = self
+    tabBarController?.delegate = self
+    setupTableView()
     loadWishlist()
   }
   
   // MARK: - Private
+  
+  private func setupTableView() {
+    if let openMovie = actions?.openMovie {
+      delegate?.actions = .init(openMovie: openMovie)
+    }
+    
+    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
+                       forCellReuseIdentifier: MovieCell.identifier)
+    tableView.dataSource = dataSource
+    tableView.delegate = delegate
+    tableView.backgroundColor = Constants.Colors.clear
+    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
+  }
 
   private func loadWishlist() {
     showSpinner()
     viewModel?.onDataLoaded = { [weak self] in
       DispatchQueue.main.async {
-        self?.tableViewController?.tableView.reloadData()
+        self?.tableView.reloadData()
         self?.hideSpinner()
       }
     }

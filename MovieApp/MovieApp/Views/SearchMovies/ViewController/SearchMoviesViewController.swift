@@ -1,28 +1,5 @@
 import UIKit
 
-protocol RefreshableViewController: UIViewController  {
-  
-  var spinner: SpinnerViewController { get set }
-  func showSpinner()
-  func hideSpinner()
-}
-
-extension RefreshableViewController {
-  
-  func showSpinner() {
-    addChild(spinner)
-    spinner.view.frame = view.frame
-    view.addSubview(spinner.view)
-    spinner.didMove(toParent: self)
-  }
-  
-  func hideSpinner() {
-    spinner.willMove(toParent: nil)
-    spinner.view.removeFromSuperview()
-    spinner.removeFromParent()
-  }
-}
-
 class SearchMoviesViewController: UIViewController, RefreshableViewController {
   
   // MARK: Properties
@@ -43,13 +20,10 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
 
   convenience init(viewModel: SearchMovieViewModelProtocol) {
     self.init(nibName: nil, bundle: nil)
-    print("♦️SearchMovieViewController init viewModel:", viewModel)
+
     self.viewModel = viewModel
     dataSource = MoiveListDatsSource(viewModel: viewModel)
     delegate = MovieListDelegate(viewModel: viewModel)
-    if let openMovie = actions?.openMovie {
-      delegate?.actions = .init(openMovie: openMovie)
-    }
   }
   
   // MARK: - Lifecycle
@@ -57,18 +31,20 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = .white
     viewModel?.searchDelegate = self
     configureSearchBar()
     configureNavBar()
     setupTableView()
-    print("♦️SearchMovieViewController viewDidLoad viewModel: \(String(describing: viewModel))")
     fetchMovies(by: "Pulp Fiction")
   }
 
   // MARK: - Private
 
   private func setupTableView() {
+    if let openMovie = actions?.openMovie {
+      delegate?.actions = .init(openMovie: openMovie)
+    }
+    
     tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
                        forCellReuseIdentifier: MovieCell.identifier)
     tableView.dataSource = dataSource

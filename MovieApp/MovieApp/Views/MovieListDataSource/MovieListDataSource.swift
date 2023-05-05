@@ -25,6 +25,7 @@ class MoiveListDatsSource: NSObject, UITableViewDataSource {
 class MovieListDelegate: NSObject, UITableViewDelegate {
   
   struct Actions {
+
     var openMovie: (_ movieID: String) -> Void
   }
 
@@ -37,7 +38,6 @@ class MovieListDelegate: NSObject, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let movie = viewModel.movie(at: indexPath.row)
-    print("✅ \(movie)")
-    self.actions?.openMovie(movie.imdbID)
+    actions?.openMovie(movie.imdbID)
   }
 }
