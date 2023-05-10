@@ -9,7 +9,7 @@ class MoiveListDatsSource: NSObject, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.moviesCount()
+    viewModel.moviesCount()
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -18,6 +18,10 @@ class MoiveListDatsSource: NSObject, UITableViewDataSource {
     }
     let movie = viewModel.movie(at: indexPath.row)
     cell.setUp(from: movie)
+    let backgroundView = UIView()
+    backgroundView.layer.shadowOffset = cell.contentView.layer.shadowOffset
+    backgroundView.backgroundColor = .systemGray
+    cell.selectedBackgroundView = backgroundView
     return cell
   }
 }

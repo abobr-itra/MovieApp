@@ -16,7 +16,6 @@ class SearchMovieCoordinator: Coordinator {
   func start() {
     let viewModelFabric = SearchMovieViewModelCreator()
     let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
-    print("♦️SearchMovieCoordinator start() viewModel:", viewModel)
     
     let viewController = SearchMoviesViewController(viewModel: viewModel)
     viewController.actions = .init(openMovie: openMovie)
@@ -27,7 +26,6 @@ class SearchMovieCoordinator: Coordinator {
   // MARK: Private
   
   private func openMovie(_ movieID: String) {
-    print("MovieID \(movieID)")
     let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController, movieID: movieID)
     moviePageCoordinator.start()
   }

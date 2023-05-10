@@ -41,10 +41,11 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
   // MARK: - Private
 
   private func setupTableView() {
-    if let openMovie = actions?.openMovie {
-      delegate?.actions = .init(openMovie: openMovie)
+    actions.do { actions in
+      delegate?.actions = .init(openMovie: actions.openMovie)
     }
     
+    tableView.separatorStyle = .none
     tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
                        forCellReuseIdentifier: MovieCell.identifier)
     tableView.dataSource = dataSource

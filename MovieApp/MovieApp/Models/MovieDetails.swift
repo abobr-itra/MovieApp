@@ -1,6 +1,7 @@
 import Foundation
 
 struct MovieDetails: Codable {
+
     let title, year, rated, released: String
     let runtime, genre, director, writer: String
     let actors, plot, language, country: String
@@ -12,6 +13,7 @@ struct MovieDetails: Codable {
     let website, response: String
 
     enum CodingKeys: String, CodingKey {
+
         case title = "Title"
         case year = "Year"
         case rated = "Rated"

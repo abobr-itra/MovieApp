@@ -18,12 +18,6 @@ class RealmService: RealmServiceProtocol {
   
   // TODO: Add error handling
   
-  //  private var realm: Realm
-  //
-  //  init() {
-  //    realm = try? Realm() // ?? Better solution
-  //  }
-  
   // MARK: Public
   
   func saveObject(_ object: Object) {

@@ -12,6 +12,7 @@ protocol SearchMovieViewModelProtocol: MovieViewModelProtocol {
 }
 
 protocol MovieViewModelProtocol {
+
   func movie(at index: Int) -> MovieModelProtocol
   func moviesCount() -> Int
 }
@@ -22,8 +23,6 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
   
   weak var searchDelegate: SearchDelegate?
   private let movieService: MovieServiceProtocol
-  
-  // TODO: Make it private(set)
   private(set) var movies: [Movie] = []
     
   init(movieService: MovieServiceProtocol) {

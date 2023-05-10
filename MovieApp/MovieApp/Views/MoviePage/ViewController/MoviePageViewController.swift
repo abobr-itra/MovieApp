@@ -21,11 +21,15 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
     viewModel?.detailsDelegate = self
-    movieDescription?.sizeToFit()
-    movieDescription?.baselineAdjustment = .alignCenters
+    setupUI()
     loadData()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    setupUI()
   }
   
   // MARK: @IBAction
@@ -38,11 +42,21 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
     viewModel?.deleteCurrentMovie()
   }
 
-  // MARK: Public
+  // MARK: - Public
   
   func loadData() {
     showSpinner()
     viewModel?.fetchMovieDetails(by: self.movieID ?? "")
+  }
+  
+  // MARK: - Private
+  
+  private func setupUI() {
+    movieDescription?.sizeToFit()
+    movieDescription?.baselineAdjustment = .alignCenters
+    
+    saveButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.Colors.saveButtonLightThemeColor: Constants.Colors.saveButtonDarkThemeColor
+    deleteButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.Colors.deleteButtonLightTheme: Constants.Colors.deleteButtonDarkTheme
   }
 }
 

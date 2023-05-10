@@ -1,10 +1,12 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
+
   func getData<T: Decodable>(from url: URL, resultHandler: @escaping (Result<T, RequestError>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
+
   // MARK: Properties
   
   private let parser: NetworkPaserProtocol
@@ -44,7 +46,4 @@ class NetworkService: NetworkServiceProtocol {
     }
     urlTask.resume()
   }
-  
-  // MARK: Private
-  
 }

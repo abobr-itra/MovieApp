@@ -1,12 +1,15 @@
 import Foundation
 
 protocol ViewModelCreator {
+
   associatedtype ViewModel
   func factoryMethod(parser: NetworkPaserProtocol) -> ViewModel
 }
 
 class SearchMovieViewModelCreator: ViewModelCreator {
+
   typealias ViewModel = SearchMovieViewModel
+
   func factoryMethod(parser: NetworkPaserProtocol) -> SearchMovieViewModel {
     let networkService = NetworkService(parser: parser)
     let movieService = MovieService(networkService: networkService)
@@ -15,7 +18,9 @@ class SearchMovieViewModelCreator: ViewModelCreator {
 }
 
 class MoviePageViewModelCreator: ViewModelCreator {
+
   typealias ViewModel = MoviePageViewModel
+
   func factoryMethod(parser: NetworkPaserProtocol) -> MoviePageViewModel {
     let networkService = NetworkService(parser: parser)
     let dataService = RealmService()
@@ -25,7 +30,9 @@ class MoviePageViewModelCreator: ViewModelCreator {
 }
 
 class WishlistViewModelCreator: ViewModelCreator {
+
   typealias ViewModel = WishlistViewModel
+
   func factoryMethod(parser: NetworkPaserProtocol) -> WishlistViewModel {
     let dataService = RealmService()
     return WishlistViewModel(dataService: dataService)
