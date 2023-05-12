@@ -56,7 +56,7 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
     movieDescription?.baselineAdjustment = .alignCenters
     
     saveButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.Colors.saveButtonLightThemeColor: Constants.Colors.saveButtonDarkThemeColor
-    deleteButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.Colors.deleteButtonLightTheme: Constants.Colors.deleteButtonDarkTheme
+    deleteButton.tintColor = .deleteButton
   }
 }
 

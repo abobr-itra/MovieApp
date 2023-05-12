@@ -20,11 +20,23 @@ struct Constants {
     static let saveButtonDarkThemeColor: UIColor = .orange
     
     static let deleteButtonLightTheme: UIColor = .systemRed
-    static let deleteButtonDarkTheme: UIColor = UIColor(red: 139, green: 0, blue: 0, alpha: 0)
+    static let deleteButtonDarkTheme: UIColor = UIColor(red: 139, green: 0, blue: 0, alpha: 1)
   }
   
   struct Sizes {
     
     static let tableViewRowStandart: CGFloat = 100
   }
+}
+
+extension UIColor {
+    static var deleteButton: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { (traits) -> UIColor in
+              return traits.userInterfaceStyle == .light ? Constants.Colors.deleteButtonLightTheme : Constants.Colors.deleteButtonDarkTheme
+            }
+        } else {
+            return .systemRed
+        }
+    }
 }
