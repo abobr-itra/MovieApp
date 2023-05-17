@@ -21,6 +21,9 @@
 		D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BDC295090F400E857FD /* AppCoordinatior.swift */; };
 		D2570BE22951CF9B00E857FD /* SearchMovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BE12951CF9B00E857FD /* SearchMovieCoordinator.swift */; };
 		D2570BE42951D47D00E857FD /* MoviePageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BE32951D47D00E857FD /* MoviePageCoordinator.swift */; };
+		D261A3932A28971C0021CC3B /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D261A3922A28971C0021CC3B /* JetBrainsMono-Regular.ttf */; };
+		D261A3952A2898E10021CC3B /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D261A3942A2898E10021CC3B /* JetBrainsMono-Bold.ttf */; };
+		D261A3972A2898FD0021CC3B /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D261A3962A2898FD0021CC3B /* JetBrainsMono-Light.ttf */; };
 		D27004E82A25F49F00072DFF /* MovieListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27004E72A25F49F00072DFF /* MovieListDataSource.swift */; };
 		D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047529487ACE0001C92A /* NetworkService.swift */; };
 		D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */; };
@@ -67,6 +70,9 @@
 		D2570BDC295090F400E857FD /* AppCoordinatior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatior.swift; sourceTree = "<group>"; };
 		D2570BE12951CF9B00E857FD /* SearchMovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCoordinator.swift; sourceTree = "<group>"; };
 		D2570BE32951D47D00E857FD /* MoviePageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageCoordinator.swift; sourceTree = "<group>"; };
+		D261A3922A28971C0021CC3B /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Regular.ttf"; path = "../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
+		D261A3942A2898E10021CC3B /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Bold.ttf"; path = "../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
+		D261A3962A2898FD0021CC3B /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Light.ttf"; path = "../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
 		D27004E72A25F49F00072DFF /* MovieListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDataSource.swift; sourceTree = "<group>"; };
 		D2AF047529487ACE0001C92A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBEndpoint.swift; sourceTree = "<group>"; };
@@ -221,6 +227,16 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		D261A3912A2896BB0021CC3B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D261A3962A2898FD0021CC3B /* JetBrainsMono-Light.ttf */,
+				D261A3942A2898E10021CC3B /* JetBrainsMono-Bold.ttf */,
+				D261A3922A28971C0021CC3B /* JetBrainsMono-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D27004E62A25F47E00072DFF /* MovieListDataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +335,7 @@
 		D2B0D0272947640B0025B7E7 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				D261A3912A2896BB0021CC3B /* Fonts */,
 				D2357DB32949DBD600F6EE12 /* Extensions */,
 				D2AF047329487A950001C92A /* Network */,
 				D2AF047229487A8C0001C92A /* Views */,
@@ -421,9 +438,12 @@
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
 				D2B0D0322947640E0025B7E7 /* Assets.xcassets in Resources */,
+				D261A3952A2898E10021CC3B /* JetBrainsMono-Bold.ttf in Resources */,
 				D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */,
 				D2D5E30329D49A47005BB3AF /* MoviePageViewController.xib in Resources */,
+				D261A3972A2898FD0021CC3B /* JetBrainsMono-Light.ttf in Resources */,
 				D2357DB22949D38A00F6EE12 /* MovieCell.xib in Resources */,
+				D261A3932A28971C0021CC3B /* JetBrainsMono-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
