@@ -16,20 +16,15 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
 
   convenience init(viewModel: MoviePageViewModelProtocol) {
     self.init(nibName: nil, bundle: nil)
+
     self.viewModel = viewModel
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel?.detailsDelegate = self
+
     setupUI()
     loadData()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
-    setupUI()
   }
   
   // MARK: @IBAction
@@ -46,6 +41,20 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
   
   func loadData() {
     showSpinner()
+    viewModel?.onDataLoaded = { [weak self] in
+      DispatchQueue.main.async {
+        guard let data = self?.viewModel?.getMovieDetails() else {
+          return
+        }
+        
+        self?.moviePoster?.load(from: data.poster)
+        self?.movieTitle?.text = data.title
+        self?.movieDescription?.text = data.plot
+        
+        self?.view.layoutIfNeeded()
+        self?.hideSpinner()
+      }
+    }
     viewModel?.fetchMovieDetails(by: self.movieID ?? "")
   }
   
@@ -55,26 +64,7 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
     movieDescription?.sizeToFit()
     movieDescription?.baselineAdjustment = .alignCenters
     
-    saveButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.Colors.saveButtonLightThemeColor: Constants.Colors.saveButtonDarkThemeColor
-    deleteButton.tintColor = .deleteButton
-  }
-}
-
-extension MoviePageViewController: DetailsDelegate {
-
-  func updateView() {
-    
-    DispatchQueue.main.async {
-      guard let data = self.viewModel?.getMovieDetails() else {
-        return
-      }
-      
-      self.moviePoster?.load(from: data.poster)
-      self.movieTitle?.text = data.title
-      self.movieDescription?.text = data.plot
-      
-      self.view.layoutIfNeeded()
-      self.hideSpinner()
-    }
+    saveButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.SaveButton.lightThemeColor: Constants.SaveButton.darkThemeColor
+    deleteButton.tintColor = .deleteButtonColor
   }
 }

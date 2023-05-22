@@ -131,7 +131,7 @@
 		D227301829C1E282003787E7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D227301A29C1E2FD003787E7 /* Cell */,
+				D227301A29C1E2FD003787E7 /* MovieCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,13 +145,13 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		D227301A29C1E2FD003787E7 /* Cell */ = {
+		D227301A29C1E2FD003787E7 /* MovieCell */ = {
 			isa = PBXGroup;
 			children = (
 				D2357DAF2949D38A00F6EE12 /* MovieCell.swift */,
 				D2357DB02949D38A00F6EE12 /* MovieCell.xib */,
 			);
-			path = Cell;
+			path = MovieCell;
 			sourceTree = "<group>";
 		};
 		D227301B29C1E30F003787E7 /* Wishlist */ = {

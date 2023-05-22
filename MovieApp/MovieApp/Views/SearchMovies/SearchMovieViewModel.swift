@@ -1,13 +1,8 @@
 import Foundation
 
-protocol SearchDelegate: AnyObject {
-
-  func reloadTableView()
-}
-
 protocol SearchMovieViewModelProtocol: MovieViewModelProtocol {
 
-  var searchDelegate: SearchDelegate? { get set }
+  var onDataLoaded: (() -> Void)? { get set }
   func fetchMovies(by title: String)
 }
 
@@ -21,7 +16,7 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
 
   // MARK: Properties
   
-  weak var searchDelegate: SearchDelegate?
+  var onDataLoaded: (() -> Void)?
   private let movieService: MovieServiceProtocol
   private(set) var movies: [Movie] = []
     
@@ -45,7 +40,7 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
       case .success(let data):
         print(data)
         self?.movies = data.search
-        self?.searchDelegate?.reloadTableView()
+        self?.onDataLoaded?()
       case .failure(let error):
         print("Some error occured : \(error)")
       }

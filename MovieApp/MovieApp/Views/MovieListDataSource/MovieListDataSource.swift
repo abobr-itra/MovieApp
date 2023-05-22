@@ -18,10 +18,11 @@ class MoiveListDatsSource: NSObject, UITableViewDataSource {
     }
     let movie = viewModel.movie(at: indexPath.row)
     cell.setUp(from: movie)
-    let backgroundView = UIView()
-    backgroundView.layer.shadowOffset = cell.contentView.layer.shadowOffset
-    backgroundView.backgroundColor = .systemGray
-    cell.selectedBackgroundView = backgroundView
+//    let backgroundView = UIView()
+//    backgroundView.layer.shadowOffset = cell.contentView.layer.shadowOffset
+//    backgroundView.tintColor = .gray
+//    backgroundView.frame = CGRectMake(0, 0, cell.frame.width, 100)
+//    cell.selectedBackgroundView = backgroundView
     return cell
   }
 }

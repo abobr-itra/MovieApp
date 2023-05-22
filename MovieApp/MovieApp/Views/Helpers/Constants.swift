@@ -4,23 +4,38 @@ import UIKit
 struct Constants {
   
   struct Cell {
+
     static let lightBorderColor: UIColor = .black
     static let darkBorderTheme: UIColor = .orange
     static let borderWidth: CGFloat = 0.5
     static let cornerRadius: CGFloat = 10.0
     static let shadowOffset: CGSize = CGSize(width: -1, height: 1)
     static let inset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
+    static let highlightColor: UIColor = .systemGray
   }
   
   struct Colors {
     
     static let clear: UIColor = .clear
+  }
+  
+  struct TabBar {
     
-    static let saveButtonLightThemeColor: UIColor = .systemGreen
-    static let saveButtonDarkThemeColor: UIColor = .orange
+    static let light: UIColor = .gray
+    static let dark: UIColor = .orange
+  }
+  
+  struct SaveButton {
     
-    static let deleteButtonLightTheme: UIColor = .systemRed
-    static let deleteButtonDarkTheme: UIColor = UIColor(red: 139, green: 0, blue: 0, alpha: 1)
+    static let lightThemeColor: UIColor = .systemGreen
+    static let darkThemeColor: UIColor = .orange
+  }
+  
+  struct DeleteButton {
+    
+    static let lightThemeColor: UIColor = .systemRed
+    static let darkThemeColor: UIColor = UIColor(red: 139, green: 0, blue: 0, alpha: 1)
   }
   
   struct Sizes {
@@ -30,10 +45,11 @@ struct Constants {
 }
 
 extension UIColor {
-    static var deleteButton: UIColor {
+
+    static var deleteButtonColor: UIColor {
         if #available(iOS 13.0, *) {
             return UIColor { (traits) -> UIColor in
-              return traits.userInterfaceStyle == .light ? Constants.Colors.deleteButtonLightTheme : Constants.Colors.deleteButtonDarkTheme
+              return traits.userInterfaceStyle == .light ? Constants.DeleteButton.lightThemeColor : Constants.SaveButton.lightThemeColor
             }
         } else {
             return .systemRed

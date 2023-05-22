@@ -13,6 +13,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
   var spinner: SpinnerViewController = SpinnerViewController()
   
   struct Actions {
+
     var openMovie: (_ movieID: String) -> Void
   }
 
@@ -31,7 +32,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    viewModel?.searchDelegate = self
     configureSearchBar()
     configureNavBar()
     setupTableView()
@@ -59,6 +59,12 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
   }
   
   private func fetchMovies(by title: String) {
+    viewModel?.onDataLoaded = { [weak self] in
+      DispatchQueue.main.async {
+        self?.hideSpinner()
+        self?.tableView.reloadData()
+      }
+    }
     showSpinner()
     viewModel?.fetchMovies(by: title)
   }
@@ -71,16 +77,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
 }
 
 // MARK: - Extensions
-
-extension SearchMoviesViewController: SearchDelegate {
-
-  func reloadTableView() {
-    DispatchQueue.main.async { [weak self] in
-      self?.hideSpinner()
-      self?.tableView.reloadData()
-    }
-  }
-}
 
 extension SearchMoviesViewController: UISearchBarDelegate {
 

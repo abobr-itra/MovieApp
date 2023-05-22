@@ -13,6 +13,13 @@ class MovieCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
 
+    selectionStyle = .none
+  }
+  
+  override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    super.setHighlighted(highlighted, animated: animated)
+
+    contentView.backgroundColor = highlighted ? Constants.Cell.highlightColor: Constants.Colors.clear
   }
   
   override func layoutSubviews() {

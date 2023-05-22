@@ -1,13 +1,8 @@
 import Foundation
 
-protocol DetailsDelegate: AnyObject {
-
-  func updateView()
-}
-
 protocol MoviePageViewModelProtocol {
 
-  var detailsDelegate: DetailsDelegate? { get set }
+  var onDataLoaded: (() -> Void)? { get set }
   
   func getMovieDetails() -> MovieDetails?
   func fetchMovieDetails(by id: String)
@@ -20,7 +15,7 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
 
   // MARK: Properties
   
-  weak var detailsDelegate: DetailsDelegate?
+  var onDataLoaded: (() -> Void)?
   private var movieDetails: MovieDetails?
   private let movieService: MovieServiceProtocol
   private let dataService: RealmServiceProtocol
@@ -41,7 +36,7 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
       switch result {
       case .success(let data):
         self?.movieDetails = data
-        self?.detailsDelegate?.updateView()
+        self?.onDataLoaded?()
       case .failure(let error):
         print("Some error occured : \(error)")
       }
