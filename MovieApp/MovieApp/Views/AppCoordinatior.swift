@@ -33,6 +33,7 @@ class AppCoordinatior: Coordinator {
   
   func start() {
     let tabBarController = UITabBarController()
+    tabBarController.tabBar.tintColor = .tabBarTintColor
     
     window.rootViewController = tabBarController
     window.makeKeyAndVisible()
@@ -64,7 +65,6 @@ class AppCoordinatior: Coordinator {
   private func setupViewController(coordinator: Coordinator, title: String, image: UIImage?) -> UIViewController {
     let viewController = coordinator.navigationController
     let tabBarItem = UITabBarItem(title: title, image: image, tag: generateTag())
-    tabBarItem.badgeColor = viewController.traitCollection.userInterfaceStyle == .light ? Constants.TabBar.light: Constants.TabBar.dark
     viewController.tabBarItem = tabBarItem
     return viewController
   }
