@@ -27,7 +27,6 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
       self.dataService.getAllMovies { result in
         switch result {
         case .success(let data):
-          print("Movies loaded from db: \(data)")
           self.moviesDB = data
           self.onDataLoaded?()
         case .failure(let error):

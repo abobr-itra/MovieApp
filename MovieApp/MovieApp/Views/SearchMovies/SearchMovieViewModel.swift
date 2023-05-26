@@ -38,7 +38,6 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     movieService.fetchMovies(by: title) { [weak self] result in
       switch result {
       case .success(let data):
-        print(data)
         self?.movies = data.search
         self?.onDataLoaded?()
       case .failure(let error):

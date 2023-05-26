@@ -69,6 +69,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="Fbu-sz-KUu"/>
                         <constraint firstAttribute="width" constant="74" id="YiT-0V-mxL"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="v11-iD-hWp"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Delete"/>

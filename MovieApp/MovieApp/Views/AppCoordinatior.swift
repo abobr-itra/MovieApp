@@ -43,10 +43,10 @@ class AppCoordinatior: Coordinator {
 
     let searchVC = setupViewController(coordinator: searchMovieCoordinator,
                                        title: "Search",
-                                       image: UIImage(systemName: "magnifyingglass"))
+                                       image: Constants.TabBar.searchImage)
     let wishlistVC = setupViewController(coordinator: wishlistCoordinator,
                                          title: "Wishlist",
-                                         image: UIImage(systemName: "star"))
+                                         image: Constants.TabBar.wishlistImage)
     
     let viewControllers = [searchVC, wishlistVC]
     tabBarController.viewControllers = viewControllers

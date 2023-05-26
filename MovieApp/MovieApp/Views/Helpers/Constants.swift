@@ -24,6 +24,10 @@ struct Constants {
     
     static let light: UIColor = .systemRed
     static let dark: UIColor = .orange
+    
+    static let searchImage = UIImage(systemName: "magnifyingglass")
+    static let personImage = UIImage(systemName: "person")
+    static let wishlistImage = UIImage(systemName: "star")
   }
   
   struct SaveButton {
