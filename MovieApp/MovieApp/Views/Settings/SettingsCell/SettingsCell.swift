@@ -7,7 +7,7 @@ class SettingsCell: UITableViewCell {
   private let iconContainer: UIView = {
     let view = UIView()
     view.clipsToBounds = true
-    view.layer.cornerRadius = 10
+    view.layer.cornerRadius = 8
     view.layer.masksToBounds = true
     return view
   }()
@@ -45,14 +45,16 @@ class SettingsCell: UITableViewCell {
     super.layoutSubviews()
     
     let containerSize = contentView.frame.size.height - 12
-    iconContainer.frame = CGRect(x: 15, y: 6, width: containerSize, height: containerSize)
+    iconContainer.frame = CGRect(x: 15,
+                                 y: 6,
+                                 width: containerSize,
+                                 height: containerSize)
     
     let imageSize = containerSize / 1.5
     iconImageView.frame = CGRect(x: (containerSize - imageSize) / 2,
                                  y: (containerSize - imageSize) / 2,
                                  width: imageSize,
                                  height: imageSize)
-    iconImageView.center = iconContainer.center
     
     let labelWidth = contentView.frame.size.width - 20 - iconContainer.frame.size.width
     let labelHeight = contentView.frame.size.height

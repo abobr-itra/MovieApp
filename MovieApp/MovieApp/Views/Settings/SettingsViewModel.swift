@@ -9,7 +9,8 @@ protocol SettingsViewModelProtocol {
 class SettingViewModel: SettingsViewModelProtocol {
   
   private(set) var settingsOptions: [SettingsOption] = [
-    SettingsOption(title: "First", icon: UIImage(systemName: "star"), iconBackgroundColor: .red, handler: {
+    SettingsOption(title: "First",
+                   icon: UIImage(systemName: "star"), iconBackgroundColor: .red, handler: {
       print("First pressed")
     }),
     SettingsOption(title: "Second", icon: UIImage(systemName: "pencil"), iconBackgroundColor: .blue, handler: {
