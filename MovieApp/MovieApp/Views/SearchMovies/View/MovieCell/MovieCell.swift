@@ -2,7 +2,7 @@ import UIKit
 
 class MovieCell: UITableViewCell {
   
-  // MARK: Properties
+  // MARK: - Properties
   
   static let identifier = "MovieCell"
   
@@ -33,7 +33,7 @@ class MovieCell: UITableViewCell {
     contentView.layer.borderColor = borderColor.cgColor
   }
   
-  // MARK: Public
+  // MARK: - Public
   
   func setUp(from movie: MovieModelProtocol?) {
     guard let movie = movie,

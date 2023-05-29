@@ -3,7 +3,7 @@ import UIKit
 
 class WishlistCoordinator: Coordinator {
   
-  // MARK: Properties
+  // MARK: - Properties
   
   var navigationController: UINavigationController
   
@@ -21,7 +21,7 @@ class WishlistCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: false)
   }
   
-  // MARK: Private
+  // MARK: - Private
   
   private func openMovie(_ movieID: String) {
     let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController, movieID: movieID)

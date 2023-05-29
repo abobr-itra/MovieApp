@@ -7,7 +7,7 @@ protocol NetworkServiceProtocol {
 
 class NetworkService: NetworkServiceProtocol {
 
-  // MARK: Properties
+  // MARK: - Properties
   
   private let parser: NetworkPaserProtocol
   
@@ -15,7 +15,7 @@ class NetworkService: NetworkServiceProtocol {
     self.parser = parser
   }
   
-  // MARK: Public
+  // MARK: - Public
   
   func getData<T: Decodable>(from url: URL, resultHandler: @escaping (Result<T, RequestError>) -> Void) {
     let urlRequest = URLRequest(url: url)

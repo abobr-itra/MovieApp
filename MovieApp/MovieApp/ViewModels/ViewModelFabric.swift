@@ -3,6 +3,7 @@ import Foundation
 protocol ViewModelCreator {
 
   associatedtype ViewModel
+  // TODO: Remove NetworkParser parameter
   func factoryMethod(parser: NetworkPaserProtocol) -> ViewModel
 }
 
@@ -36,5 +37,14 @@ class WishlistViewModelCreator: ViewModelCreator {
   func factoryMethod(parser: NetworkPaserProtocol) -> WishlistViewModel {
     let dataService = RealmService()
     return WishlistViewModel(dataService: dataService)
+  }
+}
+
+class SettingsViewModelCreator: ViewModelCreator {
+  
+  typealias ViewModel = SettingViewModel
+  
+  func factoryMethod(parser: NetworkPaserProtocol) -> SettingViewModel {
+    return SettingViewModel()
   }
 }

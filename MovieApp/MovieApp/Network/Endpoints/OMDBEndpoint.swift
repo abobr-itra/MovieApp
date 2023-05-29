@@ -6,7 +6,7 @@ enum OMDBEndpoint {
   case byTitle(String)
   case bySearch(String)
   
-  // MARK: Public
+  // MARK: - Public
   
   var url: URL {
     guard let url = URL(string: fullPath) else {
@@ -15,7 +15,7 @@ enum OMDBEndpoint {
     return url
   }
   
-  // MARK: Private
+  // MARK: - Private
   
   // FIXME: Not secure, store separate enum
   private var baseURL: String { "http://www.omdbapi.com" }

@@ -8,7 +8,7 @@ protocol MovieServiceProtocol {
 
 class MovieService: MovieServiceProtocol {
   
-  // MARK: Properties
+  // MARK: - Properties
   
   private let networkService: NetworkServiceProtocol
   
@@ -16,7 +16,7 @@ class MovieService: MovieServiceProtocol {
     self.networkService = networkService
   }
   
-  // MARK: Public
+  // MARK: - Public
   
   func fetchMovies(by title: String, completion: @escaping (Result<MovieSearch, RequestError>) -> Void) {
     let url = OMDBEndpoint.bySearch(title).url

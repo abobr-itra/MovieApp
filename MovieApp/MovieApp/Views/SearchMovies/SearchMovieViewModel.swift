@@ -14,7 +14,7 @@ protocol MovieViewModelProtocol {
 
 class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol {
 
-  // MARK: Properties
+  // MARK: - Properties
   
   var onDataLoaded: (() -> Void)?
   private let movieService: MovieServiceProtocol
@@ -24,7 +24,7 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     self.movieService = movieService
   }
   
-  // MARK: Public
+  // MARK: - Public
 
   func movie(at index: Int) -> MovieModelProtocol {
     movies[index]

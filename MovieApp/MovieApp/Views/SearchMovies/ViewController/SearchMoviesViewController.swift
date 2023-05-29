@@ -2,7 +2,7 @@ import UIKit
 
 class SearchMoviesViewController: UIViewController, RefreshableViewController {
   
-  // MARK: Properties
+  // MARK: - Properties
 
   @IBOutlet weak var tableView: UITableView!
   private var dataSource: MoiveListDatsSource?

@@ -2,7 +2,7 @@ import UIKit
 
 class MoviePageViewController: UIViewController, RefreshableViewController {
 
-  // MARK: Properties
+  // MARK: - Properties
   
   private var viewModel: MoviePageViewModelProtocol?
   var spinner: SpinnerViewController = SpinnerViewController()
@@ -27,7 +27,7 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
     loadData()
   }
   
-  // MARK: @IBAction
+  // MARK: - @IBAction
   
   @IBAction func saveMovie(_ sender: UIButton) {
     viewModel?.saveCurrentMovie()

@@ -3,7 +3,7 @@ import UIKit
 
 class SearchMovieCoordinator: Coordinator {
 
-  // MARK: Properties
+  // MARK: - Properties
   
   var navigationController: UINavigationController
   
@@ -11,7 +11,7 @@ class SearchMovieCoordinator: Coordinator {
     self.navigationController = navigationController
   }
 
-  // MARK: Public
+  // MARK: - Public
 
   func start() {
     let viewModelFabric = SearchMovieViewModelCreator()
@@ -23,7 +23,7 @@ class SearchMovieCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: false)
   }
 
-  // MARK: Private
+  // MARK: - Private
   
   private func openMovie(_ movieID: String) {
     let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController, movieID: movieID)

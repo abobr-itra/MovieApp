@@ -38,8 +38,11 @@ class AppCoordinatior: Coordinator {
     window.rootViewController = tabBarController
     window.makeKeyAndVisible()
     
+    // TODO: Remove navigation controllers for this coordinators
+    
     let searchMovieCoordinator = SearchMovieCoordinator(navigationController: UINavigationController())
     let wishlistCoordinator = WishlistCoordinator(navigationController: UINavigationController())
+    let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController())
 
     let searchVC = setupViewController(coordinator: searchMovieCoordinator,
                                        title: "Search",
@@ -47,12 +50,17 @@ class AppCoordinatior: Coordinator {
     let wishlistVC = setupViewController(coordinator: wishlistCoordinator,
                                          title: "Wishlist",
                                          image: Constants.TabBar.wishlistImage)
+    let settingsVC = setupViewController(coordinator: settingsCoordinator,
+                                         title: "Settings",
+                                         image: Constants.TabBar.settingsImage)
     
-    let viewControllers = [searchVC, wishlistVC]
+    
+    let viewControllers = [searchVC, wishlistVC, settingsVC]
     tabBarController.viewControllers = viewControllers
     
     coordinate(to: searchMovieCoordinator)
     coordinate(to: wishlistCoordinator)
+    coordinate(to: settingsCoordinator)
   }
   
   // MARK: - Private

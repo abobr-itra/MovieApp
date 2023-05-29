@@ -28,6 +28,7 @@ struct Constants {
     static let searchImage = UIImage(systemName: "magnifyingglass")
     static let personImage = UIImage(systemName: "person")
     static let wishlistImage = UIImage(systemName: "star")
+    static let settingsImage = UIImage(systemName: "gearshape")
   }
   
   struct SaveButton {

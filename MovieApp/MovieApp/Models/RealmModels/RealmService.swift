@@ -18,7 +18,7 @@ class RealmService: RealmServiceProtocol {
   
   // TODO: Add error handling
   
-  // MARK: Public
+  // MARK: - Public
   
   func saveObject(_ object: Object) {
     DispatchQueue.main.async {
@@ -86,7 +86,7 @@ class RealmService: RealmServiceProtocol {
     }
   }
   
-  // MARK: Private
+  // MARK: - Private
   
   private func objectExist(id: String, realm: Realm) -> Bool {
     return realm.object(ofType: RealmMovie.self, forPrimaryKey: id) != nil

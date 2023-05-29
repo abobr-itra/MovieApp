@@ -18,6 +18,7 @@
 		D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */; };
 		D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */; };
 		D21EEEEF2A28DB6600957FA7 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21EEEED2A28DB6600957FA7 /* SettingsCell.xib */; };
+		D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
 		D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */; };
 		D2357DB12949D38A00F6EE12 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DAF2949D38A00F6EE12 /* MovieCell.swift */; };
@@ -78,6 +79,7 @@
 		D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		D21EEEED2A28DB6600957FA7 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
+		D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
 		D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
 		D2357DAF2949D38A00F6EE12 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				D21EEED82A28D27500957FA7 /* ViewController */,
 				D21EEEE72A28D92A00957FA7 /* SettingsViewModel.swift */,
 				D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */,
+				D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				D2D5E2F729D473C5005BB3AF /* Constants.swift in Sources */,
 				D2570BE22951CF9B00E857FD /* SearchMovieCoordinator.swift in Sources */,
 				D2570BD5295070FB00E857FD /* ViewModelFabric.swift in Sources */,
+				D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */,
 				D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */,
 				D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */,
 				D2C79A3C2A2763DC0065DA25 /* RefreshableViewController.swift in Sources */,

@@ -13,7 +13,7 @@ protocol MoviePageViewModelProtocol {
 
 class MoviePageViewModel: MoviePageViewModelProtocol {
 
-  // MARK: Properties
+  // MARK: - Properties
   
   var onDataLoaded: (() -> Void)?
   private var movieDetails: MovieDetails?
@@ -25,7 +25,7 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
     self.dataService = dataService
   }
   
-  // MARK: Public
+  // MARK: - Public
   
   func getMovieDetails() -> MovieDetails? {
     movieDetails
