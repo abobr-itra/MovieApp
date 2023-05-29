@@ -14,6 +14,18 @@ class SettingViewModel: SettingsViewModelProtocol {
     }),
     SettingsOption(title: "Second", icon: UIImage(systemName: "pencil"), iconBackgroundColor: .blue, handler: {
       print("Second pressed")
+    }),
+    SettingsOption(title: "First", icon: UIImage(systemName: "star"), iconBackgroundColor: .red, handler: {
+      print("First pressed")
+    }),
+    SettingsOption(title: "Second", icon: UIImage(systemName: "pencil"), iconBackgroundColor: .blue, handler: {
+      print("Second pressed")
+    }),
+    SettingsOption(title: "First", icon: UIImage(systemName: "star"), iconBackgroundColor: .red, handler: {
+      print("First pressed")
+    }),
+    SettingsOption(title: "Second", icon: UIImage(systemName: "pencil"), iconBackgroundColor: .blue, handler: {
+      print("Second pressed")
     })
   ]
   

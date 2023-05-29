@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
     view.addSubview(tableView)
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.frame = view.frame
+    tableView.frame = view.bounds
   }
 }
 

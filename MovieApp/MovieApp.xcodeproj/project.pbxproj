@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D21EEED62A28D17800957FA7 /* MovieListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEED52A28D17800957FA7 /* MovieListDelegate.swift */; };
 		D21EEEDB2A28D29200957FA7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEED92A28D29200957FA7 /* SettingsViewController.swift */; };
-		D21EEEDC2A28D29200957FA7 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21EEEDA2A28D29200957FA7 /* SettingsViewController.xib */; };
 		D21EEEE12A28D34900957FA7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEDF2A28D34900957FA7 /* ProfileViewController.swift */; };
 		D21EEEE22A28D34900957FA7 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21EEEE02A28D34900957FA7 /* ProfileViewController.xib */; };
 		D21EEEE42A28D36B00957FA7 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEE32A28D36B00957FA7 /* ProfileViewModel.swift */; };
@@ -17,7 +16,6 @@
 		D21EEEE82A28D92A00957FA7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEE72A28D92A00957FA7 /* SettingsViewModel.swift */; };
 		D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */; };
 		D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */; };
-		D21EEEEF2A28DB6600957FA7 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21EEEED2A28DB6600957FA7 /* SettingsCell.xib */; };
 		D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
 		D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */; };
@@ -70,7 +68,6 @@
 /* Begin PBXFileReference section */
 		D21EEED52A28D17800957FA7 /* MovieListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDelegate.swift; sourceTree = "<group>"; };
 		D21EEED92A28D29200957FA7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		D21EEEDA2A28D29200957FA7 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		D21EEEDF2A28D34900957FA7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D21EEEE02A28D34900957FA7 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		D21EEEE32A28D36B00957FA7 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -78,7 +75,6 @@
 		D21EEEE72A28D92A00957FA7 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
-		D21EEEED2A28DB6600957FA7 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
 		D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
 		D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
@@ -157,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				D21EEED92A28D29200957FA7 /* SettingsViewController.swift */,
-				D21EEEDA2A28D29200957FA7 /* SettingsViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -185,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */,
-				D21EEEED2A28DB6600957FA7 /* SettingsCell.xib */,
 			);
 			path = SettingsCell;
 			sourceTree = "<group>";
@@ -512,7 +506,6 @@
 			files = (
 				D2B0D0352947640E0025B7E7 /* LaunchScreen.storyboard in Resources */,
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
-				D21EEEDC2A28D29200957FA7 /* SettingsViewController.xib in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
 				D2B0D0322947640E0025B7E7 /* Assets.xcassets in Resources */,
 				D261A3952A2898E10021CC3B /* JetBrainsMono-Bold.ttf in Resources */,
@@ -520,7 +513,6 @@
 				D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */,
 				D2D5E30329D49A47005BB3AF /* MoviePageViewController.xib in Resources */,
 				D261A3972A2898FD0021CC3B /* JetBrainsMono-Light.ttf in Resources */,
-				D21EEEEF2A28DB6600957FA7 /* SettingsCell.xib in Resources */,
 				D2357DB22949D38A00F6EE12 /* MovieCell.xib in Resources */,
 				D261A3932A28971C0021CC3B /* JetBrainsMono-Regular.ttf in Resources */,
 			);
