@@ -89,6 +89,6 @@ class RealmService: RealmServiceProtocol {
   // MARK: - Private
   
   private func objectExist(id: String, realm: Realm) -> Bool {
-    return realm.object(ofType: RealmMovie.self, forPrimaryKey: id) != nil
+    realm.object(ofType: RealmMovie.self, forPrimaryKey: id) != nil
   }
 }

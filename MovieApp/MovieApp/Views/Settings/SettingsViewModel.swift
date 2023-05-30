@@ -33,7 +33,22 @@ class SettingViewModel: SettingsViewModelProtocol {
                      handler: {
                        // TODO: Implement openAppLanguage: method from coordinator
                      })]
-                   )
+                   ),
+    SettingsSection(title: "Privacy", options: [
+      SettingsOption(title: "Terms of Service",
+                     icon: UIImage(systemName: "eye"),
+                     iconBackgroundColor: .red,
+                     handler: {
+                       // TODO: Implement openApperance: method from coordinator
+                     }
+                    ),
+      SettingsOption(title: "Privacy Policy & Analytics",
+                     icon: UIImage(systemName: "lock"),
+                     iconBackgroundColor: .black,
+                     handler: {
+                       // TODO: Implement openAppIcon: method from coordinator
+                     }),
+    ])
   ]
   
   // MARK: - Public
