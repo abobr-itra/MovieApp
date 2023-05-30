@@ -2,39 +2,55 @@ import Foundation
 import UIKit
 
 protocol SettingsViewModelProtocol {
-  func optionsCount() -> Int
-  func option(at index: Int) -> SettingsOption
+  func sectionsCount() -> Int
+  func optionsCount(section: Int) -> Int
+  func option(at index: Int, section: Int) -> SettingsOption
+  func sectionTitle(for index: Int) -> String
 }
 
 class SettingViewModel: SettingsViewModelProtocol {
   
-  private(set) var settingsOptions: [SettingsOption] = [
-    SettingsOption(title: "First",
-                   icon: UIImage(systemName: "star"), iconBackgroundColor: .red, handler: {
-      print("First pressed")
-    }),
-    SettingsOption(title: "Second", icon: UIImage(systemName: "pencil"), iconBackgroundColor: .blue, handler: {
-      print("Second pressed")
-    }),
-    SettingsOption(title: "First", icon: UIImage(systemName: "star"), iconBackgroundColor: .red, handler: {
-      print("First pressed")
-    }),
-    SettingsOption(title: "Second", icon: UIImage(systemName: "pencil"), iconBackgroundColor: .blue, handler: {
-      print("Second pressed")
-    }),
-    SettingsOption(title: "First", icon: UIImage(systemName: "star"), iconBackgroundColor: .red, handler: {
-      print("First pressed")
-    }),
-    SettingsOption(title: "Second", icon: UIImage(systemName: "pencil"), iconBackgroundColor: .blue, handler: {
-      print("Second pressed")
-    })
+  // MARK: - Properties
+  
+  private(set) var settingsOptions: [SettingsSection] = [
+    SettingsSection(title: "Basic", options: [
+      SettingsOption(title: "Apperance",
+                     icon: UIImage(systemName: "paintbrush"),
+                     iconBackgroundColor: .systemBlue,
+                     handler: {
+                       // TODO: Implement openApperance: method from coordinator
+                     }
+                    ),
+      SettingsOption(title: "App Icon",
+                     icon: UIImage(systemName: "photo.circle"),
+                     iconBackgroundColor: .systemMint,
+                     handler: {
+                       // TODO: Implement openAppIcon: method from coordinator
+                     }),
+      SettingsOption(title: "App Language",
+                     icon: UIImage(systemName: "character.bubble"),
+                     iconBackgroundColor: .systemTeal,
+                     handler: {
+                       // TODO: Implement openAppLanguage: method from coordinator
+                     })]
+                   )
   ]
   
-  func optionsCount() -> Int {
+  // MARK: - Public
+  
+  func sectionsCount() -> Int {
     settingsOptions.count
   }
   
-  func option(at index: Int) -> SettingsOption {
-    settingsOptions[index]
+  func optionsCount(section: Int) -> Int {
+    settingsOptions[section].options.count
+  }
+  
+  func option(at index: Int, section: Int) -> SettingsOption {
+    settingsOptions[section].options[index]
+  }
+  
+  func sectionTitle(for index: Int) -> String {
+    settingsOptions[index].title
   }
 }

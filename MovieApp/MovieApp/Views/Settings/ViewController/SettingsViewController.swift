@@ -41,12 +41,20 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
   
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    viewModel?.sectionTitle(for: section)
+  }
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    viewModel?.sectionsCount() ?? 0
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel?.optionsCount() ?? 0
+    viewModel?.optionsCount(section: section) ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let option = viewModel?.option(at: indexPath.row),
+    guard let option = viewModel?.option(at: indexPath.row, section: indexPath.section),
           let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.identifier,
                                                    for: indexPath) as? SettingsCell else {
       return UITableViewCell()
