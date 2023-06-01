@@ -17,6 +17,9 @@
 		D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */; };
 		D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */; };
 		D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */; };
+		D21EEEF42A2A452700957FA7 /* ApperanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */; };
+		D21EEEF62A2A478000957FA7 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF52A2A478000957FA7 /* CheckboxView.swift */; };
+		D21EEEF92A2A49C100957FA7 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
 		D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */; };
 		D2357DB12949D38A00F6EE12 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DAF2949D38A00F6EE12 /* MovieCell.swift */; };
@@ -76,6 +79,9 @@
 		D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApperanceViewController.swift; sourceTree = "<group>"; };
+		D21EEEF52A2A478000957FA7 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
 		D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
 		D2357DAF2949D38A00F6EE12 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 		D21EEED72A28D21000957FA7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D21EEEF72A2A498500957FA7 /* Checkbox */,
+				D21EEEF22A2A44D600957FA7 /* Apperance */,
 				D21EEEEB2A28DB3600957FA7 /* SettingsCell */,
 				D21EEED82A28D27500957FA7 /* ViewController */,
 				D21EEEE72A28D92A00957FA7 /* SettingsViewModel.swift */,
@@ -182,6 +190,23 @@
 				D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */,
 			);
 			path = SettingsCell;
+			sourceTree = "<group>";
+		};
+		D21EEEF22A2A44D600957FA7 /* Apperance */ = {
+			isa = PBXGroup;
+			children = (
+				D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */,
+			);
+			path = Apperance;
+			sourceTree = "<group>";
+		};
+		D21EEEF72A2A498500957FA7 /* Checkbox */ = {
+			isa = PBXGroup;
+			children = (
+				D21EEEF52A2A478000957FA7 /* CheckboxView.swift */,
+				D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */,
+			);
+			path = Checkbox;
 			sourceTree = "<group>";
 		};
 		D227301729C1E25F003787E7 /* SearchMovies */ = {
@@ -543,9 +568,11 @@
 				D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */,
 				D2570BD3294C740200E857FD /* String+Extension.swift in Sources */,
 				D2E5E94329AE0D540024BDE2 /* RealmMovieSearch.swift in Sources */,
+				D21EEEF62A2A478000957FA7 /* CheckboxView.swift in Sources */,
 				D21EEEE82A28D92A00957FA7 /* SettingsViewModel.swift in Sources */,
 				D2E5E94129AE0BA30024BDE2 /* RealmMovie.swift in Sources */,
 				D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */,
+				D21EEEF92A2A49C100957FA7 /* CheckboxButton.swift in Sources */,
 				D2E5E94529AE10ED0024BDE2 /* RealmService.swift in Sources */,
 				D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */,
 				D21EEED62A28D17800957FA7 /* MovieListDelegate.swift in Sources */,
@@ -563,6 +590,7 @@
 				D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */,
 				D2AF0482294891510001C92A /* RequestError.swift in Sources */,
 				D2AF048629489CEA0001C92A /* MovieService.swift in Sources */,
+				D21EEEF42A2A452700957FA7 /* ApperanceViewController.swift in Sources */,
 				D21EEEE62A28D3D800957FA7 /* ProfileCoordinator.swift in Sources */,
 				D2D5E2FE29D498F2005BB3AF /* SearchMoviesViewController.swift in Sources */,
 				D21EEEE12A28D34900957FA7 /* ProfileViewController.swift in Sources */,

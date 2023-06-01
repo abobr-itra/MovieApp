@@ -20,4 +20,10 @@ class SettingsCoordinator: Coordinator {
     let viewController = SettingsViewController(viewModel: viewModel)
     navigationController.pushViewController(viewController, animated: false)
   }
+  
+  // MARK: - Private
+  
+  private func openApperance() {
+    
+  }
 }

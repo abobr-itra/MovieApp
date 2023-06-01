@@ -12,7 +12,7 @@ class SettingViewModel: SettingsViewModelProtocol {
   
   // MARK: - Properties
   
-  private(set) var settingsOptions: [SettingsSection] = [
+  private var settingsOptions: [SettingsSection] = [
     SettingsSection(title: "Basic", options: [
       SettingsOption(title: "Apperance",
                      icon: UIImage(systemName: "paintbrush"),

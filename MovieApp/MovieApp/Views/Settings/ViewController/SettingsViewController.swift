@@ -63,4 +63,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     cell.setup(with: option)
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    viewModel?.option(at: indexPath.row, section: indexPath.section).handler()
+  }
 }
