@@ -61,7 +61,6 @@ class MoviePageViewController: UIViewController, RefreshableViewController {
   // MARK: - Private
   
   private func setupUI() {
-    
     navigationController?.navigationBar.tintColor = .tabBarTintColor
     navigationController?.navigationBar.backItem?.backButtonTitle = ""
     

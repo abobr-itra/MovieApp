@@ -44,18 +44,14 @@ class SearchMoviesViewController: UIViewController, RefreshableViewController {
     actions.do { actions in
       delegate?.actions = .init(openMovie: actions.openMovie)
     }
-    
-    tableView.separatorStyle = .none
-    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
-                       forCellReuseIdentifier: MovieCell.identifier)
+    MovieListStyle.baseMovieListStyle(tableView)
     tableView.dataSource = dataSource
     tableView.delegate = delegate
-    tableView.backgroundColor = Constants.Colors.clear
-    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
   }
 
   private func configureNavBar() {
-    navigationItem.title = "Search Movies"
+    let localizedTitle = "Search Movies".localized()
+    navigationItem.title = localizedTitle
   }
   
   private func fetchMovies(by title: String) {

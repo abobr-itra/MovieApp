@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
   // MARK: - Private
   
   private func setupTableView() {
-    title = "Settings"
+    title = "Settings".localized()
     view.addSubview(tableView)
     tableView.delegate = self
     tableView.dataSource = self

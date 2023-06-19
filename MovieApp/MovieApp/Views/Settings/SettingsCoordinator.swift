@@ -6,6 +6,12 @@ class SettingsCoordinator: Coordinator {
   // MARK: - Properties
   
   var navigationController: UINavigationController
+  private var viewModel: SettingsViewModelProtocol {
+    let viewModelCreator = SettingsViewModelCreator()
+    let viewModel = viewModelCreator.factoryMethod(parser: NetworkParser())
+    viewModel.actions = .init(openLanguages: openLanguages)
+    return viewModel
+  }
   
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
@@ -14,16 +20,19 @@ class SettingsCoordinator: Coordinator {
   // MARK: - Public
   
   func start() {
-    let viewModelCreator = SettingsViewModelCreator()
-    let viewModel = viewModelCreator.factoryMethod(parser: NetworkParser())
-    
     let viewController = SettingsViewController(viewModel: viewModel)
     navigationController.pushViewController(viewController, animated: false)
   }
   
   // MARK: - Private
   
-  private func openApperance() {
-    
+  private func openLanguages() {
+    let viewController = SettingsLanguagesViewController()
+    viewController.data = .init(languages: viewModel.languages,
+                                currentLanguage: viewModel.currentLanguage ?? .english)
+    viewController.actions = .init(select: { language, completion in
+      print("🤡User select \(language)")
+    })
+    navigationController.pushViewController(viewController, animated: false)
   }
 }

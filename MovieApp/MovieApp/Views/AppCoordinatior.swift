@@ -72,7 +72,8 @@ class AppCoordinatior: Coordinator {
   
   private func setupViewController(coordinator: Coordinator, title: String, image: UIImage?) -> UIViewController {
     let viewController = coordinator.navigationController
-    let tabBarItem = UITabBarItem(title: title, image: image, tag: generateTag())
+    let localizedTitle = NSLocalizedString(title, comment: "")
+    let tabBarItem = UITabBarItem(title: localizedTitle, image: image, tag: generateTag())
     viewController.tabBarItem = tabBarItem
     return viewController
   }

@@ -20,6 +20,8 @@
 		D21EEEF42A2A452700957FA7 /* ApperanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */; };
 		D21EEEF62A2A478000957FA7 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF52A2A478000957FA7 /* CheckboxView.swift */; };
 		D21EEEF92A2A49C100957FA7 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */; };
+		D21EEEFB2A41B00B00957FA7 /* MoviesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEFA2A41B00B00957FA7 /* MoviesTableView.swift */; };
+		D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEFC2A41C0FE00957FA7 /* MovieListStyle.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
 		D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */; };
 		D2357DB12949D38A00F6EE12 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DAF2949D38A00F6EE12 /* MovieCell.swift */; };
@@ -38,6 +40,13 @@
 		D261A3952A2898E10021CC3B /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D261A3942A2898E10021CC3B /* JetBrainsMono-Bold.ttf */; };
 		D261A3972A2898FD0021CC3B /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D261A3962A2898FD0021CC3B /* JetBrainsMono-Light.ttf */; };
 		D27004E82A25F49F00072DFF /* MovieListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27004E72A25F49F00072DFF /* MovieListDataSource.swift */; };
+		D28E715F2A4DAB6000CA674E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D28E71612A4DAB6000CA674E /* Localizable.strings */; };
+		D28E71652A4ED52100CA674E /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71642A4ED52100CA674E /* Bundle+Extension.swift */; };
+		D28E716C2A4EDA9800CA674E /* SettingsLanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E716B2A4EDA9800CA674E /* SettingsLanguagesViewController.swift */; };
+		D28E71702A4EE2CF00CA674E /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E716F2A4EE2CF00CA674E /* Dictionary+Extension.swift */; };
+		D28E71732A4EE49500CA674E /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71722A4EE49500CA674E /* SettingsSection.swift */; };
+		D28E71752A4EE50400CA674E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71742A4EE50400CA674E /* Language.swift */; };
+		D28E71782A4EE77E00CA674E /* SettingsLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71772A4EE77E00CA674E /* SettingsLanguageCell.swift */; };
 		D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047529487ACE0001C92A /* NetworkService.swift */; };
 		D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */; };
 		D2AF047B294889F20001C92A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047A294889F20001C92A /* Rating.swift */; };
@@ -82,6 +91,8 @@
 		D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApperanceViewController.swift; sourceTree = "<group>"; };
 		D21EEEF52A2A478000957FA7 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		D21EEEFA2A41B00B00957FA7 /* MoviesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableView.swift; sourceTree = "<group>"; };
+		D21EEEFC2A41C0FE00957FA7 /* MovieListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListStyle.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
 		D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
 		D2357DAF2949D38A00F6EE12 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
@@ -100,6 +111,15 @@
 		D261A3942A2898E10021CC3B /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Bold.ttf"; path = "../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
 		D261A3962A2898FD0021CC3B /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Light.ttf"; path = "../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
 		D27004E72A25F49F00072DFF /* MovieListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDataSource.swift; sourceTree = "<group>"; };
+		D28E71602A4DAB6000CA674E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D28E71622A4DAB6300CA674E /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D28E71632A4DAB6400CA674E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D28E71642A4ED52100CA674E /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		D28E716B2A4EDA9800CA674E /* SettingsLanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLanguagesViewController.swift; sourceTree = "<group>"; };
+		D28E716F2A4EE2CF00CA674E /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		D28E71722A4EE49500CA674E /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		D28E71742A4EE50400CA674E /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		D28E71772A4EE77E00CA674E /* SettingsLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLanguageCell.swift; sourceTree = "<group>"; };
 		D2AF047529487ACE0001C92A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBEndpoint.swift; sourceTree = "<group>"; };
 		D2AF047A294889F20001C92A /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
@@ -146,12 +166,12 @@
 		D21EEED72A28D21000957FA7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D28E71762A4EE6D300CA674E /* SettingsLanguageCell */,
 				D21EEEF72A2A498500957FA7 /* Checkbox */,
 				D21EEEF22A2A44D600957FA7 /* Apperance */,
 				D21EEEEB2A28DB3600957FA7 /* SettingsCell */,
 				D21EEED82A28D27500957FA7 /* ViewController */,
 				D21EEEE72A28D92A00957FA7 /* SettingsViewModel.swift */,
-				D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */,
 				D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */,
 			);
 			path = Settings;
@@ -161,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				D21EEED92A28D29200957FA7 /* SettingsViewController.swift */,
+				D28E716B2A4EDA9800CA674E /* SettingsLanguagesViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -224,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				D227301A29C1E2FD003787E7 /* MovieCell */,
+				D21EEEFA2A41B00B00957FA7 /* MoviesTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +328,8 @@
 				D2357DB42949DBF500F6EE12 /* UIImageView+Extension.swift */,
 				D2357DB62949DC6D00F6EE12 /* Optional+Extension.swift */,
 				D2570BD2294C740200E857FD /* String+Extension.swift */,
+				D28E71642A4ED52100CA674E /* Bundle+Extension.swift */,
+				D28E716F2A4EE2CF00CA674E /* Dictionary+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,13 +359,41 @@
 			children = (
 				D27004E72A25F49F00072DFF /* MovieListDataSource.swift */,
 				D21EEED52A28D17800957FA7 /* MovieListDelegate.swift */,
+				D21EEEFC2A41C0FE00957FA7 /* MovieListStyle.swift */,
 			);
 			path = MovieList;
+			sourceTree = "<group>";
+		};
+		D28E71572A4DAAB600CA674E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D28E71612A4DAB6000CA674E /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D28E71712A4EE47700CA674E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */,
+				D28E71722A4EE49500CA674E /* SettingsSection.swift */,
+				D28E71742A4EE50400CA674E /* Language.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D28E71762A4EE6D300CA674E /* SettingsLanguageCell */ = {
+			isa = PBXGroup;
+			children = (
+				D28E71772A4EE77E00CA674E /* SettingsLanguageCell.swift */,
+			);
+			path = SettingsLanguageCell;
 			sourceTree = "<group>";
 		};
 		D2AF047029487A6E0001C92A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D28E71712A4EE47700CA674E /* Settings */,
 				D2E5E93F29AE0B3E0024BDE2 /* RealmModels */,
 				D2AF047A294889F20001C92A /* Rating.swift */,
 				D2AF047C29488A040001C92A /* Movie.swift */,
@@ -430,6 +482,7 @@
 		D2B0D0272947640B0025B7E7 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				D28E71572A4DAAB600CA674E /* Resources */,
 				D261A3912A2896BB0021CC3B /* Fonts */,
 				D2357DB32949DBD600F6EE12 /* Extensions */,
 				D2AF047329487A950001C92A /* Network */,
@@ -510,6 +563,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				pl,
 			);
 			mainGroup = D2B0D01C2947640B0025B7E7;
 			packageReferences = (
@@ -530,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B0D0352947640E0025B7E7 /* LaunchScreen.storyboard in Resources */,
+				D28E715F2A4DAB6000CA674E /* Localizable.strings in Resources */,
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
 				D2B0D0322947640E0025B7E7 /* Assets.xcassets in Resources */,
@@ -562,8 +618,10 @@
 				D2570BE22951CF9B00E857FD /* SearchMovieCoordinator.swift in Sources */,
 				D2570BD5295070FB00E857FD /* ViewModelFabric.swift in Sources */,
 				D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */,
+				D28E71782A4EE77E00CA674E /* SettingsLanguageCell.swift in Sources */,
 				D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */,
 				D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */,
+				D28E71732A4EE49500CA674E /* SettingsSection.swift in Sources */,
 				D2C79A3C2A2763DC0065DA25 /* RefreshableViewController.swift in Sources */,
 				D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */,
 				D2570BD3294C740200E857FD /* String+Extension.swift in Sources */,
@@ -574,9 +632,11 @@
 				D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */,
 				D21EEEF92A2A49C100957FA7 /* CheckboxButton.swift in Sources */,
 				D2E5E94529AE10ED0024BDE2 /* RealmService.swift in Sources */,
+				D21EEEFB2A41B00B00957FA7 /* MoviesTableView.swift in Sources */,
 				D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */,
 				D21EEED62A28D17800957FA7 /* MovieListDelegate.swift in Sources */,
 				D21EEEE42A28D36B00957FA7 /* ProfileViewModel.swift in Sources */,
+				D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */,
 				D2B0D0292947640B0025B7E7 /* AppDelegate.swift in Sources */,
 				D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */,
 				D2D5E30229D49A47005BB3AF /* MoviePageViewController.swift in Sources */,
@@ -589,9 +649,13 @@
 				D2B0D02B2947640B0025B7E7 /* SceneDelegate.swift in Sources */,
 				D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */,
 				D2AF0482294891510001C92A /* RequestError.swift in Sources */,
+				D28E71752A4EE50400CA674E /* Language.swift in Sources */,
+				D28E71702A4EE2CF00CA674E /* Dictionary+Extension.swift in Sources */,
 				D2AF048629489CEA0001C92A /* MovieService.swift in Sources */,
 				D21EEEF42A2A452700957FA7 /* ApperanceViewController.swift in Sources */,
+				D28E71652A4ED52100CA674E /* Bundle+Extension.swift in Sources */,
 				D21EEEE62A28D3D800957FA7 /* ProfileCoordinator.swift in Sources */,
+				D28E716C2A4EDA9800CA674E /* SettingsLanguagesViewController.swift in Sources */,
 				D2D5E2FE29D498F2005BB3AF /* SearchMoviesViewController.swift in Sources */,
 				D21EEEE12A28D34900957FA7 /* ProfileViewController.swift in Sources */,
 				D2570BCF294C703C00E857FD /* MovieDetails.swift in Sources */,
@@ -602,6 +666,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D28E71612A4DAB6000CA674E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D28E71602A4DAB6000CA674E /* en */,
+				D28E71622A4DAB6300CA674E /* pl */,
+				D28E71632A4DAB6400CA674E /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D2B0D0332947640E0025B7E7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -617,6 +691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -677,6 +752,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
