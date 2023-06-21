@@ -31,7 +31,7 @@ class SettingsLanguagesViewController: UIViewController {
   // MARK: - Private
   
   private func setupTableView() {
-    title = "Locale"
+    title = "Language".localized()
     view.addSubview(tableView)
     tableView.delegate = self
     tableView.dataSource = self
@@ -57,8 +57,10 @@ extension SettingsLanguagesViewController: UITableViewDelegate, UITableViewDataS
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    actions.select(data.languages[indexPath.row]) { result in
+    let language = data.languages[indexPath.row]
+    actions.select(language) { result in
       print(result)
+      tableView.reloadData()
     }
   }
 }
