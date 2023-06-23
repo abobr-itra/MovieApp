@@ -22,7 +22,7 @@ class SettingViewModel: SettingsViewModelProtocol {
                      icon: UIImage(systemName: "paintbrush"),
                      iconBackgroundColor: .systemBlue,
                      handler: {
-                       // TODO: Implement openApperance: method from coordinator
+                       self.actions.openApperance()
                      }),
       SettingsOption(title: "App Icon".localized(),
                      icon: UIImage(systemName: "photo.circle"),
@@ -55,6 +55,7 @@ class SettingViewModel: SettingsViewModelProtocol {
   
   struct Actions {
     var openLanguages: () -> ()
+    var openApperance: () -> ()
   }
   
   var actions: Actions!

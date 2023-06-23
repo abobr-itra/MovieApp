@@ -18,8 +18,6 @@
 		D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */; };
 		D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */; };
 		D21EEEF42A2A452700957FA7 /* ApperanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */; };
-		D21EEEF62A2A478000957FA7 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF52A2A478000957FA7 /* CheckboxView.swift */; };
-		D21EEEF92A2A49C100957FA7 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */; };
 		D21EEEFB2A41B00B00957FA7 /* MoviesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEFA2A41B00B00957FA7 /* MoviesTableView.swift */; };
 		D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EEEFC2A41C0FE00957FA7 /* MovieListStyle.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
@@ -47,6 +45,7 @@
 		D28E71732A4EE49500CA674E /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71722A4EE49500CA674E /* SettingsSection.swift */; };
 		D28E71752A4EE50400CA674E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71742A4EE50400CA674E /* Language.swift */; };
 		D28E71782A4EE77E00CA674E /* SettingsLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71772A4EE77E00CA674E /* SettingsLanguageCell.swift */; };
+		D28E717A2A4F06A800CA674E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71792A4F06A800CA674E /* UIView+Extension.swift */; };
 		D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047529487ACE0001C92A /* NetworkService.swift */; };
 		D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */; };
 		D2AF047B294889F20001C92A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF047A294889F20001C92A /* Rating.swift */; };
@@ -89,8 +88,6 @@
 		D21EEEEC2A28DB6600957FA7 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApperanceViewController.swift; sourceTree = "<group>"; };
-		D21EEEF52A2A478000957FA7 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
-		D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		D21EEEFA2A41B00B00957FA7 /* MoviesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableView.swift; sourceTree = "<group>"; };
 		D21EEEFC2A41C0FE00957FA7 /* MovieListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListStyle.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
@@ -120,6 +117,7 @@
 		D28E71722A4EE49500CA674E /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		D28E71742A4EE50400CA674E /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		D28E71772A4EE77E00CA674E /* SettingsLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLanguageCell.swift; sourceTree = "<group>"; };
+		D28E71792A4F06A800CA674E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D2AF047529487ACE0001C92A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D2AF047729487B4C0001C92A /* OMDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBEndpoint.swift; sourceTree = "<group>"; };
 		D2AF047A294889F20001C92A /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				D28E71762A4EE6D300CA674E /* SettingsLanguageCell */,
-				D21EEEF72A2A498500957FA7 /* Checkbox */,
 				D21EEEF22A2A44D600957FA7 /* Apperance */,
 				D21EEEEB2A28DB3600957FA7 /* SettingsCell */,
 				D21EEED82A28D27500957FA7 /* ViewController */,
@@ -219,15 +216,6 @@
 				D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */,
 			);
 			path = Apperance;
-			sourceTree = "<group>";
-		};
-		D21EEEF72A2A498500957FA7 /* Checkbox */ = {
-			isa = PBXGroup;
-			children = (
-				D21EEEF52A2A478000957FA7 /* CheckboxView.swift */,
-				D21EEEF82A2A49C100957FA7 /* CheckboxButton.swift */,
-			);
-			path = Checkbox;
 			sourceTree = "<group>";
 		};
 		D227301729C1E25F003787E7 /* SearchMovies */ = {
@@ -330,6 +318,7 @@
 				D2570BD2294C740200E857FD /* String+Extension.swift */,
 				D28E71642A4ED52100CA674E /* Bundle+Extension.swift */,
 				D28E716F2A4EE2CF00CA674E /* Dictionary+Extension.swift */,
+				D28E71792A4F06A800CA674E /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -626,11 +615,9 @@
 				D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */,
 				D2570BD3294C740200E857FD /* String+Extension.swift in Sources */,
 				D2E5E94329AE0D540024BDE2 /* RealmMovieSearch.swift in Sources */,
-				D21EEEF62A2A478000957FA7 /* CheckboxView.swift in Sources */,
 				D21EEEE82A28D92A00957FA7 /* SettingsViewModel.swift in Sources */,
 				D2E5E94129AE0BA30024BDE2 /* RealmMovie.swift in Sources */,
 				D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */,
-				D21EEEF92A2A49C100957FA7 /* CheckboxButton.swift in Sources */,
 				D2E5E94529AE10ED0024BDE2 /* RealmService.swift in Sources */,
 				D21EEEFB2A41B00B00957FA7 /* MoviesTableView.swift in Sources */,
 				D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */,
@@ -639,6 +626,7 @@
 				D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */,
 				D2B0D0292947640B0025B7E7 /* AppDelegate.swift in Sources */,
 				D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */,
+				D28E717A2A4F06A800CA674E /* UIView+Extension.swift in Sources */,
 				D2D5E30229D49A47005BB3AF /* MoviePageViewController.swift in Sources */,
 				D2AF047F29488D280001C92A /* NetworkParser.swift in Sources */,
 				D2D5E30529D49D86005BB3AF /* WishlistViewModel.swift in Sources */,

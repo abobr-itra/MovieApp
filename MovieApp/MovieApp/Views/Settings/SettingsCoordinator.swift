@@ -9,7 +9,10 @@ class SettingsCoordinator: Coordinator {
   private var viewModel: SettingsViewModelProtocol {
     let viewModelCreator = SettingsViewModelCreator()
     let viewModel = viewModelCreator.factoryMethod(parser: NetworkParser())
-    viewModel.actions = .init(openLanguages: openLanguages)
+    viewModel.actions = .init(
+      openLanguages: openLanguages,
+      openApperance: openApperance
+    )
     return viewModel
   }
   
@@ -36,6 +39,11 @@ class SettingsCoordinator: Coordinator {
       print(Locale.current.language.languageCode?.identifier)
       completion(.success(()))
     })
+    navigationController.pushViewController(viewController, animated: false)
+  }
+  
+  private func openApperance() {
+    let viewController = ApperanceViewController()
     navigationController.pushViewController(viewController, animated: false)
   }
 }

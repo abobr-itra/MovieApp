@@ -7,7 +7,6 @@ class SettingsLanguageCell: UITableViewCell {
   private let englishNameLabel: UILabel = UILabel()
   private let localNameLabel: UILabel = UILabel()
   private let selectedImageView: UIImageView = UIImageView()
- // private let separator: HairLineView = HairLineView()
 
   override init(style: CellStyle, reuseIdentifier: String?) {
       super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -38,15 +37,11 @@ class SettingsLanguageCell: UITableViewCell {
           selectedImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
           selectedImageView.widthAnchor.constraint(equalToConstant: 24),
           selectedImageView.heightAnchor.constraint(equalToConstant: 24),
-//          separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),
-//          separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//          separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//          separator.heightAnchor.constraint(equalToConstant: 1)
       ])
       englishNameLabel.textColor = .black
       localNameLabel.textColor = .black
-      selectedImageView.image = UIImage(named: "checkmark-large")
-      selectedImageView.tintColor = .blue
+      selectedImageView.image = UIImage(systemName: "checkmark")
+      selectedImageView.tintColor = .orange
       selectionStyle = .none
   }
 

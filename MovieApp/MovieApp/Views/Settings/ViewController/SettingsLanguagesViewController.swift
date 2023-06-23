@@ -24,7 +24,7 @@ class SettingsLanguagesViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
     setupTableView()
   }
   
@@ -52,7 +52,7 @@ extension SettingsLanguagesViewController: UITableViewDelegate, UITableViewDataS
     }
     let language = data.languages[indexPath.row]
     cell.configure(title: language.localName, subtitle: "language")
-    
+    cell.updateSemanticContentAttribute(localization: data.currentLanguage.rawValue)
     return cell
   }
   
