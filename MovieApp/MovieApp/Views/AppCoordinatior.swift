@@ -45,13 +45,13 @@ class AppCoordinatior: Coordinator {
     let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController())
 
     let searchVC = setupViewController(coordinator: searchMovieCoordinator,
-                                       title: "Search",
+                                       title: "Search".localized(),
                                        image: Constants.TabBar.searchImage)
     let wishlistVC = setupViewController(coordinator: wishlistCoordinator,
-                                         title: "Wishlist",
+                                         title: "Wishlist".localized(),
                                          image: Constants.TabBar.wishlistImage)
     let settingsVC = setupViewController(coordinator: settingsCoordinator,
-                                         title: "Settings",
+                                         title: "Settings".localized(),
                                          image: Constants.TabBar.settingsImage)
     
     
