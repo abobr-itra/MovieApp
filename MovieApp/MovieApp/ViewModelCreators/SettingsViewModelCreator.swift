@@ -5,6 +5,6 @@ class SettingsViewModelCreator: ViewModelCreatorProtocol {
     typealias ViewModel = SettingViewModel
     
     func factoryMethod(parser: NetworkPaserProtocol) -> SettingViewModel {
-        return SettingViewModel()
+        SettingViewModel()
     }
 }

@@ -11,7 +11,6 @@ class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
     @Persisted var plot: String?
     
     convenience init(from movie: Movie) {
-        
         self.init()
         
         self.title = movie.title
@@ -22,7 +21,6 @@ class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
     }
     
     convenience init(from movieDetails: MovieDetails) {
-        
         self.init()
         
         self.title = movieDetails.title

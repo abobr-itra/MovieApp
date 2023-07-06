@@ -40,7 +40,6 @@ class RealmService: RealmServiceProtocol {
         }
     }
     
-    
     func deleteMovie(by id: String) {
         DispatchQueue.main.async {
             print("🌎 Start deleting \(id)")

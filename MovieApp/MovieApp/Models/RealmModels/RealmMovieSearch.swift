@@ -6,7 +6,6 @@ class RealmMovieSearch: Object {
     @Persisted var movies: List<RealmMovie>
     
     convenience init(from movies: MovieSearch) {
-        
         self.init()
         
         for movie in movies.search {

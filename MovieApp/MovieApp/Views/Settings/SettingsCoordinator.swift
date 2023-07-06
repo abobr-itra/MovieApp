@@ -35,7 +35,6 @@ class SettingsCoordinator: CoordinatorProtocol {
         viewController.actions = .init(select: { language, completion in
             print(language.rawValue)
             Bundle.setLanguage(lang: language.rawValue)
-            print(Locale.current.language.languageCode?.identifier)
             completion(.success(()))
         })
         navigationController.pushViewController(viewController, animated: false)
