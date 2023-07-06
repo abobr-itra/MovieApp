@@ -1,7 +1,7 @@
 import UIKit
 
 struct SettingsSection {
-  
-  let title: String
-  let options: [SettingsOption]
+    
+    let title: String
+    let options: [SettingsOption]
 }

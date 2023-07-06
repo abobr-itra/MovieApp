@@ -1,18 +1,18 @@
 import UIKit
 
 class SpinnerViewController: UIViewController {
-  
-  var spinner = UIActivityIndicatorView(style: .large)
-  
-  override func loadView() {
-    view = UIView()
-    view.backgroundColor = .clear
     
-    spinner.translatesAutoresizingMaskIntoConstraints = false
-    spinner.startAnimating()
-    view.addSubview(spinner)
+    var spinner = UIActivityIndicatorView(style: .large)
     
-    spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-  }
+    override func loadView() {
+        view = UIView()
+        view.backgroundColor = .clear
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+        
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
 }
