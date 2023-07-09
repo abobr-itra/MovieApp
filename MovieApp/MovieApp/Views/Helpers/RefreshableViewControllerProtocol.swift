@@ -1,6 +1,6 @@
 import UIKit
 
-protocol RefreshableViewControllerProtocol: UIViewController  {
+protocol RefreshableViewControllerProtocol: UIViewController {
     
     var spinner: SpinnerViewController { get set }
     func showSpinner()

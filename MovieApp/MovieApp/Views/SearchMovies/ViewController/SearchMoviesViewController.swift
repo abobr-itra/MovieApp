@@ -4,8 +4,8 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     
     // MARK: - Properties
     
-    @IBOutlet weak var tableView: UITableView!
-    private var dataSource: MoiveListDatsSource?
+    @IBOutlet private weak var tableView: UITableView!
+    private var dataSource: MoiveListDataSource?
     private var delegate: MovieListDelegate?
     
     private var viewModel: SearchMovieViewModelProtocol?
@@ -23,7 +23,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
         self.init(nibName: nil, bundle: nil)
         
         self.viewModel = viewModel
-        dataSource = MoiveListDatsSource(viewModel: viewModel)
+        dataSource = MoiveListDataSource(viewModel: viewModel)
         delegate = MovieListDelegate(viewModel: viewModel)
     }
     
@@ -48,7 +48,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
         tableView.dataSource = dataSource
         tableView.delegate = delegate
     }
-    
+
     private func configureNavBar() {
         let localizedTitle = "Search Movies".localized()
         navigationItem.title = localizedTitle

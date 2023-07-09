@@ -8,6 +8,9 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     
     private var dataService: RealmServiceProtocol
     private(set) var moviesDB: [RealmMovie] = []
+    var moviesCount: Int {
+        return moviesDB.count
+    }
     
     init(dataService: RealmServiceProtocol) {
         self.dataService = dataService
@@ -35,9 +38,5 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     
     func movie(at index: Int) -> MovieModelProtocol {
         moviesDB[index]
-    }
-    
-    func moviesCount() -> Int {
-        moviesDB.count
     }
 }

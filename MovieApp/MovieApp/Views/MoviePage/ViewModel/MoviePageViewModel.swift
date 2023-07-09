@@ -5,7 +5,7 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
     // MARK: - Properties
     
     var onDataLoaded: (() -> Void)?
-    private var movieDetails: MovieDetails?
+    private(set) var movieDetails: MovieDetails?
     private let movieService: MovieServiceProtocol
     private let dataService: RealmServiceProtocol
     
@@ -15,10 +15,6 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
     }
     
     // MARK: - Public
-    
-    func getMovieDetails() -> MovieDetails? {
-        movieDetails
-    }
     
     func fetchMovieDetails(by id: String) {
         movieService.fetchMovieDetails(by: id) { [weak self] result in

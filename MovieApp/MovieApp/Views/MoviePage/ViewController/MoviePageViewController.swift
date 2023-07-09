@@ -43,7 +43,7 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
         showSpinner()
         viewModel?.onDataLoaded = { [weak self] in
             DispatchQueue.main.async {
-                guard let data = self?.viewModel?.getMovieDetails() else {
+                guard let data = self?.viewModel?.movieDetails else {
                     return
                 }
                 

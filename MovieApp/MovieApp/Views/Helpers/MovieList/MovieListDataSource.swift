@@ -1,6 +1,6 @@
 import UIKit
 
-class MoiveListDatsSource: NSObject, UITableViewDataSource {
+class MoiveListDataSource: NSObject, UITableViewDataSource {
     
     private var viewModel: MovieViewModelProtocol
     
@@ -9,7 +9,7 @@ class MoiveListDatsSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.moviesCount()
+        viewModel.moviesCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -17,7 +17,7 @@ class MoiveListDatsSource: NSObject, UITableViewDataSource {
             return UITableViewCell()
         }
         let movie = viewModel.movie(at: indexPath.row)
-        cell.setUp(from: movie)
+        cell.setUp(with: movie)
         return cell
     }
 }

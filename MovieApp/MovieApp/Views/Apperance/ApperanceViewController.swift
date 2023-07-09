@@ -17,12 +17,16 @@ class ApperanceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        setupView()
         setupSwitch()
         setupTableView()
     }
     
     // MARK: - Private
+    
+    private func setupView() {
+        view.backgroundColor = .systemBackground
+    }
     
     private func setupTableView() {
         title = "Settings".localized()

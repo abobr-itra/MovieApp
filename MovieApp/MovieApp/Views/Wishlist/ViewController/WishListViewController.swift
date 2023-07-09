@@ -4,8 +4,8 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     
     // MARK: - Properties
     
-    @IBOutlet weak var tableView: UITableView!
-    private var dataSource: MoiveListDatsSource?
+    @IBOutlet private weak var tableView: UITableView!
+    private var dataSource: MoiveListDataSource?
     private var delegate: MovieListDelegate?
     
     private var viewModel: WishlistViewModelProtocol?
@@ -22,19 +22,23 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
         self.init(nibName: nil, bundle: nil)
         
         self.viewModel = viewModel
-        dataSource = MoiveListDatsSource(viewModel: viewModel)
+        dataSource = MoiveListDataSource(viewModel: viewModel)
         delegate = MovieListDelegate(viewModel: viewModel)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBarController?.delegate = self
+        setupTabBar()
         setupTableView()
         loadWishlist()
     }
     
     // MARK: - Private
+    
+    private func setupTabBar() {
+        tabBarController?.delegate = self
+    }
     
     private func setupTableView() {    
         actions.do { actions in

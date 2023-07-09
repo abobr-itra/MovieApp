@@ -6,9 +6,9 @@ class SettingsLanguageCell: UITableViewCell {
     
     static let identifier = "SettingsLanguageCell"
     
-    private let englishNameLabel: UILabel = UILabel()
-    private let localNameLabel: UILabel = UILabel()
-    private let selectedImageView: UIImageView = UIImageView()
+    private let englishNameLabel = UILabel()
+    private let localNameLabel = UILabel()
+    private let selectedImageView = UIImageView()
     
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)

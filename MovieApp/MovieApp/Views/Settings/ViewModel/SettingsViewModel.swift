@@ -4,13 +4,17 @@ class SettingViewModel: SettingsViewModelProtocol {
     
     // MARK: - Properties
     
+    var sectionsCount: Int {
+        return settingsOptions.count
+    }
+    
     lazy private var settingsOptions: [SettingsSection] = [
         SettingsSection(title: "Basic".localized(), options: [
             SettingsOption(title: "Apperance".localized(),
                            icon: UIImage(systemName: "paintbrush"),
                            iconBackgroundColor: .systemBlue,
                            handler: {
-                               self.actions.openApperance()
+                               self.actions?.openApperance()
                            }),
             SettingsOption(title: "App Icon".localized(),
                            icon: UIImage(systemName: "photo.circle"),
@@ -22,7 +26,7 @@ class SettingViewModel: SettingsViewModelProtocol {
                            icon: UIImage(systemName: "character.bubble"),
                            iconBackgroundColor: .systemTeal,
                            handler: {
-                               self.actions.openLanguages()
+                               self.actions?.openLanguages()
                            })
         ]),
         SettingsSection(title: "Privacy".localized(), options: [
@@ -46,7 +50,7 @@ class SettingViewModel: SettingsViewModelProtocol {
         var openApperance: () -> ()
     }
     
-    var actions: Actions!
+    var actions: Actions?
     
     var languages: [Language] = [.english, .polish, .russian]
     var currentLanguage: Language? {
@@ -56,11 +60,7 @@ class SettingViewModel: SettingsViewModelProtocol {
     
     // MARK: - Public
     
-    func sectionsCount() -> Int {
-        settingsOptions.count
-    }
-    
-    func optionsCount(section: Int) -> Int {
+    func optionsCount(in section: Int) -> Int {
         settingsOptions[section].options.count
     }
     

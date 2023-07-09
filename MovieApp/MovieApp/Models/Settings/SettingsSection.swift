@@ -1,5 +1,3 @@
-import UIKit
-
 struct SettingsSection {
     
     let title: String

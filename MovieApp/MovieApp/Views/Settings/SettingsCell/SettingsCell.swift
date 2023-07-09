@@ -30,13 +30,7 @@ class SettingsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(label)
-        contentView.addSubview(iconContainer)
-        iconContainer.addSubview(iconImageView)
-        
-        contentView.clipsToBounds = true
-        
-        accessoryType = .disclosureIndicator
+        setupCellUI()
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +40,38 @@ class SettingsCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        setupFrame()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        label.text = nil
+        iconImageView.image = nil
+        iconContainer.backgroundColor = nil
+    }
+    
+    // MARK: - Public
+    
+    public func setup(with option: SettingsOption) {
+        label.text = option.title
+        iconImageView.image = option.icon
+        iconContainer.backgroundColor = option.iconBackgroundColor
+    }
+    
+    // MARK: - Private
+    
+    private func setupCellUI() {
+        contentView.addSubview(label)
+        contentView.addSubview(iconContainer)
+        iconContainer.addSubview(iconImageView)
+        
+        contentView.clipsToBounds = true
+        
+        accessoryType = .disclosureIndicator
+    }
+    
+    private func setupFrame() {
         let containerSize = contentView.frame.size.height - 12
         iconContainer.frame = CGRect(x: 15,
                                      y: 6,
@@ -65,21 +91,5 @@ class SettingsCell: UITableViewCell {
                              y: 0,
                              width: labelWidth,
                              height: labelHeight)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        label.text = nil
-        iconImageView.image = nil
-        iconContainer.backgroundColor = nil
-    }
-    
-    // MARK: - Public
-    
-    public func setup(with option: SettingsOption) {
-        label.text = option.title
-        iconImageView.image = option.icon
-        iconContainer.backgroundColor = option.iconBackgroundColor
     }
 }

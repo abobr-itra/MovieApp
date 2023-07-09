@@ -4,9 +4,13 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     
     // MARK: - Properties
     
-    var onDataLoaded: (() -> Void)?
     private let movieService: MovieServiceProtocol
+    
+    var onDataLoaded: (() -> Void)?
     private(set) var movies: [Movie] = []
+    var moviesCount: Int {
+        return movies.count
+    }
     
     init(movieService: MovieServiceProtocol) {
         self.movieService = movieService
@@ -16,10 +20,6 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     
     func movie(at index: Int) -> MovieModelProtocol {
         movies[index]
-    }
-    
-    func moviesCount() -> Int {
-        movies.count
     }
     
     func fetchMovies(by title: String) {

@@ -46,11 +46,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel?.sectionsCount() ?? 0
+        viewModel?.sectionsCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.optionsCount(section: section) ?? 0
+        viewModel?.optionsCount(in: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

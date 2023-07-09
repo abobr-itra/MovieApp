@@ -13,8 +13,8 @@ class SettingsLanguagesViewController: UIViewController {
         var select: (Language, @escaping (Result<Void, Error>) -> Void) -> Void
     }
     
-    var data: Data!
-    var actions: Actions!
+    var data: Data?
+    var actions: Actions?
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -27,11 +27,15 @@ class SettingsLanguagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        setupView()
         setupTableView()
     }
     
     // MARK: - Private
+    
+    private func setupView() {
+        view.backgroundColor = .systemBackground
+    }
     
     private func setupTableView() {
         title = "Language".localized()
@@ -40,18 +44,18 @@ class SettingsLanguagesViewController: UIViewController {
         tableView.dataSource = self
         tableView.frame = view.bounds
     }
-    
 }
 
 extension SettingsLanguagesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.languages.count
+        data?.languages.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsLanguageCell.identifier,
-                                                       for: indexPath) as? SettingsLanguageCell else {
+                                                       for: indexPath) as? SettingsLanguageCell,
+              let data = data else {
             return UITableViewCell()
         }
         let language = data.languages[indexPath.row]
@@ -61,9 +65,9 @@ extension SettingsLanguagesViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let data = data else { return }
         let language = data.languages[indexPath.row]
-        actions.select(language) { result in
-            print(result)
+        actions?.select(language) { _ in
             tableView.reloadData()
         }
     }

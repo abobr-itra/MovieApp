@@ -4,7 +4,7 @@ protocol MoviePageViewModelProtocol {
     
     var onDataLoaded: (() -> Void)? { get set }
     
-    func getMovieDetails() -> MovieDetails?
+    var movieDetails: MovieDetails? { get }
     func fetchMovieDetails(by id: String)
     
     func saveCurrentMovie()
