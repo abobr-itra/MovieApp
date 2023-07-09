@@ -31,7 +31,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
         
         setupTabBar()
         setupTableView()
-        loadWishlist()
+        setupViewModel()
     }
     
     // MARK: - Private
@@ -50,7 +50,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
         tableView.delegate = delegate
     }
     
-    private func loadWishlist() {
+    private func setupViewModel() {
         viewModel?.onLoading = { isLoading in
             if isLoading {
                 self.showSpinner()
@@ -63,7 +63,6 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
                 self?.tableView.reloadData()
             }
         }
-        viewModel?.loadWishlist()
     }
 }
 
@@ -71,7 +70,7 @@ extension WishListViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         DispatchQueue.main.async {
-            self.loadWishlist()
+            self.viewModel?.loadWishlist()
         }
     }
 }

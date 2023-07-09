@@ -24,7 +24,7 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
         movies[index]
     }
     
-    func fetchMovies(by title: String) {
+    func searchMovies(by title: String) {
         onLoading?(true)
         movieService.fetchMovies(by: title) { [weak self] result in
             DispatchQueue.main.async {

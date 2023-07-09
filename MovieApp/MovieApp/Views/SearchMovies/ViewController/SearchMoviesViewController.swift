@@ -35,7 +35,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
         configureSearchBar()
         configureNavBar()
         setupTableView()
-        fetchMovies(by: "Pulp Fiction")
+        setupViewModel()
     }
     
     // MARK: - Private
@@ -54,7 +54,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
         navigationItem.title = localizedTitle
     }
     
-    private func fetchMovies(by title: String) {
+    private func setupViewModel() {
         viewModel?.onLoading = { [weak self] isLoading in
             if isLoading {
                 self?.showSpinner()
@@ -68,7 +68,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
                 self?.tableView.reloadData()
             }
         }
-        viewModel?.fetchMovies(by: title)
     }
     
     private func configureSearchBar() {
@@ -83,6 +82,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
 extension SearchMoviesViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        fetchMovies(by: searchBar.text ?? "")
+        viewModel?.searchMovies(by: searchBar.text ?? "")
     }
 }

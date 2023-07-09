@@ -13,7 +13,7 @@ class WishlistCoordinator: CoordinatorProtocol {
     func start() {
         let viewModelFabric = WishlistViewModelCreator()
         let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
-        
+        viewModel.loadWishlist()
         let viewController = WishListViewController(viewModel: viewModel)
         viewController.actions = .init(openMovie: openMovie)
         
