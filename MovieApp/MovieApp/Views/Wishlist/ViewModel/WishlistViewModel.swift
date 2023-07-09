@@ -5,6 +5,7 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     // MARK: - Properties
     
     var onDataLoaded: (() -> Void)?
+    var onLoading: ((Bool) -> Void)?
     
     private var dataService: RealmServiceProtocol
     private(set) var moviesDB: [RealmMovie] = []
@@ -19,8 +20,12 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     // MARK: - Public
     
     func loadWishlist() {
+        onLoading?(true)
         DispatchQueue.global().async {
             self.dataService.getAllMovies { result in
+                DispatchQueue.main.async {
+                    self.onLoading?(false)
+                }
                 switch result {
                 case .success(let data):
                     self.moviesDB = data

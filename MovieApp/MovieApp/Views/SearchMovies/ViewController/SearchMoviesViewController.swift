@@ -55,13 +55,19 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     }
     
     private func fetchMovies(by title: String) {
+        viewModel?.onLoading = { [weak self] isLoading in
+            if isLoading {
+                self?.showSpinner()
+            } else {
+                self?.hideSpinner()
+            }
+        }
+        
         viewModel?.onDataLoaded = { [weak self] in
             DispatchQueue.main.async {
-                self?.hideSpinner()
                 self?.tableView.reloadData()
             }
         }
-        showSpinner()
         viewModel?.fetchMovies(by: title)
     }
     

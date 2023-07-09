@@ -6,7 +6,6 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     
     private var viewModel: MoviePageViewModelProtocol?
     var spinner: SpinnerViewController = SpinnerViewController()
-    var movieID: String?
     
     @IBOutlet private weak var moviePoster: UIImageView?
     @IBOutlet private weak var movieTitle: UILabel?
@@ -24,7 +23,8 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
         super.viewDidLoad()
         
         setupUI()
-        loadData()
+        setupViewModel()
+        viewModel?.viewDidLoad()
     }
     
     // MARK: - @IBAction
@@ -39,8 +39,14 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     
     // MARK: - Public
     
-    func loadData() {
-        showSpinner()
+    func setupViewModel() {
+        viewModel?.onLoading = { isLoading in
+            if isLoading {
+                self.showSpinner()
+            } else {
+                self.hideSpinner()
+            }
+        }
         viewModel?.onDataLoaded = { [weak self] in
             DispatchQueue.main.async {
                 guard let data = self?.viewModel?.movieDetails else {
@@ -52,10 +58,8 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
                 self?.movieDescription?.text = data.plot
                 
                 self?.view.layoutIfNeeded()
-                self?.hideSpinner()
             }
         }
-        viewModel?.fetchMovieDetails(by: self.movieID ?? "")
     }
     
     // MARK: - Private

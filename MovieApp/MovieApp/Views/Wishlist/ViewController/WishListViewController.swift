@@ -51,11 +51,16 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     }
     
     private func loadWishlist() {
-        showSpinner()
+        viewModel?.onLoading = { isLoading in
+            if isLoading {
+                self.showSpinner()
+            } else {
+                self.hideSpinner()
+            }
+        }
         viewModel?.onDataLoaded = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
-                self?.hideSpinner()
             }
         }
         viewModel?.loadWishlist()

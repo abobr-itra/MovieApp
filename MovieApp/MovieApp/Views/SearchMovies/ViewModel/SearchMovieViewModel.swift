@@ -7,6 +7,8 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     private let movieService: MovieServiceProtocol
     
     var onDataLoaded: (() -> Void)?
+    var onLoading: ((Bool) -> Void)?
+    
     private(set) var movies: [Movie] = []
     var moviesCount: Int {
         return movies.count
@@ -23,7 +25,11 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     }
     
     func fetchMovies(by title: String) {
+        onLoading?(true)
         movieService.fetchMovies(by: title) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.onLoading?(false)
+            }
             switch result {
             case .success(let data):
                 self?.movies = data.search
