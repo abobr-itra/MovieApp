@@ -1,10 +1,12 @@
 import Foundation
+import Combine
 
 class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol {
     
     // MARK: - Properties
     
     private let movieService: MovieServiceProtocol
+    private var subscriptions = Set<AnyCancellable>()
     
     var onDataLoaded: (() -> Void)?
     var onLoading: ((Bool) -> Void)?
@@ -26,17 +28,20 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     
     func searchMovies(by title: String) {
         onLoading?(true)
-        movieService.fetchMovies(by: title) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.onLoading?(false)
+        movieService.fetchMovies(by: title)
+            .sink { _ in
+                DispatchQueue.main.async {
+                    self.onLoading?(false)
+                }
+                print("Recived Completion✅")
+            } receiveValue: { searchData in
+                DispatchQueue.main.async {
+                    self.onLoading?(false)
+                }
+                print("Movies✅: \(searchData)")
+                self.movies = searchData.search
+                self.onDataLoaded?()
             }
-            switch result {
-            case .success(let data):
-                self?.movies = data.search
-                self?.onDataLoaded?()
-            case .failure(let error):
-                print("Some error occured : \(error)")
-            }
-        }
+            .store(in: &subscriptions)
     }
 }

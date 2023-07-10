@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 class NetworkService: NetworkServiceProtocol {
     
@@ -40,5 +41,35 @@ class NetworkService: NetworkServiceProtocol {
             }
         }
         urlTask.resume()
+    }
+    
+    // Combine analogue
+    // FIXME: Replace "any Error" with RequestError
+    func getData<T: Decodable>(from url: URL, type: T.Type) -> AnyPublisher<T, RequestError> {
+        URLSession.shared
+            .dataTaskPublisher(for: url)
+            .tryMap({ output in
+                guard let response = output.response as? HTTPURLResponse,
+                      response.statusCode == 200 else { throw RequestError.serverError }
+                
+                let decodedData: Result<T, Error> = self.parser.decode(output.data)
+                switch decodedData {
+                case .failure:
+                    throw RequestError.dataDecodingError
+                case .success(let data):
+                    return data
+                }
+            })
+            .mapError({ error in
+                switch error {
+                case is DecodingError:
+                    return RequestError.dataDecodingError
+                case is URLError:
+                    return RequestError.serverError
+                default:
+                    return RequestError.noData
+                }
+            })
+            .eraseToAnyPublisher()
     }
 }

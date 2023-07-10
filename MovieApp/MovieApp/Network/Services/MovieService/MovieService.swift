@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 class MovieService: MovieServiceProtocol {
     
@@ -15,6 +16,12 @@ class MovieService: MovieServiceProtocol {
     func fetchMovies(by title: String, completion: @escaping (Result<MovieSearch, RequestError>) -> Void) {
         let url = OMDBEndpoint.bySearch(title).url
         networkService.getData(from: url, resultHandler: completion)
+    }
+    
+    // Combine anologue
+    func fetchMovies(by title: String) -> AnyPublisher<MovieSearch, RequestError> {
+        let url = OMDBEndpoint.bySearch(title).url
+        return networkService.getData(from: url, type: MovieSearch.self)
     }
     
     func fetchMovieDetails(by id: String, completion: @escaping (Result<MovieDetails, RequestError>) -> Void) {
