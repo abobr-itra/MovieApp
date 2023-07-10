@@ -1,81 +1,76 @@
 import UIKit
 
-class WishListViewController: UIViewController {
-  
-  // MARK: IBOutlets
-  
-  @IBOutlet private weak var tableView: UITableView!
-  private var viewModel: WishlistViewModelProtocol?
-  
-  struct Actions {
-    var openMovie: (_ movieID: String) -> Void
-  }
-  
-  var actions: Actions?
-  
-  convenience init(viewModel: WishlistViewModelProtocol) {
-    self.init(nibName: nil, bundle: nil)
-    print("♦️WishlistViewModelProtocol init viewModel:", viewModel)
-    self.viewModel = viewModel
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.tabBarController?.delegate = self
-    setUpTableView()
-    loadWishlist()
-  }
-  
-  // MARK: - Private
-  
-  private func loadWishlist() {
-    viewModel?.onDataLoaded = { [weak self] in
-      DispatchQueue.main.async {
-        self?.tableView.reloadData()
-      }
-    }
-    viewModel?.loadWishlist()
-  }
-  
-  private func setUpTableView() {
-    guard let tableView = tableView else { return }
-    view.addSubview(tableView)
-    tableView.backgroundColor = Constants.Colors.clear
-    tableView.rowHeight = Constants.Sizes.tableViewRowStandart
+class WishListViewController: UIViewController, RefreshableViewControllerProtocol {
     
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.register(UINib(nibName: MovieCell.identifier, bundle: nil),
-                       forCellReuseIdentifier: MovieCell.identifier)
-  }
-}
-
-extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
-
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel?.getMovies().count ?? 0
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as? MovieCell else {
-      return UITableViewCell()
+    // MARK: - Properties
+    
+    @IBOutlet private weak var tableView: UITableView!
+    private var dataSource: MoiveListDataSource?
+    private var delegate: MovieListDelegate?
+    
+    private var viewModel: WishlistViewModelProtocol?
+    var spinner: SpinnerViewController = SpinnerViewController()
+    
+    struct Actions {
+        
+        var openMovie: (_ movieID: String) -> Void
     }
-    let movie = self.viewModel?.movie(at: indexPath.row)
-    cell.setUp(from: movie)
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let movie = viewModel?.movie(at: indexPath.row)
-    self.actions?.openMovie(movie?.imdbID ?? "")
-  }
+    
+    var actions: Actions?
+    
+    convenience init(viewModel: WishlistViewModelProtocol) {
+        self.init(nibName: nil, bundle: nil)
+        
+        self.viewModel = viewModel
+        dataSource = MoiveListDataSource(viewModel: viewModel)
+        delegate = MovieListDelegate(viewModel: viewModel)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupTabBar()
+        setupTableView()
+        setupViewModel()
+    }
+    
+    // MARK: - Private
+    
+    private func setupTabBar() {
+        tabBarController?.delegate = self
+    }
+    
+    private func setupTableView() {    
+        actions.do { actions in
+            delegate?.actions = .init(openMovie: actions.openMovie)
+        }
+        
+        MovieListStyle.baseMovieListStyle(tableView)
+        tableView.dataSource = dataSource
+        tableView.delegate = delegate
+    }
+    
+    private func setupViewModel() {
+        viewModel?.onLoading = { isLoading in
+            if isLoading {
+                self.showSpinner()
+            } else {
+                self.hideSpinner()
+            }
+        }
+        viewModel?.onDataLoaded = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension WishListViewController: UITabBarControllerDelegate {
-  
-  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-    DispatchQueue.main.async {
-      self.loadWishlist()
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        DispatchQueue.main.async {
+            self.viewModel?.loadWishlist()
+        }
     }
-  }
 }
