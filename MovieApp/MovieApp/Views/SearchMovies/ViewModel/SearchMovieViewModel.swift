@@ -33,7 +33,7 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
                 DispatchQueue.main.async {
                     self.onLoading?(false)
                 }
-                print("Recived Completion✅")
+                print("Recived SearchMovies Completion✅")
             } receiveValue: { searchData in
                 DispatchQueue.main.async {
                     self.onLoading?(false)

@@ -28,4 +28,10 @@ class MovieService: MovieServiceProtocol {
         let url = OMDBEndpoint.byID(id).url
         networkService.getData(from: url, resultHandler: completion)
     }
+    
+    // Combine analogue
+    func fetchMovieDetails(by id: String) -> AnyPublisher<MovieDetails, RequestError> {
+        let url = OMDBEndpoint.byID(id).url
+        return networkService.getData(from: url, type: MovieDetails.self)
+    }
 }

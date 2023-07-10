@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 class MoviePageViewModel: MoviePageViewModelProtocol {
     
@@ -6,6 +7,8 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
     
     var onDataLoaded: (() -> Void)?
     var onLoading: ((Bool) -> Void)?
+    
+    private var subscriptions = Set<AnyCancellable>()
     private(set) var movieDetails: MovieDetails?
     private let movieService: MovieServiceProtocol
     private let dataService: RealmServiceProtocol
@@ -39,17 +42,20 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
     
     private func fetchMovieDetails() {
         onLoading?(true)
-        movieService.fetchMovieDetails(by: imdbID) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.onLoading?(false)
+        movieService.fetchMovieDetails(by: imdbID)
+            .sink { _ in
+                DispatchQueue.main.async {
+                    self.onLoading?(false)
+                }
+                print("Recived MovieDetails Completion✅")
+            } receiveValue: { movieDetails in
+                DispatchQueue.main.async {
+                    self.onLoading?(false)
+                }
+                print("MovieDetails✅: \(movieDetails)")
+                self.movieDetails = movieDetails
+                self.onDataLoaded?()
             }
-            switch result {
-            case .success(let data):
-                self?.movieDetails = data
-                self?.onDataLoaded?()
-            case .failure(let error):
-                print("Some error occured : \(error)")
-            }
-        }
+            .store(in: &subscriptions)
     }
 }
