@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class SearchMoviesViewController: UIViewController, RefreshableViewControllerProtocol {
     
@@ -9,6 +10,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     private var delegate: MovieListDelegate?
     
     private var viewModel: SearchMovieViewModelProtocol?
+    private var subscriptions = Set<AnyCancellable>()
     private let searchController = UISearchController(searchResultsController: nil)
     var spinner: SpinnerViewController = SpinnerViewController()
     
@@ -68,12 +70,29 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
                 self?.tableView.reloadData()
             }
         }
+        
+        viewModel?.viewDidLoad()
     }
     
     private func configureSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         searchController.searchBar.delegate = self
+        bind()
+    }
+    
+    private func bind() {
+        let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: searchController.searchBar.searchTextField)
+        publisher
+            .compactMap { ($0.object as? UISearchTextField)?.text }
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .sink { movieTitle in
+                print("MovieTitle: \(movieTitle)")
+                self.viewModel?.movieTitle = movieTitle
+                self.viewModel?.searchMovies(by: movieTitle)
+            }
+            .store(in: &subscriptions)
+        
     }
 }
 
@@ -82,6 +101,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
 extension SearchMoviesViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel?.searchMovies(by: searchBar.text ?? "")
+    //    viewModel?.searchMovies(by: searchBar.text ?? "")
     }
 }

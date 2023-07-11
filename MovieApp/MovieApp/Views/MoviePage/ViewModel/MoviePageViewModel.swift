@@ -1,18 +1,20 @@
 import Foundation
 import Combine
 
-class MoviePageViewModel: MoviePageViewModelProtocol {
+class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     
     // MARK: - Properties
     
     var onDataLoaded: (() -> Void)?
     var onLoading: ((Bool) -> Void)?
     
-    private var subscriptions = Set<AnyCancellable>()
-    private(set) var movieDetails: MovieDetails?
     private let movieService: MovieServiceProtocol
     private let dataService: RealmServiceProtocol
-    var imdbID: String = ""
+
+    @Published private(set) var movieDetails: MovieDetails?
+    @Published var imdbID: String = ""
+
+    private var subscriptions = Set<AnyCancellable>()
     
     init(movieService: MovieServiceProtocol, dataService: RealmServiceProtocol) {
         self.movieService = movieService
