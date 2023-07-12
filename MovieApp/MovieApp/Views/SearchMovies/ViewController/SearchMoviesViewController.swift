@@ -40,12 +40,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
         setupViewModel()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        viewModel?.viewDidAppear()
-    }
-    
     // MARK: - Private
     
     private func setupTableView() {
@@ -98,15 +92,11 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     private func bind() {
         let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification,
                                                              object: searchController.searchBar.searchTextField)
-      //  viewModel?.bindMovieTitle(publisher: publisher)
+        guard let viewModel = viewModel as? SearchMovieViewModel else { return }
         publisher
             .compactMap { ($0.object as? UISearchTextField)?.text }
             .debounce(for: 0.3, scheduler: RunLoop.main)
-            .sink { movieTitle in
-                print("MovieTitle: \(movieTitle)")
-                self.viewModel?.movieTitle = movieTitle
-                self.viewModel?.searchMovies(by: movieTitle)
-            }
+            .assign(to: \.movieTitle, on: viewModel)
             .store(in: &subscriptions)
     }
 }

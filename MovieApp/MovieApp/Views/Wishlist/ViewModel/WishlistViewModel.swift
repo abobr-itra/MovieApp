@@ -1,16 +1,17 @@
 import Foundation
+import Combine
 
 class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     
     // MARK: - Properties
-    
-    var onDataLoaded: (() -> Void)?
-    var onLoading: ((Bool) -> Void)?
+
+    @Published var isDataLoaded = false
+    @Published var isLoading = false
     
     private var dataService: RealmServiceProtocol
     private(set) var moviesDB: [RealmMovie] = []
     var moviesCount: Int {
-        return moviesDB.count
+        moviesDB.count
     }
     
     init(dataService: RealmServiceProtocol) {
@@ -20,16 +21,15 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     // MARK: - Public
     
     func loadWishlist() {
-        onLoading?(true)
+        isLoading = true
+        isDataLoaded = false
         DispatchQueue.global().async {
             self.dataService.getAllMovies { result in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
+                self.isLoading = false
                 switch result {
                 case .success(let data):
                     self.moviesDB = data
-                    self.onDataLoaded?()
+                    self.isDataLoaded = true
                 case .failure(let error):
                     print("Something went wrong: \(error)")
                 }

@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import Combine
 
-class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol {
+class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovieViewModelProtocol {
     
     // MARK: - Properties
     
@@ -15,7 +15,7 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     @Published var isLoading = false
     
     var moviesCount: Int {
-        return movies.count
+        movies.count
     }
     
     init(movieService: MovieServiceProtocol) {
@@ -25,58 +25,29 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     
     // MARK: - Public
     
-    func bindMovieTitle(publisher: NotificationCenter.Publisher) {
-        publisher
-            .compactMap { ($0.object as? UISearchTextField)?.text }
-            .debounce(for: 0.3, scheduler: RunLoop.main)
-            .assign(to: \.movieTitle, on: self)
-            .store(in: &subscriptions)
-    }
-    
-    func viewDidAppear() {
-        observeSearch()
-    }
-    
     func movie(at index: Int) -> MovieModelProtocol {
         movies[index]
     }
-    
-    func searchMovies(by title: String) {
-        movies = []
-        isDataLoaded = true
-        isLoading = true
-        movieService.fetchMovies(by: title)
-            .sink { completion in
-                self.isLoading = false
-                
-                switch completion {
-                case .failure(let error):
-                    print("Recived SearchMovies Completion Error❌: \(error)")
-                    self.movies = []
-                    self.isDataLoaded = true
-                case .finished:
-                    print("Recived SearchMovies Completion Finished✅")
-                }
-            } receiveValue: { searchData in
-                self.isLoading = false
-                print("Movies✅: \(searchData)")
-                self.movies = searchData.search
-                self.isDataLoaded = true
-            }
-            .store(in: &subscriptions)
-    }
-    
+
     // MARK: - Private
     
+    // FIXME: After failure this method stop working
     private func observeSearch() {
         $movieTitle
-            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .dropFirst()
+            .debounce(for: 0.5, scheduler: RunLoop.main)
             .flatMap { (movieTitle: String) -> AnyPublisher<MovieSearch, RequestError> in
                 print("ViewModel movieTitle ✅: \(movieTitle)")
+                self.movies = []
+                self.isDataLoaded = true
                 self.isLoading = true
+                
                 return self.movieService.fetchMovies(by: movieTitle)
             }
             .map(\.search)
+            .replaceError(with: [])
+            .receive(on: RunLoop.main)
             .sink { completion in
                 self.isLoading = false
                 print("Recived SearchMovies Completion✅🤡: \(completion)")
