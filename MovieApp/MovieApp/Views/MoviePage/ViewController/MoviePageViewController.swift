@@ -7,6 +7,7 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     
     private var viewModel: MoviePageViewModelProtocol?
     var spinner: SpinnerViewController = SpinnerViewController()
+    private var subscriptions = Set<AnyCancellable>()
     
     @IBOutlet private weak var moviePoster: UIImageView?
     @IBOutlet private weak var movieTitle: UILabel?
@@ -41,26 +42,30 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     // MARK: - Public
     
     func setupViewModel() {
-        viewModel?.onLoading = { isLoading in
-            if isLoading {
-                self.showSpinner()
-            } else {
-                self.hideSpinner()
-            }
+        guard let viewModel = viewModel as? MoviePageViewModel else { // FIXME: Solution to use @Publised properties
+            return
         }
-        viewModel?.onDataLoaded = { [weak self] in
-            DispatchQueue.main.async {
-                guard let data = self?.viewModel?.movieDetails else {
-                    return
+        viewModel.$isLoading
+            .sink { isLoading in
+                DispatchQueue.main.async { [weak self] in
+                    if isLoading {
+                        self?.showSpinner()
+                    } else {
+                        self?.hideSpinner()
+                    }
                 }
-                
-                self?.moviePoster?.load(from: data.poster)
-                self?.movieTitle?.text = data.title
-                self?.movieDescription?.text = data.plot
-                
-                self?.view.layoutIfNeeded()
             }
-        }
+            .store(in: &subscriptions)
+        
+        viewModel.$isDataLoaded
+            .sink { isLoaded in
+                if isLoaded {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.setupView()
+                    }
+                }
+            }
+            .store(in: &subscriptions)
     }
     
     // MARK: - Private
@@ -74,5 +79,17 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
         
         saveButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.SaveButton.lightThemeColor: Constants.SaveButton.darkThemeColor
         deleteButton.tintColor = .deleteButtonColor
+    }
+    
+    private func setupView() {
+        guard let data = viewModel?.movieDetails else {
+            return
+        }
+        
+        moviePoster?.load(from: data.poster)
+        movieTitle?.text = data.title
+        movieDescription?.text = data.plot
+        
+        view.layoutIfNeeded()
     }
 }

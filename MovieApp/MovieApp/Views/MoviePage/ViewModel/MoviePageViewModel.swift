@@ -5,14 +5,13 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     
     // MARK: - Properties
     
-    var onDataLoaded: (() -> Void)?
-    var onLoading: ((Bool) -> Void)?
-    
     private let movieService: MovieServiceProtocol
     private let dataService: RealmServiceProtocol
 
     @Published private(set) var movieDetails: MovieDetails?
     @Published var imdbID: String = ""
+    @Published var isDataLoaded = false
+    @Published var isLoading = false
 
     private var subscriptions = Set<AnyCancellable>()
     
@@ -43,20 +42,16 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     // MARK: - Private
     
     private func fetchMovieDetails() {
-        onLoading?(true)
+        isLoading = true
         movieService.fetchMovieDetails(by: imdbID)
             .sink { _ in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
+                self.isLoading = false
                 print("Recived MovieDetails Completion✅")
             } receiveValue: { movieDetails in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
+                self.isLoading = false
                 print("MovieDetails✅: \(movieDetails)")
                 self.movieDetails = movieDetails
-                self.onDataLoaded?()
+                self.isDataLoaded = true
             }
             .store(in: &subscriptions)
     }

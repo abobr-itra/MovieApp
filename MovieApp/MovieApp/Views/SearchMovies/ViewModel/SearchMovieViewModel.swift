@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import Combine
 
 class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol {
@@ -8,11 +9,10 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     private let movieService: MovieServiceProtocol
     private var subscriptions = Set<AnyCancellable>()
     
-    var onDataLoaded: (() -> Void)?
-    var onLoading: ((Bool) -> Void)?
-    
     @Published private(set) var movies: [Movie] = []
     @Published var movieTitle = ""
+    @Published var isDataLoaded = false
+    @Published var isLoading = false
     
     var moviesCount: Int {
         return movies.count
@@ -20,11 +20,20 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     
     init(movieService: MovieServiceProtocol) {
         self.movieService = movieService
+        observeSearch()
     }
     
     // MARK: - Public
     
-    func viewDidLoad() {
+    func bindMovieTitle(publisher: NotificationCenter.Publisher) {
+        publisher
+            .compactMap { ($0.object as? UISearchTextField)?.text }
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .assign(to: \.movieTitle, on: self)
+            .store(in: &subscriptions)
+    }
+    
+    func viewDidAppear() {
         observeSearch()
     }
     
@@ -33,32 +42,26 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     }
     
     func searchMovies(by title: String) {
-        guard !title.isEmpty else {
-            movies = []
-            self.onDataLoaded?()
-            return
-        }
-        onLoading?(true)
+        movies = []
+        isDataLoaded = true
+        isLoading = true
         movieService.fetchMovies(by: title)
             .sink { completion in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
+                self.isLoading = false
+                
                 switch completion {
                 case .failure(let error):
                     print("Recived SearchMovies Completion Error❌: \(error)")
                     self.movies = []
-                    self.onDataLoaded?()
+                    self.isDataLoaded = true
                 case .finished:
                     print("Recived SearchMovies Completion Finished✅")
                 }
             } receiveValue: { searchData in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
+                self.isLoading = false
                 print("Movies✅: \(searchData)")
                 self.movies = searchData.search
-                self.onDataLoaded?()
+                self.isDataLoaded = true
             }
             .store(in: &subscriptions)
     }
@@ -70,24 +73,18 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
             .debounce(for: 0.3, scheduler: RunLoop.main)
             .flatMap { (movieTitle: String) -> AnyPublisher<MovieSearch, RequestError> in
                 print("ViewModel movieTitle ✅: \(movieTitle)")
-                DispatchQueue.main.async {
-                    self.onLoading?(true)
-                }
+                self.isLoading = true
                 return self.movieService.fetchMovies(by: movieTitle)
             }
             .map(\.search)
-            .sink { _ in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
-                print("Recived SearchMovies Completion✅")
+            .sink { completion in
+                self.isLoading = false
+                print("Recived SearchMovies Completion✅🤡: \(completion)")
             } receiveValue: { movies in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
-                print("Movies✅: \(movies)")
+                self.isLoading = false
+                print("Movies✅: \(movies)🤡")
                 self.movies = movies
-                self.onDataLoaded?()
+                self.isDataLoaded = true
             }
             .store(in: &subscriptions)
     }

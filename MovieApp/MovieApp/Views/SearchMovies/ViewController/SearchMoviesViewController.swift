@@ -40,6 +40,12 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
         setupViewModel()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        viewModel?.viewDidAppear()
+    }
+    
     // MARK: - Private
     
     private func setupTableView() {
@@ -57,32 +63,42 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     }
     
     private func setupViewModel() {
-        viewModel?.onLoading = { [weak self] isLoading in
-            if isLoading {
-                self?.showSpinner()
-            } else {
-                self?.hideSpinner()
-            }
+        guard let viewModel = viewModel as? SearchMovieViewModel else { // FIXME: Solution to use @Publised properties
+            return
         }
-        
-        viewModel?.onDataLoaded = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        viewModel.$isLoading
+            .sink { isLoading in
+                DispatchQueue.main.async { [weak self] in
+                    if isLoading {
+                        self?.showSpinner()
+                    } else {
+                        self?.hideSpinner()
+                    }
+                }
             }
-        }
-        
-        viewModel?.viewDidLoad()
+            .store(in: &subscriptions)
+
+        viewModel.$isDataLoaded
+            .sink{ isLoaded in
+                if isLoaded {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.tableView.reloadData()
+                    }
+                }
+            }
+            .store(in: &subscriptions)
     }
     
     private func configureSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
-        searchController.searchBar.delegate = self
         bind()
     }
     
     private func bind() {
-        let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: searchController.searchBar.searchTextField)
+        let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification,
+                                                             object: searchController.searchBar.searchTextField)
+      //  viewModel?.bindMovieTitle(publisher: publisher)
         publisher
             .compactMap { ($0.object as? UISearchTextField)?.text }
             .debounce(for: 0.3, scheduler: RunLoop.main)
@@ -92,15 +108,5 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
                 self.viewModel?.searchMovies(by: movieTitle)
             }
             .store(in: &subscriptions)
-        
-    }
-}
-
-// MARK: - Extensions
-
-extension SearchMoviesViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    //    viewModel?.searchMovies(by: searchBar.text ?? "")
     }
 }
