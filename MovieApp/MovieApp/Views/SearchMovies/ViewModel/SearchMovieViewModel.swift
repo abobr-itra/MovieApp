@@ -30,30 +30,32 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
     }
 
     // MARK: - Private
-    
-    // FIXME: After failure this method stop working
+
     private func observeSearch() {
         $movieTitle
             .removeDuplicates()
             .dropFirst()
             .debounce(for: 0.5, scheduler: RunLoop.main)
-            .flatMap { (movieTitle: String) -> AnyPublisher<MovieSearch, RequestError> in
-                print("ViewModel movieTitle ✅: \(movieTitle)")
+            .flatMap { (movieTitle: String) -> AnyPublisher<MovieSearch, Never> in
                 self.movies = []
                 self.isDataLoaded = true
                 self.isLoading = true
                 
                 return self.movieService.fetchMovies(by: movieTitle)
+                    .replaceError(with: Constants.MockData.movieSearchMock)
+                    .eraseToAnyPublisher()
             }
             .map(\.search)
-            .replaceError(with: [])
-            .receive(on: RunLoop.main)
             .sink { completion in
                 self.isLoading = false
-                print("Recived SearchMovies Completion✅🤡: \(completion)")
+                switch completion {
+                case .failure(let error):
+                    print("SearhMovieVM: Recived error completion: \(error)")
+                case .finished:
+                    print("SearhMovieVM: Recived fineshed completion")
+                }
             } receiveValue: { movies in
                 self.isLoading = false
-                print("Movies✅: \(movies)🤡")
                 self.movies = movies
                 self.isDataLoaded = true
             }
