@@ -15,42 +15,41 @@ class RealmService: RealmServiceProtocol {
             }
         }
     }
-    
-    func getMovie(by id: String, _ completion: @escaping ((Result<RealmMovie, DataError>) -> Void)) {
+
+    func getObject<T: Object>(by id: String, completion: @escaping (Result<T, DataError>) -> Void) {
         DispatchQueue.main.async {
             guard let realm = try? Realm() else { return }
-            let movie = realm.object(ofType: RealmMovie.self, forPrimaryKey: id)
-            if let movie = movie {
-                completion(.success(movie))
+            let object = realm.object(ofType: T.self, forPrimaryKey: id)
+            if let object = object {
+                completion(.success(object))
             } else {
                 completion(.failure(.notFound))
             }
         }
     }
-    
-    func getAllMovies(completion: @escaping ((Result<[RealmMovie], DataError>) -> Void)) {
+
+    func getAllObjects<T: Object>(ofType: T.Type, completion: @escaping (Result<[T], DataError>) -> Void) {
         DispatchQueue.main.async {
             guard let realm = try? Realm() else { return }
-            let movies = realm.objects(RealmMovie.self)
-            if !movies.isEmpty {
-                completion(.success(Array(movies)))
+            let objects = realm.objects(T.self)
+            if !objects.isEmpty {
+                completion(.success(Array(objects)))
             } else {
                 completion(.failure(.notFound))
             }
         }
     }
-    
-    func deleteMovie(by id: String) {
+
+    func deleteObject<T: Object>(ofType: T.Type, where isIncluded: @escaping (T) -> Bool) {
         DispatchQueue.main.async {
-            print("🌎 Start deleting \(id)")
             guard let realm = try? Realm() else { return }
-            try? realm.write {
-                let movie = realm.objects(RealmMovie.self).where {
-                    $0.imdbID == id
+            try? realm.write({
+                guard let object = realm.objects(T.self).first(where: isIncluded) else {
+                    print("Failed to delete")
+                    return
                 }
-                print("🌎 Trying to delete \(movie)")
-                realm.delete(movie)
-            }
+                realm.delete(object)
+            })
         }
     }
     

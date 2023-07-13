@@ -35,6 +35,7 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     
     @IBAction func deleteMovie(_ sender: UIButton) {
         viewModel?.deleteCurrentMovie()
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Public

@@ -21,8 +21,8 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     
     func loadWishlist() {
         onLoading?(true)
-        DispatchQueue.global().async {
-            self.dataService.getAllMovies { result in
+        DispatchQueue.global().async {            
+            self.dataService.getAllObjects(ofType: RealmMovie.self) { result in
                 DispatchQueue.main.async {
                     self.onLoading?(false)
                 }
@@ -38,7 +38,7 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     }
     
     func deleteMovie(by id: String) {
-        dataService.deleteMovie(by: id)
+        dataService.deleteObject(ofType: RealmMovie.self) { $0.imdbID == id }
     }
     
     func movie(at index: Int) -> MovieModelProtocol {
