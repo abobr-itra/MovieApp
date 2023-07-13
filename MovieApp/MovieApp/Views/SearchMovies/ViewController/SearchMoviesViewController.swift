@@ -88,11 +88,8 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     }
     
     private func bind() {
-        let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification,
-                                                             object: searchController.searchBar.searchTextField)
         guard let viewModel = viewModel as? SearchMovieViewModel else { return }
-        publisher
-            .compactMap { ($0.object as? UISearchTextField)?.text }
+        searchController.searchBar.searchTextField.textPublisher
             .debounce(for: 0.3, scheduler: RunLoop.main)
             .assign(to: \.movieTitle, on: viewModel)
             .store(in: &subscriptions)
