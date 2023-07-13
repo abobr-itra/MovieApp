@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 import Combine
 
 class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovieViewModelProtocol {
