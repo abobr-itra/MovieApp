@@ -16,7 +16,7 @@ class RealmService: RealmServiceProtocol {
         }
     }
 
-    func getObject<T: Object>(by id: String, completion: @escaping (Result<T, DataError>) -> Void) {
+    func getObject<T: Object>(ofType: T.Type, by id: String, completion: @escaping (Result<T, DataError>) -> Void) {
         DispatchQueue.main.async {
             guard let realm = try? Realm() else { return }
             let object = realm.object(ofType: T.self, forPrimaryKey: id)
