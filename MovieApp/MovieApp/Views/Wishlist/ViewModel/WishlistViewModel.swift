@@ -21,15 +21,15 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     
     func loadWishlist() {
         onLoading?(true)
-        DispatchQueue.global().async {            
-            self.dataService.getAllObjects(ofType: RealmMovie.self) { result in
+        DispatchQueue.global().async { [weak self] in
+            self?.dataService.getAllObjects(ofType: RealmMovie.self) { result in
                 DispatchQueue.main.async {
-                    self.onLoading?(false)
+                    self?.onLoading?(false)
                 }
                 switch result {
                 case .success(let data):
-                    self.moviesDB = data
-                    self.onDataLoaded?()
+                    self?.moviesDB = data
+                    self?.onDataLoaded?()
                 case .failure(let error):
                     print("Something went wrong: \(error)")
                 }

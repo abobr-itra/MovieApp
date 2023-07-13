@@ -43,13 +43,13 @@ class RealmService: RealmServiceProtocol {
     func deleteObject<T: Object>(ofType: T.Type, where isIncluded: @escaping (T) -> Bool) {
         DispatchQueue.main.async {
             guard let realm = try? Realm() else { return }
-            try? realm.write({
+            try? realm.write {
                 guard let object = realm.objects(T.self).first(where: isIncluded) else {
                     print("Failed to delete")
                     return
                 }
                 realm.delete(object)
-            })
+            }
         }
     }
     
