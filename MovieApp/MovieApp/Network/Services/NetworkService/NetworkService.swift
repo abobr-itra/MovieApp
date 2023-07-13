@@ -42,9 +42,7 @@ class NetworkService: NetworkServiceProtocol {
         }
         urlTask.resume()
     }
-    
-    // Combine analogue
-    // FIXME: Replace "any Error" with RequestError
+
     func getData<T: Decodable>(from url: URL, type: T.Type) -> AnyPublisher<T, RequestError> {
         URLSession.shared
             .dataTaskPublisher(for: url)

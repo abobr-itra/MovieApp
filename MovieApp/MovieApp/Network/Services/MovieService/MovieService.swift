@@ -17,19 +17,19 @@ class MovieService: MovieServiceProtocol {
         let url = OMDBEndpoint.bySearch(title).url
         networkService.getData(from: url, resultHandler: completion)
     }
-    
-    // Combine anologue
-    func fetchMovies(by title: String) -> AnyPublisher<MovieSearch, RequestError> {
-        let url = OMDBEndpoint.bySearch(title).url
-        return networkService.getData(from: url, type: MovieSearch.self)
-    }
-    
+
     func fetchMovieDetails(by id: String, completion: @escaping (Result<MovieDetails, RequestError>) -> Void) {
         let url = OMDBEndpoint.byID(id).url
         networkService.getData(from: url, resultHandler: completion)
     }
+
+    // MARK: - Combine
     
-    // Combine analogue
+    func fetchMovies(by title: String) -> AnyPublisher<MovieSearch, RequestError> {
+        let url = OMDBEndpoint.bySearch(title).url
+        return networkService.getData(from: url, type: MovieSearch.self)
+    }
+
     func fetchMovieDetails(by id: String) -> AnyPublisher<MovieDetails, RequestError> {
         let url = OMDBEndpoint.byID(id).url
         return networkService.getData(from: url, type: MovieDetails.self)
