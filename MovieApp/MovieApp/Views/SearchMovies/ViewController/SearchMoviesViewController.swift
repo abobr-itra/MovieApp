@@ -10,7 +10,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     private var delegate: MovieListDelegate?
     
     private var viewModel: SearchMovieViewModelProtocol?
-    private var subscriptions = Set<AnyCancellable>()
+    private var subscriptions: Set<AnyCancellable> = []
     private let searchController = UISearchController(searchResultsController: nil)
     var spinner: SpinnerViewController = SpinnerViewController()
     
@@ -61,23 +61,21 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
             return
         }
         viewModel.$isLoading
-            .sink { isLoading in
-                DispatchQueue.main.async { [weak self] in
-                    if isLoading {
-                        self?.showSpinner()
-                    } else {
-                        self?.hideSpinner()
-                    }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showSpinner()
+                } else {
+                    self?.hideSpinner()
                 }
             }
             .store(in: &subscriptions)
 
         viewModel.$isDataLoaded
-            .sink{ isLoaded in
+            .receive(on: DispatchQueue.main)
+            .sink{ [weak self] isLoaded in
                 if isLoaded {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.tableView.reloadData()
-                    }
+                    self?.tableView.reloadData()
                 }
             }
             .store(in: &subscriptions)

@@ -1,4 +1,3 @@
-import Foundation
 import Combine
 
 class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
@@ -13,7 +12,7 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     @Published var isDataLoaded = false
     @Published var isLoading = false
 
-    private var subscriptions = Set<AnyCancellable>()
+    private var subscriptions: Set<AnyCancellable> = []
     
     init(movieService: MovieServiceProtocol, dataService: RealmServiceProtocol) {
         self.movieService = movieService
@@ -44,14 +43,14 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     private func fetchMovieDetails() {
         isLoading = true
         movieService.fetchMovieDetails(by: imdbID)
-            .sink { _ in
-                self.isLoading = false
-                print("Recived MovieDetails Completion✅")
-            } receiveValue: { movieDetails in
-                self.isLoading = false
+            .sink { [weak self] completion in
+                self?.isLoading = false
+                print("Recived MovieDetails Completion✅ \(completion)")
+            } receiveValue: { [weak self] movieDetails in
+                self?.isLoading = false
                 print("MovieDetails✅: \(movieDetails)")
-                self.movieDetails = movieDetails
-                self.isDataLoaded = true
+                self?.movieDetails = movieDetails
+                self?.isDataLoaded = true
             }
             .store(in: &subscriptions)
     }

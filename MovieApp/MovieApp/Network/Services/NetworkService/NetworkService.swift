@@ -46,7 +46,7 @@ class NetworkService: NetworkServiceProtocol {
     func getData<T: Decodable>(from url: URL, type: T.Type) -> AnyPublisher<T, RequestError> {
         URLSession.shared
             .dataTaskPublisher(for: url)
-            .tryMap({ output in
+            .tryMap { output in
                 guard let response = output.response as? HTTPURLResponse,
                       response.statusCode == 200 else { throw RequestError.serverError }
                 
@@ -57,8 +57,8 @@ class NetworkService: NetworkServiceProtocol {
                 case .success(let data):
                     return data
                 }
-            })
-            .mapError({ error in
+            }
+            .mapError { error in
                 switch error {
                 case is DecodingError:
                     return RequestError.dataDecodingError
@@ -67,7 +67,7 @@ class NetworkService: NetworkServiceProtocol {
                 default:
                     return RequestError.noData
                 }
-            })
+            }
             .eraseToAnyPublisher()
     }
 }

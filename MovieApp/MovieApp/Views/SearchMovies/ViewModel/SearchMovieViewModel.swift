@@ -6,7 +6,7 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
     // MARK: - Properties
     
     private let movieService: MovieServiceProtocol
-    private var subscriptions = Set<AnyCancellable>()
+    private var subscriptions: Set<AnyCancellable> = []
     
     @Published private(set) var movies: [Movie] = []
     @Published var movieTitle = ""
@@ -45,18 +45,18 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
                     .eraseToAnyPublisher()
             }
             .map(\.search)
-            .sink { completion in
-                self.isLoading = false
+            .sink { [weak self] completion in
+                self?.isLoading = false
                 switch completion {
                 case .failure(let error):
                     print("SearhMovieVM: Recived error completion: \(error)")
                 case .finished:
                     print("SearhMovieVM: Recived fineshed completion")
                 }
-            } receiveValue: { movies in
-                self.isLoading = false
-                self.movies = movies
-                self.isDataLoaded = true
+            } receiveValue: { [weak self] movies in
+                self?.isLoading = false
+                self?.movies = movies
+                self?.isDataLoaded = true
             }
             .store(in: &subscriptions)
     }

@@ -9,7 +9,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     private var dataSource: MoiveListDataSource?
     private var delegate: MovieListDelegate?
     
-    private var subscriptions = Set<AnyCancellable>()
+    private var subscriptions: Set<AnyCancellable> = []
     private var viewModel: WishlistViewModelProtocol?
     var spinner: SpinnerViewController = SpinnerViewController()
     
@@ -56,22 +56,20 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
         guard let viewModel = viewModel as? WishlistViewModel else { return }
         
         viewModel.$isDataLoaded
-            .sink { isLoaded in
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoaded in
                 if isLoaded {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.tableView.reloadData()
-                    }
+                    self?.tableView.reloadData()
                 }
             }
             .store(in: &subscriptions)
         viewModel.$isLoading
-            .sink { isLoading in
-                DispatchQueue.main.async { [weak self] in
-                    if isLoading {
-                        self?.showSpinner()
-                    } else {
-                        self?.hideSpinner()
-                    }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showSpinner()
+                } else {
+                    self?.hideSpinner()
                 }
             }
             .store(in: &subscriptions)

@@ -7,7 +7,7 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     
     private var viewModel: MoviePageViewModelProtocol?
     var spinner: SpinnerViewController = SpinnerViewController()
-    private var subscriptions = Set<AnyCancellable>()
+    private var subscriptions: Set<AnyCancellable> = []
     
     @IBOutlet private weak var moviePoster: UIImageView?
     @IBOutlet private weak var movieTitle: UILabel?
@@ -46,23 +46,21 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
             return
         }
         viewModel.$isLoading
-            .sink { isLoading in
-                DispatchQueue.main.async { [weak self] in
-                    if isLoading {
-                        self?.showSpinner()
-                    } else {
-                        self?.hideSpinner()
-                    }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showSpinner()
+                } else {
+                    self?.hideSpinner()
                 }
             }
             .store(in: &subscriptions)
         
         viewModel.$isDataLoaded
-            .sink { isLoaded in
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoaded in
                 if isLoaded {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.setupView()
-                    }
+                    self?.setupView()
                 }
             }
             .store(in: &subscriptions)
