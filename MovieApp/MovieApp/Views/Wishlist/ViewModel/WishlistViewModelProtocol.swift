@@ -1,10 +1,10 @@
 import Foundation
 
 protocol WishlistViewModelProtocol: MovieViewModelProtocol {
-    
-    var isDataLoaded: Bool { get set }
-    var isLoading: Bool { get set }
-    
+
+    var isDataLoadedPublisher: Published<Bool>.Publisher { get }
+    var isLoadingPublisher: Published<Bool>.Publisher { get }
+
     func loadWishlist()
     func deleteMovie(by id: String)
 }

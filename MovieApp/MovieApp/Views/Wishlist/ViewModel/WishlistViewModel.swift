@@ -8,6 +8,9 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     @Published var isDataLoaded = false
     @Published var isLoading = false
     
+    var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
+    var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
+    
     private var dataService: RealmServiceProtocol
     private(set) var moviesDB: [RealmMovie] = []
     var moviesCount: Int {

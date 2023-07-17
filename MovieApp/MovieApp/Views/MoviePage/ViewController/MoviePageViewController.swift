@@ -42,10 +42,7 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     // MARK: - Public
     
     func setupViewModel() {
-        guard let viewModel = viewModel as? MoviePageViewModel else { // FIXME: Solution to use @Publised properties
-            return
-        }
-        viewModel.$isLoading
+        viewModel?.isLoadingPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 if isLoading {
@@ -56,7 +53,7 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
             }
             .store(in: &subscriptions)
         
-        viewModel.$isDataLoaded
+        viewModel?.isDataLoadedPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoaded in
                 if isLoaded {

@@ -7,7 +7,6 @@ class NetworkParser: NetworkPaserProtocol {
             let value = try JSONDecoder().decode(Value.self, from: data)
             return .success(value)
         } catch {
-            print("Some error occur during decoding")
             return .failure(error)
         }
     }

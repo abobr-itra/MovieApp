@@ -53,9 +53,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     }
     
     private func setupViewModel() {
-        guard let viewModel = viewModel as? WishlistViewModel else { return }
-        
-        viewModel.$isDataLoaded
+        viewModel?.isDataLoadedPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoaded in
                 if isLoaded {
@@ -63,7 +61,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
                 }
             }
             .store(in: &subscriptions)
-        viewModel.$isLoading
+        viewModel?.isLoadingPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 if isLoading {

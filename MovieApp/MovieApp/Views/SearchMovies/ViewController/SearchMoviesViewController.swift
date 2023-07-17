@@ -57,10 +57,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     }
     
     private func setupViewModel() {
-        guard let viewModel = viewModel as? SearchMovieViewModel else { // FIXME: Solution to use @Publised properties
-            return
-        }
-        viewModel.$isLoading
+        viewModel?.isLoadingPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 if isLoading {
@@ -71,7 +68,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
             }
             .store(in: &subscriptions)
 
-        viewModel.$isDataLoaded
+        viewModel?.isDataLoadedPublisher
             .receive(on: DispatchQueue.main)
             .sink{ [weak self] isLoaded in
                 if isLoaded {
@@ -88,10 +85,11 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     }
     
     private func bind() {
-        guard let viewModel = viewModel as? SearchMovieViewModel else { return }
         searchController.searchBar.searchTextField.textPublisher
             .debounce(for: 0.3, scheduler: RunLoop.main)
-            .assign(to: \.movieTitle, on: viewModel)
+            .sink(receiveValue: { [weak self] movieTitle in
+                self?.viewModel?.movieTitle = movieTitle
+            })
             .store(in: &subscriptions)
     }
 }

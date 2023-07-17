@@ -12,6 +12,10 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     @Published var isDataLoaded = false
     @Published var isLoading = false
 
+    var imdbIDPublisher: Published<String>.Publisher { $imdbID }
+    var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
+    var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
+
     private var subscriptions: Set<AnyCancellable> = []
     
     init(movieService: MovieServiceProtocol, dataService: RealmServiceProtocol) {

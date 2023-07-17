@@ -19,7 +19,7 @@ class NetworkService: NetworkServiceProtocol {
             .tryMap { [weak self] output in
                 guard let response = output.response as? HTTPURLResponse,
                       response.statusCode == 200 else { throw RequestError.serverError }
-                
+
                 guard let decodedData: Result<T, Error> = self?.parser.decode(output.data) else {
                     throw RequestError.dataDecodingError
                 }
