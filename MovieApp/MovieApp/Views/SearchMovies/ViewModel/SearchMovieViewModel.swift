@@ -35,14 +35,14 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
             .removeDuplicates()
             .dropFirst()
             .debounce(for: 0.5, scheduler: RunLoop.main)
-            .flatMap { (movieTitle: String) -> AnyPublisher<MovieSearch, Never> in
-                self.movies = []
-                self.isDataLoaded = true
-                self.isLoading = true
-                
-                return self.movieService.fetchMovies(by: movieTitle)
+            .flatMap { [weak self] (movieTitle: String) -> AnyPublisher<MovieSearch, Never> in
+                self?.movies = []
+                self?.isDataLoaded = true
+                self?.isLoading = true
+
+                return self?.movieService.fetchMovies(by: movieTitle)
                     .replaceError(with: Constants.MockData.movieSearchMock)
-                    .eraseToAnyPublisher()
+                    .eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher()
             }
             .map(\.search)
             .sink { [weak self] completion in

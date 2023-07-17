@@ -33,7 +33,6 @@ class SettingsCoordinator: CoordinatorProtocol {
         viewController.data = .init(languages: viewModel.languages,
                                     currentLanguage: viewModel.currentLanguage ?? .english)
         viewController.actions = .init(select: { language, completion in
-            print(language.rawValue)
             Bundle.setLanguage(lang: language.rawValue)
             completion(.success(()))
         })
