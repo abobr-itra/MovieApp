@@ -28,17 +28,18 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupTabBar()
+
         setupTableView()
         setupViewModel()
     }
     
-    // MARK: - Private
-    
-    private func setupTabBar() {
-        tabBarController?.delegate = self
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel?.loadWishlist()
     }
+    
+    // MARK: - Private
     
     private func setupTableView() {    
         actions.do { actions in
@@ -62,15 +63,6 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
-        }
-    }
-}
-
-extension WishListViewController: UITabBarControllerDelegate {
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        DispatchQueue.main.async {
-            self.viewModel?.loadWishlist()
         }
     }
 }
