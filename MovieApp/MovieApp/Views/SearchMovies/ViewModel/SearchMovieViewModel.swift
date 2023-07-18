@@ -10,8 +10,8 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
     
     @Published private(set) var movies: [Movie] = []
     @Published var movieTitle = ""
-    @Published var isDataLoaded = false
-    @Published var isLoading = false
+    @Published private var isDataLoaded = false
+    @Published private var isLoading = false
 
     var moviesPublisher: Published<[Movie]>.Publisher { $movies }
     var movieTitlePublisher: Published<String>.Publisher { $movieTitle }

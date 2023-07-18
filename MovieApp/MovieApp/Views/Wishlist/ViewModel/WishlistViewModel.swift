@@ -5,8 +5,8 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     
     // MARK: - Properties
 
-    @Published var isDataLoaded = false
-    @Published var isLoading = false
+    @Published private var isDataLoaded = false
+    @Published private var isLoading = false
     
     var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
     var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }

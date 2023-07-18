@@ -9,8 +9,8 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
 
     @Published private(set) var movieDetails: MovieDetails?
     @Published var imdbID: String = ""
-    @Published var isDataLoaded = false
-    @Published var isLoading = false
+    @Published private var isDataLoaded = false
+    @Published private var isLoading = false
 
     var imdbIDPublisher: Published<String>.Publisher { $imdbID }
     var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
