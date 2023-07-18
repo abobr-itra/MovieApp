@@ -65,11 +65,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
         viewModel?.isLoadingPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
-                if isLoading {
-                    self?.showSpinner()
-                } else {
-                    self?.hideSpinner()
-                }
+                self?.showSpinner(isLoading)
             }
             .store(in: &subscriptions)
     }
