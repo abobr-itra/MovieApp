@@ -37,9 +37,8 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     }
     
     func deleteCurrentMovie() {
-        guard let movieDetails else { return }
-        let movieId = movieDetails.imdbID
-        dataService.deleteMovie(by: movieId)
+        guard let movieId = movieDetails?.imdbID else { return }
+        dataService.deleteObject(ofType: RealmMovie.self) { $0.imdbID == movieId }
     }
     
     // MARK: - Private
