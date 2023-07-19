@@ -65,4 +65,8 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
             }
             .store(in: &subscriptions)
     }
+    
+    func remove(at index: Int) {
+        movies.remove(at: index)
+    }
 }

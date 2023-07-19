@@ -25,7 +25,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
         
         self.viewModel = viewModel
         dataSource = MoiveListDataSource(viewModel: viewModel)
-        delegate = MovieListDelegate(viewModel: viewModel)
+        delegate = MovieListDelegate(viewModel: viewModel, deletePermited: true)
     }
     
     override func viewDidLoad() {
