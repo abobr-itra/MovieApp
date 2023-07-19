@@ -66,13 +66,13 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     // MARK: - Private
     
     private func setupUI() {
-        navigationController?.navigationBar.tintColor = .tabBarTintColor
+        navigationController?.navigationBar.tintColor = Constants.TabBar.color
         navigationController?.navigationBar.backItem?.backButtonTitle = ""
         
         movieDescription?.sizeToFit()
         movieDescription?.baselineAdjustment = .alignCenters
         
-        saveButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.SaveButton.lightThemeColor: Constants.SaveButton.darkThemeColor
-        deleteButton.tintColor = .deleteButtonColor
+        saveButton.tintColor = Constants.Buttons.saveButtonColor
+        deleteButton.tintColor = Constants.Buttons.deleteButton
     }
 }

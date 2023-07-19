@@ -19,7 +19,7 @@ class AppCoordinatior: CoordinatorProtocol {
     
     func start() {
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = .tabBarTintColor
+        tabBarController.tabBar.tintColor = Constants.TabBar.color
         
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
