@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class MoviePageViewController: UIViewController, RefreshableViewControllerProtocol {
     
@@ -6,6 +7,7 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     
     private var viewModel: MoviePageViewModelProtocol?
     var spinner: SpinnerViewController = SpinnerViewController()
+    private var subscriptions: Set<AnyCancellable> = []
     
     @IBOutlet private weak var moviePoster: UIImageView?
     @IBOutlet private weak var movieTitle: UILabel?
@@ -41,26 +43,21 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
     // MARK: - Public
     
     func setupViewModel() {
-        viewModel?.onLoading = { isLoading in
-            if isLoading {
-                self.showSpinner()
-            } else {
-                self.hideSpinner()
+        viewModel?.isLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.showSpinner(isLoading)
             }
-        }
-        viewModel?.onDataLoaded = { [weak self] in
-            DispatchQueue.main.async {
-                guard let data = self?.viewModel?.movieDetails else {
-                    return
+            .store(in: &subscriptions)
+        
+        viewModel?.isDataLoadedPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoaded in
+                if isLoaded {
+                    self?.setupView()
                 }
-                
-                self?.moviePoster?.load(from: data.poster)
-                self?.movieTitle?.text = data.title
-                self?.movieDescription?.text = data.plot
-                
-                self?.view.layoutIfNeeded()
             }
-        }
+            .store(in: &subscriptions)
     }
     
     // MARK: - Private
@@ -74,5 +71,17 @@ class MoviePageViewController: UIViewController, RefreshableViewControllerProtoc
         
         saveButton.tintColor = traitCollection.userInterfaceStyle == .light ? Constants.SaveButton.lightThemeColor: Constants.SaveButton.darkThemeColor
         deleteButton.tintColor = .deleteButtonColor
+    }
+    
+    private func setupView() {
+        guard let data = viewModel?.movieDetails else {
+            return
+        }
+        
+        moviePoster?.load(from: data.poster)
+        movieTitle?.text = data.title
+        movieDescription?.text = data.plot
+        
+        view.layoutIfNeeded()
     }
 }

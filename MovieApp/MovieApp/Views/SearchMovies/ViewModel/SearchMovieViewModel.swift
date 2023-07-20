@@ -1,21 +1,30 @@
 import Foundation
+import Combine
 
-class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol {
+class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovieViewModelProtocol {
     
     // MARK: - Properties
     
     private let movieService: MovieServiceProtocol
+    private var subscriptions: Set<AnyCancellable> = []
     
-    var onDataLoaded: (() -> Void)?
-    var onLoading: ((Bool) -> Void)?
-    
-    private(set) var movies: [Movie] = []
+    @Published private(set) var movies: [Movie] = []
+    @Published var movieTitle = ""
+    @Published private var isDataLoaded = false
+    @Published private var isLoading = false
+
+    var moviesPublisher: Published<[Movie]>.Publisher { $movies }
+    var movieTitlePublisher: Published<String>.Publisher { $movieTitle }
+    var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
+    var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
+
     var moviesCount: Int {
-        return movies.count
+        movies.count
     }
     
     init(movieService: MovieServiceProtocol) {
         self.movieService = movieService
+        observeSearch()
     }
     
     // MARK: - Public
@@ -23,20 +32,37 @@ class SearchMovieViewModel: MovieViewModelProtocol, SearchMovieViewModelProtocol
     func movie(at index: Int) -> MovieModelProtocol {
         movies[index]
     }
-    
-    func searchMovies(by title: String) {
-        onLoading?(true)
-        movieService.fetchMovies(by: title) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.onLoading?(false)
+
+    // MARK: - Private
+
+    private func observeSearch() {
+        $movieTitle
+            .removeDuplicates()
+            .dropFirst()
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .flatMap { [weak self] (movieTitle: String) -> AnyPublisher<MovieSearch, Never> in
+                self?.movies = []
+                self?.isDataLoaded = true
+                self?.isLoading = true
+
+                return self?.movieService.fetchMovies(by: movieTitle)
+                    .replaceError(with: Constants.MockData.movieSearchMock)
+                    .eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher()
             }
-            switch result {
-            case .success(let data):
-                self?.movies = data.search
-                self?.onDataLoaded?()
-            case .failure(let error):
-                print("Some error occured : \(error)")
+            .map(\.search)
+            .sink { [weak self] completion in
+                self?.isLoading = false
+                switch completion {
+                case .failure(let error):
+                    print("SearhMovieVM: Recived error completion: \(error)")
+                case .finished:
+                    print("SearhMovieVM: Recived fineshed completion")
+                }
+            } receiveValue: { [weak self] movies in
+                self?.isLoading = false
+                self?.movies = movies
+                self?.isDataLoaded = true
             }
-        }
+            .store(in: &subscriptions)
     }
 }

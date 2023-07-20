@@ -1,4 +1,4 @@
-import Foundation
+import Combine
 
 class MovieService: MovieServiceProtocol {
     
@@ -11,14 +11,14 @@ class MovieService: MovieServiceProtocol {
     }
     
     // MARK: - Public
-    
-    func fetchMovies(by title: String, completion: @escaping (Result<MovieSearch, RequestError>) -> Void) {
+
+    func fetchMovies(by title: String) -> AnyPublisher<MovieSearch, RequestError> {
         let url = OMDBEndpoint.bySearch(title).url
-        networkService.getData(from: url, resultHandler: completion)
+        return networkService.getData(from: url, type: MovieSearch.self)
     }
-    
-    func fetchMovieDetails(by id: String, completion: @escaping (Result<MovieDetails, RequestError>) -> Void) {
+
+    func fetchMovieDetails(by id: String) -> AnyPublisher<MovieDetails, RequestError> {
         let url = OMDBEndpoint.byID(id).url
-        networkService.getData(from: url, resultHandler: completion)
+        return networkService.getData(from: url, type: MovieDetails.self)
     }
 }

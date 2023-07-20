@@ -5,7 +5,7 @@ class SettingViewModel: SettingsViewModelProtocol {
     // MARK: - Properties
     
     var sectionsCount: Int {
-        return settingsOptions.count
+        settingsOptions.count
     }
     
     lazy private var settingsOptions: [SettingsSection] = [
