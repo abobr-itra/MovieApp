@@ -86,6 +86,7 @@
 		D2E5E94529AE10ED0024BDE2 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5E94429AE10ED0024BDE2 /* RealmService.swift */; };
 		D2E5E94829B0B95C0024BDE2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5E94629B0B95C0024BDE2 /* WishListViewController.swift */; };
 		D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2E5E94729B0B95C0024BDE2 /* WishListViewController.xib */; };
+		D2EE80762A6947310008C440 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE80752A6947310008C440 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +171,7 @@
 		D2E5E94429AE10ED0024BDE2 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		D2E5E94629B0B95C0024BDE2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		D2E5E94729B0B95C0024BDE2 /* WishListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListViewController.xib; sourceTree = "<group>"; };
+		D2EE80752A6947310008C440 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 				D28E71642A4ED52100CA674E /* Bundle+Extension.swift */,
 				D28E716F2A4EE2CF00CA674E /* Dictionary+Extension.swift */,
 				D28E71792A4F06A800CA674E /* UIView+Extension.swift */,
+				D2EE80752A6947310008C440 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				D27004E82A25F49F00072DFF /* MovieListDataSource.swift in Sources */,
 				D2D5E2F729D473C5005BB3AF /* Constants.swift in Sources */,
 				D2570BE22951CF9B00E857FD /* SearchMovieCoordinator.swift in Sources */,
+				D2EE80762A6947310008C440 /* UIColor+Extension.swift in Sources */,
 				D2570BD5295070FB00E857FD /* ViewModelCreatorProtocol.swift in Sources */,
 				D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */,
 				D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */,
