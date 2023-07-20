@@ -39,4 +39,9 @@ struct Constants {
         
         static let tableViewRowStandart: CGFloat = 100
     }
+
+    struct MockData {
+        
+        static let movieSearchMock = MovieSearch(search: [], totalResults: "", response: "")
+    }
 }

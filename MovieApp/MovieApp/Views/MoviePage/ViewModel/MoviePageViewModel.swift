@@ -1,15 +1,22 @@
-import Foundation
+import Combine
 
-class MoviePageViewModel: MoviePageViewModelProtocol {
+class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
     
     // MARK: - Properties
     
-    var onDataLoaded: (() -> Void)?
-    var onLoading: ((Bool) -> Void)?
-    private(set) var movieDetails: MovieDetails?
     private let movieService: MovieServiceProtocol
     private let dataService: RealmServiceProtocol
-    var imdbID: String = ""
+
+    @Published private(set) var movieDetails: MovieDetails?
+    @Published var imdbID: String = ""
+    @Published private var isDataLoaded = false
+    @Published private var isLoading = false
+
+    var imdbIDPublisher: Published<String>.Publisher { $imdbID }
+    var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
+    var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
+
+    private var subscriptions: Set<AnyCancellable> = []
     
     init(movieService: MovieServiceProtocol, dataService: RealmServiceProtocol) {
         self.movieService = movieService
@@ -37,18 +44,17 @@ class MoviePageViewModel: MoviePageViewModelProtocol {
     // MARK: - Private
     
     private func fetchMovieDetails() {
-        onLoading?(true)
-        movieService.fetchMovieDetails(by: imdbID) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.onLoading?(false)
+        isLoading = true
+        movieService.fetchMovieDetails(by: imdbID)
+            .sink { [weak self] completion in
+                self?.isLoading = false
+                print("Recived MovieDetails Completion✅ \(completion)")
+            } receiveValue: { [weak self] movieDetails in
+                self?.isLoading = false
+                print("MovieDetails✅: \(movieDetails)")
+                self?.movieDetails = movieDetails
+                self?.isDataLoaded = true
             }
-            switch result {
-            case .success(let data):
-                self?.movieDetails = data
-                self?.onDataLoaded?()
-            case .failure(let error):
-                print("Some error occured : \(error)")
-            }
-        }
+            .store(in: &subscriptions)
     }
 }

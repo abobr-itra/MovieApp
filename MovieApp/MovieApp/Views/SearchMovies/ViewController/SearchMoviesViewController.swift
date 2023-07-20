@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class SearchMoviesViewController: UIViewController, RefreshableViewControllerProtocol {
     
@@ -9,6 +10,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     private var delegate: MovieListDelegate?
     
     private var viewModel: SearchMovieViewModelProtocol?
+    private var subscriptions: Set<AnyCancellable> = []
     private let searchController = UISearchController(searchResultsController: nil)
     var spinner: SpinnerViewController = SpinnerViewController()
     
@@ -55,33 +57,35 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     }
     
     private func setupViewModel() {
-        viewModel?.onLoading = { [weak self] isLoading in
-            if isLoading {
-                self?.showSpinner()
-            } else {
-                self?.hideSpinner()
+        viewModel?.isLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.showSpinner(isLoading)
             }
-        }
-        
-        viewModel?.onDataLoaded = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+            .store(in: &subscriptions)
+
+        viewModel?.isDataLoadedPublisher
+            .receive(on: DispatchQueue.main)
+            .sink{ [weak self] isLoaded in
+                if isLoaded {
+                    self?.tableView.reloadData()
+                }
             }
-        }
+            .store(in: &subscriptions)
     }
     
     private func configureSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
-        searchController.searchBar.delegate = self
+        bind()
     }
-}
-
-// MARK: - Extensions
-
-extension SearchMoviesViewController: UISearchBarDelegate {
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel?.searchMovies(by: searchBar.text ?? "")
+    private func bind() {
+        searchController.searchBar.searchTextField.textPublisher
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .sink(receiveValue: { [weak self] movieTitle in
+                self?.viewModel?.movieTitle = movieTitle
+            })
+            .store(in: &subscriptions)
     }
 }

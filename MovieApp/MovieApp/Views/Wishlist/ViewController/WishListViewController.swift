@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class WishListViewController: UIViewController, RefreshableViewControllerProtocol {
     
@@ -8,6 +9,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     private var dataSource: MoiveListDataSource?
     private var delegate: MovieListDelegate?
     
+    private var subscriptions: Set<AnyCancellable> = []
     private var viewModel: WishlistViewModelProtocol?
     var spinner: SpinnerViewController = SpinnerViewController()
     
@@ -52,17 +54,19 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     }
     
     private func setupViewModel() {
-        viewModel?.onLoading = { isLoading in
-            if isLoading {
-                self.showSpinner()
-            } else {
-                self.hideSpinner()
+        viewModel?.isDataLoadedPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoaded in
+                if isLoaded {
+                    self?.tableView.reloadData()
+                }
             }
-        }
-        viewModel?.onDataLoaded = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+            .store(in: &subscriptions)
+        viewModel?.isLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.showSpinner(isLoading)
             }
-        }
+            .store(in: &subscriptions)
     }
 }
