@@ -1,16 +1,20 @@
 import Foundation
+import Combine
 
 class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     
     // MARK: - Properties
+
+    @Published private var isDataLoaded = false
+    @Published private var isLoading = false
     
-    var onDataLoaded: (() -> Void)?
-    var onLoading: ((Bool) -> Void)?
+    var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
+    var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
     
     private var dataService: RealmServiceProtocol
     private(set) var moviesDB: [RealmMovie] = []
     var moviesCount: Int {
-        return moviesDB.count
+        moviesDB.count
     }
     
     init(dataService: RealmServiceProtocol) {
@@ -20,19 +24,16 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     // MARK: - Public
     
     func loadWishlist() {
-        onLoading?(true)
-        DispatchQueue.global().async {            
-            self.dataService.getAllObjects(ofType: RealmMovie.self) { result in
-                DispatchQueue.main.async {
-                    self.onLoading?(false)
-                }
-                switch result {
-                case .success(let data):
-                    self.moviesDB = data
-                    self.onDataLoaded?()
-                case .failure(let error):
-                    print("Something went wrong: \(error)")
-                }
+        isLoading = true
+        isDataLoaded = false
+        dataService.getAllObjects(ofType: RealmMovie.self) { [weak self] result in
+            self?.isLoading = false
+            switch result {
+            case .success(let data):
+                self?.moviesDB = data
+                self?.isDataLoaded = true
+            case .failure(let error):
+                print("Something went wrong: \(error)")
             }
         }
     }

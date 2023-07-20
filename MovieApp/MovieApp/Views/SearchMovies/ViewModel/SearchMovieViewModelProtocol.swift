@@ -1,9 +1,11 @@
 import Foundation
 
 protocol SearchMovieViewModelProtocol: MovieViewModelProtocol {
-
-    var onDataLoaded: (() -> Void)? { get set }
-    var onLoading: ((Bool) -> Void)? { get set }
     
-    func searchMovies(by title: String)
+    var movieTitle: String { get set }
+    
+    var moviesPublisher: Published<[Movie]>.Publisher { get }
+    var movieTitlePublisher: Published<String>.Publisher { get }
+    var isDataLoadedPublisher: Published<Bool>.Publisher { get }
+    var isLoadingPublisher: Published<Bool>.Publisher { get }
 }
