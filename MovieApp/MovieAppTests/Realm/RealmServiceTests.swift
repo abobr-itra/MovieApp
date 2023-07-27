@@ -12,8 +12,8 @@ final class RealmServiceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        dataService = RealmService()
-        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
+        let realm = try? Realm(configuration: Realm.Configuration(inMemoryIdentifier: self.name))
+        dataService = RealmService(realm: realm)
     }
     
     // MARK: - Tests
