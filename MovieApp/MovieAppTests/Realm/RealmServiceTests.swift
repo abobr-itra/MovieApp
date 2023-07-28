@@ -7,7 +7,7 @@ final class RealmServiceTests: XCTestCase {
     // MARK: - Properties
     
     private var dataService: RealmServiceProtocol?
-    private let mockMovieDetails = Constants.MockData.movieDetailsMock
+    private let realmMovieMock = TestsConstants.realmMovieMock
     
     override func setUp() {
         super.setUp()
@@ -19,12 +19,11 @@ final class RealmServiceTests: XCTestCase {
     // MARK: - Tests
     
     func testSaveAndGetObject() {
-        let realmMovie = RealmMovie(from: mockMovieDetails)
-        dataService?.saveObject(realmMovie)
-        dataService?.getObject(ofType: RealmMovie.self, by: mockMovieDetails.imdbID, completion: { result in
+        dataService?.saveObject(realmMovieMock)
+        dataService?.getObject(ofType: RealmMovieMock.self, by: realmMovieMock.imdbID, completion: { result in
             switch result {
             case .success(let object):
-                XCTAssert(object == realmMovie)
+                XCTAssertEqual(object, self.realmMovieMock)
             case .failure(let error):
                 print(error)
                 XCTAssert(false)
@@ -33,12 +32,11 @@ final class RealmServiceTests: XCTestCase {
     }
     
     func testGetAllObjects() {
-        let realmMovies = RealmMovie(from: mockMovieDetails)
-        dataService?.saveObject(realmMovies)
-        dataService?.getAllObjects(ofType: RealmMovie.self, completion: { result in
+        dataService?.saveObject(realmMovieMock)
+        dataService?.getAllObjects(ofType: RealmMovieMock.self, completion: { result in
             switch result {
             case .success(let movies):
-                XCTAssert([realmMovies] == movies)
+                XCTAssertEqual([self.realmMovieMock], movies)
             case .failure(let error):
                 print(error)
                 XCTAssert(false)
@@ -47,17 +45,16 @@ final class RealmServiceTests: XCTestCase {
     }
     
     func testDeleteObject() {
-        let realmMovie = RealmMovie(from: mockMovieDetails)
-        dataService?.saveObject(realmMovie)
-        dataService?.deleteObject(ofType: RealmMovie.self, where: { $0.imdbID == self.mockMovieDetails.imdbID })
-        dataService?.getObject(ofType: RealmMovie.self,
-                               by: mockMovieDetails.imdbID,
+        dataService?.saveObject(realmMovieMock)
+        dataService?.deleteObject(ofType: RealmMovieMock.self, where: { $0.imdbID == self.realmMovieMock.imdbID })
+        dataService?.getObject(ofType: RealmMovieMock.self,
+                               by: realmMovieMock.imdbID,
                                completion: { result in
             switch result {
             case .success:
                 XCTAssert(false)
             case .failure(let error):
-                XCTAssert(error == RequestError.noData)
+                XCTAssertEqual(error, DataError.notFound)
             }
         })
     }

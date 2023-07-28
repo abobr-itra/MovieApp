@@ -10,6 +10,17 @@ class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
     @Persisted var posterUrl: String
     @Persisted var plot: String?
     
+    convenience init(title: String, year: String, imdbID: String, type: String, posterUrl: String, plot: String? = nil) {
+        self.init()
+        
+        self.title = title
+        self.year = year
+        self.imdbID = imdbID
+        self.type = type
+        self.posterUrl = posterUrl
+        self.plot = plot
+    }
+    
     convenience init(from movie: Movie) {
         self.init()
         

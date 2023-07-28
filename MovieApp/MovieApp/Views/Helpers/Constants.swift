@@ -50,30 +50,5 @@ struct Constants {
     struct MockData {
         
         static let movieSearchMock = MovieSearch(search: [], totalResults: "", response: "")
-        static let movieDetailsMock = MovieDetails(title: "Test Title",
-                                year: "2023",
-                                rated: "7",
-                                released: "",
-                                runtime: "2:00",
-                                genre: "horror",
-                                director: "",
-                                writer: "",
-                                actors: "",
-                                plot: "",
-                                language: "",
-                                country: "",
-                                awards: "",
-                                poster: URL(string: "https://t.ly/fP-IJ")!,
-                                ratings: [],
-                                metascore: "",
-                                imdbRating: "",
-                                imdbVotes: "",
-                                imdbID: "",
-                                type: "movie",
-                                dvd: "",
-                                boxOffice: "",
-                                production: "",
-                                website: "",
-                                response: "")
     }
 }
