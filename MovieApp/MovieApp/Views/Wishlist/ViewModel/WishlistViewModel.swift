@@ -45,4 +45,10 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     func movie(at index: Int) -> MovieModelProtocol {
         moviesDB[index]
     }
+    
+    func remove(at index: Int) {
+        let id = moviesDB[index].imdbID
+        deleteMovie(by: id)
+        moviesDB.remove(at: index)
+    }
 }
