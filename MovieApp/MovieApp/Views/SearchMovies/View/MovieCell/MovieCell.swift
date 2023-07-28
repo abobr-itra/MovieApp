@@ -47,7 +47,7 @@ class MovieCell: UITableViewCell {
         contentView.layer.borderWidth = Constants.Cell.borderWidth
         contentView.layer.cornerRadius = Constants.Cell.cornerRadius
         contentView.layer.shadowOffset = Constants.Cell.shadowOffset
-        let borderColor = traitCollection.userInterfaceStyle == .light ? Constants.Cell.lightBorderColor: Constants.Cell.darkBorderTheme
+        let borderColor = Constants.Cell.borderColor
         contentView.layer.borderColor = borderColor.cgColor
     }
 }
