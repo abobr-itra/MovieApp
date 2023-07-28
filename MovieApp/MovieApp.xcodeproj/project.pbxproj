@@ -174,7 +174,6 @@
 		D2E5E94429AE10ED0024BDE2 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		D2E5E94629B0B95C0024BDE2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		D2E5E94729B0B95C0024BDE2 /* WishListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListViewController.xib; sourceTree = "<group>"; };
-		D2EE80752A6947310008C440 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,7 +443,6 @@
 			children = (
 				D2B0D0272947640B0025B7E7 /* MovieApp */,
 				D2B0D0262947640B0025B7E7 /* Products */,
-				D2B679A52A69489000088674 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -474,14 +472,6 @@
 				D2D5E2FA29D493E0005BB3AF /* Main.storyboard */,
 			);
 			path = MovieApp;
-			sourceTree = "<group>";
-		};
-		D2B679A52A69489000088674 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				D2EE80752A6947310008C440 /* UIColor+Extension.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		D2B8A4352A56CBE000D4B05A /* ViewModel */ = {
