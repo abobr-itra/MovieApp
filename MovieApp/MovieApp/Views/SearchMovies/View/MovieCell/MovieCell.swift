@@ -34,6 +34,7 @@ class MovieCell: UITableViewCell {
         guard let movie = movie,
               let poster = URL(string: movie.posterUrl) else { return }
         
+        accessibilityIdentifier = "MovieCell.\(movie.title)"
         movieTitle.text = "\(movie.title) (\(movie.year))"
         moviePoster.load(from: poster)
         movieYear.text = movie.type
