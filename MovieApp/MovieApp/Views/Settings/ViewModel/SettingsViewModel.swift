@@ -10,6 +10,12 @@ class SettingViewModel: SettingsViewModelProtocol {
     
     lazy private var settingsOptions: [SettingsSection] = [
         SettingsSection(title: "Basic".localized(), options: [
+            SettingsOption(title: "Account",
+                           icon: UIImage(systemName: "person.circle"),
+                           iconBackgroundColor: .systemPink,
+                           handler: {
+                               self.actions?.openAccount()
+                           }),
             SettingsOption(title: "Apperance".localized(),
                            icon: UIImage(systemName: "paintbrush"),
                            iconBackgroundColor: .systemBlue,
@@ -46,8 +52,10 @@ class SettingViewModel: SettingsViewModelProtocol {
     ]
     
     struct Actions {
-        var openLanguages: () -> ()
+
+        var openAccount: () -> ()
         var openApperance: () -> ()
+        var openLanguages: () -> ()
     }
     
     var actions: Actions?

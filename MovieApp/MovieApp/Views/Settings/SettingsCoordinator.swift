@@ -9,8 +9,9 @@ class SettingsCoordinator: CoordinatorProtocol {
         let viewModelCreator = SettingsViewModelCreator()
         let viewModel = viewModelCreator.factoryMethod(parser: NetworkParser())
         viewModel.actions = .init(
-            openLanguages: openLanguages,
-            openApperance: openApperance
+            openAccount: openAccount,
+            openApperance: openApperance,
+            openLanguages: openLanguages
         )
         return viewModel
     }
@@ -41,6 +42,11 @@ class SettingsCoordinator: CoordinatorProtocol {
     
     private func openApperance() {
         let viewController = ApperanceViewController()
+        navigationController.pushViewController(viewController, animated: false)
+    }
+    
+    private func openAccount() {
+        let viewController = AuthViewController()
         navigationController.pushViewController(viewController, animated: false)
     }
 }
