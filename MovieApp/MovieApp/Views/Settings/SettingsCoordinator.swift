@@ -46,7 +46,7 @@ class SettingsCoordinator: CoordinatorProtocol {
     }
     
     private func openAccount() {
-        let viewController = AuthViewController()
-        navigationController.pushViewController(viewController, animated: false)
+        let authCoordinator = AuthCoordinator(navigationController: navigationController)
+        authCoordinator.start()
     }
 }

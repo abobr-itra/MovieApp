@@ -1,8 +1,9 @@
 import UIKit
+import Combine
 
 class AuthViewController: UIViewController {
-    
-    // MARK: - Properties
+
+    // MARK: - UI Properties
     
     private var emailTextField: UITextField = {
         let textField = UITextField(frame: CGRect(x: 20, y: 350, width: 350, height: 35))
@@ -24,21 +25,32 @@ class AuthViewController: UIViewController {
         return textField
     }()
     
-    private var loginButton: UIButton = {
+    private var signInButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 145, y: 450, width: 100, height: 35))
-        button.setTitle("Login", for: .normal)
+        button.setTitle("SignIn", for: .normal)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 8
         return button
     }()
     
-    private var registerButton: UIButton = {
+    private var signUpButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 145, y: 500, width: 100, height: 35))
-        button.setTitle("Register", for: .normal)
+        button.setTitle("SignUp", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 8
         return button
     }()
+    
+    // MARK: - Properties
+    
+    private var viewModel: AuthViewModelProtocol?
+    private var subscriptions: Set<AnyCancellable> = []
+
+    convenience init(viewModel: AuthViewModelProtocol) {
+        self.init(nibName: nil, bundle: nil)
+        
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +65,36 @@ class AuthViewController: UIViewController {
         
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(loginButton)
-        view.addSubview(registerButton)
+        view.addSubview(signInButton)
+        signInButton.addTarget(self, action: #selector(self.handleSignIn), for: .touchUpInside)
+        view.addSubview(signUpButton)
+        signUpButton.addTarget(self, action: #selector(self.handleSignUp), for: .touchUpInside)
+        bind()
+    }
+    
+    private func bind() { // TODO: Is this approach effective?
+        emailTextField.textPublisher
+            .sink { [weak self] email in
+                self?.viewModel?.email = email
+            }
+            .store(in: &subscriptions)
+        passwordTextField.textPublisher
+            .sink { [weak self] password in
+                self?.viewModel?.password = password
+            }
+            .store(in: &subscriptions)
+    }
+    
+    // MARK: - Private
+    
+    @objc
+    private func handleSignIn() {
+        viewModel?.signIn()
+    }
+    
+    @objc
+    private func handleSignUp() {
+        print("SignUp tapped")
+        viewModel?.signUp()
     }
 }
