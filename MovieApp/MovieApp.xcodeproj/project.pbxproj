@@ -94,6 +94,8 @@
 		D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */; };
 		D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */; };
 		D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */; };
+		D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */; };
+		D2CD27402A7A956800EA1FA5 /* KeychainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */; };
 		D2D5E2F729D473C5005BB3AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E2F629D473C5005BB3AF /* Constants.swift */; };
 		D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D5E2FA29D493E0005BB3AF /* Main.storyboard */; };
 		D2D5E2FE29D498F2005BB3AF /* SearchMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E2FC29D498F2005BB3AF /* SearchMoviesViewController.swift */; };
@@ -205,6 +207,8 @@
 		D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableViewControllerProtocol.swift; sourceTree = "<group>"; };
 		D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceProtocol.swift; sourceTree = "<group>"; };
 		D2D5E2F629D473C5005BB3AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D2D5E2FA29D493E0005BB3AF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D2D5E2FC29D498F2005BB3AF /* SearchMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesViewController.swift; sourceTree = "<group>"; };
@@ -559,6 +563,7 @@
 		D2B0D0272947640B0025B7E7 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				D2CD273C2A7A954500EA1FA5 /* KeychainService */,
 				D26998A42A7912500051A689 /* GoogleService-Info.plist */,
 				D2B8A4562A56D2C500D4B05A /* RealmService */,
 				D28E71572A4DAAB600CA674E /* Resources */,
@@ -721,6 +726,15 @@
 				D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */,
 			);
 			path = Spinner;
+			sourceTree = "<group>";
+		};
+		D2CD273C2A7A954500EA1FA5 /* KeychainService */ = {
+			isa = PBXGroup;
+			children = (
+				D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */,
+				D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */,
+			);
+			path = KeychainService;
 			sourceTree = "<group>";
 		};
 		D2E5E93F29AE0B3E0024BDE2 /* RealmModels */ = {
@@ -892,6 +906,7 @@
 				D2570BD3294C740200E857FD /* String+Extension.swift in Sources */,
 				D2B8A4662A56E89A00D4B05A /* MovieModelProtocol.swift in Sources */,
 				D2E5E94329AE0D540024BDE2 /* RealmMovieSearch.swift in Sources */,
+				D2CD27402A7A956800EA1FA5 /* KeychainServiceProtocol.swift in Sources */,
 				D21EEEE82A28D92A00957FA7 /* SettingsViewModel.swift in Sources */,
 				D2E5E94129AE0BA30024BDE2 /* RealmMovie.swift in Sources */,
 				D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */,
@@ -921,6 +936,7 @@
 				D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */,
 				D2570BE42951D47D00E857FD /* MoviePageCoordinator.swift in Sources */,
 				D2B8A4552A56D2A000D4B05A /* MovieViewModelProtocol.swift in Sources */,
+				D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */,
 				D2570BD1294C736D00E857FD /* Plot.swift in Sources */,
 				D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */,
 				D2B0D02B2947640B0025B7E7 /* SceneDelegate.swift in Sources */,

@@ -7,6 +7,7 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     // MARK: - Properties
     
     private let authService: AuthServiceProtocol
+    private let keychainService: KeychainServiceProtocol
     
     @Published private var user: User?
     @Published private var isAuthSuccess: Bool = false
@@ -19,8 +20,9 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     // MARK: - Init
     
-    init(authService: AuthServiceProtocol) {
+    init(authService: AuthServiceProtocol, keychainService: KeychainServiceProtocol) {
         self.authService = authService
+        self.keychainService = keychainService
     }
     
     // MARK: - Public
@@ -48,8 +50,13 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     private func handleAuth(result: (Result<User, Error>)) {
         switch result {
         case .success(let user):
+            
             isAuthSuccess = true
             self.user = user
+            
+            guard let userID = Auth.auth().currentUser?.uid,
+                  let userData = userID.data(using: .utf8) else { return }
+            keychainService.set(userData, forKey: "user_id")
         case .failure(let error):
             authError = error
         }
