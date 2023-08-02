@@ -17,7 +17,18 @@ class AuthCoordinator: CoordinatorProtocol {
         let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
         
         let viewController = AuthViewController(viewModel: viewModel)
-        
+        viewController.actions = .init(authenticate: navigateToSettings)
         navigationController.pushViewController(viewController, animated: false)
+    }
+    
+    // MARK: - Private
+    
+    private func authenticate() {
+        let viewController = ProfileViewController()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func navigateToSettings() {
+        navigationController.popViewController(animated: true)
     }
 }

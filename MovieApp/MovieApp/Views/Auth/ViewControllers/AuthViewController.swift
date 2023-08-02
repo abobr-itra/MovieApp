@@ -6,27 +6,28 @@ class AuthViewController: UIViewController {
     // MARK: - UI Properties
     
     private var emailTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 20, y: 350, width: 350, height: 35))
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Email"
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
         textField.autocorrectionType = .no
         textField.borderStyle = .roundedRect
-        textField.tintColor = .black
         return textField
     }()
     
     private var passwordTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 20, y: 400, width: 350, height: 35))
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Password"
         textField.borderStyle = .roundedRect
-        textField.tintColor = .black
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private var signInButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 145, y: 450, width: 100, height: 35))
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("SignIn", for: .normal)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 8
@@ -34,7 +35,8 @@ class AuthViewController: UIViewController {
     }()
     
     private var signUpButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 145, y: 500, width: 100, height: 35))
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("SignUp", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 8
@@ -42,6 +44,13 @@ class AuthViewController: UIViewController {
     }()
     
     // MARK: - Properties
+    
+    struct Actions {
+        
+        var authenticate: () -> ()
+    }
+    
+    var actions: Actions?
     
     private var viewModel: AuthViewModelProtocol?
     private var subscriptions: Set<AnyCancellable> = []
@@ -56,23 +65,49 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        bind()
+        listenUser()
     }
     
     // MARK: - Private
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(signInButton)
-        signInButton.addTarget(self, action: #selector(self.handleSignIn), for: .touchUpInside)
-        view.addSubview(signUpButton)
-        signUpButton.addTarget(self, action: #selector(self.handleSignUp), for: .touchUpInside)
-        bind()
+        setupTextFields([emailTextField, passwordTextField], basicMargin: 300)
+        setupButtons()
+    }
+
+    private func setupTextFields(_ textFields: [UITextField], basicMargin: CGFloat, gap: CGFloat = 50.0) {
+        for (index, textField) in textFields.enumerated() {
+            view.addSubview(textField)
+            NSLayoutConstraint.activate([
+                textField.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: basicMargin + (gap * CGFloat(index))),
+                textField.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: Constants.TextFields.sideMargin),
+                textField.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -Constants.TextFields.sideMargin)
+            ])
+        }
     }
     
-    private func bind() { // TODO: Is this approach effective?
+    private func setupButtons(_ buttons: [UIButton], basicMargin: CGFloat, gap: CGFloat = 50.0) {
+        for (index, button) in buttons.enumerated() {
+            view.addSubview(button)
+            NSLayoutConstraint.activate([
+                button.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: basicMargin + (gap * CGFloat(index))),
+                button.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: Constants.TextFields.buttonsSideMargin),
+                button.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -Constants.TextFields.buttonsSideMargin)
+            ])
+        }
+    }
+    
+    private func setupButtons() {
+        
+        setupButtons([signInButton, signUpButton], basicMargin: 400)
+
+        signInButton.addTarget(self, action: #selector(self.handleSignIn), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(self.handleSignUp), for: .touchUpInside)
+    }
+    
+    private func bind() {
         emailTextField.textPublisher
             .sink { [weak self] email in
                 self?.viewModel?.email = email
@@ -94,7 +129,14 @@ class AuthViewController: UIViewController {
     
     @objc
     private func handleSignUp() {
-        print("SignUp tapped")
         viewModel?.signUp()
+    }
+    
+    private func listenUser() {
+        viewModel?.isAuthSuccessPublisher
+            .sink { [weak self] success in
+                if success { self?.actions?.authenticate() } // navigate to home page
+            }
+            .store(in: &subscriptions)
     }
 }

@@ -9,7 +9,10 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     private let authService: AuthServiceProtocol
     
     @Published private var user: User?
+    @Published private var isAuthSuccess: Bool = false
     @Published private var authError: Error?
+    
+    var isAuthSuccessPublisher: Published<Bool>.Publisher { $isAuthSuccess }
     
     var email = ""
     var password = ""
@@ -24,7 +27,6 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     func signIn() {
         guard !email.isEmpty && !password.isEmpty else { return }
-        print("SignIn Email: \(email) Password: \(password)")
         authService.signIn(withEmail: email, password: password) { [weak self] result in
             self?.handleAuth(result: result)
         }
@@ -32,7 +34,6 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     func signUp() {
         guard !email.isEmpty && !password.isEmpty else { return }
-        print("SignUp Email: \(email) Password: \(password)")
         authService.signUp(withEmail: email, password: password) { [weak self] result in
             self?.handleAuth(result: result)
         }
@@ -45,9 +46,9 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     // MARK: - Private
     
     private func handleAuth(result: (Result<User, Error>)) {
-        print("Result: \(result)")
         switch result {
         case .success(let user):
+            isAuthSuccess = true
             self.user = user
         case .failure(let error):
             authError = error
