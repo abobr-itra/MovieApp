@@ -1,7 +1,7 @@
 import Foundation
 import RealmSwift
 
-class RealmService: RealmServiceProtocol {
+class RealmService: RealmServiceProtocol {    
     
     // MARK: Properties
     
@@ -13,16 +13,17 @@ class RealmService: RealmServiceProtocol {
     
     // MARK: - Public
     
-    func saveObject(_ object: Object) {
-        print("🌎 Start saving \(object)")
-        try? realm?.write {
-            print("🌎 Adding \(object) to realm database")
-            realm?.add(object, update: .modified)
+    func saveObject<T: Object>(ofType type: T.Type, object: T, primaryKey: Int) {
+        if realm?.object(ofType: type.self, forPrimaryKey: primaryKey) == nil {
+            try? realm?.write {
+                print("🌎 Adding \(object) to realm database")
+                realm?.add(object)
+            }
         }
     }
 
-    func getObject<T: Object>(ofType: T.Type, by id: String, completion: @escaping (Result<T, DataError>) -> Void) {
-        let object = realm?.object(ofType: T.self, forPrimaryKey: id)
+    func getObject<T: Object>(ofType type: T.Type, by id: String, completion: @escaping (Result<T, DataError>) -> Void) {
+        let object = realm?.object(ofType: type.self, forPrimaryKey: id)
         if let object = object {
             completion(.success(object))
         } else {
@@ -30,8 +31,8 @@ class RealmService: RealmServiceProtocol {
         }
     }
 
-    func getAllObjects<T: Object>(ofType: T.Type, completion: @escaping (Result<[T], DataError>) -> Void) {
-        guard let objects = realm?.objects(T.self) else { return }
+    func getAllObjects<T: Object>(ofType type: T.Type, completion: @escaping (Result<[T], DataError>) -> Void) {
+        guard let objects = realm?.objects(type.self) else { return }
         if !objects.isEmpty {
             completion(.success(Array(objects)))
         } else {
