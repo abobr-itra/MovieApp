@@ -1,18 +1,13 @@
 import UIKit
 
-class SettingsCoordinator: CoordinatorProtocol {
+class SettingsCoordinator: SettingsCoordinatorProtocol {
     
     // MARK: - Properties
     
     var navigationController: UINavigationController
     private var viewModel: SettingsViewModelProtocol {
-        let viewModelCreator = SettingsViewModelCreator()
+        let viewModelCreator = SettingsViewModelCreator(coordinator: self)
         let viewModel = viewModelCreator.factoryMethod(parser: NetworkParser())
-        viewModel.actions = .init(
-            openAccount: openAccount,
-            openApperance: openApperance,
-            openLanguages: openLanguages
-        )
         return viewModel
     }
     
@@ -24,12 +19,12 @@ class SettingsCoordinator: CoordinatorProtocol {
     
     func start() {
         let viewController = SettingsViewController(viewModel: viewModel)
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
-    // MARK: - Private
+    // MARK: - SettingsCoordinatorProtocol
     
-    private func openLanguages() {
+    func openLanguages() {
         let viewController = SettingsLanguagesViewController()
         viewController.data = .init(languages: viewModel.languages,
                                     currentLanguage: viewModel.currentLanguage ?? .english)
@@ -37,15 +32,15 @@ class SettingsCoordinator: CoordinatorProtocol {
             Bundle.setLanguage(lang: language.rawValue)
             completion(.success(()))
         })
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
-    private func openApperance() {
+    func openApperance() {
         let viewController = ApperanceViewController()
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
-    private func openAccount() {
+    func openAccount() {
         let authCoordinator = AuthCoordinator(navigationController: navigationController)
         authCoordinator.start()
     }

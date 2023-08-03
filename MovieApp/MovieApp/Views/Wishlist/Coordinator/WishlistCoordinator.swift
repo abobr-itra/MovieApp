@@ -1,6 +1,6 @@
 import UIKit
 
-class SearchMovieCoordinator: CoordinatorProtocol {
+class WishlistCoordinator: WishlistCoordinatorProtocol {
     
     // MARK: - Properties
     
@@ -10,21 +10,19 @@ class SearchMovieCoordinator: CoordinatorProtocol {
         self.navigationController = navigationController
     }
     
-    // MARK: - Public
-    
     func start() {
-        let viewModelFabric = SearchMovieViewModelCreator()
+        let viewModelFabric = WishlistViewModelCreator(coordinator: self)
         let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
+        viewModel.loadWishlist() // TODO: ???
         
-        let viewController = SearchMoviesViewController(viewModel: viewModel)
-        viewController.actions = .init(openMovie: openMovie)
+        let viewController = WishListViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: false)
     }
     
-    // MARK: - Private
+    // MARK: - WishlistCoordinatorProtocol
     
-    private func openMovie(_ movieID: String) {
+    func navigateToMovie(_ movieID: String) {
         let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController, movieID: movieID)
         moviePageCoordinator.start()
     }

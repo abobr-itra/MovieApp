@@ -28,7 +28,7 @@ class AuthViewController: UIViewController {
     private var signInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("SignIn", for: .normal)
+        button.setTitle("Sign In", for: .normal)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 8
         return button
@@ -37,23 +37,18 @@ class AuthViewController: UIViewController {
     private var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("SignUp", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 8
         return button
     }()
     
     // MARK: - Properties
-    
-    struct Actions {
-        
-        var authenticate: () -> ()
-    }
-    
-    var actions: Actions?
-    
+
     private var viewModel: AuthViewModelProtocol?
     private var subscriptions: Set<AnyCancellable> = []
+    
+    // MARK: - Init
 
     convenience init(viewModel: AuthViewModelProtocol) {
         self.init(nibName: nil, bundle: nil)
@@ -66,7 +61,6 @@ class AuthViewController: UIViewController {
 
         setupUI()
         bind()
-        listenUser()
     }
     
     // MARK: - Private
@@ -120,8 +114,6 @@ class AuthViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    // MARK: - Private
-    
     @objc
     private func handleSignIn() {
         viewModel?.signIn()
@@ -130,13 +122,5 @@ class AuthViewController: UIViewController {
     @objc
     private func handleSignUp() {
         viewModel?.signUp()
-    }
-    
-    private func listenUser() {
-        viewModel?.isAuthSuccessPublisher
-            .sink { [weak self] success in
-                if success { self?.actions?.authenticate() } // navigate to home page
-            }
-            .store(in: &subscriptions)
-    }
+    }    
 }

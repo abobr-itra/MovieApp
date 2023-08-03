@@ -43,11 +43,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     
     // MARK: - Private
     
-    private func setupTableView() {    
-        actions.do { actions in
-            delegate?.actions = .init(openMovie: actions.openMovie)
-        }
-        
+    private func setupTableView() {            
         MovieListStyle.baseMovieListStyle(tableView)
         tableView.dataSource = dataSource
         tableView.delegate = delegate

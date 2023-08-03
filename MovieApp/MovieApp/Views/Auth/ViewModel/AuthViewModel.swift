@@ -8,21 +8,20 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     private let authService: AuthServiceProtocol
     private let keychainService: KeychainServiceProtocol
+    private let coordinator: AuthCoordinatorProtocol
     
     @Published private var user: User?
-    @Published private var isAuthSuccess: Bool = false
     @Published private var authError: Error?
-    
-    var isAuthSuccessPublisher: Published<Bool>.Publisher { $isAuthSuccess }
     
     var email = ""
     var password = ""
     
     // MARK: - Init
-    
-    init(authService: AuthServiceProtocol, keychainService: KeychainServiceProtocol) {
+
+    init(authService: AuthServiceProtocol, keychainService: KeychainServiceProtocol, coordinator: AuthCoordinatorProtocol) {
         self.authService = authService
         self.keychainService = keychainService
+        self.coordinator = coordinator
     }
     
     // MARK: - Public
@@ -51,12 +50,10 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
         switch result {
         case .success(let user):
             self.user = user
-            
             guard let userID = Auth.auth().currentUser?.uid,
                   let userData = userID.data(using: .utf8) else { return }
             keychainService.set(userData, forKey: "user_id")
-            
-            isAuthSuccess = true
+            coordinator.navigateToSettings()
         case .failure(let error):
             authError = error
         }
