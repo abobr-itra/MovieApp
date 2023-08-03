@@ -7,20 +7,19 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     // MARK: - Properties
     
     private let authService: AuthServiceProtocol
+    private let coordinator: AuthCoordinatorProtocol
     
     @Published private var user: User?
-    @Published private var isAuthSuccess: Bool = false
     @Published private var authError: Error?
-    
-    var isAuthSuccessPublisher: Published<Bool>.Publisher { $isAuthSuccess }
     
     var email = ""
     var password = ""
     
     // MARK: - Init
     
-    init(authService: AuthServiceProtocol) {
+    init(authService: AuthServiceProtocol, coordinator: AuthCoordinatorProtocol) {
         self.authService = authService
+        self.coordinator = coordinator
     }
     
     // MARK: - Public
@@ -48,8 +47,8 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     private func handleAuth(result: (Result<User, Error>)) {
         switch result {
         case .success(let user):
-            isAuthSuccess = true
             self.user = user
+            coordinator.navigateToSettings()
         case .failure(let error):
             authError = error
         }

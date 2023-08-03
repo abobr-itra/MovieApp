@@ -94,6 +94,11 @@
 		D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */; };
 		D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */; };
 		D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */; };
+		D2D0CCC32A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCC22A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift */; };
+		D2D0CCC62A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCC52A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift */; };
+		D2D0CCC92A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCC82A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift */; };
+		D2D0CCCC2A7BD3300070B7A0 /* WishlistCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCCB2A7BD3300070B7A0 /* WishlistCoordinatorProtocol.swift */; };
+		D2D0CCCF2A7BD5F70070B7A0 /* SettingsCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCCE2A7BD5F70070B7A0 /* SettingsCoordinatorProtocol.swift */; };
 		D2D5E2F729D473C5005BB3AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E2F629D473C5005BB3AF /* Constants.swift */; };
 		D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D5E2FA29D493E0005BB3AF /* Main.storyboard */; };
 		D2D5E2FE29D498F2005BB3AF /* SearchMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5E2FC29D498F2005BB3AF /* SearchMoviesViewController.swift */; };
@@ -205,6 +210,11 @@
 		D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableViewControllerProtocol.swift; sourceTree = "<group>"; };
 		D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D2D0CCC22A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		D2D0CCC52A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		D2D0CCC82A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		D2D0CCCB2A7BD3300070B7A0 /* WishlistCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		D2D0CCCE2A7BD5F70070B7A0 /* SettingsCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2D5E2F629D473C5005BB3AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D2D5E2FA29D493E0005BB3AF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D2D5E2FC29D498F2005BB3AF /* SearchMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesViewController.swift; sourceTree = "<group>"; };
@@ -250,10 +260,10 @@
 		D21EEED72A28D21000957FA7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D2D0CCCD2A7BD5E10070B7A0 /* Coordinator */,
 				D2B8A43E2A56CCAD00D4B05A /* ViewModel */,
 				D21EEEEB2A28DB3600957FA7 /* SettingsCell */,
 				D21EEED82A28D27500957FA7 /* ViewController */,
-				D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -285,10 +295,10 @@
 		D227301729C1E25F003787E7 /* SearchMovies */ = {
 			isa = PBXGroup;
 			children = (
+				D2D0CCC42A7BCFE70070B7A0 /* Coordinator */,
 				D2B8A4352A56CBE000D4B05A /* ViewModel */,
 				D227301829C1E282003787E7 /* View */,
 				D227301929C1E28A003787E7 /* ViewController */,
-				D2570BE12951CF9B00E857FD /* SearchMovieCoordinator.swift */,
 			);
 			path = SearchMovies;
 			sourceTree = "<group>";
@@ -323,9 +333,9 @@
 		D227301B29C1E30F003787E7 /* Wishlist */ = {
 			isa = PBXGroup;
 			children = (
+				D2D0CCCA2A7BD3140070B7A0 /* Coordinator */,
 				D2B8A4382A56CC4600D4B05A /* ViewModel */,
 				D227301E29C1E344003787E7 /* ViewController */,
-				D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */,
 			);
 			path = Wishlist;
 			sourceTree = "<group>";
@@ -333,9 +343,9 @@
 		D227301C29C1E325003787E7 /* MoviePage */ = {
 			isa = PBXGroup;
 			children = (
+				D2D0CCC72A7BD2750070B7A0 /* Coordinator */,
 				D2B8A43B2A56CC7200D4B05A /* ViewModel */,
 				D227302029C1E350003787E7 /* ViewController */,
-				D2570BE32951D47D00E857FD /* MoviePageCoordinator.swift */,
 			);
 			path = MoviePage;
 			sourceTree = "<group>";
@@ -397,10 +407,10 @@
 		D269988C2A77E9C40051A689 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				D2D0CCC12A7BCC770070B7A0 /* Coordinator */,
 				D26998AA2A791A210051A689 /* AuthService */,
 				D26998902A77EA1C0051A689 /* ViewModel */,
 				D269988F2A77EA120051A689 /* ViewControllers */,
-				D26998952A77F1B30051A689 /* AuthCoordinator.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -723,6 +733,51 @@
 			path = Spinner;
 			sourceTree = "<group>";
 		};
+		D2D0CCC12A7BCC770070B7A0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D26998952A77F1B30051A689 /* AuthCoordinator.swift */,
+				D2D0CCC22A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		D2D0CCC42A7BCFE70070B7A0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D2570BE12951CF9B00E857FD /* SearchMovieCoordinator.swift */,
+				D2D0CCC52A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		D2D0CCC72A7BD2750070B7A0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D2570BE32951D47D00E857FD /* MoviePageCoordinator.swift */,
+				D2D0CCC82A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		D2D0CCCA2A7BD3140070B7A0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */,
+				D2D0CCCB2A7BD3300070B7A0 /* WishlistCoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		D2D0CCCD2A7BD5E10070B7A0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D21EEEF02A2A1D5600957FA7 /* SettingsCoordinator.swift */,
+				D2D0CCCE2A7BD5F70070B7A0 /* SettingsCoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		D2E5E93F29AE0B3E0024BDE2 /* RealmModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,6 +936,7 @@
 				D2570BD5295070FB00E857FD /* ViewModelCreatorProtocol.swift in Sources */,
 				D21EEEF12A2A1D5600957FA7 /* SettingsCoordinator.swift in Sources */,
 				D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */,
+				D2D0CCCC2A7BD3300070B7A0 /* WishlistCoordinatorProtocol.swift in Sources */,
 				D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */,
 				D2B8A4492A56D01A00D4B05A /* MovieServiceProtocol.swift in Sources */,
 				D269988E2A77E9FB0051A689 /* AuthViewController.swift in Sources */,
@@ -890,12 +946,14 @@
 				D2B8A4512A56D21000D4B05A /* WishlistViewModelCreator.swift in Sources */,
 				D2B8A44B2A56D1DD00D4B05A /* SearchMovieViewModelCreator.swift in Sources */,
 				D2570BD3294C740200E857FD /* String+Extension.swift in Sources */,
+				D2D0CCCF2A7BD5F70070B7A0 /* SettingsCoordinatorProtocol.swift in Sources */,
 				D2B8A4662A56E89A00D4B05A /* MovieModelProtocol.swift in Sources */,
 				D2E5E94329AE0D540024BDE2 /* RealmMovieSearch.swift in Sources */,
 				D21EEEE82A28D92A00957FA7 /* SettingsViewModel.swift in Sources */,
 				D2E5E94129AE0BA30024BDE2 /* RealmMovie.swift in Sources */,
 				D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */,
 				D2E5E94529AE10ED0024BDE2 /* RealmService.swift in Sources */,
+				D2D0CCC32A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift in Sources */,
 				D21EEEFB2A41B00B00957FA7 /* MoviesTableView.swift in Sources */,
 				D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */,
 				D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */,
@@ -925,6 +983,7 @@
 				D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */,
 				D2B0D02B2947640B0025B7E7 /* SceneDelegate.swift in Sources */,
 				D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */,
+				D2D0CCC92A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift in Sources */,
 				D2AF0482294891510001C92A /* RequestError.swift in Sources */,
 				D28E71752A4EE50400CA674E /* Language.swift in Sources */,
 				D28E71702A4EE2CF00CA674E /* Dictionary+Extension.swift in Sources */,
@@ -936,6 +995,7 @@
 				D2D5E2FE29D498F2005BB3AF /* SearchMoviesViewController.swift in Sources */,
 				D2B8A4432A56CFAC00D4B05A /* NetworkServiceProtocol.swift in Sources */,
 				D2570BCF294C703C00E857FD /* MovieDetails.swift in Sources */,
+				D2D0CCC62A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift in Sources */,
 				D2B8A45B2A56D31300D4B05A /* DataError.swift in Sources */,
 				D26998962A77F1B30051A689 /* AuthCoordinator.swift in Sources */,
 				D21EEEDB2A28D29200957FA7 /* SettingsViewController.swift in Sources */,

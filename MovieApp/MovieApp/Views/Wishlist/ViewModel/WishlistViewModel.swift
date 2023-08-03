@@ -11,14 +11,16 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
     var isDataLoadedPublisher: Published<Bool>.Publisher { $isDataLoaded }
     var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
     
+    private let coordinator: WishlistCoordinatorProtocol
     private var dataService: RealmServiceProtocol
     private(set) var moviesDB: [RealmMovie] = []
     var moviesCount: Int {
         moviesDB.count
     }
     
-    init(dataService: RealmServiceProtocol) {
+    init(dataService: RealmServiceProtocol, coordinator: WishlistCoordinatorProtocol) {
         self.dataService = dataService
+        self.coordinator = coordinator
     }
     
     // MARK: - Public
@@ -50,5 +52,9 @@ class WishlistViewModel: MovieViewModelProtocol, WishlistViewModelProtocol {
         let id = moviesDB[index].imdbID
         deleteMovie(by: id)
         moviesDB.remove(at: index)
+    }
+    
+    func openMovie(_ movieID: String) {
+        coordinator.navigateToMovie(movieID)
     }
 }

@@ -44,16 +44,11 @@ class AuthViewController: UIViewController {
     }()
     
     // MARK: - Properties
-    
-    struct Actions {
-        
-        var authenticate: () -> ()
-    }
-    
-    var actions: Actions?
-    
+
     private var viewModel: AuthViewModelProtocol?
     private var subscriptions: Set<AnyCancellable> = []
+    
+    // MARK: - Init
 
     convenience init(viewModel: AuthViewModelProtocol) {
         self.init(nibName: nil, bundle: nil)
@@ -66,7 +61,6 @@ class AuthViewController: UIViewController {
 
         setupUI()
         bind()
-        listenUser()
     }
     
     // MARK: - Private
@@ -120,8 +114,6 @@ class AuthViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    // MARK: - Private
-    
     @objc
     private func handleSignIn() {
         viewModel?.signIn()
@@ -130,13 +122,5 @@ class AuthViewController: UIViewController {
     @objc
     private func handleSignUp() {
         viewModel?.signUp()
-    }
-    
-    private func listenUser() {
-        viewModel?.isAuthSuccessPublisher
-            .sink { [weak self] success in
-                if success { self?.actions?.authenticate() } // navigate to home page
-            }
-            .store(in: &subscriptions)
-    }
+    }    
 }

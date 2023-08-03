@@ -14,13 +14,13 @@ class SettingViewModel: SettingsViewModelProtocol {
                            icon: UIImage(systemName: "person.circle"),
                            iconBackgroundColor: .systemPink,
                            handler: {
-                               self.actions?.openAccount()
+                               self.coordinator.openAccount()
                            }),
             SettingsOption(title: "Apperance".localized(),
                            icon: UIImage(systemName: "paintbrush"),
                            iconBackgroundColor: .systemBlue,
                            handler: {
-                               self.actions?.openApperance()
+                               self.coordinator.openApperance()
                            }),
             SettingsOption(title: "App Icon".localized(),
                            icon: UIImage(systemName: "photo.circle"),
@@ -32,7 +32,7 @@ class SettingViewModel: SettingsViewModelProtocol {
                            icon: UIImage(systemName: "character.bubble"),
                            iconBackgroundColor: .systemTeal,
                            handler: {
-                               self.actions?.openLanguages()
+                               self.coordinator.openLanguages()
                            })
         ]),
         SettingsSection(title: "Privacy".localized(), options: [
@@ -51,19 +51,16 @@ class SettingViewModel: SettingsViewModelProtocol {
         ])
     ]
     
-    struct Actions {
-
-        var openAccount: () -> ()
-        var openApperance: () -> ()
-        var openLanguages: () -> ()
-    }
-    
-    var actions: Actions?
+    private let coordinator: SettingsCoordinatorProtocol
     
     var languages: [Language] = [.english, .polish, .russian]
     var currentLanguage: Language? {
         let locale = Locale.current.language.languageCode?.identifier ?? "en"
         return Language(rawValue: locale)
+    }
+    
+    init(coordinator: SettingsCoordinatorProtocol) {
+        self.coordinator = coordinator
     }
     
     // MARK: - Public

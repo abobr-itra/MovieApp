@@ -1,6 +1,6 @@
 import UIKit
 
-class AuthCoordinator: CoordinatorProtocol {
+class AuthCoordinator: AuthCoordinatorProtocol {
     
     // MARK: - Properties
 
@@ -13,22 +13,21 @@ class AuthCoordinator: CoordinatorProtocol {
     // MARK: - Public
     
     func start() {
-        let viewModelFabric = AuthViewModelCreator()
+        let viewModelFabric = AuthViewModelCreator(coordinator: self)
         let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
         
         let viewController = AuthViewController(viewModel: viewModel)
-        viewController.actions = .init(authenticate: navigateToSettings)
         navigationController.pushViewController(viewController, animated: false)
     }
     
-    // MARK: - Private
+    // MARK: - AuthCoordinatorProtocol
     
-    private func authenticate() {
+    func navigateToProfile() {
         let viewController = ProfileViewController()
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    private func navigateToSettings() {
+    func navigateToSettings() {
         navigationController.popViewController(animated: true)
     }
 }
