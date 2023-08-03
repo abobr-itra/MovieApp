@@ -50,13 +50,13 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     private func handleAuth(result: (Result<User, Error>)) {
         switch result {
         case .success(let user):
-            
-            isAuthSuccess = true
             self.user = user
             
             guard let userID = Auth.auth().currentUser?.uid,
                   let userData = userID.data(using: .utf8) else { return }
             keychainService.set(userData, forKey: "user_id")
+            
+            isAuthSuccess = true
         case .failure(let error):
             authError = error
         }

@@ -31,6 +31,7 @@ class KeychainService: KeychainServiceProtocol {
         let query: [CFString: Any] = [
             kSecAttrAccount: keyWithPrefix(key),
             kSecClass: kSecClassGenericPassword,
+            kSecReturnData: true,
             kSecMatchLimit: kSecMatchLimitOne
         ]
         

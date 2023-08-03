@@ -25,13 +25,7 @@ class SettingsViewController: UIViewController {
         
         setupTableView()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        let keychainService = KeychainService()
-        let userId = keychainService.get("user_id")
-        print("UserID : \(userId)")
-    }
-    
+
     // MARK: - Private
     
     private func setupTableView() {
