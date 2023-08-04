@@ -1,6 +1,6 @@
 import UIKit
 
-class MoviePageCoordinator: CoordinatorProtocol {
+class MoviePageCoordinator: MoviePageCoordiantorProtocol {
     
     // MARK: - Properties
     

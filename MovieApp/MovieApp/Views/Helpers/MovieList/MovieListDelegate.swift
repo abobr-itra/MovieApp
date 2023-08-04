@@ -1,13 +1,7 @@
 import UIKit
 
 class MovieListDelegate: NSObject, UITableViewDelegate {
-    
-    struct Actions {
-        
-        var openMovie: (_ movieID: String) -> Void
-    }
-    
-    var actions: Actions?
+
     private var deletePermited: Bool
     private var viewModel: MovieViewModelProtocol
     
@@ -18,7 +12,7 @@ class MovieListDelegate: NSObject, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = viewModel.movie(at: indexPath.row)
-        actions?.openMovie(movie.imdbID)
+        viewModel.openMovie(movie.imdbID)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

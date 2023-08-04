@@ -44,4 +44,10 @@ struct Constants {
         
         static let movieSearchMock = MovieSearch(search: [], totalResults: "", response: "")
     }
+
+    struct TextFields {
+        
+        static let sideMargin: CGFloat = 16.0
+        static let buttonsSideMargin: CGFloat = 90.0
+    }
 }
