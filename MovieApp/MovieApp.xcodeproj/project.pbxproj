@@ -123,7 +123,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D2637F372A600B73007F2E9D /* PBXContainerItemProxy */ = {
 		D2B679D52A6A8BF300088674 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2B0D01D2947640B0025B7E7 /* Project object */;
