@@ -25,7 +25,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
         
         self.viewModel = viewModel
         dataSource = MoiveListDataSource(viewModel: viewModel)
-        delegate = MovieListDelegate(viewModel: viewModel)
+        delegate = MovieListDelegate(viewModel: viewModel, deletePermited: true)
     }
     
     override func viewDidLoad() {
@@ -43,11 +43,7 @@ class WishListViewController: UIViewController, RefreshableViewControllerProtoco
     
     // MARK: - Private
     
-    private func setupTableView() {    
-        actions.do { actions in
-            delegate?.actions = .init(openMovie: actions.openMovie)
-        }
-        
+    private func setupTableView() {            
         MovieListStyle.baseMovieListStyle(tableView)
         tableView.dataSource = dataSource
         tableView.delegate = delegate

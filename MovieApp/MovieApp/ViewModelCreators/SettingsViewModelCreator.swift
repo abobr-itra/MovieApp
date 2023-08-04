@@ -4,7 +4,13 @@ class SettingsViewModelCreator: ViewModelCreatorProtocol {
     
     typealias ViewModel = SettingViewModel
     
+    private unowned let coordinator: SettingsCoordinatorProtocol
+    
+    init(coordinator: SettingsCoordinatorProtocol) {
+        self.coordinator = coordinator
+    }
+
     func factoryMethod(parser: NetworkPaserProtocol) -> SettingViewModel {
-        SettingViewModel()
+        SettingViewModel(coordinator: coordinator)
     }
 }

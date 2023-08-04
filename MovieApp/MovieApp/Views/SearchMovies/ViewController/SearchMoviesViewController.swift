@@ -13,14 +13,7 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     private var subscriptions: Set<AnyCancellable> = []
     private let searchController = UISearchController(searchResultsController: nil)
     var spinner: SpinnerViewController = SpinnerViewController()
-    
-    struct Actions {
-        
-        var openMovie: (_ movieID: String) -> Void
-    }
-    
-    var actions: Actions?
-    
+
     convenience init(viewModel: SearchMovieViewModelProtocol) {
         self.init(nibName: nil, bundle: nil)
         
@@ -43,9 +36,6 @@ class SearchMoviesViewController: UIViewController, RefreshableViewControllerPro
     // MARK: - Private
     
     private func setupTableView() {
-        actions.do { actions in
-            delegate?.actions = .init(openMovie: actions.openMovie)
-        }
         MovieListStyle.baseMovieListStyle(tableView)
         tableView.dataSource = dataSource
         tableView.delegate = delegate

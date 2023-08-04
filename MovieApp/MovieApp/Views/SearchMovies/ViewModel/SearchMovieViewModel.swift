@@ -6,6 +6,7 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
     // MARK: - Properties
     
     private let movieService: MovieServiceProtocol
+    private let coordinator: SearchMovieCoordinatorProtocol
     private var subscriptions: Set<AnyCancellable> = []
     
     @Published private(set) var movies: [Movie] = []
@@ -22,8 +23,9 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
         movies.count
     }
     
-    init(movieService: MovieServiceProtocol) {
+    init(movieService: MovieServiceProtocol, coordinator: SearchMovieCoordinatorProtocol) {
         self.movieService = movieService
+        self.coordinator = coordinator
         observeSearch()
     }
     
@@ -64,5 +66,13 @@ class SearchMovieViewModel: ObservableObject, MovieViewModelProtocol, SearchMovi
                 self?.isDataLoaded = true
             }
             .store(in: &subscriptions)
+    }
+    
+    func remove(at index: Int) {
+        movies.remove(at: index)
+    }
+    
+    func openMovie(_ movieID: String) {
+        coordinator.navigateToMovie(movieID)
     }
 }

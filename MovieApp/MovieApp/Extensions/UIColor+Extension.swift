@@ -1,22 +1,14 @@
 import UIKit
 
 extension UIColor {
-    
-    static var deleteButtonColor: UIColor {
+ 
+    static func adaptiveColor(light: UIColor, dark: UIColor) -> UIColor {
         if #available(iOS 13.0, *) {
             return UIColor { (traits) -> UIColor in
-                return traits.userInterfaceStyle == .light ? Constants.DeleteButton.lightThemeColor : Constants.SaveButton.lightThemeColor
+                traits.userInterfaceStyle == .light ? light : dark
             }
         } else {
-            return .systemRed
-        }
-    }
-    
-    static var tabBarTintColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor { (traits) -> UIColor in
-                return traits.userInterfaceStyle == .light ? Constants.TabBar.light : Constants.TabBar.dark
-            }
+            return light
         }
     }
 }

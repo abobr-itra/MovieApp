@@ -10,11 +10,17 @@ class SettingViewModel: SettingsViewModelProtocol {
     
     lazy private var settingsOptions: [SettingsSection] = [
         SettingsSection(title: "Basic".localized(), options: [
+            SettingsOption(title: "Account",
+                           icon: UIImage(systemName: "person.circle"),
+                           iconBackgroundColor: .systemPink,
+                           handler: { [weak self] in
+                               self?.coordinator.openAccount()
+                           }),
             SettingsOption(title: "Apperance".localized(),
                            icon: UIImage(systemName: "paintbrush"),
                            iconBackgroundColor: .systemBlue,
-                           handler: {
-                               self.actions?.openApperance()
+                           handler: { [weak self] in
+                               self?.coordinator.openApperance()
                            }),
             SettingsOption(title: "App Icon".localized(),
                            icon: UIImage(systemName: "photo.circle"),
@@ -25,8 +31,8 @@ class SettingViewModel: SettingsViewModelProtocol {
             SettingsOption(title: "App Language".localized(),
                            icon: UIImage(systemName: "character.bubble"),
                            iconBackgroundColor: .systemTeal,
-                           handler: {
-                               self.actions?.openLanguages()
+                           handler: { [weak self] in
+                               self?.coordinator.openLanguages()
                            })
         ]),
         SettingsSection(title: "Privacy".localized(), options: [
@@ -45,17 +51,16 @@ class SettingViewModel: SettingsViewModelProtocol {
         ])
     ]
     
-    struct Actions {
-        var openLanguages: () -> ()
-        var openApperance: () -> ()
-    }
-    
-    var actions: Actions?
+    private let coordinator: SettingsCoordinatorProtocol
     
     var languages: [Language] = [.english, .polish, .russian]
     var currentLanguage: Language? {
         let locale = Locale.current.language.languageCode?.identifier ?? "en"
         return Language(rawValue: locale)
+    }
+    
+    init(coordinator: SettingsCoordinatorProtocol) {
+        self.coordinator = coordinator
     }
     
     // MARK: - Public

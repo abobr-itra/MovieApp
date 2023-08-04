@@ -44,7 +44,11 @@ class ApperanceViewController: UIViewController {
     
     @objc
     func switchValueDidChange(_ sender: UISwitch) {
-        UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
+        let theme: UIUserInterfaceStyle = sender.isOn ? .dark : .light
+
+        UIApplication.shared.windows.forEach { window in
+            window.overrideUserInterfaceStyle = theme
+        }
     }
 }
 

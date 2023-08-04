@@ -48,10 +48,8 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
         movieService.fetchMovieDetails(by: imdbID)
             .sink { [weak self] completion in
                 self?.isLoading = false
-                print("Recived MovieDetails Completion✅ \(completion)")
             } receiveValue: { [weak self] movieDetails in
                 self?.isLoading = false
-                print("MovieDetails✅: \(movieDetails)")
                 self?.movieDetails = movieDetails
                 self?.isDataLoaded = true
             }

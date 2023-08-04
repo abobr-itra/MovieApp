@@ -34,6 +34,7 @@ class MovieCell: UITableViewCell {
         guard let movie = movie,
               let poster = URL(string: movie.posterUrl) else { return }
         
+        accessibilityIdentifier = "MovieCell.\(movie.title)"
         movieTitle.text = "\(movie.title) (\(movie.year))"
         moviePoster.load(from: poster)
         movieYear.text = movie.type
@@ -46,7 +47,7 @@ class MovieCell: UITableViewCell {
         contentView.layer.borderWidth = Constants.Cell.borderWidth
         contentView.layer.cornerRadius = Constants.Cell.cornerRadius
         contentView.layer.shadowOffset = Constants.Cell.shadowOffset
-        let borderColor = traitCollection.userInterfaceStyle == .light ? Constants.Cell.lightBorderColor: Constants.Cell.darkBorderTheme
+        let borderColor = Constants.Cell.borderColor
         contentView.layer.borderColor = borderColor.cgColor
     }
 }
