@@ -5,8 +5,7 @@ class RealmMovieMock: Object, ObjectKeyIdentifiable {
     
     @Persisted var title: String = ""
     @Persisted var year: String  = ""
-    @Persisted var imdbID: String = ""
-    @Persisted(primaryKey: true) var id: Int
+    @Persisted(primaryKey: true) var imdbID: String = ""
     @Persisted var type: String = ""
     @Persisted var posterUrl: String
     @Persisted var plot: String?
@@ -20,6 +19,5 @@ class RealmMovieMock: Object, ObjectKeyIdentifiable {
         self.type = type
         self.posterUrl = posterUrl
         self.plot = plot
-        id = imdbID.hashValue
     }
 }

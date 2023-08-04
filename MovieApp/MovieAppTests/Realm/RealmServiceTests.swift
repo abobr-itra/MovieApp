@@ -19,7 +19,7 @@ final class RealmServiceTests: XCTestCase {
     // MARK: - Tests
     
     func testSaveAndGetObject() {
-        dataService?.saveObject(ofType: RealmMovieMock.self, object: realmMovieMock, primaryKey: realmMovieMock.id)
+        dataService?.saveObject(ofType: RealmMovieMock.self, object: realmMovieMock, primaryKey: realmMovieMock.imdbID)
         dataService?.getObject(ofType: RealmMovieMock.self, by: realmMovieMock.imdbID, completion: { result in
             switch result {
             case .success(let object):
@@ -32,7 +32,7 @@ final class RealmServiceTests: XCTestCase {
     }
     
     func testGetAllObjects() {
-        dataService?.saveObject(ofType: RealmMovieMock.self, object: realmMovieMock, primaryKey: realmMovieMock.id)
+        dataService?.saveObject(ofType: RealmMovieMock.self, object: realmMovieMock, primaryKey: realmMovieMock.imdbID)
         dataService?.getAllObjects(ofType: RealmMovieMock.self, completion: { result in
             switch result {
             case .success(let movies):
@@ -45,7 +45,7 @@ final class RealmServiceTests: XCTestCase {
     }
     
     func testDeleteObject() {
-        dataService?.saveObject(ofType: RealmMovieMock.self, object: realmMovieMock, primaryKey: realmMovieMock.id)
+        dataService?.saveObject(ofType: RealmMovieMock.self, object: realmMovieMock, primaryKey: realmMovieMock.imdbID)
         dataService?.deleteObject(ofType: RealmMovieMock.self, where: { $0.imdbID == self.realmMovieMock.imdbID })
         dataService?.getObject(ofType: RealmMovieMock.self,
                                by: realmMovieMock.imdbID,

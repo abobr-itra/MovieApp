@@ -5,8 +5,7 @@ class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
     
     @Persisted var title: String = ""
     @Persisted var year: String  = ""
-    @Persisted var imdbID: String = ""
-    @Persisted(primaryKey: true) var id: Int
+    @Persisted(primaryKey: true) var imdbID: String = ""
     @Persisted var type: String = ""
     @Persisted var posterUrl: String
     @Persisted var plot: String?
@@ -20,7 +19,6 @@ class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
         self.type = type
         self.posterUrl = posterUrl
         self.plot = plot
-        id = imdbID.hashValue
     }
     
     convenience init(from movie: Movie) {
@@ -31,7 +29,6 @@ class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
         self.type = movie.type
         self.posterUrl = movie.posterUrl
         self.imdbID = movie.imdbID
-        id = imdbID.hashValue
     }
     
     convenience init(from movieDetails: MovieDetails) {
@@ -43,6 +40,5 @@ class RealmMovie: Object, ObjectKeyIdentifiable, MovieModelProtocol {
         self.posterUrl = movieDetails.poster.absoluteString
         self.imdbID = movieDetails.imdbID
         self.plot = movieDetails.plot
-        id = imdbID.hashValue
     }
 }

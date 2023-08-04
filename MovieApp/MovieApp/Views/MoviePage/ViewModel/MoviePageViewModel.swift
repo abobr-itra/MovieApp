@@ -33,7 +33,7 @@ class MoviePageViewModel: ObservableObject, MoviePageViewModelProtocol {
         print("Trying to save movie \(String(describing: movieDetails))")
         guard let movieDetails else { return }
         let realmMovie = RealmMovie(from: movieDetails)
-        dataService.saveObject(ofType: RealmMovie.self, object: realmMovie, primaryKey: realmMovie.id)
+        dataService.saveObject(ofType: RealmMovie.self, object: realmMovie, primaryKey: realmMovie.imdbID)
     }
     
     func deleteCurrentMovie() {
