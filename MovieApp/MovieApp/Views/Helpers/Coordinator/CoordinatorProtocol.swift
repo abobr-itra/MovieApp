@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CoordinatorProtocol {
+protocol CoordinatorProtocol: AnyObject {
     
     var navigationController: UINavigationController { get set }
     func start()
