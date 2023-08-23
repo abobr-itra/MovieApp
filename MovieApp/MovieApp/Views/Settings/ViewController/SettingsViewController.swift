@@ -6,6 +6,22 @@ class SettingsViewController: UIViewController {
     
     private var viewModel: SettingsViewModelProtocol?
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        return scrollView
+    }()
+        
+    private let scrollViewContainer: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.alignment = .center
+        return stackView
+    }()
+    
     private var profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "profile_placeholder")
@@ -43,18 +59,45 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = tableView.backgroundColor
-        setupTableView()
-        setupProfile()
+        setupScrollView()
     }
     
     // MARK: - Private
+    
+    private func setupScrollView() {
+        view.addSubview(scrollView)
+        scrollView.backgroundColor = tableView.backgroundColor
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
+        ])
+        setupStackView()
+    }
+    
+    private func setupStackView() {
+        scrollView.addSubview(scrollViewContainer)
+        NSLayoutConstraint.activate([
+            scrollViewContainer.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor),
+            scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.leadingAnchor),
+            scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.trailingAnchor),
+            scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.bottomAnchor),
+            scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+        setupProfile()
+        setupTableView()
+    }
 
     private func setupTableView() {
         title = "Settings".localized()
-        view.addSubview(tableView)
+        scrollViewContainer.addArrangedSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = CGRect(x: 0, y: 225, width: view.bounds.width, height: view.bounds.height)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: profileTitle.topAnchor, constant: 25),
+            tableView.widthAnchor.constraint(equalTo: scrollViewContainer.widthAnchor),
+        ])
     }
     
     private func setupProfile() {
@@ -63,23 +106,24 @@ class SettingsViewController: UIViewController {
     }
     
     private func setupProfileImage() {
-        view.addSubview(profileImage)
+        scrollViewContainer.addArrangedSubview(profileImage)
+        profileImage.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
         NSLayoutConstraint.activate([
-            profileImage.widthAnchor.constraint(equalToConstant: 80),
             profileImage.heightAnchor.constraint(equalToConstant: 80),
+            profileImage.widthAnchor.constraint(equalTo: profileImage.heightAnchor),
             profileImage.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 15),
-            profileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            profileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
-    
+
     private func setupProfileLabel() {
-        profileTitle.text = "Andrey Bobr"
-        view.addSubview(profileTitle)
+        profileTitle.text = "Jhone Doe"
+        scrollViewContainer.addArrangedSubview(profileTitle)
         NSLayoutConstraint.activate([
             profileTitle.widthAnchor.constraint(equalToConstant: 100),
-            profileTitle.heightAnchor.constraint(equalToConstant: 20),
-            profileTitle.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 110),
-            profileTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            profileTitle.heightAnchor.constraint(equalToConstant: 25),
+            profileTitle.topAnchor.constraint(equalTo: profileImage.layoutMarginsGuide.bottomAnchor, constant: 20),
+            profileTitle.centerXAnchor.constraint(equalTo: profileImage.centerXAnchor)
         ])
     }
 }
