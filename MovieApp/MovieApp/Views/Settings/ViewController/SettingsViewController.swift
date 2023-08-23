@@ -8,10 +8,11 @@ class SettingsViewController: UIViewController {
     
     private var profileImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "profile_placeholder")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.borderWidth = 1
+        imageView.layer.borderWidth = 0.5
         imageView.layer.masksToBounds = false
-        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.layer.cornerRadius = 40
         imageView.clipsToBounds = true
 
         return imageView
@@ -28,7 +29,7 @@ class SettingsViewController: UIViewController {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(SettingsCell.self,
                        forCellReuseIdentifier: SettingsCell.identifier)
-        
+        table.layer.cornerRadius = 10
         return table
     }()
     
@@ -47,13 +48,13 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - Private
-    
+
     private func setupTableView() {
         title = "Settings".localized()
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = CGRect(x: 0, y: 200, width: view.bounds.width, height: view.bounds.height)
+        tableView.frame = CGRect(x: 0, y: 225, width: view.bounds.width, height: view.bounds.height)
     }
     
     private func setupProfile() {
@@ -62,7 +63,6 @@ class SettingsViewController: UIViewController {
     }
     
     private func setupProfileImage() {
-        profileImage.image = UIImage(named: "profile_placeholder")
         view.addSubview(profileImage)
         NSLayoutConstraint.activate([
             profileImage.widthAnchor.constraint(equalToConstant: 80),
