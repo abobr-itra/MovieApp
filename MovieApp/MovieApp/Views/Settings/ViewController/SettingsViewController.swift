@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController {
     private var headerContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
+       // view.clipsToBounds = true
         return view
     }()
     
@@ -52,6 +52,7 @@ class SettingsViewController: UIViewController {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(SettingsCell.self,
                        forCellReuseIdentifier: SettingsCell.identifier)
+        table.translatesAutoresizingMaskIntoConstraints = false
         table.layer.cornerRadius = 10
         return table
     }()
@@ -102,18 +103,18 @@ class SettingsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: profileTitle.topAnchor, constant: 25),
+            tableView.topAnchor.constraint(equalTo: headerContainer.bottomAnchor, constant: 25),
             tableView.widthAnchor.constraint(equalTo: scrollViewContainer.widthAnchor),
         ])
     }
     
     private func setupHeaderContainer() {
         scrollViewContainer.addArrangedSubview(headerContainer)
-     //   headerContainer.backgroundColor = .red
         NSLayoutConstraint.activate([
-            headerContainer.topAnchor.constraint(equalTo: scrollViewContainer.topAnchor),
-            headerContainer.heightAnchor.constraint(equalToConstant: 200),
-            headerContainer.widthAnchor.constraint(equalTo: scrollViewContainer.widthAnchor, multiplier: 1.0)
+            headerContainer.topAnchor.constraint(equalTo: scrollViewContainer.layoutMarginsGuide.topAnchor),
+            headerContainer.trailingAnchor.constraint(equalTo: scrollViewContainer.layoutMarginsGuide.trailingAnchor),
+            headerContainer.heightAnchor.constraint(equalToConstant: 150),
+            headerContainer.widthAnchor.constraint(equalTo: scrollViewContainer.layoutMarginsGuide.widthAnchor, multiplier: 1.0)
         ])
         setupProfile()
     }
@@ -125,7 +126,6 @@ class SettingsViewController: UIViewController {
     
     private func setupProfileImage() {
         headerContainer.addSubview(profileImage)
-        profileImage.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
         NSLayoutConstraint.activate([
             profileImage.heightAnchor.constraint(equalToConstant: 80),
             profileImage.widthAnchor.constraint(equalTo: profileImage.heightAnchor),
@@ -138,8 +138,8 @@ class SettingsViewController: UIViewController {
         profileTitle.text = "Jhone Doe"
         headerContainer.addSubview(profileTitle)
         NSLayoutConstraint.activate([
-            profileTitle.widthAnchor.constraint(equalToConstant: 100),
-            profileTitle.heightAnchor.constraint(equalToConstant: 25),
+            profileTitle.widthAnchor.constraint(equalToConstant: 175),
+            profileTitle.heightAnchor.constraint(equalToConstant: 30),
             profileTitle.topAnchor.constraint(equalTo: profileImage.layoutMarginsGuide.bottomAnchor, constant: 25),
             profileTitle.centerXAnchor.constraint(equalTo: headerContainer.centerXAnchor)
         ])
