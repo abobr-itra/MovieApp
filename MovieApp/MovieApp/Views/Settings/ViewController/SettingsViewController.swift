@@ -22,12 +22,23 @@ class SettingsViewController: UIViewController {
         return stackView
     }()
     
+    struct Constants {
+
+        static fileprivate let headerHeight: CGFloat = 150
+    }
+    
+    private var headerTopConstraint: NSLayoutConstraint!
+    private var headerHeightConstraint: NSLayoutConstraint!
+
     private var headerContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-       // view.clipsToBounds = true
+        view.clipsToBounds = true
         return view
     }()
+    
+    private var profileImageCenterConstraint: NSLayoutConstraint!
+    private var profileImageTopConstraint: NSLayoutConstraint!
     
     private var profileImage: UIImageView = {
         let imageView = UIImageView()
@@ -40,6 +51,8 @@ class SettingsViewController: UIViewController {
 
         return imageView
     }()
+    
+    private var profileTitleTopConstraint: NSLayoutConstraint!
     
     private let profileTitle: UILabel = {
         let label = UILabel()
@@ -54,6 +67,7 @@ class SettingsViewController: UIViewController {
                        forCellReuseIdentifier: SettingsCell.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.layer.cornerRadius = 10
+        table.bounces = false
         return table
     }()
     
@@ -110,10 +124,12 @@ class SettingsViewController: UIViewController {
     
     private func setupHeaderContainer() {
         scrollViewContainer.addArrangedSubview(headerContainer)
+        headerTopConstraint = headerContainer.topAnchor.constraint(equalTo: scrollViewContainer.layoutMarginsGuide.topAnchor)
+        headerHeightConstraint = headerContainer.heightAnchor.constraint(equalToConstant: Constants.headerHeight)
         NSLayoutConstraint.activate([
-            headerContainer.topAnchor.constraint(equalTo: scrollViewContainer.layoutMarginsGuide.topAnchor),
+            headerTopConstraint,
+            headerHeightConstraint,
             headerContainer.trailingAnchor.constraint(equalTo: scrollViewContainer.layoutMarginsGuide.trailingAnchor),
-            headerContainer.heightAnchor.constraint(equalToConstant: 150),
             headerContainer.widthAnchor.constraint(equalTo: scrollViewContainer.layoutMarginsGuide.widthAnchor, multiplier: 1.0)
         ])
         setupProfile()
@@ -126,21 +142,24 @@ class SettingsViewController: UIViewController {
     
     private func setupProfileImage() {
         headerContainer.addSubview(profileImage)
+        profileImageCenterConstraint = profileImage.centerXAnchor.constraint(equalTo: headerContainer.centerXAnchor)
+        profileImageTopConstraint = profileImage.topAnchor.constraint(equalTo: headerContainer.layoutMarginsGuide.topAnchor, constant: 15)
         NSLayoutConstraint.activate([
             profileImage.heightAnchor.constraint(equalToConstant: 80),
             profileImage.widthAnchor.constraint(equalTo: profileImage.heightAnchor),
-            profileImage.topAnchor.constraint(equalTo: headerContainer.layoutMarginsGuide.topAnchor, constant: 15),
-            profileImage.centerXAnchor.constraint(equalTo: headerContainer.centerXAnchor),
+            profileImageTopConstraint,
+            profileImageCenterConstraint,
         ])
     }
 
     private func setupProfileLabel() {
         profileTitle.text = "Jhone Doe"
         headerContainer.addSubview(profileTitle)
+        profileTitleTopConstraint = profileTitle.topAnchor.constraint(equalTo: profileImage.layoutMarginsGuide.bottomAnchor, constant: 25)
         NSLayoutConstraint.activate([
             profileTitle.widthAnchor.constraint(equalToConstant: 175),
             profileTitle.heightAnchor.constraint(equalToConstant: 30),
-            profileTitle.topAnchor.constraint(equalTo: profileImage.layoutMarginsGuide.bottomAnchor, constant: 25),
+            profileTitleTopConstraint,
             profileTitle.centerXAnchor.constraint(equalTo: headerContainer.centerXAnchor)
         ])
     }
@@ -175,5 +194,29 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.option(at: indexPath.row, section: indexPath.section).handler()
+    }
+}
+
+extension SettingsViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0.0 {
+            // Scrolling down: Scale
+            headerHeightConstraint?.constant =
+                Constants.headerHeight - scrollView.contentOffset.y
+        } else {
+            // Scrolling up: Parallax
+            let parallaxFactor: CGFloat = 0.25
+            let offsetY = scrollView.contentOffset.y * parallaxFactor
+            let minOffsetY: CGFloat = 8.0
+            let availableOffset = min(offsetY, minOffsetY)
+            let contentRectOffsetY = availableOffset / Constants.headerHeight
+            headerTopConstraint?.constant = view.frame.origin.y
+            headerHeightConstraint?.constant =
+                Constants.headerHeight - scrollView.contentOffset.y
+            profileImageCenterConstraint.constant = -availableOffset * 15
+            profileImageTopConstraint.constant = 15 - availableOffset * 2.5
+            profileTitleTopConstraint.constant = 25 - availableOffset * 7
+        }
     }
 }
