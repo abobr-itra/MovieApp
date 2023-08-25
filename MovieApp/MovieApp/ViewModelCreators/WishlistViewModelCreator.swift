@@ -5,7 +5,7 @@ class WishlistViewModelCreator: ViewModelCreatorProtocol {
     
     typealias ViewModel = WishlistViewModel
     
-    private let coordinator: WishlistCoordinatorProtocol
+    private unowned let coordinator: WishlistCoordinatorProtocol
     
     init(coordinator: WishlistCoordinatorProtocol) {
         self.coordinator = coordinator
