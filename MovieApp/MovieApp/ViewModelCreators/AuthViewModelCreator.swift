@@ -4,7 +4,7 @@ class AuthViewModelCreator: ViewModelCreatorProtocol {
 
     typealias ViewModel = AuthViewModel
     
-    private let coordinator: AuthCoordinatorProtocol
+    private unowned let coordinator: AuthCoordinatorProtocol
     
     init(coordinator: AuthCoordinatorProtocol) {
         self.coordinator = coordinator

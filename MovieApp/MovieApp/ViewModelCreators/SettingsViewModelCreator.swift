@@ -4,7 +4,7 @@ class SettingsViewModelCreator: ViewModelCreatorProtocol {
     
     typealias ViewModel = SettingViewModel
     
-    private let coordinator: SettingsCoordinatorProtocol
+    private unowned let coordinator: SettingsCoordinatorProtocol
     
     init(coordinator: SettingsCoordinatorProtocol) {
         self.coordinator = coordinator

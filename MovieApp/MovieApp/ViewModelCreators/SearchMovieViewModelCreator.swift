@@ -4,7 +4,7 @@ class SearchMovieViewModelCreator: ViewModelCreatorProtocol {
     
     typealias ViewModel = SearchMovieViewModel
     
-    private let coordinator: SearchMovieCoordinatorProtocol
+    private unowned let coordinator: SearchMovieCoordinatorProtocol
     
     init(coordinator: SearchMovieCoordinatorProtocol) {
         self.coordinator = coordinator
