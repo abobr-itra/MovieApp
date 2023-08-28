@@ -39,9 +39,9 @@ class AppCoordinatior: CoordinatorProtocol {
         let settingsVC = setupViewController(coordinator: settingsCoordinator,
                                              title: "Settings".localized(),
                                              image: Constants.TabBar.settingsImage)
+        let testVC = TestViewController()
         
-        
-        let viewControllers = [searchVC, wishlistVC, settingsVC]
+        let viewControllers = [searchVC, wishlistVC, settingsVC, testVC]
         tabBarController.viewControllers = viewControllers
         
         coordinate(to: searchMovieCoordinator)
