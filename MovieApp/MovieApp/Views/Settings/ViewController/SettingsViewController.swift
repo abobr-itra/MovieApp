@@ -24,7 +24,10 @@ class SettingsViewController: UIViewController {
     
     struct Constants {
 
+        static fileprivate let fontSize: CGFloat = 30
         static fileprivate let headerHeight: CGFloat = 150
+        static fileprivate let imageHeight: CGFloat = 80
+        static fileprivate let imageTop: CGFloat = 15
     }
     
     private var headerTopConstraint: NSLayoutConstraint!
@@ -39,6 +42,7 @@ class SettingsViewController: UIViewController {
     
     private var profileImageCenterConstraint: NSLayoutConstraint!
     private var profileImageTopConstraint: NSLayoutConstraint!
+    private var profileImageHeightConstraint: NSLayoutConstraint!
     
     private var profileImage: UIImageView = {
         let imageView = UIImageView()
@@ -46,18 +50,19 @@ class SettingsViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.borderWidth = 0.5
         imageView.layer.masksToBounds = false
-        imageView.layer.cornerRadius = 40
+        imageView.layer.cornerRadius = Constants.imageHeight / 2
         imageView.clipsToBounds = true
 
         return imageView
     }()
-    
+
     private var profileTitleTopConstraint: NSLayoutConstraint!
     
     private let profileTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.font = label.font.withSize(Constants.fontSize)
         return label
     }()
     
@@ -80,6 +85,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = tableView.backgroundColor
         setupScrollView()
     }
@@ -142,10 +148,11 @@ class SettingsViewController: UIViewController {
     
     private func setupProfileImage() {
         headerContainer.addSubview(profileImage)
-        profileImageCenterConstraint = profileImage.centerXAnchor.constraint(equalTo: headerContainer.centerXAnchor)
-        profileImageTopConstraint = profileImage.topAnchor.constraint(equalTo: headerContainer.layoutMarginsGuide.topAnchor, constant: 15)
+        profileImageCenterConstraint = profileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        profileImageTopConstraint = profileImage.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: Constants.imageTop)
+        profileImageHeightConstraint = profileImage.heightAnchor.constraint(equalToConstant: Constants.imageHeight)
         NSLayoutConstraint.activate([
-            profileImage.heightAnchor.constraint(equalToConstant: 80),
+            profileImageHeightConstraint,
             profileImage.widthAnchor.constraint(equalTo: profileImage.heightAnchor),
             profileImageTopConstraint,
             profileImageCenterConstraint,
@@ -160,7 +167,7 @@ class SettingsViewController: UIViewController {
             profileTitle.widthAnchor.constraint(equalToConstant: 175),
             profileTitle.heightAnchor.constraint(equalToConstant: 30),
             profileTitleTopConstraint,
-            profileTitle.centerXAnchor.constraint(equalTo: headerContainer.centerXAnchor)
+            profileTitle.centerXAnchor.constraint(equalTo: profileImage.centerXAnchor)
         ])
     }
 }
@@ -199,6 +206,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SettingsViewController: UIScrollViewDelegate {
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y < 19 {
+            scrollView.contentOffset.y = 0
+        }
+        if scrollView.contentOffset.y > 19 && scrollView.contentOffset.y < 34 {
+            scrollView.contentOffset.y = 34
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0.0 {
             // Scrolling down: Scale
@@ -214,9 +230,10 @@ extension SettingsViewController: UIScrollViewDelegate {
             headerTopConstraint?.constant = view.frame.origin.y
             headerHeightConstraint?.constant =
                 Constants.headerHeight - scrollView.contentOffset.y
-            profileImageCenterConstraint.constant = -availableOffset * 15
-            profileImageTopConstraint.constant = 15 - availableOffset * 2.5
-            profileTitleTopConstraint.constant = 25 - availableOffset * 7
+            profileImageHeightConstraint.constant = Constants.imageHeight - availableOffset * 6
+            profileImageTopConstraint.constant = Constants.imageTop - availableOffset * 7
+            profileTitle.font = profileTitle.font.withSize(Constants.fontSize - availableOffset * 1.25)
         }
+        profileImage.layer.cornerRadius = profileImageHeightConstraint.constant / 2
     }
 }
