@@ -1,6 +1,8 @@
 import UIKit
 
-class CustomTextField: UITextField {
+class CustomTextField: UITextField, UITextFieldDelegate {
+    
+    private let labelView = UILabel()
     
     private struct Constants {
         
@@ -23,14 +25,43 @@ class CustomTextField: UITextField {
     // MARK: - Private
     
     private func setupView() {
+        delegate = self
         setupBackground()
         setupTextPadding()
+        setupLabel()
         setupBorder()
         setupPlaceholder()
     }
     
+    private func setupLabel() {
+        font = UIFont(name: "Roboto-Regular", size: 16)
+        let mainParagraphStyle = NSMutableParagraphStyle()
+        mainParagraphStyle.lineHeightMultiple = 1.19
+        attributedText = NSAttributedString(string: "",
+                                            attributes: [
+                                                NSAttributedString.Key.kern : 0.08,
+                                                NSAttributedString.Key.paragraphStyle : mainParagraphStyle
+                                            ])
+        
+        
+        labelView.isHidden = true
+        labelView.frame = CGRect(x: 16, y: 8, width: 50, height: 5)
+        labelView.text = "placeholder"
+        labelView.tintColor = Constants.mainColor
+        labelView.font = UIFont(name: "Roboto-Regular", size: 5)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.02
+//        labelView.attributedText = NSAttributedString(string: "",
+//                                            attributes: [
+//                                                NSAttributedString.Key.kern : 0.15,
+//                                                NSAttributedString.Key.paragraphStyle : paragraphStyle
+//                                            ])
+
+        self.addSubview(labelView)
+    }
+    
     private func setupTextPadding() {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 48))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: bounds.height))
         leftView = paddingView
         leftViewMode = .always
     }
@@ -61,5 +92,11 @@ class CustomTextField: UITextField {
         maskLayer.path = path.cgPath
         layer.mask = maskLayer
         layoutSubviews()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("Here🤡")
+        self.contentVerticalAlignment = .bottom
+        labelView.isHidden = false
     }
 }
