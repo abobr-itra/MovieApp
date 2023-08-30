@@ -27,7 +27,6 @@
 		D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB62949DC6D00F6EE12 /* Optional+Extension.swift */; };
 		D2357DB92949FFAE00F6EE12 /* MovieSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB82949FFAE00F6EE12 /* MovieSearch.swift */; };
 		D23E9E752A9CDB8500F7229C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D2E5E93B29AE0B330024BDE2 /* Realm */; };
-		D23E9E7A2A9CDC0E00F7229C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E792A9CDC0E00F7229C /* CustomTextField.swift */; };
 		D23E9E7D2A9CDD8D00F7229C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */; };
 		D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E9E7E2A9CE0AA00F7229C /* RealmSwift */; };
 		D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */; };
@@ -154,7 +153,6 @@
 		D2357DB42949DBF500F6EE12 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D2357DB62949DC6D00F6EE12 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		D2357DB82949FFAE00F6EE12 /* MovieSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearch.swift; sourceTree = "<group>"; };
-		D23E9E792A9CDC0E00F7229C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldView.swift; sourceTree = "<group>"; };
 		D2570BCE294C703C00E857FD /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
@@ -412,7 +410,6 @@
 		D23E9E762A9CDBC400F7229C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				D23E9E792A9CDC0E00F7229C /* CustomTextField.swift */,
 				D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */,
 			);
 			path = CustomViews;
@@ -1073,7 +1070,6 @@
 				D2D0CCC32A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift in Sources */,
 				D21EEEFB2A41B00B00957FA7 /* MoviesTableView.swift in Sources */,
 				D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */,
-				D23E9E7A2A9CDC0E00F7229C /* CustomTextField.swift in Sources */,
 				D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */,
 				D21EEED62A28D17800957FA7 /* MovieListDelegate.swift in Sources */,
 				D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */,
