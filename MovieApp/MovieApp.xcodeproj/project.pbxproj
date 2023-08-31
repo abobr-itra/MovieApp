@@ -110,6 +110,8 @@
 		D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */; };
 		D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */; };
 		D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */; };
+		D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */; };
+		D2CD27402A7A956800EA1FA5 /* KeychainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */; };
 		D2D0CCC32A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCC22A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift */; };
 		D2D0CCC62A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCC52A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift */; };
 		D2D0CCC92A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D0CCC82A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift */; };
@@ -237,6 +239,8 @@
 		D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableViewControllerProtocol.swift; sourceTree = "<group>"; };
 		D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceProtocol.swift; sourceTree = "<group>"; };
 		D2D0CCC22A7BCC8D0070B7A0 /* AuthCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2D0CCC52A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2D0CCC82A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageCoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -698,6 +702,7 @@
 		D2B0D0272947640B0025B7E7 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				D2CD273C2A7A954500EA1FA5 /* KeychainService */,
 				D26998A42A7912500051A689 /* GoogleService-Info.plist */,
 				D2B8A4562A56D2C500D4B05A /* RealmService */,
 				D28E71572A4DAAB600CA674E /* Resources */,
@@ -860,6 +865,15 @@
 				D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */,
 			);
 			path = Spinner;
+			sourceTree = "<group>";
+		};
+		D2CD273C2A7A954500EA1FA5 /* KeychainService */ = {
+			isa = PBXGroup;
+			children = (
+				D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */,
+				D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */,
+			);
+			path = KeychainService;
 			sourceTree = "<group>";
 		};
 		D2D0CCC12A7BCC770070B7A0 /* Coordinator */ = {
@@ -1123,6 +1137,7 @@
 				D2B8A4662A56E89A00D4B05A /* MovieModelProtocol.swift in Sources */,
 				D23E9E932AA0BB7E00F7229C /* EditProfileCoordinator.swift in Sources */,
 				D2E5E94329AE0D540024BDE2 /* RealmMovieSearch.swift in Sources */,
+				D2CD27402A7A956800EA1FA5 /* KeychainServiceProtocol.swift in Sources */,
 				D21EEEE82A28D92A00957FA7 /* SettingsViewModel.swift in Sources */,
 				D2E5E94129AE0BA30024BDE2 /* RealmMovie.swift in Sources */,
 				D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */,
@@ -1156,6 +1171,7 @@
 				D2B8A4552A56D2A000D4B05A /* MovieViewModelProtocol.swift in Sources */,
 				D23E9E8C2AA0B3BC00F7229C /* EditProfileViewModel.swift in Sources */,
 				D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */,
+				D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */,
 				D2570BD1294C736D00E857FD /* Plot.swift in Sources */,
 				D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */,
 				D2B0D02B2947640B0025B7E7 /* SceneDelegate.swift in Sources */,

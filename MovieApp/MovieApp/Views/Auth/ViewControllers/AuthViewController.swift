@@ -28,7 +28,7 @@ class AuthViewController: UIViewController {
     private var signInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("SignIn", for: .normal)
+        button.setTitle("Sign In", for: .normal)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 8
         return button
@@ -37,7 +37,7 @@ class AuthViewController: UIViewController {
     private var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("SignUp", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 8
         return button

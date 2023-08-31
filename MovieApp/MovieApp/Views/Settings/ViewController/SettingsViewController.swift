@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController {
         
         setupTableView()
     }
-    
+
     // MARK: - Private
     
     private func setupTableView() {

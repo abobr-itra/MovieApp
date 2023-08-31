@@ -12,7 +12,8 @@ class AuthViewModelCreator: ViewModelCreatorProtocol {
     
     func factoryMethod(parser: NetworkPaserProtocol) -> AuthViewModel {
         let authService = AuthService()
-        let viewModel = AuthViewModel(authService: authService, coordinator: coordinator)
+        let keychainService = KeychainService()
+        let viewModel = AuthViewModel(authService: authService, keychainService: keychainService, coordinator: coordinator)
         return viewModel
     }
 }

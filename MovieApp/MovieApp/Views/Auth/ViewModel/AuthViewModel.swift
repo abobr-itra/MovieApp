@@ -7,6 +7,7 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     // MARK: - Properties
     
     private let authService: AuthServiceProtocol
+    private let keychainService: KeychainServiceProtocol
     private let coordinator: AuthCoordinatorProtocol
     
     @Published private var user: User?
@@ -16,9 +17,10 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     var password = ""
     
     // MARK: - Init
-    
-    init(authService: AuthServiceProtocol, coordinator: AuthCoordinatorProtocol) {
+
+    init(authService: AuthServiceProtocol, keychainService: KeychainServiceProtocol, coordinator: AuthCoordinatorProtocol) {
         self.authService = authService
+        self.keychainService = keychainService
         self.coordinator = coordinator
     }
     
@@ -48,6 +50,9 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
         switch result {
         case .success(let user):
             self.user = user
+            guard let userID = Auth.auth().currentUser?.uid,
+                  let userData = userID.data(using: .utf8) else { return }
+            keychainService.set(userData, forKey: "user_id")
             coordinator.navigateToSettings()
         case .failure(let error):
             authError = error
