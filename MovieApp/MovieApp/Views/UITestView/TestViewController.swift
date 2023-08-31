@@ -19,7 +19,8 @@ class TestViewController: UIViewController {
     private func setupView() {
         view.addSubview(customField)
         customField.setPlaceholder("Label")
-        customField.heightAnchor.constraint(equalToConstant: 48).isActive = true
+      //  customField.indecateError()
+        customField.heightAnchor.constraint(equalToConstant: 68).isActive = true
         customField.widthAnchor.constraint(equalToConstant: 200).isActive = true
         customField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         customField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
