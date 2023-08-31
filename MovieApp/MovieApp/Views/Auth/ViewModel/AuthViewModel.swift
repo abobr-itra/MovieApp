@@ -52,7 +52,7 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
             self.user = user
             guard let userID = Auth.auth().currentUser?.uid,
                   let userData = userID.data(using: .utf8) else { return }
-            keychainService.set(userData, forKey: "user_id")
+            keychainService.set(userData, forKey: Constants.KeychainKeys.userID)
             coordinator.navigateToSettings()
         case .failure(let error):
             authError = error

@@ -5,6 +5,7 @@ class CustomFieldView: UIView {
     // MARK: - Properties
     
     private var textFieldTopConstraint: NSLayoutConstraint?
+    var valueChangedHandler: ((_ textField: UITextField) -> ())?
 
     private struct Constants {
         

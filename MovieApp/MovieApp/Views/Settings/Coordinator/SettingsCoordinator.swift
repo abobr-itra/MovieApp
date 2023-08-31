@@ -41,7 +41,15 @@ class SettingsCoordinator: SettingsCoordinatorProtocol {
     }
     
     func openAccount() {
-        let authCoordinator = AuthCoordinator(navigationController: navigationController)
-        authCoordinator.start()
+        let keychainService = KeychainService()
+        if let _ = keychainService.get(Constants.KeychainKeys.userID) {
+            print("💩")
+            let profileCoordinator = EditProfileCoordinator(navigationController: navigationController)
+            profileCoordinator.start()
+        } else {
+            print("💩💩")
+            let authCoordinator = AuthCoordinator(navigationController: navigationController)
+            authCoordinator.start()
+        }
     }
 }

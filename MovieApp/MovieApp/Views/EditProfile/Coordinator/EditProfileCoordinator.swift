@@ -13,7 +13,8 @@ class EditProfileCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let viewModel = EditProfileViewController(viewModel: EditProfileViewModel())
-        navigationController.pushViewController(viewModel, animated: true)
+        let viewModel = EditProfileViewModel()
+        let viewController = EditProfileViewController(viewModel: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

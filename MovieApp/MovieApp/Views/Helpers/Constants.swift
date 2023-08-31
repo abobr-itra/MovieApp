@@ -50,4 +50,9 @@ struct Constants {
         static let sideMargin: CGFloat = 16.0
         static let buttonsSideMargin: CGFloat = 90.0
     }
+    
+    struct KeychainKeys {
+        
+        static let userID = "user_id"
+    }
 }
