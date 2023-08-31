@@ -30,6 +30,12 @@
 		D23E9E7D2A9CDD8D00F7229C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */; };
 		D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E9E7E2A9CE0AA00F7229C /* RealmSwift */; };
 		D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */; };
+		D23E9E842AA0A5BC00F7229C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E832AA0A5BB00F7229C /* EditProfileViewController.swift */; };
+		D23E9E872AA0A92800F7229C /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E862AA0A92800F7229C /* FormCell.swift */; };
+		D23E9E8C2AA0B3BC00F7229C /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E8B2AA0B3BC00F7229C /* EditProfileViewModel.swift */; };
+		D23E9E8E2AA0B3DD00F7229C /* EditProfileViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E8D2AA0B3DD00F7229C /* EditProfileViewModelProtocol.swift */; };
+		D23E9E902AA0B66700F7229C /* FormOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E8F2AA0B66700F7229C /* FormOption.swift */; };
+		D23E9E932AA0BB7E00F7229C /* EditProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E922AA0BB7E00F7229C /* EditProfileCoordinator.swift */; };
 		D2570BCF294C703C00E857FD /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BCE294C703C00E857FD /* MovieDetails.swift */; };
 		D2570BD1294C736D00E857FD /* Plot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BD0294C736D00E857FD /* Plot.swift */; };
 		D2570BD3294C740200E857FD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BD2294C740200E857FD /* String+Extension.swift */; };
@@ -155,6 +161,12 @@
 		D2357DB82949FFAE00F6EE12 /* MovieSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearch.swift; sourceTree = "<group>"; };
 		D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldView.swift; sourceTree = "<group>"; };
+		D23E9E832AA0A5BB00F7229C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		D23E9E862AA0A92800F7229C /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
+		D23E9E8B2AA0B3BC00F7229C /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		D23E9E8D2AA0B3DD00F7229C /* EditProfileViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModelProtocol.swift; sourceTree = "<group>"; };
+		D23E9E8F2AA0B66700F7229C /* FormOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOption.swift; sourceTree = "<group>"; };
+		D23E9E922AA0BB7E00F7229C /* EditProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinator.swift; sourceTree = "<group>"; };
 		D2570BCE294C703C00E857FD /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		D2570BD0294C736D00E857FD /* Plot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plot.swift; sourceTree = "<group>"; };
 		D2570BD2294C740200E857FD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -423,6 +435,50 @@
 			path = UITestView;
 			sourceTree = "<group>";
 		};
+		D23E9E852AA0A8DF00F7229C /* FormCell */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9E862AA0A92800F7229C /* FormCell.swift */,
+			);
+			path = FormCell;
+			sourceTree = "<group>";
+		};
+		D23E9E882AA0B34E00F7229C /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9E912AA0BB6A00F7229C /* Coordinator */,
+				D23E9E8A2AA0B3A700F7229C /* ViewModel */,
+				D23E9E852AA0A8DF00F7229C /* FormCell */,
+				D23E9E892AA0B35800F7229C /* ViewController */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		D23E9E892AA0B35800F7229C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9E832AA0A5BB00F7229C /* EditProfileViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D23E9E8A2AA0B3A700F7229C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9E8B2AA0B3BC00F7229C /* EditProfileViewModel.swift */,
+				D23E9E8D2AA0B3DD00F7229C /* EditProfileViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D23E9E912AA0BB6A00F7229C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9E922AA0BB7E00F7229C /* EditProfileCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		D256FA7C29CB1A6600F667B5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +591,7 @@
 				D21EEEE92A28D9B000957FA7 /* SettingsOption.swift */,
 				D28E71722A4EE49500CA674E /* SettingsSection.swift */,
 				D28E71742A4EE50400CA674E /* Language.swift */,
+				D23E9E8F2AA0B66700F7229C /* FormOption.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -565,6 +622,7 @@
 		D2AF047229487A8C0001C92A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D23E9E882AA0B34E00F7229C /* EditProfile */,
 				D23E9E7B2A9CDD5900F7229C /* UITestView */,
 				D23E9E762A9CDBC400F7229C /* CustomViews */,
 				D269988C2A77E9C40051A689 /* Auth */,
@@ -1058,10 +1116,12 @@
 				D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */,
 				D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */,
 				D2B8A4512A56D21000D4B05A /* WishlistViewModelCreator.swift in Sources */,
+				D23E9E872AA0A92800F7229C /* FormCell.swift in Sources */,
 				D2B8A44B2A56D1DD00D4B05A /* SearchMovieViewModelCreator.swift in Sources */,
 				D2570BD3294C740200E857FD /* String+Extension.swift in Sources */,
 				D2D0CCCF2A7BD5F70070B7A0 /* SettingsCoordinatorProtocol.swift in Sources */,
 				D2B8A4662A56E89A00D4B05A /* MovieModelProtocol.swift in Sources */,
+				D23E9E932AA0BB7E00F7229C /* EditProfileCoordinator.swift in Sources */,
 				D2E5E94329AE0D540024BDE2 /* RealmMovieSearch.swift in Sources */,
 				D21EEEE82A28D92A00957FA7 /* SettingsViewModel.swift in Sources */,
 				D2E5E94129AE0BA30024BDE2 /* RealmMovie.swift in Sources */,
@@ -1071,6 +1131,7 @@
 				D21EEEFB2A41B00B00957FA7 /* MoviesTableView.swift in Sources */,
 				D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */,
 				D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */,
+				D23E9E902AA0B66700F7229C /* FormOption.swift in Sources */,
 				D21EEED62A28D17800957FA7 /* MovieListDelegate.swift in Sources */,
 				D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */,
 				D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */,
@@ -1093,6 +1154,7 @@
 				D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */,
 				D2570BE42951D47D00E857FD /* MoviePageCoordinator.swift in Sources */,
 				D2B8A4552A56D2A000D4B05A /* MovieViewModelProtocol.swift in Sources */,
+				D23E9E8C2AA0B3BC00F7229C /* EditProfileViewModel.swift in Sources */,
 				D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */,
 				D2570BD1294C736D00E857FD /* Plot.swift in Sources */,
 				D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */,
@@ -1109,7 +1171,9 @@
 				D2B679A72A6948EA00088674 /* UIColor+Extension.swift in Sources */,
 				D26998942A77EA410051A689 /* AuthViewModelProtocol.swift in Sources */,
 				D2D5E2FE29D498F2005BB3AF /* SearchMoviesViewController.swift in Sources */,
+				D23E9E842AA0A5BC00F7229C /* EditProfileViewController.swift in Sources */,
 				D2B8A4432A56CFAC00D4B05A /* NetworkServiceProtocol.swift in Sources */,
+				D23E9E8E2AA0B3DD00F7229C /* EditProfileViewModelProtocol.swift in Sources */,
 				D2570BCF294C703C00E857FD /* MovieDetails.swift in Sources */,
 				D2D0CCC62A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift in Sources */,
 				D2B8A45B2A56D31300D4B05A /* DataError.swift in Sources */,

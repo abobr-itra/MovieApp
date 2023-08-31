@@ -149,6 +149,8 @@ class CustomFieldView: UIView {
     }
 }
 
+// MARK: - Extensions
+
 extension CustomFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
