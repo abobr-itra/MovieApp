@@ -1,8 +1,10 @@
-import Foundation
+import UIKit
 
 class EditProfileViewModel: EditProfileViewModelProtocol {
     
     // MARK: - Properties
+    
+    private var userData: UserData?
     
     private(set) var formFields: [FormOption] = [
         FormOption(placeholder: "Name", helperText: "ex. Jhone"),
@@ -11,4 +13,13 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     ]
     
     // MARK: - Public
+    
+    func save() {
+        print(userData)
+    }
+    
+    @objc
+    func textFieldHandler(_ textField: UITextField) {
+        print("TextField✅", textField.text)
+    }
 }

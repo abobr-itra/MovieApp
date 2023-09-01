@@ -15,6 +15,15 @@ class EditProfileViewController: UIViewController {
         return tableView
     }()
     
+    private var saveButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Save", for: .normal)
+        button.backgroundColor = UIColor(red: 0.39, green: 0.45, blue: 1, alpha: 1)
+        button.layer.cornerRadius = 11
+        return button
+    }()
+    
     fileprivate struct Constants {
         
         static let cellHeight: CGFloat = 68
@@ -42,6 +51,7 @@ class EditProfileViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         setupTableView()
+        setupSaveButton()
     }
     
     private func setupTableView() {
@@ -53,6 +63,24 @@ class EditProfileViewController: UIViewController {
         formTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset ).isActive = true
         formTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         formTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    private func setupSaveButton() {
+        view.addSubview(saveButton)
+        saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        saveButton.widthAnchor.constraint(equalToConstant: Constants.cellWidth).isActive = true
+        saveButton.topAnchor.constraint(equalTo: formTableView.bottomAnchor, constant: 10).isActive = true
+        
+        let shadowPath = UIBezierPath(roundedRect: saveButton.bounds, cornerRadius: 11)
+        saveButton.layer.shadowPath = shadowPath.cgPath
+        saveButton.layer.shadowColor = UIColor.black.cgColor
+        saveButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        saveButton.layer.shadowOpacity = 1
+    }
+    
+    @objc
+    private func handleSave() {
+        viewModel?.save()
     }
 }
 
@@ -74,6 +102,7 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
                    width: Constants.cellWidth,
                    height: Constants.cellHeight,
                    tag: indexPath.row)
+        cell.setTextFieldHandler(viewModel?.textFieldHandler(_:))
         return cell
     }
     

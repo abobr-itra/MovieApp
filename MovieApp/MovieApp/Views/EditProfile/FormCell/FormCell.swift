@@ -28,6 +28,10 @@ class FormCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
+    func setTextFieldHandler(_ valueChangedHandler: ((_ textField: UITextField) -> ())?) {
+        formField.valueChangedHandler = valueChangedHandler
+    }
+    
     func focus() {
         formField.becomeFirstResponder()
     }
