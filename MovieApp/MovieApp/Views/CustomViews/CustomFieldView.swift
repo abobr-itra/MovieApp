@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class CustomFieldView: UIView {
     
@@ -6,6 +7,9 @@ class CustomFieldView: UIView {
     
     private var textFieldTopConstraint: NSLayoutConstraint?
     var valueChangedHandler: ((_ textField: UITextField) -> ())?
+
+    @Published private(set) var text: String = ""
+    private var subscriptions: Set<AnyCancellable> = []
 
     private struct Constants {
         
@@ -100,10 +104,18 @@ class CustomFieldView: UIView {
         textFieldView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         textFieldView.heightAnchor.constraint(equalTo: self.heightAnchor, constant: self.frame.height - 20).isActive = true
         
+        observe()
+        
         setupBackground()
         setupTextField()
         setupLabel()
         setupHelperText()
+    }
+    
+    private func observe() {
+        customTextField.textPublisher
+            .sink { self.text = $0 }
+            .store(in: &subscriptions)
     }
 
     private func setupTextField() {

@@ -1,10 +1,13 @@
 import UIKit
+import Combine
 
 class EditProfileViewController: UIViewController {
     
     // MARK: - Properties
     
     private var viewModel: EditProfileViewModelProtocol?
+    
+    private var subscriptions: Set<AnyCancellable> = []
     
     private let formTableView: UITableView = {
         let tableView = UITableView()
@@ -76,6 +79,8 @@ class EditProfileViewController: UIViewController {
         saveButton.layer.shadowColor = UIColor.black.cgColor
         saveButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         saveButton.layer.shadowOpacity = 1
+        
+        saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
     }
     
     @objc
@@ -102,7 +107,9 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
                    width: Constants.cellWidth,
                    height: Constants.cellHeight,
                    tag: indexPath.row)
-        cell.setTextFieldHandler(viewModel?.textFieldHandler(_:))
+        cell.$text
+            .sink { self.viewModel?.setData($0, with: indexPath.row) }
+            .store(in: &subscriptions)
         return cell
     }
     

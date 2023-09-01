@@ -4,7 +4,7 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     
     // MARK: - Properties
     
-    private var userData: UserData?
+    private var userData = UserData()
     
     private(set) var formFields: [FormOption] = [
         FormOption(placeholder: "Name", helperText: "ex. Jhone"),
@@ -15,11 +15,27 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     // MARK: - Public
     
     func save() {
-        print(userData)
+        print("User Data : \(userData)")
+        
     }
     
-    @objc
-    func textFieldHandler(_ textField: UITextField) {
-        print("TextField✅", textField.text)
+    func setData(_ text: String, with tag: Int) {
+        switch tag {
+        case TextFieldData.nameField.rawValue:
+            userData.firstName = text
+        case TextFieldData.surnameField.rawValue:
+            userData.secondName = text
+        case TextFieldData.numberField.rawValue:
+            userData.number = text
+        default:
+            print("Wrong tag❌")
+        }
     }
+}
+
+enum TextFieldData: Int {
+
+    case nameField = 0
+    case surnameField
+    case numberField
 }

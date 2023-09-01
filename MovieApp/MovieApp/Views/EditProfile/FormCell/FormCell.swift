@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class FormCell: UITableViewCell {
     
@@ -8,6 +9,8 @@ class FormCell: UITableViewCell {
     
     private var formField = CustomFieldView()
     private var textFieldTag: Int?
+    @Published private(set) var text: String = ""
+    private var subscriptions: Set<AnyCancellable> = []
 
     // MARK: - Public
 
@@ -17,7 +20,7 @@ class FormCell: UITableViewCell {
         textFieldTag = tag
         
         self.addSubview(formField)
-        
+        observe()
         formField.translatesAutoresizingMaskIntoConstraints = false
         formField.widthAnchor.constraint(equalToConstant: width).isActive = true
         formField.heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -27,19 +30,18 @@ class FormCell: UITableViewCell {
         
         self.selectionStyle = .none
     }
-    
-    func setTextFieldHandler(_ valueChangedHandler: ((_ textField: UITextField) -> ())?) {
-        formField.valueChangedHandler = valueChangedHandler
-    }
-    
+
     func focus() {
         formField.becomeFirstResponder()
     }
-}
-
-enum TextFieldData: Int {
-
-    case nameField = 0
-    case surnameField
-    case numberField
+    
+    // MARK: - Private
+    
+    private func observe() {
+        formField.$text
+            .sink {
+                self.text = $0
+            }
+            .store(in: &subscriptions)
+    }
 }
