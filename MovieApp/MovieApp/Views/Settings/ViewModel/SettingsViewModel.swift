@@ -9,32 +9,6 @@ class SettingViewModel: SettingsViewModelProtocol {
     }
     
     lazy private var settingsOptions: [SettingsSection] = [
-        SettingsSection(title: "", options: [
-            SettingsOption(title: "1",
-                           icon: UIImage(systemName: "person"),
-                           iconBackgroundColor: .red,
-                           handler: {
-                               
-                           }),
-            SettingsOption(title: "1",
-                           icon: UIImage(systemName: "person"),
-                           iconBackgroundColor: .red,
-                           handler: {
-                               
-                           }),
-            SettingsOption(title: "1",
-                           icon: UIImage(systemName: "person"),
-                           iconBackgroundColor: .red,
-                           handler: {
-                               
-                           }),
-            SettingsOption(title: "1",
-                           icon: UIImage(systemName: "person"),
-                           iconBackgroundColor: .red,
-                           handler: {
-                               
-                           }),
-        ]),
         SettingsSection(title: "Basic".localized(), options: [
             SettingsOption(title: "Account",
                            icon: UIImage(systemName: "person.circle"),
