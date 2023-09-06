@@ -1,7 +1,7 @@
 import Foundation
 
-struct UserData {
-    
+struct UserData: Codable {
+
     var firstName: String = ""
     var secondName: String = ""
     var number: String = ""

@@ -6,6 +6,7 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     
     private var userData = UserData()
     private let authService = AuthService()
+    private let firebaseService = FirebaseDBService()
     
     private(set) var formFields: [FormOption] = [
         FormOption(placeholder: "Name", helperText: "ex. Jhone"),
@@ -17,11 +18,15 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     
     func save() {
         print("User Data : \(userData)")
-        
+        firebaseService.saveData(dataModel: userData)
     }
     
     func signOut() {
-        authService.signOut()
+        do {
+            try authService.signOut()
+        } catch {
+            print("SignOut error \(error)")
+        }
     }
     
     func setData(_ text: String, with tag: Int) {

@@ -65,7 +65,7 @@ class EditProfileViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         setupTableView()
-        setupSaveButton()
+        setupButtons()
     }
     
     private func setupTableView() {
@@ -77,6 +77,11 @@ class EditProfileViewController: UIViewController {
         formTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset ).isActive = true
         formTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         formTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    private func setupButtons() {
+        setupSaveButton()
+        setupSignOutButton()
     }
     
     private func setupSaveButton() {
@@ -117,6 +122,7 @@ class EditProfileViewController: UIViewController {
     @objc
     private func handleSignOut() {
         viewModel?.signOut()
+        navigationController?.popViewController(animated: true)
     }
 }
 

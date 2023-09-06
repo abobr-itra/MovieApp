@@ -176,6 +176,5 @@ extension CustomFieldView: UITextFieldDelegate {
         fieldLabel.isHidden = true
         helperTextLabel.isHidden = true
         textFieldTopConstraint?.constant = 10
-        valueChangedHandler?(textField)
     }
 }
