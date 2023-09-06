@@ -3,8 +3,9 @@ import Foundation
 class KeychainService: KeychainServiceProtocol {
     
     // MARK: - Properties
-    let successStatus = 0
-    var keyPrefix = ""
+    
+    private let successStatus = 0
+    private var keyPrefix = ""
     
     init(keyPrefix: String = "") {
         self.keyPrefix = keyPrefix
@@ -60,6 +61,6 @@ class KeychainService: KeychainServiceProtocol {
     // MARK: - Private
     
     private func keyWithPrefix(_ key: String) -> String {
-        return "\(keyPrefix)\(key)"
+        "\(keyPrefix)\(key)"
     }
 }
