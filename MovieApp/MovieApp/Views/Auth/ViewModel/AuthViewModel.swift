@@ -34,44 +34,48 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     func signIn() {
         guard !email.isEmpty && !password.isEmpty else { return }
         authService.signIn(withEmail: email, password: password) { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.user = user
-                
-                guard let currUser = Auth.auth().currentUser,
-                      let userData = currUser.uid.data(using: .utf8) else { return }
-                if let userEmail = currUser.email {
-                    self?.analytics.log(.signIn(email: userEmail))
-                }
-                self?.keychainService.set(userData, forKey: "user_id")
-                self?.coordinator.navigateToSettings()
-            case .failure(let error):
-                self?.authError = error
-            }
+            self?.hadleResult(result, resultType: .signIn)
         }
     }
     
     func signUp() {
         guard !email.isEmpty && !password.isEmpty else { return }
         authService.signUp(withEmail: email, password: password) { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.user = user
-                
-                guard let currUser = Auth.auth().currentUser,
-                      let userData = currUser.uid.data(using: .utf8) else { return }
-                if let userEmail = currUser.email {
-                    self?.analytics.log(.signUp(email: userEmail))
-                }
-                self?.keychainService.set(userData, forKey: "user_id")
-                self?.coordinator.navigateToSettings()
-            case .failure(let error):
-                self?.authError = error
-            }
+            self?.hadleResult(result, resultType: .signUp)
         }
     }
     
     func signOut() throws {
         try? authService.signOut()
+    }
+    
+    // MARK: - Private
+    
+    private enum ResultType {
+        
+        case signIn
+        case signUp
+    }
+    
+    private func hadleResult(_ result: Result<User, Error>, resultType: ResultType) {
+        switch result {
+        case let .success(user):
+            self.user = user
+            
+            guard let currUser = Auth.auth().currentUser,
+                  let userData = currUser.uid.data(using: .utf8) else { return }
+            if let userEmail = currUser.email {
+                switch resultType {
+                case .signIn:
+                    self.analytics.log(.signIn(email: userEmail))
+                case .signUp:
+                    self.analytics.log(.signUp(email: userEmail))
+                }
+            }
+            self.keychainService.set(userData, forKey: "user_id")
+            self.coordinator.navigateToSettings()
+        case let .failure(error):
+            self.authError = error
+        }
     }
 }
