@@ -22,12 +22,12 @@ class SettingsViewController: UIViewController {
         return stackView
     }()
     
-    struct Constants {
+    private struct Constants {
 
-        static fileprivate let fontSize: CGFloat = 30
-        static fileprivate let headerHeight: CGFloat = 150
-        static fileprivate let imageHeight: CGFloat = 80
-        static fileprivate let imageTop: CGFloat = 15
+        static let fontSize: CGFloat = 30
+        static let headerHeight: CGFloat = 150
+        static let imageHeight: CGFloat = 80
+        static let imageTop: CGFloat = 15
     }
     
     private var headerTopConstraint: NSLayoutConstraint!
