@@ -11,6 +11,9 @@ class CustomFieldView: UIView {
         static let fielCornerRadius: CGFloat = 15
         static let leadingPadding: CGFloat = 16
         
+        static let labelDefaultFontSize: CGFloat = 15
+        static let labelSmallFontSize: CGFloat = 10
+        
         static let backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.04)
         static let mainColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.87)
         static let secondaryColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
@@ -32,11 +35,14 @@ class CustomFieldView: UIView {
         return textField
     }()
     
+    private var labelTopConstraint: NSLayoutConstraint?
+    private var labelLeadingConstraint: NSLayoutConstraint?
+    
     private var fieldLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = Constants.secondaryColor
-        label.font = label.font.withSize(10)
+        label.font = label.font.withSize(Constants.labelDefaultFontSize)
         return label
     }()
     
@@ -67,7 +73,6 @@ class CustomFieldView: UIView {
     // MARK: - Public
     
     func setPlaceholder(_ text: String) {
-        customTextField.placeholder = text
         fieldLabel.text = text
     }
     
@@ -110,10 +115,6 @@ class CustomFieldView: UIView {
         customTextField.delegate = self
         let mainParagraphStyle = NSMutableParagraphStyle()
         mainParagraphStyle.lineHeightMultiple = 1.19
-        customTextField.attributedPlaceholder = NSAttributedString(string: customTextField.placeholder ?? "",
-                                                                   attributes: [
-                                                                    NSAttributedString.Key.foregroundColor : Constants.secondaryColor
-                                                                   ])
         customTextField.attributedText = NSAttributedString(string: "",
                                             attributes: [
                                                 NSAttributedString.Key.kern : 0.08,
@@ -128,9 +129,24 @@ class CustomFieldView: UIView {
     
     private func setupLabel() {
         textFieldView.addSubview(fieldLabel)
-        fieldLabel.isHidden = true
-        fieldLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.leadingPadding).isActive = true
-        fieldLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        makeLabelDefault()
+        labelTopConstraint?.isActive = true
+        labelLeadingConstraint?.isActive = true
+    }
+    
+    private func makeLabelDefault() {
+        UIView.animate(withDuration: 5) {
+            self.fieldLabel.font = self.fieldLabel.font.withSize(Constants.labelDefaultFontSize)
+            self.labelTopConstraint = self.fieldLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 15)
+            self.labelLeadingConstraint = self.fieldLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.leadingPadding)
+        }
+    }
+    
+    private func makeLabelSmall() {
+        UIView.animate(withDuration: 5) {
+            self.fieldLabel.font = self.fieldLabel.font.withSize(Constants.labelSmallFontSize)
+            self.labelTopConstraint?.constant = 8
+        }
     }
     
     private func setupHelperText() {
@@ -152,13 +168,13 @@ class CustomFieldView: UIView {
 extension CustomFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        fieldLabel.isHidden = false
+        makeLabelSmall()
         helperTextLabel.isHidden = false
         textFieldTopConstraint?.constant = 20
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        fieldLabel.isHidden = true
+        makeLabelDefault()
         helperTextLabel.isHidden = true
         textFieldTopConstraint?.constant = 10
     }
