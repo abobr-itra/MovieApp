@@ -41,8 +41,8 @@ class SettingsCoordinator: SettingsCoordinatorProtocol {
     }
     
     func openAccount() {
-        let keychainService = KeychainService()
-        if let _ = keychainService.get(Constants.KeychainKeys.userID) {
+        let authService = AuthService()
+        if let _ = authService.currentUser {
             print("💩")
             let profileCoordinator = EditProfileCoordinator(navigationController: navigationController)
             profileCoordinator.start()

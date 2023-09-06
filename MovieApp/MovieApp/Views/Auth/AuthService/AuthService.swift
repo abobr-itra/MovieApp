@@ -5,6 +5,10 @@ class AuthService: AuthServiceProtocol {
     
     // MARK: - Public
     
+    var currentUser: User? {
+        Auth.auth().currentUser
+    }
+    
     func signUp(withEmail email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
             self?.handleAuth(authResult: authResult, error: error, completion: completion)

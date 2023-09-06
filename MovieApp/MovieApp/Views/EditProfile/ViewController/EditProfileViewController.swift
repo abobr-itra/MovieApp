@@ -23,11 +23,22 @@ class EditProfileViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Save", for: .normal)
         button.backgroundColor = UIColor(red: 0.39, green: 0.45, blue: 1, alpha: 1)
-        button.layer.cornerRadius = 11
+        button.layer.cornerRadius = Constants.buttonCornerRadius
+        return button
+    }()
+    
+    private var signOutButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Sign Out", for: .normal)
+        button.backgroundColor = .systemRed
+        button.layer.cornerRadius = Constants.buttonCornerRadius
         return button
     }()
     
     fileprivate struct Constants {
+        
+        static let buttonCornerRadius: CGFloat = 11
         
         static let cellHeight: CGFloat = 68
         static let cellWidth: CGFloat = 200
@@ -74,18 +85,38 @@ class EditProfileViewController: UIViewController {
         saveButton.widthAnchor.constraint(equalToConstant: Constants.cellWidth).isActive = true
         saveButton.topAnchor.constraint(equalTo: formTableView.bottomAnchor, constant: 10).isActive = true
         
-        let shadowPath = UIBezierPath(roundedRect: saveButton.bounds, cornerRadius: 11)
-        saveButton.layer.shadowPath = shadowPath.cgPath
-        saveButton.layer.shadowColor = UIColor.black.cgColor
-        saveButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        saveButton.layer.shadowOpacity = 1
+        addShaddow(button: saveButton)
         
         saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+    }
+    
+    private func setupSignOutButton() {
+        view.addSubview(signOutButton)
+        signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        signOutButton.widthAnchor.constraint(equalToConstant: Constants.cellWidth).isActive = true
+        signOutButton.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 10).isActive = true
+        
+        addShaddow(button: signOutButton)
+        
+        signOutButton.addTarget(self, action: #selector(handleSignOut), for: .touchUpInside)
+    }
+    
+    private func addShaddow(button: UIButton) {
+        let shadowPath = UIBezierPath(roundedRect: saveButton.bounds, cornerRadius: Constants.buttonCornerRadius)
+        button.layer.shadowPath = shadowPath.cgPath
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
+        button.layer.shadowOpacity = 1
     }
     
     @objc
     private func handleSave() {
         viewModel?.save()
+    }
+    
+    @objc
+    private func handleSignOut() {
+        viewModel?.signOut()
     }
 }
 

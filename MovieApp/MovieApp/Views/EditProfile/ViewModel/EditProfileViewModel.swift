@@ -5,6 +5,7 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     // MARK: - Properties
     
     private var userData = UserData()
+    private let authService = AuthService()
     
     private(set) var formFields: [FormOption] = [
         FormOption(placeholder: "Name", helperText: "ex. Jhone"),
@@ -17,6 +18,10 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     func save() {
         print("User Data : \(userData)")
         
+    }
+    
+    func signOut() {
+        authService.signOut()
     }
     
     func setData(_ text: String, with tag: Int) {
