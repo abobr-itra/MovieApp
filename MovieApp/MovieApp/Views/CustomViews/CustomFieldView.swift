@@ -159,7 +159,7 @@ extension CustomFieldView: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        makeLabelDefault()
+        (textField.text ?? "").isEmpty ? makeLabelDefault() : makeLabelSmall()
         helperTextLabel.isHidden = true
         textFieldTopConstraint?.constant = 10
     }
