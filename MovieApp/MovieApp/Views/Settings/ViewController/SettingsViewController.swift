@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
         return stackView
     }()
     
-    private struct Constants {
+    private enum Constants {
 
         static let fontSize: CGFloat = 30
         static let headerHeight: CGFloat = 150
