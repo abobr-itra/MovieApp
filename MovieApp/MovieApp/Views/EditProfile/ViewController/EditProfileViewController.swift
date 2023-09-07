@@ -77,6 +77,14 @@ class EditProfileViewController: UIViewController {
         formTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset ).isActive = true
         formTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         formTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        viewModel?.isUserLoadedPublisher
+            .sink { isLoaded in
+                if isLoaded {
+                    self.formTableView.reloadData()
+                }
+            }
+            .store(in: &subscriptions)
     }
     
     private func setupButtons() {
@@ -143,7 +151,8 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
                    helperText: field.helperText,
                    width: Constants.cellWidth,
                    height: Constants.cellHeight,
-                   tag: indexPath.row)
+                   tag: indexPath.row,
+                   initialValue: viewModel?.getData(by: indexPath.row) ?? "")
         cell.$text
             .sink { self.viewModel?.setData($0, with: indexPath.row) }
             .store(in: &subscriptions)

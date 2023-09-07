@@ -3,6 +3,10 @@ import Firebase
 
 class AuthService: AuthServiceProtocol {
     
+    // MARK: - Properties
+    
+//    private var firebaseService: FirebaseDBService
+    
     // MARK: - Public
     
     var currentUser: User? {
@@ -33,6 +37,7 @@ class AuthService: AuthServiceProtocol {
             completion(.failure(error))
         } else if let user = authResult?.user {
             print("User \(user)")
+            
             completion(.success(user))
         } else {
             completion(.failure(AuthError.failedToAuthorize))

@@ -43,11 +43,9 @@ class SettingsCoordinator: SettingsCoordinatorProtocol {
     func openAccount() {
         let authService = AuthService()
         if let _ = authService.currentUser {
-            print("💩")
             let profileCoordinator = EditProfileCoordinator(navigationController: navigationController)
             profileCoordinator.start()
         } else {
-            print("💩💩")
             let authCoordinator = AuthCoordinator(navigationController: navigationController)
             authCoordinator.start()
         }

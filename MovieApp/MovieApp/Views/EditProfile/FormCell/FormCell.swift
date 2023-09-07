@@ -14,9 +14,10 @@ class FormCell: UITableViewCell {
 
     // MARK: - Public
 
-    func setup(placeholder: String, helperText: String = "", width: CGFloat, height: CGFloat, tag: Int) {
+    func setup(placeholder: String, helperText: String = "", width: CGFloat, height: CGFloat, tag: Int, initialValue: String = "") {
         formField.setPlaceholder(placeholder)
         formField.setHelperText(helperText)
+        formField.setInitialValue(initialValue)
         textFieldTag = tag
         
         self.addSubview(formField)
