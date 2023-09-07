@@ -76,8 +76,8 @@ class AuthViewController: UIViewController {
             view.addSubview(textField)
             NSLayoutConstraint.activate([
                 textField.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: basicMargin + (gap * CGFloat(index))),
-                textField.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: Constants.TextFields.sideMargin),
-                textField.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -Constants.TextFields.sideMargin)
+                textField.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: Constants.TextFields.sideMargin),
+                textField.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -Constants.TextFields.sideMargin)
             ])
         }
     }
@@ -87,8 +87,8 @@ class AuthViewController: UIViewController {
             view.addSubview(button)
             NSLayoutConstraint.activate([
                 button.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: basicMargin + (gap * CGFloat(index))),
-                button.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: Constants.TextFields.buttonsSideMargin),
-                button.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -Constants.TextFields.buttonsSideMargin)
+                button.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: Constants.TextFields.buttonsSideMargin),
+                button.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -Constants.TextFields.buttonsSideMargin)
             ])
         }
     }
