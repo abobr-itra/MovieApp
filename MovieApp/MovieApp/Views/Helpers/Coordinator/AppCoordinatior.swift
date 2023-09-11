@@ -40,7 +40,6 @@ class AppCoordinatior: CoordinatorProtocol {
                                              title: "Settings".localized(),
                                              image: Constants.TabBar.settingsImage)
         
-        
         let viewControllers = [searchVC, wishlistVC, settingsVC]
         tabBarController.viewControllers = viewControllers
         

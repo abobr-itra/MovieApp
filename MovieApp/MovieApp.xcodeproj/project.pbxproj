@@ -26,6 +26,10 @@
 		D2357DB52949DBF500F6EE12 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB42949DBF500F6EE12 /* UIImageView+Extension.swift */; };
 		D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB62949DC6D00F6EE12 /* Optional+Extension.swift */; };
 		D2357DB92949FFAE00F6EE12 /* MovieSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB82949FFAE00F6EE12 /* MovieSearch.swift */; };
+		D23E9E752A9CDB8500F7229C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D2E5E93B29AE0B330024BDE2 /* Realm */; };
+		D23E9E7D2A9CDD8D00F7229C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */; };
+		D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E9E7E2A9CE0AA00F7229C /* RealmSwift */; };
+		D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */; };
 		D2570BCF294C703C00E857FD /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BCE294C703C00E857FD /* MovieDetails.swift */; };
 		D2570BD1294C736D00E857FD /* Plot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BD0294C736D00E857FD /* Plot.swift */; };
 		D2570BD3294C740200E857FD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2570BD2294C740200E857FD /* String+Extension.swift */; };
@@ -164,6 +168,8 @@
 		D2357DB42949DBF500F6EE12 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D2357DB62949DC6D00F6EE12 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		D2357DB82949FFAE00F6EE12 /* MovieSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearch.swift; sourceTree = "<group>"; };
+		D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFieldView.swift; sourceTree = "<group>"; };
 		D2570BCE294C703C00E857FD /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		D2570BD0294C736D00E857FD /* Plot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plot.swift; sourceTree = "<group>"; };
 		D2570BD2294C740200E857FD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -422,6 +428,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D23E9E762A9CDBC400F7229C /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		D23E9E7B2A9CDD5900F7229C /* UITestView */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */,
+			);
+			path = UITestView;
+			sourceTree = "<group>";
+		};
 		D256FA7C29CB1A6600F667B5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +586,8 @@
 		D2AF047229487A8C0001C92A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D23E9E7B2A9CDD5900F7229C /* UITestView */,
+				D23E9E762A9CDBC400F7229C /* CustomViews */,
 				D269988C2A77E9C40051A689 /* Auth */,
 				D21EEEF22A2A44D600957FA7 /* Apperance */,
 				D2B8A45C2A56D3AD00D4B05A /* Languages */,
@@ -1119,6 +1143,7 @@
 				D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */,
 				D2570BE42951D47D00E857FD /* MoviePageCoordinator.swift in Sources */,
 				D2B8A4552A56D2A000D4B05A /* MovieViewModelProtocol.swift in Sources */,
+				D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */,
 				D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */,
 				D2570BD1294C736D00E857FD /* Plot.swift in Sources */,
 				D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */,
@@ -1127,6 +1152,7 @@
 				D2D0CCC92A7BD28D0070B7A0 /* MoviePageCoordinatorProtocol.swift in Sources */,
 				D2AF0482294891510001C92A /* RequestError.swift in Sources */,
 				D28E71752A4EE50400CA674E /* Language.swift in Sources */,
+				D23E9E7D2A9CDD8D00F7229C /* TestViewController.swift in Sources */,
 				D28E71702A4EE2CF00CA674E /* Dictionary+Extension.swift in Sources */,
 				D2AF048629489CEA0001C92A /* MovieService.swift in Sources */,
 				D21EEEF42A2A452700957FA7 /* ApperanceViewController.swift in Sources */,
