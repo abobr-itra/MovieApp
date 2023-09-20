@@ -17,3 +17,5 @@ Pods/
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+GoogleService-Info.plist

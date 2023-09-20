@@ -1,0 +1,13 @@
+{
+  "Search": [
+    {
+      "Title": "Test Title",
+      "Year": "2023",
+      "imdbID": "0",
+      "Type": "movie",
+      "Poster": "https://t.ly/bhxd"
+    }
+  ],
+  "totalResults": "1",
+  "Response": "Ok"
+}

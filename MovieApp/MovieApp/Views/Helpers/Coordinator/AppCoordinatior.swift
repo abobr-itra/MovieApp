@@ -29,6 +29,7 @@ class AppCoordinatior: CoordinatorProtocol {
         let searchMovieCoordinator = SearchMovieCoordinator(navigationController: UINavigationController())
         let wishlistCoordinator = WishlistCoordinator(navigationController: UINavigationController())
         let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController())
+        let chatCoordinator = ChatListCooridnator(navigationController: UINavigationController())
         
         let searchVC = setupViewController(coordinator: searchMovieCoordinator,
                                            title: "Search".localized(),
@@ -39,13 +40,17 @@ class AppCoordinatior: CoordinatorProtocol {
         let settingsVC = setupViewController(coordinator: settingsCoordinator,
                                              title: "Settings".localized(),
                                              image: Constants.TabBar.settingsImage)
-        
-        let viewControllers = [searchVC, wishlistVC, settingsVC]
+        let chatVC = setupViewController(coordinator: chatCoordinator,
+                                         title: "Chats",
+                                         image: Constants.TabBar.messageImage)
+
+        let viewControllers = [searchVC, wishlistVC, settingsVC, chatVC]
         tabBarController.viewControllers = viewControllers
         
         coordinate(to: searchMovieCoordinator)
         coordinate(to: wishlistCoordinator)
         coordinate(to: settingsCoordinator)
+        coordinate(to: chatCoordinator)
     }
     
     // MARK: - Private
