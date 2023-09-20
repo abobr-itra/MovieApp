@@ -2,7 +2,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class FirebaseDBService {
+class FirebaseDBService: DataBaseServiceProtocol {
     
     // MARK: - Properties
     

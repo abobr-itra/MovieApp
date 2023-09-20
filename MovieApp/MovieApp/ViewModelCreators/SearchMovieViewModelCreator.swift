@@ -1,4 +1,5 @@
 import Foundation
+import Swinject
 
 class SearchMovieViewModelCreator: ViewModelCreatorProtocol {
     
@@ -10,9 +11,8 @@ class SearchMovieViewModelCreator: ViewModelCreatorProtocol {
         self.coordinator = coordinator
     }
     
-    func factoryMethod(parser: NetworkPaserProtocol) -> SearchMovieViewModel {
-        let networkService = NetworkService(parser: parser)
-        let movieService = MovieService(networkService: networkService)
+    func factoryMethod() -> SearchMovieViewModel {
+        let movieService = Container.shared.resolve(MovieServiceProtocol.self)!
         return SearchMovieViewModel(movieService: movieService, coordinator: coordinator)
     }
 }

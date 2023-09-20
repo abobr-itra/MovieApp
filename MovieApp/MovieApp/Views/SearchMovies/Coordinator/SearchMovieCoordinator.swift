@@ -14,7 +14,7 @@ class SearchMovieCoordinator: SearchMovieCoordinatorProtocol {
     
     func start() {
         let viewModelFabric = SearchMovieViewModelCreator(coordinator: self)
-        let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
+        let viewModel = viewModelFabric.factoryMethod()
         
         let viewController = SearchMoviesViewController(viewModel: viewModel)
         

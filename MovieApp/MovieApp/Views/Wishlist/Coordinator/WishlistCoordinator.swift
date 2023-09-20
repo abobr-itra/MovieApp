@@ -12,7 +12,7 @@ class WishlistCoordinator: WishlistCoordinatorProtocol {
     
     func start() {
         let viewModelFabric = WishlistViewModelCreator(coordinator: self)
-        let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
+        let viewModel = viewModelFabric.factoryMethod()
         viewModel.loadWishlist() // TODO: ???
         
         let viewController = WishListViewController(viewModel: viewModel)

@@ -7,7 +7,7 @@ class SettingsCoordinator: SettingsCoordinatorProtocol {
     var navigationController: UINavigationController
     private var viewModel: SettingsViewModelProtocol {
         let viewModelCreator = SettingsViewModelCreator(coordinator: self)
-        let viewModel = viewModelCreator.factoryMethod(parser: NetworkParser())
+        let viewModel = viewModelCreator.factoryMethod()
         return viewModel
     }
     

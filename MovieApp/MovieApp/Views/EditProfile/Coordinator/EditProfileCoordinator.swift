@@ -1,6 +1,6 @@
 import UIKit
 
-class EditProfileCoordinator: CoordinatorProtocol {
+class EditProfileCoordinator: EditProfileCoordinatorProtocol {
 
     // MARK: - Properties
     
@@ -13,7 +13,8 @@ class EditProfileCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let viewModel = EditProfileViewModel()
+        let viewModelCreator = EditProfileViewModelCreator(coordinator: self)
+        let viewModel = viewModelCreator.factoryMethod()
         let viewController = EditProfileViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }

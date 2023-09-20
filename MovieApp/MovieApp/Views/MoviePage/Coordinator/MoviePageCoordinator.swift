@@ -16,7 +16,7 @@ class MoviePageCoordinator: MoviePageCoordiantorProtocol {
     
     func start() {
         let viewModelFabric = MoviePageViewModelCreator()
-        let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
+        let viewModel = viewModelFabric.factoryMethod()
         viewModel.imdbID = movieID
         let moviePageViewController = MoviePageViewController(viewModel: viewModel)
         navigationController.pushViewController(moviePageViewController, animated: true)

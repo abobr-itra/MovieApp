@@ -6,8 +6,8 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     // MARK: - Properties
     
     private var userData: UserData?
-    private let authService = AuthService()
-    private let firebaseService = FirebaseDBService()
+    private let authService: AuthServiceProtocol
+    private let databaseService: DataBaseServiceProtocol
     
     @Published private var isUserLoaded: Bool = false
     
@@ -22,7 +22,10 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
 
     // MARK: - Init
     
-    init() {
+    init(authService: AuthServiceProtocol, databaseService: DataBaseServiceProtocol) {
+        self.authService = authService
+        self.databaseService = databaseService
+        
         loadUser()
         observe()
     }
@@ -31,7 +34,7 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     
     func save() {
         guard let userData = userData else { return }
-        firebaseService.saveData(dataModel: userData)
+        databaseService.saveData(dataModel: userData)
     }
     
     func signOut() {
@@ -57,7 +60,7 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     }
     
     private func loadUser() {
-        firebaseService.getData(ofType: UserData.self) { result in
+        databaseService.getData(ofType: UserData.self) { result in
             switch result {
             case let .success(data):
                 self.userData = data

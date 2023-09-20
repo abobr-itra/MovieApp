@@ -1,5 +1,6 @@
 import Foundation
 import RealmSwift
+import Swinject
 
 class WishlistViewModelCreator: ViewModelCreatorProtocol {
     
@@ -11,9 +12,8 @@ class WishlistViewModelCreator: ViewModelCreatorProtocol {
         self.coordinator = coordinator
     }
     
-    func factoryMethod(parser: NetworkPaserProtocol) -> WishlistViewModel {
-        let realm = try? Realm()
-        let dataService = RealmService(realm: realm)
+    func factoryMethod() -> WishlistViewModel {
+        let dataService = Container.shared.resolve(RealmServiceProtocol.self)!
         return WishlistViewModel(dataService: dataService, coordinator: coordinator)
     }
 }

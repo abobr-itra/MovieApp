@@ -14,7 +14,7 @@ class AuthCoordinator: AuthCoordinatorProtocol {
     
     func start() {
         let viewModelFabric = AuthViewModelCreator(coordinator: self)
-        let viewModel = viewModelFabric.factoryMethod(parser: NetworkParser())
+        let viewModel = viewModelFabric.factoryMethod()
         
         let viewController = AuthViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: false)

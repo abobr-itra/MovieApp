@@ -114,6 +114,11 @@
 		D2B8A46D2A5708A800D4B05A /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2B8A46A2A5708A800D4B05A /* JetBrainsMono-Bold.ttf */; };
 		D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */; };
 		D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */; };
+		D2CAABA92ABB2144005A1F07 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D2CAABA82ABB2144005A1F07 /* Swinject */; };
+		D2CAABAB2ABB234B005A1F07 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAA2ABB234B005A1F07 /* Container.swift */; };
+		D2CAABAD2ABB2FE3005A1F07 /* EditProfielViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */; };
+		D2CAABAF2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */; };
+		D2CAABB12ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */; };
 		D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */; };
 		D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */; };
 		D2CD27402A7A956800EA1FA5 /* KeychainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */; };
@@ -246,6 +251,10 @@
 		D2B8A46A2A5708A800D4B05A /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Bold.ttf"; path = "../../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
 		D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableViewControllerProtocol.swift; sourceTree = "<group>"; };
+		D2CAABAA2ABB234B005A1F07 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfielViewModel.swift; sourceTree = "<group>"; };
+		D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseServiceProtocol.swift; sourceTree = "<group>"; };
+		D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceProtocol.swift; sourceTree = "<group>"; };
@@ -287,6 +296,7 @@
 				D2ACCFA32AA887E8004BFE41 /* FirebaseMessaging in Frameworks */,
 				D2ACCF992AA887E8004BFE41 /* FirebaseAuth in Frameworks */,
 				D2ACCFA12AA887E8004BFE41 /* FirebaseDatabaseSwift in Frameworks */,
+				D2CAABA92ABB2144005A1F07 /* Swinject in Frameworks */,
 				D2ACCF9D2AA887E8004BFE41 /* FirebaseCrashlytics in Frameworks */,
 				D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */,
 				D23E9E752A9CDB8500F7229C /* Realm in Frameworks */,
@@ -429,6 +439,7 @@
 				D28E716F2A4EE2CF00CA674E /* Dictionary+Extension.swift */,
 				D28E71792A4F06A800CA674E /* UIView+Extension.swift */,
 				D223DE5B2A793A8A00A38585 /* UITextField+Extensions.swift */,
+				D2CAABAA2ABB234B005A1F07 /* Container.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -490,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				D23E9E922AA0BB7E00F7229C /* EditProfileCoordinator.swift */,
+				D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -616,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				D2ACCF912AA88710004BFE41 /* FirebaseDBService.swift */,
+				D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -639,6 +652,7 @@
 				D2B8A4502A56D21000D4B05A /* WishlistViewModelCreator.swift */,
 				D2B8A4522A56D22600D4B05A /* SettingsViewModelCreator.swift */,
 				D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */,
+				D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */,
 			);
 			path = ViewModelCreators;
 			sourceTree = "<group>";
@@ -998,6 +1012,7 @@
 				D2ACCF9E2AA887E8004BFE41 /* FirebaseDatabase */,
 				D2ACCFA02AA887E8004BFE41 /* FirebaseDatabaseSwift */,
 				D2ACCFA22AA887E8004BFE41 /* FirebaseMessaging */,
+				D2CAABA82ABB2144005A1F07 /* Swinject */,
 			);
 			productName = MovieApp;
 			productReference = D2B0D0252947640B0025B7E7 /* MovieApp.app */;
@@ -1062,6 +1077,7 @@
 			packageReferences = (
 				D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				D2ACCF932AA887E8004BFE41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D2CAABA72ABB2144005A1F07 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = D2B0D0262947640B0025B7E7 /* Products */;
 			projectDirPath = "";
@@ -1139,6 +1155,7 @@
 				D223DE5A2A791DB900A38585 /* AuthError.swift in Sources */,
 				D26998A92A79194B0051A689 /* AuthServiceProtocol.swift in Sources */,
 				D27004E82A25F49F00072DFF /* MovieListDataSource.swift in Sources */,
+				D2CAABAB2ABB234B005A1F07 /* Container.swift in Sources */,
 				D2D5E2F729D473C5005BB3AF /* Constants.swift in Sources */,
 				D26998922A77EA2E0051A689 /* AuthViewModel.swift in Sources */,
 				D2570BE22951CF9B00E857FD /* SearchMovieCoordinator.swift in Sources */,
@@ -1154,6 +1171,7 @@
 				D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */,
 				D2B8A4512A56D21000D4B05A /* WishlistViewModelCreator.swift in Sources */,
 				D23E9E872AA0A92800F7229C /* FormCell.swift in Sources */,
+				D2CAABB12ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift in Sources */,
 				D2B8A44B2A56D1DD00D4B05A /* SearchMovieViewModelCreator.swift in Sources */,
 				D2570BD3294C740200E857FD /* String+Extension.swift in Sources */,
 				D2D0CCCF2A7BD5F70070B7A0 /* SettingsCoordinatorProtocol.swift in Sources */,
@@ -1179,6 +1197,7 @@
 				D2B88D422AB861E5009756C2 /* FormCellViewModel.swift in Sources */,
 				D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */,
 				D2B8A43A2A56CC5A00D4B05A /* WishlistViewModelProtocol.swift in Sources */,
+				D2CAABAD2ABB2FE3005A1F07 /* EditProfielViewModel.swift in Sources */,
 				D2B8A4402A56CCC500D4B05A /* SettingsViewModelProtocol.swift in Sources */,
 				D2B8A4462A56CFE300D4B05A /* NetworkPaserProtocol.swift in Sources */,
 				D2B8A44F2A56D1F800D4B05A /* MoviePageViewModelCreator.swift in Sources */,
@@ -1220,6 +1239,7 @@
 				D2D0CCC62A7BD0180070B7A0 /* SearchMovieCoordinatorProtocol.swift in Sources */,
 				D2B8A45B2A56D31300D4B05A /* DataError.swift in Sources */,
 				D26998962A77F1B30051A689 /* AuthCoordinator.swift in Sources */,
+				D2CAABAF2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift in Sources */,
 				D21EEEDB2A28D29200957FA7 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1561,6 +1581,14 @@
 				version = 10.14.0;
 			};
 		};
+		D2CAABA72ABB2144005A1F07 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.3;
+			};
+		};
 		D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -1630,6 +1658,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		D2CAABA82ABB2144005A1F07 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2CAABA72ABB2144005A1F07 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 		D2E5E93B29AE0B330024BDE2 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
