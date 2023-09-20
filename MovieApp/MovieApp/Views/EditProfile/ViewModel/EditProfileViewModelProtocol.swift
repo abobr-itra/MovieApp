@@ -1,14 +1,10 @@
 import UIKit
 
 protocol EditProfileViewModelProtocol {
-    
-    
+
     var isUserLoadedPublisher: Published<Bool>.Publisher { get }
-    var formFields: [FormOption] { get }
+    var formFieldsModels: [FormCellViewModel] { get }
 
     func save()
     func signOut()
-
-    func setData(_ text: String, with tag: Int)
-    func getData(by tag: Int) -> String
 }

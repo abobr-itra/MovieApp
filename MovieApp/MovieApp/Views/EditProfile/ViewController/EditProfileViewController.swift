@@ -72,7 +72,7 @@ class EditProfileViewController: UIViewController {
         view.addSubview(formTableView)
         formTableView.delegate = self
         formTableView.dataSource = self
-        let bottomOffset = view.frame.height - ((Constants.cellHeight + 40) * CGFloat((viewModel?.formFields.count ?? 0)))
+        let bottomOffset = view.frame.height - ((Constants.cellHeight + 40) * CGFloat((viewModel?.formFieldsModels.count ?? 0)))
         formTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         formTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset ).isActive = true
         formTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -139,23 +139,18 @@ class EditProfileViewController: UIViewController {
 extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.formFields.count ?? 0
+        viewModel?.formFieldsModels.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let field = viewModel?.formFields[indexPath.row],
+        guard let fieldViewModel = viewModel?.formFieldsModels[indexPath.row],
               let cell = tableView.dequeueReusableCell(withIdentifier: FormCell.identifier, for: indexPath) as? FormCell else {
             return UITableViewCell()
         }
-        cell.setup(placeholder: field.placeholder,
-                   helperText: field.helperText,
+        cell.setup(viewModel: fieldViewModel,
                    width: Constants.cellWidth,
-                   height: Constants.cellHeight,
-                   tag: indexPath.row,
-                   initialValue: viewModel?.getData(by: indexPath.row) ?? "")
-        cell.$text
-            .sink { self.viewModel?.setData($0, with: indexPath.row) }
-            .store(in: &subscriptions)
+                   height: Constants.cellHeight)
+        
         return cell
     }
     
