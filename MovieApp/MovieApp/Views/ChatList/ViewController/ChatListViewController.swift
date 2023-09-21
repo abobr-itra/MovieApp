@@ -12,10 +12,18 @@ class ChatListViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+    
+    private var navTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(red: 0.106, green: 0.102, blue: 0.342, alpha: 1)
+        label.font = UIFont(name: "PlusJakartaSans-Medium", size: 18)
+        label.text = "Recent Chats"
+        return label
+    }()
 
     // MARK: - Properties
     
-    private var viewModel: ChatListViewModelProtocol? // ?? (any ChatListViewModelProtocol)?
+    private var viewModel: ChatListViewModelProtocol?
     
     // MARK: - Init
     
@@ -34,7 +42,17 @@ class ChatListViewController: UIViewController {
     // MARK: - Private
     
     private func setupView() {
+        setupNavBar()
         setupTableView()
+    }
+    
+    private func setupNavBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navTitleLabel)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "chat_search"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.31, green: 0.37, blue: 0.48, alpha: 1)
     }
     
     private func setupTableView() {
@@ -53,7 +71,7 @@ extension ChatListViewController: UITableViewDelegate {
 extension ChatListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70 // ?? should be 64
+        70
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

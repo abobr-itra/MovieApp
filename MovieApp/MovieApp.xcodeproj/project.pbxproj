@@ -20,6 +20,7 @@
 		D223DE5C2A793A8A00A38585 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D223DE5B2A793A8A00A38585 /* UITextField+Extensions.swift */; };
 		D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
+		D226CE8F2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE8E2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf */; };
 		D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */; };
 		D2357DB12949D38A00F6EE12 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DAF2949D38A00F6EE12 /* MovieCell.swift */; };
 		D2357DB22949D38A00F6EE12 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2357DB02949D38A00F6EE12 /* MovieCell.xib */; };
@@ -171,6 +172,7 @@
 		D223DE5B2A793A8A00A38585 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelCreator.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
+		D226CE8E2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
 		D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
 		D2357DAF2949D38A00F6EE12 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		D2357DB02949D38A00F6EE12 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 		D261A3912A2896BB0021CC3B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				D226CE8E2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf */,
 				D2CAABCC2ABD98DC005A1F07 /* JetBrainsMono-Bold.ttf */,
 				D2CAABCD2ABD98DC005A1F07 /* JetBrainsMono-Light.ttf */,
 				D2CAABCE2ABD98DC005A1F07 /* JetBrainsMono-Regular.ttf */,
@@ -1121,6 +1124,7 @@
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
 				D26998A52A7912500051A689 /* GoogleService-Info.plist in Resources */,
+				D226CE8F2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf in Resources */,
 				D2CAABD22ABD98DC005A1F07 /* JetBrainsMono-Light.ttf in Resources */,
 				D2B0D0322947640E0025B7E7 /* Assets.xcassets in Resources */,
 				D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */,

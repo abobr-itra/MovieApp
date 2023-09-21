@@ -66,4 +66,11 @@ struct Constants {
         
         static let errorColor = UIColor(red: 0.69, green: 0, blue: 0.13, alpha: 1)
     }
+    
+    enum Fonts {
+        
+        static let plusJakartRegular = UIFont(name: "PlusJakartaSans-Regular", size: 12)
+        static let plusJakartMedium = UIFont(name: "PlusJakartaSans-Medium", size: 14)
+        static let plusJakartBold = UIFont(name: "PlusJakartaSans-Bold", size: 12)
+    }
 }

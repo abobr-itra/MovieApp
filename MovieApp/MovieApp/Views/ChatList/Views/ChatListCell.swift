@@ -10,7 +10,7 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 0.106, green: 0.102, blue: 0.342, alpha: 1)
-        label.font = UIFont(name: "PlusJakartaSans-Medium", size: 14)
+        label.font = Constants.Fonts.plusJakartMedium
         return label
     }()
     
@@ -18,7 +18,7 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 0.308, green: 0.368, blue: 0.483, alpha: 1)
-        label.font = UIFont(name: "PlusJakartaSans-Regular", size: 12)
+        label.font = Constants.Fonts.plusJakartRegular
         return label
     }()
     
@@ -36,7 +36,7 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        label.font = UIFont(name: "PlusJakartaSans-Regular", size: 12)
+        label.font = Constants.Fonts.plusJakartRegular
         return label
     }()
     
@@ -52,7 +52,7 @@ class ChatListCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        contentView.backgroundColor = selected ? UIColor(red: 0.184, green: 0.502, blue: 0.929, alpha: 0.2) : Constants.Colors.clear
+        contentView.backgroundColor = selected ? UIColor(red: 0.184, green: 0.502, blue: 0.929, alpha: 0.1) : Constants.Colors.clear
     }
     
     override func awakeFromNib() {
@@ -86,7 +86,8 @@ class ChatListCell: UITableViewCell {
         contentView.addSubview(lastMessageTitle)
         contentView.addSubview(contactImageView)
         contentView.addSubview(dateLabel)
-     //   contentView.addSubview(unreadMessagesView)
+        contentView.addSubview(unreadMessagesView)
+        unreadMessagesView.setNumber(5)
     }
     
     private func setupConstraints() {
@@ -111,15 +112,15 @@ class ChatListCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             lastMessageTitle.leadingAnchor.constraint(equalTo: contactImageView.trailingAnchor, constant: 16),
-            lastMessageTitle.topAnchor.constraint(equalTo: contactTitle.topAnchor, constant: 8),
-            lastMessageTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -99),
+            lastMessageTitle.topAnchor.constraint(equalTo: contactTitle.bottomAnchor, constant: 8),
+            lastMessageTitle.trailingAnchor.constraint(equalTo: self.unreadMessagesView.leadingAnchor, constant: -50),
             lastMessageTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12),
         ])
         
-//        NSLayoutConstraint.activate([
-//            unreadMessagesView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 6),
-//            unreadMessagesView.leftAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-//        ])
+        NSLayoutConstraint.activate([
+            unreadMessagesView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 6),
+            unreadMessagesView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+        ])
     }
     
     private func setupCellUI() {
