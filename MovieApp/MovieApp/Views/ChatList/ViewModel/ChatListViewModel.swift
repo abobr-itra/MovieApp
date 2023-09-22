@@ -7,6 +7,7 @@ class ChatListViewModel: ChatListViewModelProtocol {
                       lastMessage: "Hello World!",
                       image: "",
                       isOnline: true,
+                      date: Date(),
                       numberOfUnreadMessages: 1)
     ]
 }

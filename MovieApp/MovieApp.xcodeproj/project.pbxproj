@@ -21,6 +21,7 @@
 		D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
 		D226CE8F2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE8E2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf */; };
+		D226CE932AC1A3F70066EA6C /* CreateChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D226CE922AC1A3F70066EA6C /* CreateChatButton.swift */; };
 		D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */; };
 		D2357DB12949D38A00F6EE12 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DAF2949D38A00F6EE12 /* MovieCell.swift */; };
 		D2357DB22949D38A00F6EE12 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2357DB02949D38A00F6EE12 /* MovieCell.xib */; };
@@ -173,6 +174,7 @@
 		D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelCreator.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
 		D226CE8E2AC19C140066EA6C /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
+		D226CE922AC1A3F70066EA6C /* CreateChatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatButton.swift; sourceTree = "<group>"; };
 		D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
 		D2357DAF2949D38A00F6EE12 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		D2357DB02949D38A00F6EE12 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
@@ -357,6 +359,24 @@
 				D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */,
 			);
 			path = Apperance;
+			sourceTree = "<group>";
+		};
+		D226CE902AC1A3B50066EA6C /* ChatListCell */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAABCA2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift */,
+				D2CAABC62ABC8109005A1F07 /* ChatListCellViewModel.swift */,
+				D2CAABC12ABC7D12005A1F07 /* ChatListCell.swift */,
+			);
+			path = ChatListCell;
+			sourceTree = "<group>";
+		};
+		D226CE912AC1A3C40066EA6C /* CreateChatButton */ = {
+			isa = PBXGroup;
+			children = (
+				D226CE922AC1A3F70066EA6C /* CreateChatButton.swift */,
+			);
+			path = CreateChatButton;
 			sourceTree = "<group>";
 		};
 		D227301729C1E25F003787E7 /* SearchMovies */ = {
@@ -894,9 +914,8 @@
 		D2CAABC02ABC7CF5005A1F07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D2CAABC12ABC7D12005A1F07 /* ChatListCell.swift */,
-				D2CAABC62ABC8109005A1F07 /* ChatListCellViewModel.swift */,
-				D2CAABCA2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift */,
+				D226CE912AC1A3C40066EA6C /* CreateChatButton */,
+				D226CE902AC1A3B50066EA6C /* ChatListCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1210,6 +1229,7 @@
 				D21EEED62A28D17800957FA7 /* MovieListDelegate.swift in Sources */,
 				D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */,
 				D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */,
+				D226CE932AC1A3F70066EA6C /* CreateChatButton.swift in Sources */,
 				D2B8A4602A56D3AD00D4B05A /* SettingsLanguagesViewController.swift in Sources */,
 				D2B0D0292947640B0025B7E7 /* AppDelegate.swift in Sources */,
 				D2CAABCB2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift in Sources */,

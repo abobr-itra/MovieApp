@@ -71,6 +71,7 @@ struct Constants {
         
         static let plusJakartRegular = UIFont(name: "PlusJakartaSans-Regular", size: 12)
         static let plusJakartMedium = UIFont(name: "PlusJakartaSans-Medium", size: 14)
+        static let plusJakartMediumLarge = UIFont(name: "PlusJakartaSans-Medium", size: 18)
         static let plusJakartBold = UIFont(name: "PlusJakartaSans-Bold", size: 12)
     }
 }

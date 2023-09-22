@@ -15,11 +15,26 @@ class ChatListViewController: UIViewController {
     
     private var navTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(red: 0.106, green: 0.102, blue: 0.342, alpha: 1)
-        label.font = UIFont(name: "PlusJakartaSans-Medium", size: 18)
+        label.textColor = LocalConstants.navTitleColor
+        label.font = Constants.Fonts.plusJakartMediumLarge
         label.text = "Recent Chats"
         return label
     }()
+    
+    private var createButton: CreateChatButton = {
+        let button = CreateChatButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private enum LocalConstants {
+        
+        static let navTitleColor = UIColor(red: 0.106, green: 0.102, blue: 0.342, alpha: 1)
+        static let searchButtonColor = UIColor(red: 0.31, green: 0.37, blue: 0.48, alpha: 1)
+        
+        static let createButtonTrailingConstant: CGFloat = -24
+        static let createButtonBottomConstant: CGFloat = -118
+    }
 
     // MARK: - Properties
     
@@ -44,15 +59,16 @@ class ChatListViewController: UIViewController {
     private func setupView() {
         setupNavBar()
         setupTableView()
+        setupCreateButton()
     }
     
     private func setupNavBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navTitleLabel)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "chat_search"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: nil)
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.31, green: 0.37, blue: 0.48, alpha: 1)
+                                                             style: .plain,
+                                                             target: self,
+                                                             action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = LocalConstants.searchButtonColor
     }
     
     private func setupTableView() {
@@ -61,6 +77,14 @@ class ChatListViewController: UIViewController {
         chatListTableView.dataSource = self
         
         chatListTableView.frame = view.bounds
+    }
+    
+    private func setupCreateButton() {
+        view.addSubview(createButton)
+        NSLayoutConstraint.activate([
+            createButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LocalConstants.createButtonTrailingConstant),
+            createButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: LocalConstants.createButtonBottomConstant)
+        ])
     }
 }
 
