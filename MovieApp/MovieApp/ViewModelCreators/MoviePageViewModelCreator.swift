@@ -5,10 +5,15 @@ import Swinject
 class MoviePageViewModelCreator: ViewModelCreatorProtocol {
     
     typealias ViewModel = MoviePageViewModel
+    private var dependencyManager: DependencyManager
+
+    init(dependencyManager: DependencyManager) {
+        self.dependencyManager = dependencyManager
+    }
     
     func factoryMethod() -> MoviePageViewModel {
-        let dataService = Container.shared.resolve(RealmServiceProtocol.self)!
-        let movieService = Container.shared.resolve(MovieServiceProtocol.self)!
+        let dataService = dependencyManager.resolver.resolve(RealmServiceProtocol.self)!
+        let movieService = dependencyManager.resolver.resolve(MovieServiceProtocol.self)!
         return MoviePageViewModel(movieService: movieService, dataService: dataService)
     }
 }

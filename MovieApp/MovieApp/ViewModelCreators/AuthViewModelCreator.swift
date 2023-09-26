@@ -6,14 +6,16 @@ class AuthViewModelCreator: ViewModelCreatorProtocol {
     typealias ViewModel = AuthViewModel
     
     private unowned let coordinator: AuthCoordinatorProtocol
+    private var dependencyManager: DependencyManager
     
-    init(coordinator: AuthCoordinatorProtocol) {
+    init(coordinator: AuthCoordinatorProtocol, dependencyManager: DependencyManager) {
         self.coordinator = coordinator
+        self.dependencyManager = dependencyManager
     }
     
     func factoryMethod() -> AuthViewModel {
-        let authService = Container.shared.resolve(AuthServiceProtocol.self)!
-        let keychainService = Container.shared.resolve(KeychainServiceProtocol.self)!
+        let authService = dependencyManager.resolver.resolve(AuthServiceProtocol.self)!
+        let keychainService = dependencyManager.resolver.resolve(KeychainServiceProtocol.self)!
         let viewModel = AuthViewModel(authService: authService, keychainService: keychainService, coordinator: coordinator)
         return viewModel
     }

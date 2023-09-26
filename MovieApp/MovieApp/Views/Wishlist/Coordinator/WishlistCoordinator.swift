@@ -1,17 +1,19 @@
 import UIKit
 
 class WishlistCoordinator: WishlistCoordinatorProtocol {
-    
+
     // MARK: - Properties
-    
+
     var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
+    var dependecyManager: DependencyManager
+
+    init(navigationController: UINavigationController, dependecyManager: DependencyManager) {
         self.navigationController = navigationController
+        self.dependecyManager = dependecyManager
     }
-    
+
     func start() {
-        let viewModelFabric = WishlistViewModelCreator(coordinator: self)
+        let viewModelFabric = WishlistViewModelCreator(coordinator: self, dependencyManager: dependecyManager)
         let viewModel = viewModelFabric.factoryMethod()
         viewModel.loadWishlist() // TODO: ???
         
@@ -23,7 +25,9 @@ class WishlistCoordinator: WishlistCoordinatorProtocol {
     // MARK: - WishlistCoordinatorProtocol
     
     func navigateToMovie(_ movieID: String) {
-        let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController, movieID: movieID)
+        let moviePageCoordinator = MoviePageCoordinator(navigationController: navigationController,
+                                                        dependecyManager: dependecyManager,
+                                                        movieID: movieID)
         moviePageCoordinator.start()
     }
 }

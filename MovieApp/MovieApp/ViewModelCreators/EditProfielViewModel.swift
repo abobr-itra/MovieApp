@@ -6,14 +6,16 @@ class EditProfileViewModelCreator: ViewModelCreatorProtocol {
     typealias ViewModel = EditProfileViewModel
     
     private unowned let coordinator: EditProfileCoordinatorProtocol
+    private var dependencyManager: DependencyManager
     
-    init(coordinator: EditProfileCoordinatorProtocol) {
+    init(coordinator: EditProfileCoordinatorProtocol, dependencyManager: DependencyManager) {
         self.coordinator = coordinator
+        self.dependencyManager = dependencyManager
     }
     
     func factoryMethod() -> EditProfileViewModel {
-        let authService = Container.shared.resolve(AuthServiceProtocol.self)!
-        let remoteDBService = Container.shared.resolve(DataBaseServiceProtocol.self)!
+        let authService = dependencyManager.resolver.resolve(AuthServiceProtocol.self)!
+        let remoteDBService = dependencyManager.resolver.resolve(DataBaseServiceProtocol.self)!
         return EditProfileViewModel(authService: authService, databaseService: remoteDBService)
     }
 }

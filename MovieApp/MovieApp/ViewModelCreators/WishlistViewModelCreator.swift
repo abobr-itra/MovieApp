@@ -7,13 +7,15 @@ class WishlistViewModelCreator: ViewModelCreatorProtocol {
     typealias ViewModel = WishlistViewModel
     
     private unowned let coordinator: WishlistCoordinatorProtocol
-    
-    init(coordinator: WishlistCoordinatorProtocol) {
+    private var dependencyManager: DependencyManager
+
+    init(coordinator: WishlistCoordinatorProtocol, dependencyManager: DependencyManager) {
         self.coordinator = coordinator
+        self.dependencyManager = dependencyManager
     }
-    
+
     func factoryMethod() -> WishlistViewModel {
-        let dataService = Container.shared.resolve(RealmServiceProtocol.self)!
+        let dataService = dependencyManager.resolver.resolve(RealmServiceProtocol.self)!
         return WishlistViewModel(dataService: dataService, coordinator: coordinator)
     }
 }
