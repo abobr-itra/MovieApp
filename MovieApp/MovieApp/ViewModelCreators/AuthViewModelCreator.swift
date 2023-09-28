@@ -16,7 +16,7 @@ class AuthViewModelCreator: ViewModelCreatorProtocol {
     func factoryMethod() -> AuthViewModel {
         let authService = dependencyManager.resolver.resolve(AuthServiceProtocol.self)!
         let keychainService = dependencyManager.resolver.resolve(KeychainServiceProtocol.self)!
-        let analytics = AnalyticsManager(engine: AnalyticsEngine()) // Move to swinject
+        let analytics = dependencyManager.resolver.resolve(AnalyticsManager.self)!
         let viewModel = AuthViewModel(authService: authService,
                                       keychainService: keychainService,
                                       coordinator: coordinator,

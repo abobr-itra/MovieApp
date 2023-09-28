@@ -67,7 +67,7 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     }
     
     private func loadUser() {
-        firebaseService.getData(ofType: UserData.self) { [weak self] result in
+        databaseService.getData(ofType: UserData.self) { [weak self] result in
             switch result {
             case let .success(data):
                 self?.userData = data

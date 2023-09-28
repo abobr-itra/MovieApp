@@ -20,12 +20,6 @@
 		D223DE5C2A793A8A00A38585 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D223DE5B2A793A8A00A38585 /* UITextField+Extensions.swift */; };
 		D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
-		D226CE9A2AC1BD810066EA6C /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE942AC1BD810066EA6C /* PlusJakartaSans-Medium.ttf */; };
-		D226CE9B2AC1BD810066EA6C /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE952AC1BD810066EA6C /* PlusJakartaSans-Regular.ttf */; };
-		D226CE9C2AC1BD810066EA6C /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE962AC1BD810066EA6C /* PlusJakartaSans-Bold.ttf */; };
-		D226CE9D2AC1BD810066EA6C /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE972AC1BD810066EA6C /* JetBrainsMono-Bold.ttf */; };
-		D226CE9E2AC1BD810066EA6C /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE982AC1BD810066EA6C /* JetBrainsMono-Regular.ttf */; };
-		D226CE9F2AC1BD810066EA6C /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D226CE992AC1BD810066EA6C /* JetBrainsMono-Light.ttf */; };
 		D226CEA12AC1BDBD0066EA6C /* DataBaseServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D226CEA02AC1BDBD0066EA6C /* DataBaseServiceAssembly.swift */; };
 		D226CEA32AC1BE010066EA6C /* KeychainServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D226CEA22AC1BE010066EA6C /* KeychainServiceAssembly.swift */; };
 		D226CEA52AC1BF170066EA6C /* RealmServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D226CEA42AC1BF170066EA6C /* RealmServiceAssembly.swift */; };
@@ -157,6 +151,7 @@
 		D2E828D52AC5B5F60097F127 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828CF2AC5B5F60097F127 /* JetBrainsMono-Regular.ttf */; };
 		D2E828D62AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */; };
 		D2E828D72AC5B5F60097F127 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */; };
+		D2E828DA2AC5C34B0097F127 /* AnalyticsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E828D92AC5C34B0097F127 /* AnalyticsAssembly.swift */; };
 		D2FA7C1F2A7C0839009A41C8 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FA7C1E2A7C0839009A41C8 /* AnalyticsEvent.swift */; };
 		D2FA7C212A7C0B6D009A41C8 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FA7C202A7C0B6D009A41C8 /* AnalyticsManager.swift */; };
 /* End PBXBuildFile section */
@@ -193,11 +188,8 @@
 		D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelCreator.swift; sourceTree = "<group>"; };
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
 		D226CE942AC1BD810066EA6C /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
-		D226CE952AC1BD810066EA6C /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
 		D226CE962AC1BD810066EA6C /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
 		D226CE972AC1BD810066EA6C /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
-		D226CE982AC1BD810066EA6C /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
-		D226CE992AC1BD810066EA6C /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
 		D226CEA02AC1BDBD0066EA6C /* DataBaseServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseServiceAssembly.swift; sourceTree = "<group>"; };
 		D226CEA22AC1BE010066EA6C /* KeychainServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceAssembly.swift; sourceTree = "<group>"; };
 		D226CEA42AC1BF170066EA6C /* RealmServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmServiceAssembly.swift; sourceTree = "<group>"; };
@@ -321,6 +313,7 @@
 		D2E828CF2AC5B5F60097F127 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
 		D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
 		D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
+		D2E828D92AC5C34B0097F127 /* AnalyticsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsAssembly.swift; sourceTree = "<group>"; };
 		D2FA7C1E2A7C0839009A41C8 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		D2FA7C202A7C0B6D009A41C8 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1031,6 +1024,7 @@
 				D2D0CCD32A7BF7460070B7A0 /* AnalyticsEngineProtocol.swift */,
 				D2FA7C1E2A7C0839009A41C8 /* AnalyticsEvent.swift */,
 				D2FA7C202A7C0B6D009A41C8 /* AnalyticsManager.swift */,
+				D2E828D92AC5C34B0097F127 /* AnalyticsAssembly.swift */,
 			);
 			path = AnalyticsService;
 			sourceTree = "<group>";
@@ -1048,6 +1042,9 @@
 			isa = PBXGroup;
 			children = (
 				D22EBB6A2AC2F91900960D73 /* PlusJakartaSans-Medium.ttf */,
+				D226CE962AC1BD810066EA6C /* PlusJakartaSans-Bold.ttf */,
+				D226CE942AC1BD810066EA6C /* PlusJakartaSans-Medium.ttf */,
+				D226CE972AC1BD810066EA6C /* JetBrainsMono-Bold.ttf */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1197,11 +1194,8 @@
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
 				D2E828D32AC5B5F60097F127 /* PlusJakartaSans-Bold.ttf in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
-				D226CE9C2AC1BD810066EA6C /* PlusJakartaSans-Bold.ttf in Resources */,
-				D226CE9A2AC1BD810066EA6C /* PlusJakartaSans-Medium.ttf in Resources */,
 				D26998A52A7912500051A689 /* GoogleService-Info.plist in Resources */,
 				D2B0D0322947640E0025B7E7 /* Assets.xcassets in Resources */,
-				D226CE9D2AC1BD810066EA6C /* JetBrainsMono-Bold.ttf in Resources */,
 				D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */,
 				D2E828D22AC5B5F60097F127 /* JetBrainsMono-Light.ttf in Resources */,
 				D2D5E30329D49A47005BB3AF /* MoviePageViewController.xib in Resources */,
@@ -1300,6 +1294,7 @@
 				D2B8A4402A56CCC500D4B05A /* SettingsViewModelProtocol.swift in Sources */,
 				D2FA7C212A7C0B6D009A41C8 /* AnalyticsManager.swift in Sources */,
 				D2B8A4462A56CFE300D4B05A /* NetworkPaserProtocol.swift in Sources */,
+				D2E828DA2AC5C34B0097F127 /* AnalyticsAssembly.swift in Sources */,
 				D2B8A44F2A56D1F800D4B05A /* MoviePageViewModelCreator.swift in Sources */,
 				D28E717A2A4F06A800CA674E /* UIView+Extension.swift in Sources */,
 				D2D5E30229D49A47005BB3AF /* MoviePageViewController.swift in Sources */,
@@ -1768,19 +1763,10 @@
 			package = D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		D2B679DD2A6A9B4900088674 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		D2CAABA82ABB2144005A1F07 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D2CAABA72ABB2144005A1F07 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		D2E5E93B29AE0B330024BDE2 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Realm;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
