@@ -72,7 +72,7 @@ class EditProfileViewController: UIViewController {
         view.addSubview(formTableView)
         formTableView.delegate = self
         formTableView.dataSource = self
-        let bottomOffset = view.frame.height - ((Constants.cellHeight + 40) * CGFloat((viewModel?.formFieldsModels.count ?? 0)))
+        let bottomOffset = view.frame.height - ((Constants.cellHeight + 40) * CGFloat((viewModel?.profileTextFields.count ?? 0)))
         formTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         formTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset ).isActive = true
         formTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -139,11 +139,11 @@ class EditProfileViewController: UIViewController {
 extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.formFieldsModels.count ?? 0
+        viewModel?.profileTextFields.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let fieldViewModel = viewModel?.formFieldsModels[indexPath.row],
+        guard let fieldViewModel = viewModel?.profileTextFields[indexPath.row].associatedValue(),
               let cell = tableView.dequeueReusableCell(withIdentifier: FormCell.identifier, for: indexPath) as? FormCell else {
             return UITableViewCell()
         }
@@ -153,14 +153,14 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
         
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? FormCell else {
             return
         }
         cell.focus()
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         Constants.cellHeight
     }

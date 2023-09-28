@@ -50,9 +50,24 @@ struct Constants {
         static let sideMargin: CGFloat = 16.0
         static let buttonsSideMargin: CGFloat = 90.0
     }
-    
+ 
     struct KeychainKeys {
         
         static let userID = "user_id"
+    }
+ 
+    struct CustomField {
+        
+        static let fielCornerRadius: CGFloat = 15
+        static let leadingPadding: CGFloat = 16
+        
+        static let labelDefaultFontSize: CGFloat = 15
+        static let labelSmallFontSize: CGFloat = 10
+        
+        static let backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.04)
+        static let mainColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.87)
+        static let secondaryColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        
+        static let errorColor = UIColor(red: 0.69, green: 0, blue: 0.13, alpha: 1)
     }
 }

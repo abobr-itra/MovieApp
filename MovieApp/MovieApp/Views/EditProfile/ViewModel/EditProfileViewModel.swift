@@ -14,10 +14,10 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     var isUserLoadedPublisher: Published<Bool>.Publisher { $isUserLoaded }
     private var subscriptions: Set<AnyCancellable> = []
     
-    private(set) var formFieldsModels: [FormCellViewModel] = [
-        FormCellViewModel(placeholder: "Name", helperText: "ex. Jhone", tag: 0),
-        FormCellViewModel(placeholder: "Surname", helperText: "ex. Doe", tag: 1),
-        FormCellViewModel(placeholder: "Avatar URL", helperText: "https://some-url.com", tag: 2)
+    private(set) var profileTextFields: [ProfileTextFields] = [
+        .firstName(FormCellViewModel(placeholder: "Name", helperText: "ex. Jhone", tag: 0)),
+        .secondName(FormCellViewModel(placeholder: "Surname", helperText: "ex. Doe", tag: 1)),
+        .avatarUrl(FormCellViewModel(placeholder: "Avatar URL", helperText: "https://some-url.com", tag: 2))
     ]
 
     // MARK: - Init
@@ -48,42 +48,67 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
     // MARK: - Private
     
     private func observe() {
-        formFieldsModels[0].$text
-            .sink { self.userData?.firstName = $0 }
-            .store(in: &subscriptions)
-        formFieldsModels[1].$text
-            .sink { self.userData?.secondName = $0 }
-            .store(in: &subscriptions)
-        formFieldsModels[2].$text
-            .sink { self.userData?.avatarUrl = $0 }
-            .store(in: &subscriptions)
+        profileTextFields.forEach { textField in
+            switch textField {
+            case .firstName(let viewModel):
+                viewModel.$text
+                    .sink { [weak self] in self?.userData?.firstName = $0 }
+                    .store(in: &subscriptions)
+            case .secondName(let viewModel):
+                viewModel.$text
+                    .sink { [weak self] in self?.userData?.secondName = $0 }
+                    .store(in: &subscriptions)
+            case .avatarUrl(let viewModel):
+                viewModel.$text
+                    .sink { [weak self] in self?.userData?.avatarUrl = $0 }
+                    .store(in: &subscriptions)
+            }
+        }
     }
     
     private func loadUser() {
-        databaseService.getData(ofType: UserData.self) { result in
+        firebaseService.getData(ofType: UserData.self) { [weak self] result in
             switch result {
             case let .success(data):
-                self.userData = data
-                self.updateFields(with: data)
-                self.isUserLoaded = true
+                self?.userData = data
+                self?.updateFields(with: data)
+                self?.isUserLoaded = true
             case let .failure(error):
-                self.isUserLoaded = false
-                self.userData = UserData(id: self.authService.currentUser?.uid ?? "")
+                self?.isUserLoaded = false
+                self?.userData = UserData(id: self?.authService.currentUser?.uid ?? "")
                 print("Error getData \(error)")
             }
         }
     }
     
     private func updateFields(with data: UserData) {
-        formFieldsModels[0].setInitialValue(data.firstName)
-        formFieldsModels[1].setInitialValue(data.secondName)
-        formFieldsModels[2].setInitialValue(data.avatarUrl)
+        profileTextFields.forEach { textField in
+            switch textField {
+            case .firstName(let viewModel):
+                viewModel.setInitialValue(data.firstName)
+            case .secondName(let viewModel):
+                viewModel.setInitialValue(data.secondName)
+            case .avatarUrl(let viewModel):
+                viewModel.setInitialValue(data.avatarUrl)
+            }
+        }
     }
 }
 
-enum TextFieldData: Int {
+enum ProfileTextFields {
 
-    case nameField = 0
-    case surnameField
-    case avatarUrl
+    case firstName(FormCellViewModel)
+    case secondName(FormCellViewModel)
+    case avatarUrl(FormCellViewModel)
+    
+    func associatedValue() -> FormCellViewModel {
+        switch self {
+        case .firstName(let viewModel):
+            return viewModel
+        case .secondName(let viewModel):
+            return viewModel
+        case .avatarUrl(let viewModel):
+            return viewModel
+        }
+    }
 }
