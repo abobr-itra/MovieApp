@@ -1,18 +1,20 @@
 import UIKit
 
 class SettingsCoordinator: SettingsCoordinatorProtocol {
-    
+
     // MARK: - Properties
     
     var navigationController: UINavigationController
+    var dependecyManager: DependencyManager
     private var viewModel: SettingsViewModelProtocol {
         let viewModelCreator = SettingsViewModelCreator(coordinator: self)
-        let viewModel = viewModelCreator.factoryMethod(parser: NetworkParser())
+        let viewModel = viewModelCreator.factoryMethod()
         return viewModel
     }
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, dependecyManager: DependencyManager) {
         self.navigationController = navigationController
+        self.dependecyManager = dependecyManager
     }
     
     // MARK: - Public
@@ -41,14 +43,12 @@ class SettingsCoordinator: SettingsCoordinatorProtocol {
     }
     
     func openAccount() {
-        let keychainService = KeychainService()
-        if let _ = keychainService.get(Constants.KeychainKeys.userID) {
-            print("💩")
-            let profileCoordinator = EditProfileCoordinator(navigationController: navigationController)
+        let authService = AuthService()
+        if let _ = authService.currentUser {
+            let profileCoordinator = EditProfileCoordinator(navigationController: navigationController, dependecyManager: dependecyManager)
             profileCoordinator.start()
         } else {
-            print("💩💩")
-            let authCoordinator = AuthCoordinator(navigationController: navigationController)
+            let authCoordinator = AuthCoordinator(navigationController: navigationController, dependecyManager: dependecyManager)
             authCoordinator.start()
         }
     }

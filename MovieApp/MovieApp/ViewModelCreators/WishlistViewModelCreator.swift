@@ -1,19 +1,21 @@
 import Foundation
 import RealmSwift
+import Swinject
 
 class WishlistViewModelCreator: ViewModelCreatorProtocol {
     
     typealias ViewModel = WishlistViewModel
     
     private unowned let coordinator: WishlistCoordinatorProtocol
-    
-    init(coordinator: WishlistCoordinatorProtocol) {
+    private var dependencyManager: DependencyManager
+
+    init(coordinator: WishlistCoordinatorProtocol, dependencyManager: DependencyManager) {
         self.coordinator = coordinator
+        self.dependencyManager = dependencyManager
     }
-    
-    func factoryMethod(parser: NetworkPaserProtocol) -> WishlistViewModel {
-        let realm = try? Realm()
-        let dataService = RealmService(realm: realm)
+
+    func factoryMethod() -> WishlistViewModel {
+        let dataService = dependencyManager.resolver.resolve(RealmServiceProtocol.self)!
         return WishlistViewModel(dataService: dataService, coordinator: coordinator)
     }
 }

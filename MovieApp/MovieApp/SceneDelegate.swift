@@ -10,7 +10,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        coordinator = AppCoordinatior(window: window)
+        let dependencyManager = DependencyManager()
+        dependencyManager.setup()
+        coordinator = AppCoordinatior(window: window, dependecyManager: dependencyManager)
         coordinator?.start()
     }
 }

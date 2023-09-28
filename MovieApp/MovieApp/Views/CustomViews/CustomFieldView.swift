@@ -83,6 +83,10 @@ class CustomFieldView: UIView {
         helperTextLabel.textColor = Constants.CustomField.secondaryColor
         customTextField.tintColor = Constants.CustomField.mainColor
     }
+    
+    func setInitialValue(_ value: String) {
+        customTextField.text = value
+    }
 
     // MARK: - Private
 

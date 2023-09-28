@@ -11,6 +11,8 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     private let keychainService: KeychainServiceProtocol
     private let coordinator: AuthCoordinatorProtocol
     
+    private let firebaseService = FirebaseDBService()
+    
     @Published private var user: User?
     @Published private var authError: Error?
     
@@ -34,14 +36,14 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     func signIn() {
         guard !email.isEmpty && !password.isEmpty else { return }
         authService.signIn(withEmail: email, password: password) { [weak self] result in
-            self?.hadleResult(result, resultType: .signIn)
+            self?.handleAuth(result, authType: .signIn)
         }
     }
     
     func signUp() {
         guard !email.isEmpty && !password.isEmpty else { return }
         authService.signUp(withEmail: email, password: password) { [weak self] result in
-            self?.hadleResult(result, resultType: .signUp)
+            self?.handleAuth(result, authType: .signUp)
         }
     }
     
@@ -51,20 +53,19 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     // MARK: - Private
     
-    private enum ResultType {
-        
-        case signIn
-        case signUp
-    }
-    
-    private func hadleResult(_ result: Result<User, Error>, resultType: ResultType) {
+
+    private func handleAuth(_ result: Result<User, Error>, authType: AuthType) {
         switch result {
         case let .success(user):
             self.user = user
+            if authType == .signUp {
+                let userModel = UserData(id: user.uid)
+                firebaseService.saveData(dataModel: userModel)
+            }
             guard let currUser = Auth.auth().currentUser,
                   let userData = currUser.uid.data(using: .utf8) else { return }
             if let userEmail = currUser.email {
-                switch resultType {
+                switch authType {
                 case .signIn:
                     self.analytics.log(.signIn(email: userEmail))
                 case .signUp:
@@ -77,4 +78,11 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
             self.authError = error
         }
     }
+    
+    private enum AuthType {
+        
+        case signIn
+        case signUp
+    }
 }
+

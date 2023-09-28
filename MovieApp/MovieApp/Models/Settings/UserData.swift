@@ -1,8 +1,9 @@
 import Foundation
 
-struct UserData {
-    
+struct UserData: Identifiable, Codable {
+
+    let id: String
     var firstName: String = ""
     var secondName: String = ""
-    var number: String = ""
+    var avatarUrl: String = ""
 }
