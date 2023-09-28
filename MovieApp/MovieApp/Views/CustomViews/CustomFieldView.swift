@@ -114,7 +114,7 @@ class CustomFieldView: UIView {
     
     private func observe() {
         customTextField.textPublisher
-            .sink { self.text = $0 }
+            .sink { [weak self] in self?.text = $0 }
             .store(in: &subscriptions)
     }
 

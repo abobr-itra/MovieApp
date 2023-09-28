@@ -105,9 +105,6 @@
 		D2B8A4612A56D3AD00D4B05A /* SettingsLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8A45F2A56D3AD00D4B05A /* SettingsLanguageCell.swift */; };
 		D2B8A4632A56D49E00D4B05A /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8A4622A56D49E00D4B05A /* CoordinatorProtocol.swift */; };
 		D2B8A4662A56E89A00D4B05A /* MovieModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8A4652A56E89A00D4B05A /* MovieModelProtocol.swift */; };
-		D2B8A46B2A5708A800D4B05A /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2B8A4682A5708A800D4B05A /* JetBrainsMono-Light.ttf */; };
-		D2B8A46C2A5708A800D4B05A /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2B8A4692A5708A800D4B05A /* JetBrainsMono-Regular.ttf */; };
-		D2B8A46D2A5708A800D4B05A /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2B8A46A2A5708A800D4B05A /* JetBrainsMono-Bold.ttf */; };
 		D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */; };
 		D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */; };
 		D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */; };
@@ -130,6 +127,12 @@
 		D2E5E94529AE10ED0024BDE2 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5E94429AE10ED0024BDE2 /* RealmService.swift */; };
 		D2E5E94829B0B95C0024BDE2 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5E94629B0B95C0024BDE2 /* WishListViewController.swift */; };
 		D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2E5E94729B0B95C0024BDE2 /* WishListViewController.xib */; };
+		D2E828D22AC5B5F60097F127 /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828CC2AC5B5F50097F127 /* JetBrainsMono-Light.ttf */; };
+		D2E828D32AC5B5F60097F127 /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828CD2AC5B5F50097F127 /* PlusJakartaSans-Bold.ttf */; };
+		D2E828D42AC5B5F60097F127 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828CE2AC5B5F60097F127 /* PlusJakartaSans-Regular.ttf */; };
+		D2E828D52AC5B5F60097F127 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828CF2AC5B5F60097F127 /* JetBrainsMono-Regular.ttf */; };
+		D2E828D62AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */; };
+		D2E828D72AC5B5F60097F127 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,9 +238,6 @@
 		D2B8A45F2A56D3AD00D4B05A /* SettingsLanguageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLanguageCell.swift; sourceTree = "<group>"; };
 		D2B8A4622A56D49E00D4B05A /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2B8A4652A56E89A00D4B05A /* MovieModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModelProtocol.swift; sourceTree = "<group>"; };
-		D2B8A4682A5708A800D4B05A /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Light.ttf"; path = "../../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
-		D2B8A4692A5708A800D4B05A /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Regular.ttf"; path = "../../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
-		D2B8A46A2A5708A800D4B05A /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Bold.ttf"; path = "../../../../../../Downloads/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
 		D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableViewControllerProtocol.swift; sourceTree = "<group>"; };
 		D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +260,12 @@
 		D2E5E94429AE10ED0024BDE2 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		D2E5E94629B0B95C0024BDE2 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		D2E5E94729B0B95C0024BDE2 /* WishListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListViewController.xib; sourceTree = "<group>"; };
+		D2E828CC2AC5B5F50097F127 /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
+		D2E828CD2AC5B5F50097F127 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
+		D2E828CE2AC5B5F60097F127 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
+		D2E828CF2AC5B5F60097F127 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
+		D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
+		D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,9 +505,12 @@
 		D261A3912A2896BB0021CC3B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				D2B8A46A2A5708A800D4B05A /* JetBrainsMono-Bold.ttf */,
-				D2B8A4682A5708A800D4B05A /* JetBrainsMono-Light.ttf */,
-				D2B8A4692A5708A800D4B05A /* JetBrainsMono-Regular.ttf */,
+				D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */,
+				D2E828CC2AC5B5F50097F127 /* JetBrainsMono-Light.ttf */,
+				D2E828CF2AC5B5F60097F127 /* JetBrainsMono-Regular.ttf */,
+				D2E828CD2AC5B5F50097F127 /* PlusJakartaSans-Bold.ttf */,
+				D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */,
+				D2E828CE2AC5B5F60097F127 /* PlusJakartaSans-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -1066,18 +1075,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B8A46B2A5708A800D4B05A /* JetBrainsMono-Light.ttf in Resources */,
 				D2B0D0352947640E0025B7E7 /* LaunchScreen.storyboard in Resources */,
+				D2E828D72AC5B5F60097F127 /* JetBrainsMono-Bold.ttf in Resources */,
+				D2E828D42AC5B5F60097F127 /* PlusJakartaSans-Regular.ttf in Resources */,
 				D28E715F2A4DAB6000CA674E /* Localizable.strings in Resources */,
+				D2E828D62AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf in Resources */,
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
+				D2E828D32AC5B5F60097F127 /* PlusJakartaSans-Bold.ttf in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
 				D26998A52A7912500051A689 /* GoogleService-Info.plist in Resources */,
-				D2B8A46D2A5708A800D4B05A /* JetBrainsMono-Bold.ttf in Resources */,
 				D2B0D0322947640E0025B7E7 /* Assets.xcassets in Resources */,
 				D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */,
+				D2E828D22AC5B5F60097F127 /* JetBrainsMono-Light.ttf in Resources */,
 				D2D5E30329D49A47005BB3AF /* MoviePageViewController.xib in Resources */,
+				D2E828D52AC5B5F60097F127 /* JetBrainsMono-Regular.ttf in Resources */,
 				D2357DB22949D38A00F6EE12 /* MovieCell.xib in Resources */,
-				D2B8A46C2A5708A800D4B05A /* JetBrainsMono-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
