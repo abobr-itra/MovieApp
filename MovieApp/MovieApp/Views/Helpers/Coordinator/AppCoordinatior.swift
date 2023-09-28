@@ -1,7 +1,7 @@
 import UIKit
 
 class AppCoordinatior: CoordinatorProtocol {
-    
+
     // MARK: - Private Propertis
     
     private let window: UIWindow
@@ -10,9 +10,11 @@ class AppCoordinatior: CoordinatorProtocol {
     // MARK: - Public Properties
     
     var navigationController: UINavigationController = UINavigationController()
+    var dependecyManager: DependencyManager
     
-    init(window: UIWindow) {
+    init(window: UIWindow, dependecyManager: DependencyManager) {
         self.window = window
+        self.dependecyManager = dependecyManager
     }
     
     // MARK: - Public
@@ -26,9 +28,9 @@ class AppCoordinatior: CoordinatorProtocol {
         
         // TODO: Remove navigation controllers for this coordinators
         
-        let searchMovieCoordinator = SearchMovieCoordinator(navigationController: UINavigationController())
-        let wishlistCoordinator = WishlistCoordinator(navigationController: UINavigationController())
-        let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController())
+        let searchMovieCoordinator = SearchMovieCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
+        let wishlistCoordinator = WishlistCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
+        let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
         
         let searchVC = setupViewController(coordinator: searchMovieCoordinator,
                                            title: "Search".localized(),

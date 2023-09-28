@@ -1,16 +1,19 @@
 import Foundation
 import RealmSwift
+import Swinject
 
 class MoviePageViewModelCreator: ViewModelCreatorProtocol {
     
     typealias ViewModel = MoviePageViewModel
-    
-    func factoryMethod(parser: NetworkPaserProtocol) -> MoviePageViewModel {
-        let realm = try? Realm()
-        let dataService = RealmService(realm: realm)
+    private var dependencyManager: DependencyManager
 
-        let networkService = NetworkService(parser: parser)
-        let movieService = MovieService(networkService: networkService)
+    init(dependencyManager: DependencyManager) {
+        self.dependencyManager = dependencyManager
+    }
+    
+    func factoryMethod() -> MoviePageViewModel {
+        let dataService = dependencyManager.resolver.resolve(RealmServiceProtocol.self)!
+        let movieService = dependencyManager.resolver.resolve(MovieServiceProtocol.self)!
         return MoviePageViewModel(movieService: movieService, dataService: dataService)
     }
 }
