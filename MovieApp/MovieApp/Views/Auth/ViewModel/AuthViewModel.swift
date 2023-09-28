@@ -6,6 +6,7 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     // MARK: - Properties
     
+    private let analytics: AnalyticsManager
     private let authService: AuthServiceProtocol
     private let keychainService: KeychainServiceProtocol
     private let coordinator: AuthCoordinatorProtocol
@@ -20,10 +21,14 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     // MARK: - Init
 
-    init(authService: AuthServiceProtocol, keychainService: KeychainServiceProtocol, coordinator: AuthCoordinatorProtocol) {
+    init(authService: AuthServiceProtocol,
+         keychainService: KeychainServiceProtocol,
+         coordinator: AuthCoordinatorProtocol,
+         analytics: AnalyticsManager) {
         self.authService = authService
         self.keychainService = keychainService
         self.coordinator = coordinator
+        self.analytics = analytics
     }
     
     // MARK: - Public
@@ -31,14 +36,14 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     func signIn() {
         guard !email.isEmpty && !password.isEmpty else { return }
         authService.signIn(withEmail: email, password: password) { [weak self] result in
-            self?.handleAuth(result: result, authType: .signIn)
+            self?.handleAuth(result, authType: .signIn)
         }
     }
     
     func signUp() {
         guard !email.isEmpty && !password.isEmpty else { return }
         authService.signUp(withEmail: email, password: password) { [weak self] result in
-            self?.handleAuth(result: result, authType: .signUp)
+            self?.handleAuth(result, authType: .signUp)
         }
     }
     
@@ -48,20 +53,29 @@ class AuthViewModel: AuthViewModelProtocol, ObservableObject {
     
     // MARK: - Private
     
-    private func handleAuth(result: Result<User, Error>, authType: AuthType) {
+
+    private func handleAuth(_ result: Result<User, Error>, authType: AuthType) {
         switch result {
-        case .success(let user):
+        case let .success(user):
             self.user = user
             if authType == .signUp {
                 let userModel = UserData(id: user.uid)
                 firebaseService.saveData(dataModel: userModel)
             }
-            guard let userID = Auth.auth().currentUser?.uid,
-                  let userData = userID.data(using: .utf8) else { return }
+            guard let currUser = Auth.auth().currentUser,
+                  let userData = currUser.uid.data(using: .utf8) else { return }
+            if let userEmail = currUser.email {
+                switch authType {
+                case .signIn:
+                    self.analytics.log(.signIn(email: userEmail))
+                case .signUp:
+                    self.analytics.log(.signUp(email: userEmail))
+                }
+            }
             keychainService.set(userData, forKey: Constants.KeychainKeys.userID)
             coordinator.navigateToSettings()
         case .failure(let error):
-            authError = error
+            self.authError = error
         }
     }
     

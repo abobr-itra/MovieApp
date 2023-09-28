@@ -19,6 +19,7 @@ class TestViewController: UIViewController {
     private func setupView() {
         view.addSubview(customField)
         customField.setPlaceholder("Label")
+        customField.setHelperText("Helper text")
       //  customField.indecateError()
         customField.heightAnchor.constraint(equalToConstant: 68).isActive = true
         customField.widthAnchor.constraint(equalToConstant: 200).isActive = true
