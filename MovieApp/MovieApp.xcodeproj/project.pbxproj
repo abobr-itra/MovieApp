@@ -21,18 +21,12 @@
 		D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D223DE5D2A7944F700A38585 /* AuthViewModelCreator.swift */; };
 		D2260B13295F1B8800E93500 /* MoviePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */; };
 		D227302229C1E3C9003787E7 /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */; };
-		D22EBB702AC2F91A00960D73 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D22EBB6A2AC2F91900960D73 /* PlusJakartaSans-Medium.ttf */; };
-		D22EBB712AC2F91A00960D73 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D22EBB6B2AC2F91A00960D73 /* PlusJakartaSans-Regular.ttf */; };
-		D22EBB722AC2F91A00960D73 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D22EBB6C2AC2F91A00960D73 /* JetBrainsMono-Regular.ttf */; };
-		D22EBB732AC2F91A00960D73 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D22EBB6D2AC2F91A00960D73 /* JetBrainsMono-Bold.ttf */; };
-		D22EBB742AC2F91A00960D73 /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D22EBB6E2AC2F91A00960D73 /* PlusJakartaSans-Bold.ttf */; };
-		D22EBB752AC2F91A00960D73 /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D22EBB6F2AC2F91A00960D73 /* JetBrainsMono-Light.ttf */; };
 		D2357DB12949D38A00F6EE12 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DAF2949D38A00F6EE12 /* MovieCell.swift */; };
 		D2357DB22949D38A00F6EE12 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2357DB02949D38A00F6EE12 /* MovieCell.xib */; };
 		D2357DB52949DBF500F6EE12 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB42949DBF500F6EE12 /* UIImageView+Extension.swift */; };
 		D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB62949DC6D00F6EE12 /* Optional+Extension.swift */; };
 		D2357DB92949FFAE00F6EE12 /* MovieSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB82949FFAE00F6EE12 /* MovieSearch.swift */; };
-		D23E9E752A9CDB8500F7229C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D2E5E93B29AE0B330024BDE2 /* Realm */; };
+		D23E9E752A9CDB8500F7229C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		D23E9E7D2A9CDD8D00F7229C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */; };
 		D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E9E7E2A9CE0AA00F7229C /* RealmSwift */; };
 		D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */; };
@@ -63,9 +57,7 @@
 		D26998A72A79191F0051A689 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26998A62A79191F0051A689 /* AuthService.swift */; };
 		D26998A92A79194B0051A689 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26998A82A79194B0051A689 /* AuthServiceProtocol.swift */; };
 		D27004E82A25F49F00072DFF /* MovieListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27004E72A25F49F00072DFF /* MovieListDataSource.swift */; };
-		D2842B1C2A938FC80001D38A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D2E5E93B29AE0B330024BDE2 /* Realm */; };
 		D2842B202A93A0230001D38A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D2842B1F2A93A0230001D38A /* Realm */; };
-		D2842B222A93A0360001D38A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2842B212A93A0360001D38A /* RealmSwift */; };
 		D28E715F2A4DAB6000CA674E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D28E71612A4DAB6000CA674E /* Localizable.strings */; };
 		D28E71652A4ED52100CA674E /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E71642A4ED52100CA674E /* Bundle+Extension.swift */; };
 		D28E71702A4EE2CF00CA674E /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E716F2A4EE2CF00CA674E /* Dictionary+Extension.swift */; };
@@ -97,7 +89,7 @@
 		D2B679D22A6A8BF300088674 /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B679D12A6A8BF300088674 /* MovieAppUITests.swift */; };
 		D2B679D42A6A8BF300088674 /* MovieAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B679D32A6A8BF300088674 /* MovieAppUITestsLaunchTests.swift */; };
 		D2B679DC2A6A9B4900088674 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D2B679DB2A6A9B4900088674 /* Realm */; };
-		D2B679DE2A6A9B4900088674 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2B679DD2A6A9B4900088674 /* RealmSwift */; };
+		D2B679DE2A6A9B4900088674 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		D2B88D422AB861E5009756C2 /* FormCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B88D412AB861E5009756C2 /* FormCellViewModel.swift */; };
 		D2B8A4372A56CC0000D4B05A /* SearchMovieViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8A4362A56CC0000D4B05A /* SearchMovieViewModelProtocol.swift */; };
 		D2B8A43A2A56CC5A00D4B05A /* WishlistViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8A4392A56CC5A00D4B05A /* WishlistViewModelProtocol.swift */; };
@@ -184,11 +176,6 @@
 		D2260B12295F1B8800E93500 /* MoviePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageViewModel.swift; sourceTree = "<group>"; };
 		D227302129C1E3C9003787E7 /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
 		D22EBB6A2AC2F91900960D73 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
-		D22EBB6B2AC2F91A00960D73 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
-		D22EBB6C2AC2F91A00960D73 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
-		D22EBB6D2AC2F91A00960D73 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
-		D22EBB6E2AC2F91A00960D73 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
-		D22EBB6F2AC2F91A00960D73 /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
 		D2357DAF2949D38A00F6EE12 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		D2357DB02949D38A00F6EE12 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		D2357DB42949DBF500F6EE12 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -324,7 +311,7 @@
 				D2ACCFA12AA887E8004BFE41 /* FirebaseDatabaseSwift in Frameworks */,
 				D2ACCF9D2AA887E8004BFE41 /* FirebaseCrashlytics in Frameworks */,
 				D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */,
-				D23E9E752A9CDB8500F7229C /* Realm in Frameworks */,
+				D23E9E752A9CDB8500F7229C /* (null) in Frameworks */,
 				D2ACCF9F2AA887E8004BFE41 /* FirebaseDatabase in Frameworks */,
 				D2ACCF952AA887E8004BFE41 /* FirebaseAnalytics in Frameworks */,
 			);
@@ -334,7 +321,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B679DE2A6A9B4900088674 /* RealmSwift in Frameworks */,
+				D2B679DE2A6A9B4900088674 /* (null) in Frameworks */,
 				D2B679DC2A6A9B4900088674 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,6 +731,7 @@
 				D2B679D02A6A8BF300088674 /* MovieAppUITests */,
 				D2B0D0262947640B0025B7E7 /* Products */,
 				D2B679DA2A6A9B4900088674 /* Frameworks */,
+				D2E828D82AC5BF7B0097F127 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1001,6 +989,14 @@
 			path = RealmModels;
 			sourceTree = "<group>";
 		};
+		D2E828D82AC5BF7B0097F127 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D22EBB6A2AC2F91900960D73 /* PlusJakartaSans-Medium.ttf */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1040,7 +1036,6 @@
 			);
 			name = MovieApp;
 			packageProductDependencies = (
-				D2E5E93B29AE0B330024BDE2 /* Realm */,
 				D23E9E7E2A9CE0AA00F7229C /* RealmSwift */,
 				D2ACCF942AA887E8004BFE41 /* FirebaseAnalytics */,
 				D2ACCF962AA887E8004BFE41 /* FirebaseAnalyticsSwift */,
@@ -1071,7 +1066,6 @@
 			name = MovieAppUITests;
 			packageProductDependencies = (
 				D2B679DB2A6A9B4900088674 /* Realm */,
-				D2B679DD2A6A9B4900088674 /* RealmSwift */,
 			);
 			productName = MovieAppUITests;
 			productReference = D2B679CF2A6A8BF300088674 /* MovieAppUITests.xctest */;
@@ -1146,7 +1140,6 @@
 				D2D5E2FF29D498F2005BB3AF /* SearchMoviesViewController.xib in Resources */,
 				D2E828D32AC5B5F60097F127 /* PlusJakartaSans-Bold.ttf in Resources */,
 				D2E5E94929B0B95C0024BDE2 /* WishListViewController.xib in Resources */,
-				D22EBB702AC2F91A00960D73 /* PlusJakartaSans-Medium.ttf in Resources */,
 				D26998A52A7912500051A689 /* GoogleService-Info.plist in Resources */,
 				D2B0D0322947640E0025B7E7 /* Assets.xcassets in Resources */,
 				D2D5E2FB29D493E0005BB3AF /* Main.storyboard in Resources */,
@@ -1646,6 +1639,11 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = RealmSwift;
 		};
+		D2842B1F2A93A0230001D38A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
 		D2ACCF942AA887E8004BFE41 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D2ACCF932AA887E8004BFE41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1685,16 +1683,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2ACCF932AA887E8004BFE41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
-		};
-		D2842B1F2A93A0230001D38A /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		D2842B212A93A0360001D38A /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D2E5E93A29AE0B330024BDE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		D2B679DB2A6A9B4900088674 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
