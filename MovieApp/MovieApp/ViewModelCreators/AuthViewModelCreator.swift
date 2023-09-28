@@ -13,7 +13,11 @@ class AuthViewModelCreator: ViewModelCreatorProtocol {
     func factoryMethod(parser: NetworkPaserProtocol) -> AuthViewModel {
         let authService = AuthService()
         let keychainService = KeychainService()
-        let viewModel = AuthViewModel(authService: authService, keychainService: keychainService, coordinator: coordinator)
+        let analytics = AnalyticsManager(engine: AnalyticsEngine()) // Temporary ???
+        let viewModel = AuthViewModel(authService: authService,
+                                      keychainService: keychainService,
+                                      coordinator: coordinator,
+                                      analytics: analytics)
         return viewModel
     }
 }
