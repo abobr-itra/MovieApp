@@ -27,10 +27,10 @@ class AppCoordinatior: CoordinatorProtocol {
         window.makeKeyAndVisible()
         
         // TODO: Remove navigation controllers for this coordinators
-        
         let searchMovieCoordinator = SearchMovieCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
         let wishlistCoordinator = WishlistCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
         let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
+        let chatCoordinator = ChatListCooridnator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
         
         let searchVC = setupViewController(coordinator: searchMovieCoordinator,
                                            title: "Search".localized(),
@@ -41,14 +41,17 @@ class AppCoordinatior: CoordinatorProtocol {
         let settingsVC = setupViewController(coordinator: settingsCoordinator,
                                              title: "Settings".localized(),
                                              image: Constants.TabBar.settingsImage)
-        let testVC = TestViewController()
-        
-        let viewControllers = [searchVC, wishlistVC, settingsVC]
+        let chatVC = setupViewController(coordinator: chatCoordinator,
+                                         title: "Chats",
+                                         image: Constants.TabBar.messageImage)
+
+        let viewControllers = [searchVC, wishlistVC, settingsVC, chatVC]
         tabBarController.viewControllers = viewControllers
         
         coordinate(to: searchMovieCoordinator)
         coordinate(to: wishlistCoordinator)
         coordinate(to: settingsCoordinator)
+        coordinate(to: chatCoordinator)
     }
     
     // MARK: - Private

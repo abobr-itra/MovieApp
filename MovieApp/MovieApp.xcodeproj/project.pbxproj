@@ -34,9 +34,7 @@
 		D2357DB52949DBF500F6EE12 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB42949DBF500F6EE12 /* UIImageView+Extension.swift */; };
 		D2357DB72949DC6D00F6EE12 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB62949DC6D00F6EE12 /* Optional+Extension.swift */; };
 		D2357DB92949FFAE00F6EE12 /* MovieSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2357DB82949FFAE00F6EE12 /* MovieSearch.swift */; };
-		D23E9E752A9CDB8500F7229C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		D23E9E7D2A9CDD8D00F7229C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E7C2A9CDD8D00F7229C /* TestViewController.swift */; };
-		D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E9E7E2A9CE0AA00F7229C /* RealmSwift */; };
 		D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E802A9E1A7700F7229C /* CustomFieldView.swift */; };
 		D23E9E842AA0A5BC00F7229C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E832AA0A5BB00F7229C /* EditProfileViewController.swift */; };
 		D23E9E872AA0A92800F7229C /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9E862AA0A92800F7229C /* FormCell.swift */; };
@@ -123,6 +121,15 @@
 		D2CAABAD2ABB2FE3005A1F07 /* EditProfielViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */; };
 		D2CAABAF2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */; };
 		D2CAABB12ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */; };
+		D2CAABB72ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB62ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift */; };
+		D2CAABB92ABC7950005A1F07 /* ChatListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB82ABC7950005A1F07 /* ChatListCoordinator.swift */; };
+		D2CAABBB2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABBA2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift */; };
+		D2CAABBD2ABC79CC005A1F07 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABBC2ABC79CC005A1F07 /* ChatListViewModel.swift */; };
+		D2CAABBF2ABC7A0E005A1F07 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABBE2ABC7A0D005A1F07 /* ChatListViewController.swift */; };
+		D2CAABC22ABC7D12005A1F07 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABC12ABC7D12005A1F07 /* ChatListCell.swift */; };
+		D2CAABC52ABC7FDC005A1F07 /* ChatCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABC42ABC7FDC005A1F07 /* ChatCellModel.swift */; };
+		D2CAABC72ABC8109005A1F07 /* ChatListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABC62ABC8109005A1F07 /* ChatListCellViewModel.swift */; };
+		D2CAABCB2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABCA2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift */; };
 		D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */; };
 		D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */; };
 		D2CD27402A7A956800EA1FA5 /* KeychainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */; };
@@ -152,6 +159,8 @@
 		D2E828D62AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */; };
 		D2E828D72AC5B5F60097F127 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */; };
 		D2E828DA2AC5C34B0097F127 /* AnalyticsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E828D92AC5C34B0097F127 /* AnalyticsAssembly.swift */; };
+		D2E828DB2AC5C7B90097F127 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E9E7E2A9CE0AA00F7229C /* RealmSwift */; };
+		D2E828DD2AC5C8770097F127 /* CreateChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E828DC2AC5C8770097F127 /* CreateChatButton.swift */; };
 		D2FA7C1F2A7C0839009A41C8 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FA7C1E2A7C0839009A41C8 /* AnalyticsEvent.swift */; };
 		D2FA7C212A7C0B6D009A41C8 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FA7C202A7C0B6D009A41C8 /* AnalyticsManager.swift */; };
 /* End PBXBuildFile section */
@@ -285,6 +294,15 @@
 		D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfielViewModel.swift; sourceTree = "<group>"; };
 		D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseServiceProtocol.swift; sourceTree = "<group>"; };
 		D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		D2CAABB62ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		D2CAABB82ABC7950005A1F07 /* ChatListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinator.swift; sourceTree = "<group>"; };
+		D2CAABBA2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModelProtocol.swift; sourceTree = "<group>"; };
+		D2CAABBC2ABC79CC005A1F07 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
+		D2CAABBE2ABC7A0D005A1F07 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		D2CAABC12ABC7D12005A1F07 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		D2CAABC42ABC7FDC005A1F07 /* ChatCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellModel.swift; sourceTree = "<group>"; };
+		D2CAABC62ABC8109005A1F07 /* ChatListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCellViewModel.swift; sourceTree = "<group>"; };
+		D2CAABCA2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadMessagesIndicator.swift; sourceTree = "<group>"; };
 		D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceProtocol.swift; sourceTree = "<group>"; };
@@ -314,6 +332,7 @@
 		D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
 		D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
 		D2E828D92AC5C34B0097F127 /* AnalyticsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsAssembly.swift; sourceTree = "<group>"; };
+		D2E828DC2AC5C8770097F127 /* CreateChatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChatButton.swift; sourceTree = "<group>"; };
 		D2FA7C1E2A7C0839009A41C8 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		D2FA7C202A7C0B6D009A41C8 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,6 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E828DB2AC5C7B90097F127 /* RealmSwift in Frameworks */,
 				D2ACCF972AA887E8004BFE41 /* FirebaseAnalyticsSwift in Frameworks */,
 				D2ACCF9B2AA887E8004BFE41 /* FirebaseAuthCombine-Community in Frameworks */,
 				D2ACCFA32AA887E8004BFE41 /* FirebaseMessaging in Frameworks */,
@@ -339,8 +359,6 @@
 				D2ACCFA12AA887E8004BFE41 /* FirebaseDatabaseSwift in Frameworks */,
 				D2CAABA92ABB2144005A1F07 /* Swinject in Frameworks */,
 				D2ACCF9D2AA887E8004BFE41 /* FirebaseCrashlytics in Frameworks */,
-				D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */,
-				D23E9E752A9CDB8500F7229C /* (null) in Frameworks */,
 				D2ACCF9F2AA887E8004BFE41 /* FirebaseDatabase in Frameworks */,
 				D2ACCF952AA887E8004BFE41 /* FirebaseAnalytics in Frameworks */,
 			);
@@ -391,6 +409,24 @@
 				D21EEEF32A2A452700957FA7 /* ApperanceViewController.swift */,
 			);
 			path = Apperance;
+			sourceTree = "<group>";
+		};
+		D226CE902AC1A3B50066EA6C /* ChatListCell */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAABCA2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift */,
+				D2CAABC62ABC8109005A1F07 /* ChatListCellViewModel.swift */,
+				D2CAABC12ABC7D12005A1F07 /* ChatListCell.swift */,
+			);
+			path = ChatListCell;
+			sourceTree = "<group>";
+		};
+		D226CE912AC1A3C40066EA6C /* CreateChatButton */ = {
+			isa = PBXGroup;
+			children = (
+				D2E828DC2AC5C8770097F127 /* CreateChatButton.swift */,
+			);
+			path = CreateChatButton;
 			sourceTree = "<group>";
 		};
 		D227301729C1E25F003787E7 /* SearchMovies */ = {
@@ -690,6 +726,7 @@
 		D2AF047029487A6E0001C92A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D2CAABC32ABC7FBD005A1F07 /* Chat */,
 				D2B8A4672A56E8D100D4B05A /* Movies */,
 				D28E71712A4EE47700CA674E /* Settings */,
 				D2E5E93F29AE0B3E0024BDE2 /* RealmModels */,
@@ -714,6 +751,7 @@
 		D2AF047229487A8C0001C92A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D2CAABB22ABC78C8005A1F07 /* ChatList */,
 				D23E9E882AA0B34E00F7229C /* EditProfile */,
 				D23E9E7B2A9CDD5900F7229C /* UITestView */,
 				D23E9E762A9CDBC400F7229C /* CustomViews */,
@@ -960,6 +998,60 @@
 				D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */,
 			);
 			path = Spinner;
+			sourceTree = "<group>";
+		};
+		D2CAABB22ABC78C8005A1F07 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAABC02ABC7CF5005A1F07 /* Views */,
+				D2CAABB32ABC78E6005A1F07 /* Coordiantor */,
+				D2CAABB42ABC78FA005A1F07 /* ViewModel */,
+				D2CAABB52ABC78FF005A1F07 /* ViewController */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		D2CAABB32ABC78E6005A1F07 /* Coordiantor */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAABB62ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift */,
+				D2CAABB82ABC7950005A1F07 /* ChatListCoordinator.swift */,
+			);
+			path = Coordiantor;
+			sourceTree = "<group>";
+		};
+		D2CAABB42ABC78FA005A1F07 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAABBA2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift */,
+				D2CAABBC2ABC79CC005A1F07 /* ChatListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D2CAABB52ABC78FF005A1F07 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAABBE2ABC7A0D005A1F07 /* ChatListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D2CAABC02ABC7CF5005A1F07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D226CE912AC1A3C40066EA6C /* CreateChatButton */,
+				D226CE902AC1A3B50066EA6C /* ChatListCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D2CAABC32ABC7FBD005A1F07 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAABC42ABC7FDC005A1F07 /* ChatCellModel.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		D2CD273C2A7A954500EA1FA5 /* KeychainService */ = {
@@ -1239,6 +1331,7 @@
 				D2AF048429489C7B0001C92A /* SearchMovieViewModel.swift in Sources */,
 				D26998A72A79191F0051A689 /* AuthService.swift in Sources */,
 				D2AF047B294889F20001C92A /* Rating.swift in Sources */,
+				D2CAABC22ABC7D12005A1F07 /* ChatListCell.swift in Sources */,
 				D2B8A4632A56D49E00D4B05A /* CoordinatorProtocol.swift in Sources */,
 				D22EBB662AC1C32B00960D73 /* MovieServiceAssembly.swift in Sources */,
 				D223DE5C2A793A8A00A38585 /* UITextField+Extensions.swift in Sources */,
@@ -1255,11 +1348,13 @@
 				D21EEEEA2A28D9B000957FA7 /* SettingsOption.swift in Sources */,
 				D2D0CCCC2A7BD3300070B7A0 /* WishlistCoordinatorProtocol.swift in Sources */,
 				D2AF047829487B4C0001C92A /* OMDBEndpoint.swift in Sources */,
+				D2CAABBB2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift in Sources */,
 				D2B8A4492A56D01A00D4B05A /* MovieServiceProtocol.swift in Sources */,
 				D269988E2A77E9FB0051A689 /* AuthViewController.swift in Sources */,
 				D28E71732A4EE49500CA674E /* SettingsSection.swift in Sources */,
 				D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */,
 				D21EEEEE2A28DB6600957FA7 /* SettingsCell.swift in Sources */,
+				D2CAABC72ABC8109005A1F07 /* ChatListCellViewModel.swift in Sources */,
 				D2B8A4512A56D21000D4B05A /* WishlistViewModelCreator.swift in Sources */,
 				D23E9E872AA0A92800F7229C /* FormCell.swift in Sources */,
 				D2CAABB12ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift in Sources */,
@@ -1286,18 +1381,21 @@
 				D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */,
 				D2B8A4602A56D3AD00D4B05A /* SettingsLanguagesViewController.swift in Sources */,
 				D2B0D0292947640B0025B7E7 /* AppDelegate.swift in Sources */,
+				D2CAABCB2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift in Sources */,
 				D2B8A4532A56D22600D4B05A /* SettingsViewModelCreator.swift in Sources */,
 				D2B88D422AB861E5009756C2 /* FormCellViewModel.swift in Sources */,
 				D2570BDD295090F400E857FD /* AppCoordinatior.swift in Sources */,
 				D2B8A43A2A56CC5A00D4B05A /* WishlistViewModelProtocol.swift in Sources */,
 				D2CAABAD2ABB2FE3005A1F07 /* EditProfielViewModel.swift in Sources */,
 				D2B8A4402A56CCC500D4B05A /* SettingsViewModelProtocol.swift in Sources */,
+				D2CAABB92ABC7950005A1F07 /* ChatListCoordinator.swift in Sources */,
 				D2FA7C212A7C0B6D009A41C8 /* AnalyticsManager.swift in Sources */,
 				D2B8A4462A56CFE300D4B05A /* NetworkPaserProtocol.swift in Sources */,
 				D2E828DA2AC5C34B0097F127 /* AnalyticsAssembly.swift in Sources */,
 				D2B8A44F2A56D1F800D4B05A /* MoviePageViewModelCreator.swift in Sources */,
 				D28E717A2A4F06A800CA674E /* UIView+Extension.swift in Sources */,
 				D2D5E30229D49A47005BB3AF /* MoviePageViewController.swift in Sources */,
+				D2CAABBF2ABC7A0E005A1F07 /* ChatListViewController.swift in Sources */,
 				D2AF047F29488D280001C92A /* NetworkParser.swift in Sources */,
 				D2B8A43D2A56CC8700D4B05A /* MoviePageViewModelProtocol.swift in Sources */,
 				D2D0CCD22A7BF7310070B7A0 /* AnalyticsEngine.swift in Sources */,
@@ -1313,6 +1411,7 @@
 				D23E9E812A9E1A7800F7229C /* CustomFieldView.swift in Sources */,
 				D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */,
 				D2570BD1294C736D00E857FD /* Plot.swift in Sources */,
+				D2CAABBD2ABC79CC005A1F07 /* ChatListViewModel.swift in Sources */,
 				D2AF047629487ACE0001C92A /* NetworkService.swift in Sources */,
 				D22EBB692AC1C49900960D73 /* DependencyManager.swift in Sources */,
 				D2B0D02B2947640B0025B7E7 /* SceneDelegate.swift in Sources */,
@@ -1328,6 +1427,8 @@
 				D28E71652A4ED52100CA674E /* Bundle+Extension.swift in Sources */,
 				D23E9E952AA1EAB600F7229C /* UserData.swift in Sources */,
 				D2B679A72A6948EA00088674 /* UIColor+Extension.swift in Sources */,
+				D2CAABB72ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift in Sources */,
+				D2CAABC52ABC7FDC005A1F07 /* ChatCellModel.swift in Sources */,
 				D26998942A77EA410051A689 /* AuthViewModelProtocol.swift in Sources */,
 				D2D5E2FE29D498F2005BB3AF /* SearchMoviesViewController.swift in Sources */,
 				D23E9E842AA0A5BC00F7229C /* EditProfileViewController.swift in Sources */,
@@ -1339,6 +1440,7 @@
 				D26998962A77F1B30051A689 /* AuthCoordinator.swift in Sources */,
 				D2CAABAF2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift in Sources */,
 				D21EEEDB2A28D29200957FA7 /* SettingsViewController.swift in Sources */,
+				D2E828DD2AC5C8770097F127 /* CreateChatButton.swift in Sources */,
 				D226CEA52AC1BF170066EA6C /* RealmServiceAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

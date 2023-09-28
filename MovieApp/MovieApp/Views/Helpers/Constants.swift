@@ -27,6 +27,7 @@ struct Constants {
         static let personImage = UIImage(systemName: "person")
         static let wishlistImage = UIImage(systemName: "star")
         static let settingsImage = UIImage(systemName: "gearshape")
+        static let messageImage = UIImage(systemName: "message")
     }
 
     struct Buttons {
@@ -69,5 +70,13 @@ struct Constants {
         static let secondaryColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         
         static let errorColor = UIColor(red: 0.69, green: 0, blue: 0.13, alpha: 1)
+    }
+    
+    enum Fonts {
+        
+        static let plusJakartRegular = UIFont(name: "PlusJakartaSans-Regular", size: 12)
+        static let plusJakartMedium = UIFont(name: "PlusJakartaSans-Medium", size: 14)
+        static let plusJakartMediumLarge = UIFont(name: "PlusJakartaSans-Medium", size: 18)
+        static let plusJakartBold = UIFont(name: "PlusJakartaSans-Bold", size: 12)
     }
 }
