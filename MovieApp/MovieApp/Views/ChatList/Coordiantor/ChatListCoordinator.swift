@@ -2,10 +2,12 @@ import UIKit
 
 class ChatListCooridnator: ChatListCoordinatorProtocol {
 
+    var dependecyManager: DependencyManager
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, dependecyManager: DependencyManager) {
         self.navigationController = navigationController
+        self.dependecyManager = dependecyManager
     }
     
     func start() {

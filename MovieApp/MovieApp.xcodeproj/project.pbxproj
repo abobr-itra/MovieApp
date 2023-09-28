@@ -117,6 +117,10 @@
 		D2B8A4662A56E89A00D4B05A /* MovieModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8A4652A56E89A00D4B05A /* MovieModelProtocol.swift */; };
 		D2BB54162A1FB3FB00BA4734 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */; };
 		D2C79A3C2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */; };
+		D2CAABA92ABB2144005A1F07 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D2CAABA82ABB2144005A1F07 /* Swinject */; };
+		D2CAABAD2ABB2FE3005A1F07 /* EditProfielViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */; };
+		D2CAABAF2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */; };
+		D2CAABB12ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */; };
 		D2CAABB72ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB62ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift */; };
 		D2CAABB92ABC7950005A1F07 /* ChatListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB82ABC7950005A1F07 /* ChatListCoordinator.swift */; };
 		D2CAABBB2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABBA2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift */; };
@@ -126,15 +130,6 @@
 		D2CAABC52ABC7FDC005A1F07 /* ChatCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABC42ABC7FDC005A1F07 /* ChatCellModel.swift */; };
 		D2CAABC72ABC8109005A1F07 /* ChatListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABC62ABC8109005A1F07 /* ChatListCellViewModel.swift */; };
 		D2CAABCB2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABCA2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift */; };
-		D2CAABD12ABD98DC005A1F07 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2CAABCC2ABD98DC005A1F07 /* JetBrainsMono-Bold.ttf */; };
-		D2CAABD22ABD98DC005A1F07 /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2CAABCD2ABD98DC005A1F07 /* JetBrainsMono-Light.ttf */; };
-		D2CAABD32ABD98DC005A1F07 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2CAABCE2ABD98DC005A1F07 /* JetBrainsMono-Regular.ttf */; };
-		D2CAABD42ABD98DC005A1F07 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2CAABCF2ABD98DC005A1F07 /* PlusJakartaSans-Medium.ttf */; };
-		D2CAABD52ABD98DC005A1F07 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2CAABD02ABD98DC005A1F07 /* PlusJakartaSans-Regular.ttf */; };
-		D2CAABA92ABB2144005A1F07 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D2CAABA82ABB2144005A1F07 /* Swinject */; };
-		D2CAABAD2ABB2FE3005A1F07 /* EditProfielViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */; };
-		D2CAABAF2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */; };
-		D2CAABB12ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */; };
 		D2CD27392A7959D800EA1FA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */; };
 		D2CD273E2A7A955300EA1FA5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */; };
 		D2CD27402A7A956800EA1FA5 /* KeychainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */; };
@@ -164,6 +159,8 @@
 		D2E828D62AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */; };
 		D2E828D72AC5B5F60097F127 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */; };
 		D2E828DA2AC5C34B0097F127 /* AnalyticsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E828D92AC5C34B0097F127 /* AnalyticsAssembly.swift */; };
+		D2E828DB2AC5C7B90097F127 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E9E7E2A9CE0AA00F7229C /* RealmSwift */; };
+		D2E828DD2AC5C8770097F127 /* CreateChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E828DC2AC5C8770097F127 /* CreateChatButton.swift */; };
 		D2FA7C1F2A7C0839009A41C8 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FA7C1E2A7C0839009A41C8 /* AnalyticsEvent.swift */; };
 		D2FA7C212A7C0B6D009A41C8 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FA7C202A7C0B6D009A41C8 /* AnalyticsManager.swift */; };
 /* End PBXBuildFile section */
@@ -294,6 +291,9 @@
 		D2B8A4652A56E89A00D4B05A /* MovieModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModelProtocol.swift; sourceTree = "<group>"; };
 		D2BB54152A1FB3FB00BA4734 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		D2C79A3B2A2763DC0065DA25 /* RefreshableViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableViewControllerProtocol.swift; sourceTree = "<group>"; };
+		D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfielViewModel.swift; sourceTree = "<group>"; };
+		D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseServiceProtocol.swift; sourceTree = "<group>"; };
+		D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2CAABB62ABC7928005A1F07 /* ChatListCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2CAABB82ABC7950005A1F07 /* ChatListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinator.swift; sourceTree = "<group>"; };
 		D2CAABBA2ABC79B0005A1F07 /* ChatListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -303,14 +303,6 @@
 		D2CAABC42ABC7FDC005A1F07 /* ChatCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellModel.swift; sourceTree = "<group>"; };
 		D2CAABC62ABC8109005A1F07 /* ChatListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCellViewModel.swift; sourceTree = "<group>"; };
 		D2CAABCA2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadMessagesIndicator.swift; sourceTree = "<group>"; };
-		D2CAABCC2ABD98DC005A1F07 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
-		D2CAABCD2ABD98DC005A1F07 /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
-		D2CAABCE2ABD98DC005A1F07 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
-		D2CAABCF2ABD98DC005A1F07 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
-		D2CAABD02ABD98DC005A1F07 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
-		D2CAABAC2ABB2FE3005A1F07 /* EditProfielViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfielViewModel.swift; sourceTree = "<group>"; };
-		D2CAABAE2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseServiceProtocol.swift; sourceTree = "<group>"; };
-		D2CAABB02ABB32E6005A1F07 /* EditProfileCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		D2CD27382A7959D800EA1FA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D2CD273D2A7A955300EA1FA5 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		D2CD273F2A7A956800EA1FA5 /* KeychainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceProtocol.swift; sourceTree = "<group>"; };
@@ -340,6 +332,7 @@
 		D2E828D02AC5B5F60097F127 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
 		D2E828D12AC5B5F60097F127 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
 		D2E828D92AC5C34B0097F127 /* AnalyticsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsAssembly.swift; sourceTree = "<group>"; };
+		D2E828DC2AC5C8770097F127 /* CreateChatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChatButton.swift; sourceTree = "<group>"; };
 		D2FA7C1E2A7C0839009A41C8 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		D2FA7C202A7C0B6D009A41C8 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,6 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E828DB2AC5C7B90097F127 /* RealmSwift in Frameworks */,
 				D2ACCF972AA887E8004BFE41 /* FirebaseAnalyticsSwift in Frameworks */,
 				D2ACCF9B2AA887E8004BFE41 /* FirebaseAuthCombine-Community in Frameworks */,
 				D2ACCFA32AA887E8004BFE41 /* FirebaseMessaging in Frameworks */,
@@ -365,8 +359,6 @@
 				D2ACCFA12AA887E8004BFE41 /* FirebaseDatabaseSwift in Frameworks */,
 				D2CAABA92ABB2144005A1F07 /* Swinject in Frameworks */,
 				D2ACCF9D2AA887E8004BFE41 /* FirebaseCrashlytics in Frameworks */,
-				D23E9E7F2A9CE0AA00F7229C /* RealmSwift in Frameworks */,
-				D23E9E752A9CDB8500F7229C /* (null) in Frameworks */,
 				D2ACCF9F2AA887E8004BFE41 /* FirebaseDatabase in Frameworks */,
 				D2ACCF952AA887E8004BFE41 /* FirebaseAnalytics in Frameworks */,
 			);
@@ -432,7 +424,7 @@
 		D226CE912AC1A3C40066EA6C /* CreateChatButton */ = {
 			isa = PBXGroup;
 			children = (
-				D226CE922AC1A3F70066EA6C /* CreateChatButton.swift */,
+				D2E828DC2AC5C8770097F127 /* CreateChatButton.swift */,
 			);
 			path = CreateChatButton;
 			sourceTree = "<group>";
@@ -1387,7 +1379,6 @@
 				D21EEED62A28D17800957FA7 /* MovieListDelegate.swift in Sources */,
 				D223DE5E2A7944F700A38585 /* AuthViewModelCreator.swift in Sources */,
 				D21EEEFD2A41C0FE00957FA7 /* MovieListStyle.swift in Sources */,
-				D226CE932AC1A3F70066EA6C /* CreateChatButton.swift in Sources */,
 				D2B8A4602A56D3AD00D4B05A /* SettingsLanguagesViewController.swift in Sources */,
 				D2B0D0292947640B0025B7E7 /* AppDelegate.swift in Sources */,
 				D2CAABCB2ABCCF06005A1F07 /* UnreadMessagesIndicator.swift in Sources */,
@@ -1449,6 +1440,7 @@
 				D26998962A77F1B30051A689 /* AuthCoordinator.swift in Sources */,
 				D2CAABAF2ABB30F7005A1F07 /* DataBaseServiceProtocol.swift in Sources */,
 				D21EEEDB2A28D29200957FA7 /* SettingsViewController.swift in Sources */,
+				D2E828DD2AC5C8770097F127 /* CreateChatButton.swift in Sources */,
 				D226CEA52AC1BF170066EA6C /* RealmServiceAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,10 +27,10 @@ class AppCoordinatior: CoordinatorProtocol {
         window.makeKeyAndVisible()
         
         // TODO: Remove navigation controllers for this coordinators
-        let searchMovieCoordinator = SearchMovieCoordinator(navigationController: UINavigationController())
-        let wishlistCoordinator = WishlistCoordinator(navigationController: UINavigationController())
-        let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController())
-        let chatCoordinator = ChatListCooridnator(navigationController: UINavigationController())
+        let searchMovieCoordinator = SearchMovieCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
+        let wishlistCoordinator = WishlistCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
+        let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
+        let chatCoordinator = ChatListCooridnator(navigationController: UINavigationController(), dependecyManager: dependecyManager)
         
         let searchVC = setupViewController(coordinator: searchMovieCoordinator,
                                            title: "Search".localized(),
