@@ -10,7 +10,7 @@ class SettingsViewModelCreator: ViewModelCreatorProtocol {
         self.coordinator = coordinator
     }
 
-    func factoryMethod(parser: NetworkPaserProtocol) -> SettingViewModel {
+    func factoryMethod() -> SettingViewModel {
         SettingViewModel(coordinator: coordinator)
     }
 }

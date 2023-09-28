@@ -1,10 +1,15 @@
 import UIKit
+import Combine
 
 class CustomFieldView: UIView {
     
     // MARK: - Properties
     
     private var textFieldTopConstraint: NSLayoutConstraint?
+    var valueChangedHandler: ((_ textField: UITextField) -> ())?
+
+    @Published private(set) var text: String = ""
+    private var subscriptions: Set<AnyCancellable> = []
     
     private var textFieldView: UIView = {
         let view = UIView()
@@ -78,6 +83,10 @@ class CustomFieldView: UIView {
         helperTextLabel.textColor = Constants.CustomField.secondaryColor
         customTextField.tintColor = Constants.CustomField.mainColor
     }
+    
+    func setInitialValue(_ value: String) {
+        customTextField.text = value
+    }
 
     // MARK: - Private
 
@@ -88,11 +97,19 @@ class CustomFieldView: UIView {
         textFieldView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         textFieldView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         textFieldView.heightAnchor.constraint(equalTo: self.heightAnchor, constant: self.frame.height - 20).isActive = true
+ 
+        observe()
         
         setupBackground()
         setupTextField()
         setupLabel()
         setupHelperText()
+    }
+    
+    private func observe() {
+        customTextField.textPublisher
+            .sink { [weak self] in self?.text = $0 }
+            .store(in: &subscriptions)
     }
 
     private func setupTextField() {
