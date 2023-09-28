@@ -49,30 +49,30 @@ class EditProfileViewModel: EditProfileViewModelProtocol {
             switch textField {
             case .firstName(let viewModel):
                 viewModel.$text
-                    .sink { self.userData?.firstName = $0 }
+                    .sink { [weak self] in self?.userData?.firstName = $0 }
                     .store(in: &subscriptions)
             case .secondName(let viewModel):
                 viewModel.$text
-                    .sink { self.userData?.secondName = $0 }
+                    .sink { [weak self] in self?.userData?.secondName = $0 }
                     .store(in: &subscriptions)
             case .avatarUrl(let viewModel):
                 viewModel.$text
-                    .sink { self.userData?.avatarUrl = $0 }
+                    .sink { [weak self] in self?.userData?.avatarUrl = $0 }
                     .store(in: &subscriptions)
             }
         }
     }
     
     private func loadUser() {
-        firebaseService.getData(ofType: UserData.self) { result in
+        firebaseService.getData(ofType: UserData.self) { [weak self] result in
             switch result {
             case let .success(data):
-                self.userData = data
-                self.updateFields(with: data)
-                self.isUserLoaded = true
+                self?.userData = data
+                self?.updateFields(with: data)
+                self?.isUserLoaded = true
             case let .failure(error):
-                self.isUserLoaded = false
-                self.userData = UserData(id: self.authService.currentUser?.uid ?? "")
+                self?.isUserLoaded = false
+                self?.userData = UserData(id: self?.authService.currentUser?.uid ?? "")
                 print("Error getData \(error)")
             }
         }
